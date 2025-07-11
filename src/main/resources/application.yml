@@ -1,0 +1,7 @@
+spring:
+  application:
+  name:
+   jobSearch
+server:
+  port:
+   8089
