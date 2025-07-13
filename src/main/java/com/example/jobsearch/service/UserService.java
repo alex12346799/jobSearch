@@ -1,17 +1,21 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.entity.User;
+import com.example.jobsearch.model.User;
 import com.example.jobsearch.storage.UserStorage;
-import lombok.Builder;
+
 import org.springframework.stereotype.Service;
 
 
-@Builder
+
 @Service
 public class UserService {
     private final UserStorage userStorage;
 
-public User register(User user) {
+    public UserService(UserStorage userStorage) {
+        this.userStorage = userStorage;
+    }
+
+    public User register(User user) {
     return userStorage.save(user);
 }
 }

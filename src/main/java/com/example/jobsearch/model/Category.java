@@ -1,4 +1,4 @@
-package com.example.jobsearch.entity;
+package com.example.jobsearch.model;
 
 import lombok.Data;
 

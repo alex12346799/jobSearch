@@ -1,6 +1,6 @@
 package com.example.jobsearch.storage;
 
-import com.example.jobsearch.entity.User;
+import com.example.jobsearch.model.User;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
