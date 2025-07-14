@@ -5,6 +5,8 @@ import com.example.jobsearch.storage.UserStorage;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -13,6 +15,12 @@ public class UserService {
 
     public UserService(UserStorage userStorage) {
         this.userStorage = userStorage;
+    }
+    public List<User> findAll() {
+        return userStorage.findAll();
+    }
+    public Optional<User> findById(Long id) {
+        return userStorage.findById(id);
     }
 
     public User register(User user) {

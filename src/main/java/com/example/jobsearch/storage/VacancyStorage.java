@@ -26,4 +26,5 @@ public class VacancyStorage {
     public void deleteById(Integer id) {
         vacancies.remove(id);
     }
+
 }

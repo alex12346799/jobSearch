@@ -7,25 +7,53 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 
 public class VacancyService {
-    private final VacancyStorage vacancies;
+    private final VacancyStorage vacancyStorage;
 
-    public VacancyService(VacancyStorage vacancies) {
-        this.vacancies = vacancies;
+    public VacancyService(VacancyStorage vacancyStorage) {
+        this.vacancyStorage = vacancyStorage;
     }
+
     public Vacancy create(Vacancy vacancy) {
-        return vacancies.save(vacancy);
+        return vacancyStorage.save(vacancy);
     }
+
     public List<Vacancy> getAll() {
-        return vacancies.findAll();
+        return vacancyStorage.findAll();
     }
+
     public Optional<Vacancy> getById(Integer id) {
-        return vacancies.findById(id);
+        return vacancyStorage.findById(id);
     }
-    public void delete(int id){
-        vacancies.deleteById(id);
+
+    public void delete(int id) {
+        vacancyStorage.deleteById(id);
+    }
+
+    public Optional<Vacancy> update(int id, Vacancy updated) {
+        Optional<Vacancy> existing = vacancyStorage.findById(id);
+        if (existing.isPresent()) {
+            Vacancy vacancy = existing.get();
+            vacancy.setTitle(updated.getTitle());
+            vacancy.setDescription(updated.getDescription());
+            vacancy.setCategoryId(updated.getCategoryId());
+            vacancy.setSalary(updated.getSalary());
+            vacancy.setExpFrom(updated.getExpFrom());
+            vacancy.setExpTo(updated.getExpTo());
+            vacancy.setActive(updated.isActive());
+            vacancy.setUpdateTime(updated.getUpdateTime());
+            return Optional.of(vacancy);
+        }
+        return Optional.empty();
+    }
+
+    public List<Vacancy> getByCategoryId(int categoryId) {
+        return vacancyStorage.findAll().stream().filter(v -> v
+                        .getCategoryId() == categoryId)
+                .toList();
     }
 }
 
