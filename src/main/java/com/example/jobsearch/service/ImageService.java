@@ -14,20 +14,22 @@ import java.util.UUID;
 
 public interface ImageService {
     @SneakyThrows
-    default String saveUploadedFile(MultipartFile file, String subDir){
+    default String saveUploadedFile(MultipartFile file, String subDir) {
         String uuidFile = UUID.randomUUID().toString();
         String fileName = uuidFile + "_" + file.getOriginalFilename();
-        Path pathDir = Paths.get("data/images/" + subDir + "/");
+        Path pathDir = Paths.get("data/images/" + subDir);
         Files.createDirectories(pathDir);
-        Path filePath = Paths.get(pathDir+ fileName);
-        if(!Files.exists(filePath)) Files.createFile(filePath);
-        try(OutputStream outputStream = Files.newOutputStream(filePath)) {
+        Path filePath = Paths.get(pathDir + "/" + fileName);
+        if (!Files.exists(filePath)) Files.createFile(filePath);
+        try (OutputStream outputStream = Files.newOutputStream(filePath)) {
             outputStream.write(file.getBytes());
         } catch (IOException e) {
             e.printStackTrace();
         }
         return fileName;
     }
+
     ImageDto getById(long id);
+
     void create(ImageDto imageDto);
 }
