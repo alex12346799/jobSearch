@@ -3,10 +3,10 @@ package com.example.jobsearch.controller;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.UserService;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
@@ -28,6 +28,11 @@ public final UserService userService;
     }else {
         return "Неизвестная роль. Можете выбрать между APPLICANT или EMPLOYER";
     }
+}
+@GetMapping("/employer/{id}")
+    public ResponseEntity<User> findEmployerId(@PathVariable int id) {
+        Optional<User> employer = userService.findEmployerId(id);
+        return employer.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 }
 
 }

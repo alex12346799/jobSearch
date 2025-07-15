@@ -22,4 +22,5 @@ public class UserStorage {
     public Optional<User> findById(long id) {
         return Optional.ofNullable(users.get(id));
     }
+
 }

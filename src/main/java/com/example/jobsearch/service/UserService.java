@@ -22,6 +22,14 @@ public class UserService {
     public Optional<User> findById(Long id) {
         return userStorage.findById(id);
     }
+    public Optional<User> findEmployerId(int id){
+        Optional<User> user = userStorage.findById(id);
+        if(user.isPresent()&&"EMPLOYER".equalsIgnoreCase(user.get().getRole())){
+            return user;
+        }else {
+            return Optional.empty();
+        }
+    }
 
     public User register(User user) {
     return userStorage.save(user);

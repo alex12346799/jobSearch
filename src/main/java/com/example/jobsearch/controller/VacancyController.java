@@ -51,4 +51,9 @@ return ResponseEntity.ok(saved);
         return updated.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
     }
 
+    @GetMapping("/active")
+    public List<Vacancy> findActive() {
+        return vacancyService.findActive();
+    }
+
 }

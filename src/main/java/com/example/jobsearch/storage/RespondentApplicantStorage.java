@@ -13,26 +13,28 @@ import java.util.stream.Collectors;
 public class RespondentApplicantStorage {
 
     private final Map<Integer, RespondentApplicant> ras = new HashMap<>();
-    private int curentId=1;
- public RespondentApplicant save(RespondentApplicant respondentApplicant) {
-     respondentApplicant.setId(++curentId);
-     ras.put(respondentApplicant.getId(), respondentApplicant);
-     return respondentApplicant;
- }
+    private int curentId = 1;
 
- public List<RespondentApplicant> findAll() {
-     return new ArrayList<>(ras.values());
- }
- public List<RespondentApplicant> findByResumeId(int resumeId) {
-     return ras.values().stream().filter(r -> r
-                     .getResumeId() == resumeId)
-             .collect(Collectors.toList());
- }
+    public RespondentApplicant save(RespondentApplicant respondentApplicant) {
+        respondentApplicant.setId(++curentId);
+        ras.put(respondentApplicant.getId(), respondentApplicant);
+        return respondentApplicant;
+    }
 
- public List<RespondentApplicant> findByVacancyId(int vacancyId) {
-return ras.values().stream().filter(r->r
-                .getVacancyId() == vacancyId)
-        .collect(Collectors.toList());
- }
+    public List<RespondentApplicant> findAll() {
+        return new ArrayList<>(ras.values());
+    }
+
+    public List<RespondentApplicant> findByResumeId(int resumeId) {
+        return ras.values().stream().filter(r -> r
+                        .getResumeId() == resumeId)
+                .collect(Collectors.toList());
+    }
+
+    public List<RespondentApplicant> findByVacancyId(int vacancyId) {
+        return ras.values().stream().filter(r -> r
+                        .getVacancyId() == vacancyId)
+                .collect(Collectors.toList());
+    }
 
 }

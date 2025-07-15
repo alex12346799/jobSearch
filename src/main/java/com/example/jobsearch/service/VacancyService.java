@@ -18,6 +18,8 @@ public class VacancyService {
     }
 
     public Vacancy create(Vacancy vacancy) {
+        vacancy.setCreatedDate(java.time.LocalDateTime.now());
+        vacancy.setUpdateTime(java.time.LocalDateTime.now());
         return vacancyStorage.save(vacancy);
     }
 
@@ -53,6 +55,11 @@ public class VacancyService {
     public List<Vacancy> getByCategoryId(int categoryId) {
         return vacancyStorage.findAll().stream().filter(v -> v
                         .getCategoryId() == categoryId)
+                .toList();
+    }
+    public List<Vacancy> findActive() {
+        return vacancyStorage.findAll().stream()
+                .filter(Vacancy::isActive)
                 .toList();
     }
 }

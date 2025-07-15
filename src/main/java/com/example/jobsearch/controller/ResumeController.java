@@ -32,12 +32,12 @@ return ResponseEntity.ok(saved);
         return found.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Void> delete(@PathVariable int id) {
 resumeService.delete(id);
 return ResponseEntity.ok().build();
     }
-    @PutMapping
+    @PutMapping("/{id}")
     public ResponseEntity<Resume> update(@PathVariable int id, @RequestBody Resume resume) {
         Optional<Resume> updated = resumeService.update(id, resume);
         return updated.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
