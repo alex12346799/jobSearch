@@ -12,7 +12,7 @@ import java.util.Optional;
 
 
 @Service
-@RequiredArgsConstructor
+
 public class UserServiceImpl implements UserService {
     private final UserStorage userStorage;
 
