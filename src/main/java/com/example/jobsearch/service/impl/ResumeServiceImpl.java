@@ -1,4 +1,4 @@
-package com.example.jobsearch.service;
+package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.storage.ResumeStorage;
@@ -8,10 +8,10 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class ResumeService {
+public class ResumeServiceImpl {
     private final ResumeStorage resumeStorage;
 
-    public ResumeService(ResumeStorage resumeStorage) {
+    public ResumeServiceImpl(ResumeStorage resumeStorage) {
         this.resumeStorage = resumeStorage;
     }
   public Resume create(Resume resume) {

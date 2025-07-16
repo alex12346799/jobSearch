@@ -1,7 +1,7 @@
 package com.example.jobsearch.controller;
 
 import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.service.ResumeService;
+import com.example.jobsearch.service.impl.ResumeServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +11,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/resumes")
 public class ResumeController {
-    private final ResumeService resumeService;
+    private final ResumeServiceImpl resumeService;
 
-    public ResumeController(ResumeService resumeService) {
+    public ResumeController(ResumeServiceImpl resumeService) {
         this.resumeService = resumeService;
     }
     @PostMapping

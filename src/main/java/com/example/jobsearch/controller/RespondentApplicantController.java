@@ -1,7 +1,7 @@
 package com.example.jobsearch.controller;
 
 import com.example.jobsearch.model.RespondentApplicant;
-import com.example.jobsearch.service.RespondentApplicantService;
+import com.example.jobsearch.service.impl.RespondentApplicantServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,9 +10,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/responses")
 public class RespondentApplicantController {
-    private final RespondentApplicantService ras;
+    private final RespondentApplicantServiceImpl ras;
 
-    public RespondentApplicantController(RespondentApplicantService ras) {
+    public RespondentApplicantController(RespondentApplicantServiceImpl ras) {
         this.ras = ras;
     }
     @PostMapping

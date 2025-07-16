@@ -1,4 +1,4 @@
-package com.example.jobsearch.service;
+package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.model.RespondentApplicant;
 import com.example.jobsearch.storage.RespondentApplicantStorage;
@@ -7,10 +7,10 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class RespondentApplicantService {
+public class RespondentApplicantServiceImpl {
     private final RespondentApplicantStorage ras;
 
-    public RespondentApplicantService(RespondentApplicantStorage ras) {
+    public RespondentApplicantServiceImpl(RespondentApplicantStorage ras) {
         this.ras = ras;
     }
     public RespondentApplicant respondToVacancy(RespondentApplicant respondentApplicant) {

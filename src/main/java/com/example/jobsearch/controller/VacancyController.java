@@ -1,7 +1,7 @@
 package com.example.jobsearch.controller;
 
 import com.example.jobsearch.model.Vacancy;
-import com.example.jobsearch.service.VacancyService;
+import com.example.jobsearch.service.impl.VacancyServiceImpl;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,9 +11,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/vacancies")
 public class VacancyController {
-private final VacancyService vacancyService;
+private final VacancyServiceImpl vacancyService;
 
-    public VacancyController(VacancyService vacancies) {
+    public VacancyController(VacancyServiceImpl vacancies) {
         this.vacancyService = vacancies;
     }
     @GetMapping

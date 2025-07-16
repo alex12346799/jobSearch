@@ -1,7 +1,7 @@
 package com.example.jobsearch.controller;
 
 import com.example.jobsearch.model.User;
-import com.example.jobsearch.service.UserService;
+import com.example.jobsearch.service.impl.UserServiceImpl;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,9 +11,9 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/users")
 public class UserController {
-public final UserService userService;
+public final UserServiceImpl userService;
 
-    public UserController(UserService userService) {
+    public UserController(UserServiceImpl userService) {
         this.userService = userService;
     }
 

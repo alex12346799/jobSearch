@@ -1,4 +1,4 @@
-package com.example.jobsearch.service;
+package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.storage.VacancyStorage;
@@ -10,10 +10,10 @@ import java.util.Optional;
 
 @Service
 
-public class VacancyService {
+public class VacancyServiceImpl {
     private final VacancyStorage vacancyStorage;
 
-    public VacancyService(VacancyStorage vacancyStorage) {
+    public VacancyServiceImpl(VacancyStorage vacancyStorage) {
         this.vacancyStorage = vacancyStorage;
     }
 

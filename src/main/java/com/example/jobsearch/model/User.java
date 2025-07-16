@@ -2,9 +2,12 @@ package com.example.jobsearch.model;
 
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Data
-@Builder
+@Getter
+@Setter
 public class User {
     private long id;
     private String name;
