@@ -1,20 +1,24 @@
 package com.example.jobsearch.controller;
 
+import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.impl.UserServiceImpl;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
 @RequestMapping("/users")
 public class UserController {
 public final UserServiceImpl userService;
+public final UserDao userDao;
 
-    public UserController(UserServiceImpl userService) {
+    public UserController(UserServiceImpl userService, UserDao userDao) {
         this.userService = userService;
+        this.userDao = userDao;
     }
 
     @PostMapping("/register")
@@ -35,4 +39,21 @@ public final UserServiceImpl userService;
         return employer.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 }
 
+@GetMapping
+    public List<User> findAll() {
+        return userDao.findAll();
+}
+
+@GetMapping("/{email}")
+    public User getUserByEmail(@PathVariable String email) {
+        return userDao.findByEmail(email);
+}
+@PostMapping
+    public void  crateUser(@RequestBody User user) {
+        userDao.save(user);
+}
+@DeleteMapping("/{id}")
+    public void delete(@PathVariable long id) {
+        userDao.delete(id);
+}
 }
