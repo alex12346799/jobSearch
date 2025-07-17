@@ -19,7 +19,7 @@ public class UserDao {
     }
 
     public List<User> findByName(String name) {
-        String sql = "SELECT * FROM users where name = ?";
+        String sql = "SELECT * FROM users where  name = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), name);
     }
 
@@ -38,15 +38,34 @@ public class UserDao {
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
     }
 
-    public boolean existsByEmail(String email) {
-        String sql = "SELECT COUNT(*) FROM users WHERE email = ?";
-        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, email);
-        return count != null && count > 0;
-    }
-    public void save(User user) {
-        String sql = "INSERT INTO users (name, surname, role, age, email, password) VALUES (?, ?, ?, ?, ?, ?)";
-        jdbcTemplate.update(sql, user.getName(), user.getSurname(), user.getRole(), user.getAge(), user.getEmail(), user.getPassword());
-    }
+//    public void save(User user) {
+//        String sql = "INSERT INTO users (name, surname, role, age, email, password) VALUES (?, ?, ?, ?, ?, ?)";
+//        try {
+//            jdbcTemplate.update(sql, user.getName(), user.getSurname(), user.getRole(),
+//                    user.getAge(), user.getEmail(), user.getPassword());
+//        }catch(Exception e) {
+//            e.printStackTrace();
+//            throw e;
+//        }
+//
+//    }
+public void save(User user) {
+    String sql = "INSERT INTO users (name, surname, role, age, email, password, phone_number, address, avatar, account_type) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    jdbcTemplate.update(sql,
+            user.getName(),
+            user.getSurname(),
+            user.getRole(),
+            user.getAge(),
+            user.getEmail(),
+            user.getPassword(),
+            user.getPhoneNumber(),
+            user.getAddress(),
+            user.getAvatar(),
+            user.getAccountType()
+    );
+}
+
 
     public void update(User user) {
         String sql = "UPDATE users SET name = ?, surname = ?, role = ?, age = ?, email = ?, password = ? WHERE id = ?";

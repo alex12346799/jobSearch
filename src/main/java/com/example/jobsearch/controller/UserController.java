@@ -28,7 +28,7 @@ public final UserDao userDao;
         return "Вы зарегистрировали как сосискатель работы";
     } else if ("EMPLOYER".equalsIgnoreCase(saved.getRole())) {
         return "Вы зарегистрировали как работадатель";
-        
+
     }else {
         return "Неизвестная роль. Можете выбрать между APPLICANT или EMPLOYER";
     }
@@ -44,16 +44,34 @@ public final UserDao userDao;
         return userDao.findAll();
 }
 
-@GetMapping("/{email}")
+@GetMapping("/email/{email}")
     public User getUserByEmail(@PathVariable String email) {
         return userDao.findByEmail(email);
 }
-@PostMapping
+
+@GetMapping("/name/{name}")
+public List<User> getUserByName(@PathVariable String name) {
+        return userDao.findByName(name);
+}
+
+@GetMapping("/phone/{phone}")
+public List<User> getUserByPhone(@PathVariable String phone) {
+        return userDao.findByPhone(phone);
+}
+@PutMapping("/{id}")
+public ResponseEntity<User> update(@PathVariable long id, @RequestBody User user) {
+       user.setId(id);
+       userDao.update(user);
+       return ResponseEntity.ok(user);
+}
+
+@PostMapping("/add")
     public void  crateUser(@RequestBody User user) {
         userDao.save(user);
 }
-@DeleteMapping("/{id}")
+@DeleteMapping("/delete/{id}")
     public void delete(@PathVariable long id) {
         userDao.delete(id);
 }
 }
+

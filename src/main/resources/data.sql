@@ -1,6 +1,6 @@
 create table if not exists users
 (
-    id           INT PRIMARY KEY,
+    id           INT PRIMARY KEY AUTO_INCREMENT,
     name         VARCHAR(100),
     surname      VARCHAR(100),
     role         VARCHAR(50),
