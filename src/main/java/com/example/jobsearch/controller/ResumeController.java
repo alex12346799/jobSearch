@@ -46,4 +46,9 @@ return ResponseEntity.ok().build();
     public List<Resume> findByCategoryId(@PathVariable int categoryId) {
         return resumeService.findByVacancyId(categoryId);
     }
+    @GetMapping("/applicant/{id}")
+    public ResponseEntity<List<Resume>> getByApplicantId(@PathVariable int id) {
+        return ResponseEntity.ok(resumeService.findByApplicantId(id));
+    }
+
 }

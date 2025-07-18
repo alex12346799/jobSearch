@@ -1,47 +1,43 @@
 package com.example.jobsearch.service.impl;
 
+import com.example.jobsearch.dao.ResumeDao;
 import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.storage.ResumeStorage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+
 @Service
 public class ResumeServiceImpl {
-    private final ResumeStorage resumeStorage;
+private final ResumeDao resumeDao;
 
-    public ResumeServiceImpl(ResumeStorage resumeStorage) {
-        this.resumeStorage = resumeStorage;
+    public ResumeServiceImpl(ResumeDao resumeDao) {
+        this.resumeDao = resumeDao;
     }
-  public Resume create(Resume resume) {
-        return resumeStorage.save(resume);
-  }
-public List<Resume> getAll(){
-        return resumeStorage.findAll();
-}
+    public Resume create(Resume resume) {
+        resumeDao.save(resume);
+        return resume;
+    }
+    public List<Resume> getAll() {
+        return resumeDao.findAll();
+    }
+    public List<Resume> findByVacancyId(int vacancyId){
+        return resumeDao.findCategoeyId(vacancyId);
+    }
+    public void delete(int id) {
+        resumeDao.delete(id);
+    }
 
-public Optional<Resume> findById(int resumeId) {
-        return resumeStorage.findById(resumeId);
-}
-public void delete(int resumeId) {
-        resumeStorage.delete(resumeId);
-}
-
-public List<Resume> findByVacancyId(int vacancyId) {
-        return resumeStorage.findByCategoryId(vacancyId);
-}
-public Optional<Resume> update(int id, Resume update) {
-Optional<Resume> existing = resumeStorage.findById(id);
-if (existing.isPresent()) {
-    Resume resume = existing.get();
-    resume.setName(update.getName());
-    resume.setCategoryId(update.getCategoryId());
-    resume.setSalary(update.getSalary());
-    resume.setActive(update.isActive());
-    resume.setUpdateTime(update.getUpdateTime());
-    return Optional.of(resume);
-}
-return Optional.empty();
-}
+    public Optional<Resume> update(int id, Resume update){
+        update.setId(id);
+        resumeDao.save(update);
+        return Optional.of(update);
+    }
+    public Optional<Resume> findById(int id) {
+        return resumeDao.findById(id);
+    }
+    public List<Resume> findByApplicantId(int applicantId) {
+        return resumeDao.findCategoeyId(applicantId);
+    }
 }

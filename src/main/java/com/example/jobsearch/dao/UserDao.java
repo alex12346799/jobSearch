@@ -19,7 +19,7 @@ public class UserDao {
     }
 
     public List<User> findByName(String name) {
-        String sql = "SELECT * FROM users where  name = ?";
+        String sql = "SELECT * FROM users where  name =?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), name);
     }
 

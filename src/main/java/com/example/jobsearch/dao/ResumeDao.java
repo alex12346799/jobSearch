@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ResumeDao {
@@ -18,8 +19,18 @@ public class ResumeDao {
         return jdbcTemplate.query("SELECT * FROM resume", new BeanPropertyRowMapper<>(Resume.class));
     }
     public List<Resume> findByApplicantId(int id){
-        return jdbcTemplate.query("SELECT * FROM RESUME where applicant_Id"
+        return jdbcTemplate.query("SELECT * FROM RESUME where applicant_Id=?"
                 , new BeanPropertyRowMapper<>(Resume.class),id);
+    }
+
+    public Optional<Resume> findById(int id) {
+        String sql = "SELECT * FROM resume WHERE id = ?";
+        List<Resume> resumes = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), id);
+        if (resumes.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(resumes.get(0));
+        }
     }
     public List<Resume> findCategoeyId(int categoryId){
         return jdbcTemplate.query("SELECT * FROM resume WHERE category_id = ?",

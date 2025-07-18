@@ -11,49 +11,50 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/vacancies")
 public class VacancyController {
-private final VacancyServiceImpl vacancyService;
+    private final VacancyServiceImpl vacancyService;
 
     public VacancyController(VacancyServiceImpl vacancies) {
         this.vacancyService = vacancies;
     }
-    @GetMapping
-    public List<Vacancy> findAll() {
-        return vacancyService.getAll();
-    }
-    @GetMapping("/{id}")
-    public ResponseEntity<Vacancy> getById(@PathVariable int id) {
-        Optional<Vacancy> vacancy = vacancyService.getById(id);
-        return vacancy.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-    }
-    @GetMapping("/category{categoryId}")
-    public List<Vacancy> getByCategoryId(@PathVariable int categoryId) {
-        return vacancyService.getByCategoryId(categoryId);
-    }
 
     @PostMapping
     public ResponseEntity<Vacancy> create(@RequestBody Vacancy vacancy) {
-Vacancy saved = vacancyService.create(vacancy);
-return ResponseEntity.ok(saved);
+        vacancyService.create(vacancy);
+        return ResponseEntity.ok(vacancy);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Vacancy> delete(@PathVariable int id) {
-        Optional<Vacancy> vacancy = vacancyService.getById(id);
-        if (vacancy.isPresent()) {
-            vacancyService.delete(id);
-            return ResponseEntity.ok().build();
-        }return  ResponseEntity.notFound().build();
+    @GetMapping
+    public List<Vacancy> getAll() {
+        return vacancyService.findAll();
+    }
+
+    @GetMapping("/{id}")
+    public Vacancy getById(@PathVariable int id) {
+        return vacancyService.findById(id);
+
+    }
+
+    @GetMapping("/employer/{employerId}")
+    public List<Vacancy> getByEmployerId(@PathVariable int employerId) {
+        return vacancyService.getEmployerById(employerId);
+    }
+
+    @GetMapping("/category/{categoryId}")
+    public List<Vacancy> getByCategoryId(@PathVariable int categoryId) {
+        return vacancyService.getByCategoryById(categoryId);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Vacancy> update(@PathVariable int id, @RequestBody Vacancy vacancy) {
-        Optional<Vacancy> updated = vacancyService.update(id, vacancy);
-        return updated.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+        vacancyService.update(id, vacancy);
+        return ResponseEntity.ok(vacancy);
     }
 
-    @GetMapping("/active")
-    public List<Vacancy> findActive() {
-        return vacancyService.findActive();
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Vacancy> delete(@PathVariable int id) {
+        vacancyService.delete(id);
+        return ResponseEntity.ok().build();
     }
+
 
 }
