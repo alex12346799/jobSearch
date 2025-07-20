@@ -3,15 +3,20 @@ spring:
   name:
    jobSearch
   datasource:
-    url: jdbc:h2:./db/test;AUTO_SERVER=TRUE
+    url: jdbc:h2:./db/jobsearch;AUTO_SERVER=TRUE
     username: root
     password: qwerty
     driver-class-name: org.h2.Driver
-    sql:
-      init:
-        mode: always
-        schema-locations: classpath:schema.sql
-        data-locations: classpath:data.sql
+  liquibase:
+    change-log: classpath:/db/changelog/master.yaml
+
 server:
   port:
    8089
+logging:
+  level:
+    root: info
+  pattern:
+    file: '%d{yyyy-mm-dd hh:mm:ss} %-5level %logger{36} -msg%n'
+  file:
+      path: logs

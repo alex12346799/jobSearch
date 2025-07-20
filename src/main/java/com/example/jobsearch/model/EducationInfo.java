@@ -4,7 +4,7 @@ import lombok.Data;
 
 import java.time.LocalDate;
 @Data
-public class EducationUnfo {
+public class EducationInfo {
     private int id;
     private int resumeId;
     private String institution;

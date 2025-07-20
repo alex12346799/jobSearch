@@ -1,0 +1,242 @@
+databaseChangeLog:
+  - changeSet:
+      id: crate_table_users
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  type: varchar(45)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+                    unique: true
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: surname
+                  type: varchar(255)
+              - column:
+                  name: role
+                  type: varchar(45)
+              - column:
+                  name: password
+                  type: varchar(255)
+              - column:
+                  name: phone_number
+                  type: varchar(45)
+              - column:
+                  name: address
+                  type: varchar(255)
+              - column:
+                  name: avatar
+                  type: varchar(255)
+              - column:
+                  name: account_type
+                  type: varchar(255)
+  - changeSet:
+      id: create_table_resume
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: resume
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: applicant_id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(45)
+              - column:
+                  name: category_id
+                  type: int
+              - column:
+                  name: salary
+                  type: double
+              - column:
+                  name: is_active
+                  type: boolean
+              - column:
+                  name: created_date
+                  type: timestamp
+              - column:
+                  name: update_date
+                  type: timestamp
+  - changeSet:
+      id: create_table_category
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: parent_id
+                  type: int
+                  constraints:
+                    nullable: true
+  - changeSet:
+      id: create_table_vacancy
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: vacancy
+            columns:
+              - column:
+                 name: id
+                 type: int
+                 constraints:
+                   primaryKey: true
+              - column:
+                  name: title
+                  type: varchar(255)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: category_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: salary
+                  type: double
+              - column:
+                  name: exp_from
+                  type: int
+              - column:
+                  name: to_from
+                  type: int
+              - column:
+                  name: as_active
+                  type: boolean
+              - column:
+                  name: employer_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: create_date
+                  type: timestamp
+              - column:
+                  name: update_date
+                  type: timestamp
+  - changeSet:
+      id: create_table_Respondent_applicant
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: respondent_applicant
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: vacancy_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: confirmation
+                  type: boolean
+              - column:
+                  name: create_date
+                  type: timestamp
+  - changeSet:
+      id: create_table_education_info
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: education_info
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: institution
+                  type: varchar(255)
+              - column:
+                  name: program
+                  type: varchar(255)
+              - column:
+                  name: start_date
+                  type: timestamp
+              - column:
+                  name: end_date
+                  type: varchar(255)
+              - column:
+                  name: degree
+                  type: varchar(255)
+  - changeSet:
+      id: create_table_work_experience_info
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: work_experience_info
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    nullable: false
+              - column:
+                  name: years
+                  type: int
+              - column:
+                  name: company_name
+                  type: varchar(255)
+              - column:
+                  name: position
+                  type: varchar(255)
+              - column:
+                  name: responsibilities
+                  type: varchar(255)
+
+
+
+
+
