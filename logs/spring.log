@@ -21035,3 +21035,7 @@ Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/aleksei/D
 2025-03-21 11:03:27 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
 2025-03-21 11:03:27 INFO  o.s.web.servlet.DispatcherServlet -msg
 2025-03-21 11:03:27 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-27-21 11:27:22 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-27-21 11:27:22 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-27-21 11:27:22 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-27-21 11:27:22 INFO  com.zaxxer.hikari.HikariDataSource -msg
