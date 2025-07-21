@@ -1,7 +1,6 @@
 spring:
   application:
-  name:
-   jobSearch
+    name: jobSearch
   datasource:
     url: jdbc:h2:./db/jobsearch;AUTO_SERVER=TRUE
     username: root
@@ -19,4 +18,4 @@ logging:
   pattern:
     file: '%d{yyyy-mm-dd hh:mm:ss} %-5level %logger{36} -msg%n'
   file:
-      path: logs
+    path: logs
