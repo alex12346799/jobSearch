@@ -19,6 +19,9 @@ databaseChangeLog:
                   name: role
                   value: "applicant"
               - column:
+                  name: age
+                  value: 25
+              - column:
                   name: password
                   value: "password123"
               - column:
@@ -48,6 +51,9 @@ databaseChangeLog:
               - column:
                   name: role
                   value: "employer"
+              - column:
+                  name: age
+                  value: 20
               - column:
                   name: password
                   value: "employer1pass1"

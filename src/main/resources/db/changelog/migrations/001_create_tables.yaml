@@ -28,6 +28,9 @@ databaseChangeLog:
                   name: role
                   type: varchar(45)
               - column:
+                  name: age
+                  type: int
+              - column:
                   name: password
                   type: varchar(255)
               - column:

@@ -1,80 +1,14 @@
 package com.example.jobsearch.dao;
 
 import com.example.jobsearch.model.User;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
-
-
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
-@Repository
-
-public class UserDao {
-    private final JdbcTemplate jdbcTemplate;
-
-    public UserDao(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
-
-    public List<User> findByName(String name) {
-        String sql = "SELECT * FROM users where  name =?";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), name);
-    }
-
-
-    public User findByEmail(String email) {
-        String sql = "SELECT * FROM users WHERE email = ?";
-        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(User.class), email);
-    }
-
-    public List<User> findByPhone(String phone) {
-        String sql = "SELECT * FROM users WHERE PHONE_NUMBER = ?";
-        return  jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class),phone);
-    }
-    public List<User> findAll() {
-        String sql = "SELECT * FROM users";
-        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class));
-    }
-
-//    public void save(User user) {
-//        String sql = "INSERT INTO users (name, surname, role, age, email, password) VALUES (?, ?, ?, ?, ?, ?)";
-//        try {
-//            jdbcTemplate.update(sql, user.getName(), user.getSurname(), user.getRole(),
-//                    user.getAge(), user.getEmail(), user.getPassword());
-//        }catch(Exception e) {
-//            e.printStackTrace();
-//            throw e;
-//        }
-//
-//    }
-public void save(User user) {
-    String sql = "INSERT INTO users (name, surname, role, age, email, password, phone_number, address, avatar, account_type) " +
-            "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    jdbcTemplate.update(sql,
-            user.getName(),
-            user.getSurname(),
-            user.getRole(),
-            user.getAge(),
-            user.getEmail(),
-            user.getPassword(),
-            user.getPhoneNumber(),
-            user.getAddress(),
-            user.getAvatar(),
-            user.getAccountType()
-    );
-}
-
-
-    public void update(User user) {
-        String sql = "UPDATE users SET name = ?, surname = ?, role = ?, age = ?, email = ?, password = ? WHERE id = ?";
-        jdbcTemplate.update(sql, user.getName(), user.getSurname(), user.getRole(), user.getAge(), user.getEmail(), user.getPassword(), user.getId());
-    }
-
-    public void delete(long id) {
-        String sql = "DELETE FROM users WHERE id = ?";
-        jdbcTemplate.update(sql, id);
-    }
-
+public interface UserDao {
+    Optional<User> findById(Long id);
+    List<User> findAll();
+    void save(User user);
+    void update(User user);
+    void deleteById(Long id);
 }

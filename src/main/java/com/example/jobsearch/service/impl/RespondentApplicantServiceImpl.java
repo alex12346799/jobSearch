@@ -2,7 +2,7 @@ package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.RespondentApplicationDao;
 import com.example.jobsearch.model.RespondentApplicant;
-import com.example.jobsearch.storage.RespondentApplicantStorage;
+
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -1,6 +1,5 @@
 package com.example.jobsearch.service.impl;
 
-import com.example.jobsearch.dao.ResumeDao;
 import com.example.jobsearch.model.Resume;
 import org.springframework.stereotype.Service;
 
