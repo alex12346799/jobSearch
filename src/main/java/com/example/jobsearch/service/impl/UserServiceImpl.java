@@ -9,10 +9,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 @Service
 @Slf4j
 public class UserServiceImpl implements UserService {
-  private final UserDao userDao;
+    private final UserDao userDao;
 
     public UserServiceImpl(UserDao userDao) {
         this.userDao = userDao;
@@ -21,12 +22,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public User getUserById(Long id) {
         return userDao.findById(id).
-               orElseThrow(()-> new NotFoundException("Пользователь с таким "+ id + " не найден"));
+                orElseThrow(() -> new NotFoundException("Пользователь с таким " + id + " не найден"));
     }
 
     @Override
     public List<User> getAllUsers() {
-       return userDao.findAll();
+        return userDao.findAll();
     }
 
     @Override
@@ -37,8 +38,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(long id, UserDto dto) {
-     User user = getUserById(id);
-     user.setName(dto.getName());
+        User user = getUserById(id);
+        user.setName(dto.getName());
         user.setSurname(dto.getSurname());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setAddress(dto.getAddress());

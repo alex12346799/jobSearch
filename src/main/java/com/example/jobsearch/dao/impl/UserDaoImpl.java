@@ -8,9 +8,14 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
+
 @Repository
 public class UserDaoImpl implements UserDao {
     private final JdbcTemplate jdbcTemplate;
+
+    public UserDaoImpl(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     private final RowMapper<User> rowMapper = (rs, rowNum) -> {
         User user = new User();
@@ -28,9 +33,6 @@ public class UserDaoImpl implements UserDao {
         return user;
     };
 
-    public UserDaoImpl(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
-    }
 
     @Override
     public Optional<User> findById(Long id) {
