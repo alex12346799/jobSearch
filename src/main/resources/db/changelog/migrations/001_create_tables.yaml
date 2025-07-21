@@ -7,16 +7,17 @@ databaseChangeLog:
             tableName: users
             columns:
               - column:
-                  name: email
-                  type: varchar(45)
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-                    unique: true
-              - column:
                   name: id
                   type: int
                   autoIncrement: true
+                  constraints:
+                   primaryKey: true
+                   nullable: false
+              - column:
+                  name: email
+                  type: varchar(45)
+                  constraints:
+                    unique: true
               - column:
                   name: name
                   type: varchar(255)
@@ -51,13 +52,13 @@ databaseChangeLog:
               - column:
                   name: id
                   type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: applicant_id
                   type: int
-                  autoIncrement: true
                   constraints:
                     nullable: false
               - column:
@@ -66,6 +67,8 @@ databaseChangeLog:
               - column:
                   name: category_id
                   type: int
+                  constraints:
+                    nullable: false
               - column:
                   name: salary
                   type: double
@@ -88,8 +91,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
               - column:
                   name: name
                   type: varchar(45)
@@ -110,8 +115,10 @@ databaseChangeLog:
               - column:
                  name: id
                  type: int
+                 autoIncrement: true
                  constraints:
                    primaryKey: true
+                   nullable: false
               - column:
                   name: title
                   type: varchar(255)
@@ -130,7 +137,7 @@ databaseChangeLog:
                   name: exp_from
                   type: int
               - column:
-                  name: to_from
+                  name: exp_to
                   type: int
               - column:
                   name: as_active
@@ -141,7 +148,7 @@ databaseChangeLog:
                   constraints:
                     nullable: false
               - column:
-                  name: create_date
+                  name: created_date
                   type: timestamp
               - column:
                   name: update_date
@@ -156,8 +163,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
               - column:
                   name: resume_id
                   type: int
@@ -184,8 +193,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
               - column:
                   name: resume_id
                   type: int
@@ -202,7 +213,7 @@ databaseChangeLog:
                   type: timestamp
               - column:
                   name: end_date
-                  type: varchar(255)
+                  type: timestamp
               - column:
                   name: degree
                   type: varchar(255)
@@ -216,8 +227,10 @@ databaseChangeLog:
               - column:
                   name: id
                   type: int
+                  autoIncrement: true
                   constraints:
                     primaryKey: true
+                    nullable: false
               - column:
                   name: resume_id
                   type: int
@@ -235,6 +248,7 @@ databaseChangeLog:
               - column:
                   name: responsibilities
                   type: varchar(255)
+
 
 
 

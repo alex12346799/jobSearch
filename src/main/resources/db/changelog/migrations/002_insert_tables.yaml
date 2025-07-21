@@ -1,6 +1,210 @@
 databaseChangeLog:
   - changeSet:
-      id: 0
-      author: admin
+      id: insert_users
+      author: aleksei
       changes:
-        -
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "john@example.com"
+              - column:
+                  name: name
+                  value: "John"
+              - column:
+                  name: surname
+                  value: "Doe"
+              - column:
+                  name: role
+                  value: "applicant"
+              - column:
+                  name: password
+                  value: "password123"
+              - column:
+                  name: phone_number
+                  value: "+1234567890"
+              - column:
+                  name: address
+                  value: "123 Main Street"
+              - column:
+                  name: avatar
+                  value: "avatar1.jpg"
+              - column:
+                  name: account_type
+                  value: "standard"
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: email
+                  value: "employer@example.com"
+              - column:
+                  name: name
+                  value: "Alice"
+              - column:
+                  name: surname
+                  value: "Smith"
+              - column:
+                  name: role
+                  value: "employer"
+              - column:
+                  name: password
+                  value: "employer1pass1"
+              - column:
+                  name: phone_number
+                  value: "+1987654321"
+              - column:
+                  name: address
+                  value: "456 Business Rd"
+              - column:
+                  name: avatar
+                  value: "avatar2.jpg"
+              - column:
+                  name: account_type
+                  value: "premium"
+  - changeSet:
+      id: insert_resume
+      author: aleksei
+      changes:
+        - insert:
+            tableName: resume
+            columns:
+              - column:
+                  name: applicant_id
+                  value: 1
+              - column:
+                  name: name
+                  value: "Junior Java Developer"
+              - column:
+                  name: category_id
+                  value: 2
+              - column:
+                  name: salary
+                  value: 30000
+              - column:
+                  name: is_active
+                  value: true
+              - column:
+                  name: created_date
+                  value: "2024-01-01 09:00:00"
+              - column:
+                  name: update_date
+                  value: "2024-02-01 15:00:00"
+        - insert:
+            tableName: vacancy
+            columns:
+              - column:
+                 name: title
+                 value: "Middle Java Developer"
+              - column:
+                 name: description
+                 value: "Работа в команде над большим проектом."
+              - column:
+                 name: category_id
+                 value: 1
+              - column:
+                 name: salary
+                 value: 180000
+              - column:
+                 name: exp_from
+                 value: 2
+              - column:
+                 name: exp_to
+                 value: 5
+              - column:
+                  name: as_active
+                  value: true
+              - column:
+                 name: employer_id
+                 value: 2
+              - column:
+                 name: created_date
+                 valueDate: "2025-03-15 09:30:00"
+              - column:
+                  name: update_date
+                  valueDate: "2025-07-15 11:30:00"
+        - insert:
+            tableName: respondent_applicant
+            columns:
+              - column:
+                 name: resume_id
+                 value: 1
+              - column:
+                 name: vacancy_id
+                 value: 1
+              - column:
+                 name: confirmation
+                 valueBoolean: false
+              - column:
+                 name: create_date
+                 valueDate: "2025-07-17 14:00:00"
+        - insert:
+            tableName: education_info
+            columns:
+              - column:
+                  name: resume_id
+                  value: 1
+              - column:
+                  name: institution
+                  value: "KGTU"
+              - column:
+                  name: program
+                  value: "Computer engineer"
+              - column:
+                  name: start_date
+                  valueDate: "2024-02-17 11:30:00"
+              - column:
+                  name: end_date
+                  valueDate: "2026-08-17 11:30:00"
+              - column:
+                  name: degree
+                  value: "Bachelor"
+        - insert:
+            tableName: category
+            columns:
+              - column:
+                  name: name
+                  value: "IT"
+              - column:
+                  name: parent_id
+                  value: null
+        - insert:
+            tableName: category
+            columns:
+              - column:
+                  name: name
+                  value: "Design"
+              - column:
+                  name: parent_id
+                  value: 1
+        - insert:
+            tableName: category
+            columns:
+              - column:
+                  name: name
+                  value: "Marketing"
+              - column:
+                  name: parent_id
+                  value: 2
+        - insert:
+            tableName: work_experience_info
+            columns:
+              - column:
+                  name: resume_id
+                  value: 1
+              - column:
+                  name: years
+                  value: 2
+              - column:
+                  name: company_name
+                  value: "Matrix soft"
+              - column:
+                  name: position
+                  value: "Backend Developer"
+              - column:
+                  name: responsibilities
+                  value: "Создание REST API и интеграция с базами данных"
+
+
+
