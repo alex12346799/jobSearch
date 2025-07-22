@@ -1,43 +1,55 @@
 package com.example.jobsearch.service.impl;
 
+
+import com.example.jobsearch.dao.VacancyDao;
+import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Vacancy;
+import com.example.jobsearch.service.VacancyService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
-
-public class VacancyServiceImpl {
+public class VacancyServiceImpl implements VacancyService {
     private final VacancyDao vacancyDao;
 
     public VacancyServiceImpl(VacancyDao vacancyDao) {
         this.vacancyDao = vacancyDao;
     }
-    public VacancyDao create (Vacancy vacancy) {
-        vacancyDao.save(vacancy);
-        return vacancyDao;
-    }
-    public List<Vacancy> findAll() {
-        return vacancyDao.findAll();
-    }
-    public List<Vacancy> getEmployerById(int employerId) {
-        return vacancyDao.findByEmployerId(employerId);
-    }
-    public List<Vacancy> getByCategoryById(int categoryId) {
-        return vacancyDao.findByVacancyId(categoryId);
-    }
-public Vacancy findById(int id) {
-        return vacancyDao.findById(id);
-}
-public Vacancy update(int id, Vacancy update) {
-        update.setId(id);
-        vacancyDao.save(update);
-        return update;
-}
-public void delete(int id) {
-        vacancyDao.deleteById(id);
 
-}
+    @Override
+    public void create(Vacancy vacancy) {
+        vacancyDao.saveVacancy(vacancy);
+    }
+
+    @Override
+    public Vacancy getById(int id) {
+        return vacancyDao.findVacancyById(id)
+                .orElseThrow(() -> new NotFoundException("Вакансия с таким id " + id + " не найден"));
+    }
+
+    @Override
+    public List<Vacancy> getAll() {
+       return vacancyDao.findAllVacancies();
+    }
+
+    @Override
+    public List<Vacancy> getByUser(int userId) {
+        return vacancyDao.findByUserId(userId);
+    }
+
+    @Override
+    public void update(Vacancy vacancy) {
+        getById(vacancy.getId());
+        vacancyDao.updateVacancy(vacancy);
+    }
+
+    @Override
+    public void delete(int id) {
+        getById(id);
+        vacancyDao.deleteVacancyById(id);
+
+    }
 }
 

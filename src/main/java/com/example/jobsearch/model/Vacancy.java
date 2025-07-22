@@ -12,8 +12,8 @@ public class Vacancy {
     private double salary;
     private int expFrom;
     private int expTo;
-    private boolean isActive;
+    private boolean asActive;
     private int employerId;
     private LocalDateTime createdDate;
-    private LocalDateTime updateTime;
+    private LocalDateTime updateDate;
 }
