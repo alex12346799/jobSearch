@@ -1,0 +1,50 @@
+package com.example.jobsearch.model;
+
+import com.example.jobsearch.dao.ResumeDao;
+import com.example.jobsearch.model.Resume;
+import com.example.jobsearch.service.ResumeService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/resumes")
+@RequiredArgsConstructor
+public class ResumeController {
+    @Autowired
+    private final ResumeService resumeService;
+
+    @GetMapping
+    public List<Resume> getAll() {
+        return resumeService.getAllResumes();
+    }
+
+    @GetMapping("/{id}")
+    public Resume getById(@PathVariable int id) {
+        return resumeService.getById(id);
+    }
+
+    @GetMapping("/user/{applicantId}")
+    public List<Resume> getByApplicant(@PathVariable int applicantId) {
+        return resumeService.getAllByApplicantId(applicantId);
+    }
+
+    @PostMapping
+    public void createResume(@RequestBody Resume resume) {
+        resumeService.create(resume);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateResume(@PathVariable int id, @RequestBody Resume resume) {
+        resumeService.update(id, resume);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteResume(@PathVariable int id) {
+        resumeService.delete(id);
+    }
+}
