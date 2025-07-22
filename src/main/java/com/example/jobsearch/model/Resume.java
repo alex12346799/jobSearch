@@ -2,8 +2,11 @@ package com.example.jobsearch.model;
 
 
 import lombok.Data;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Data
 public class Resume {
     private int id;
@@ -14,4 +17,6 @@ public class Resume {
     private boolean isActive;
     private LocalDateTime createdDate;
     private LocalDateTime updateTime;
+    private List<EducationInfo> educationInfoList;
+    private List<WorkExperienceInfo> workExperienceInfoList;
 }

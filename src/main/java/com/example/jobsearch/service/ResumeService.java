@@ -10,6 +10,7 @@ public interface ResumeService {
     List<Resume> getAllByApplicantId(int applicantId);
     void create(Resume resume);
 
+    void createWithDetails(Resume resume);
 
     void update(int id, Resume resume);
 

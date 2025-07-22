@@ -36,6 +36,12 @@ public class ResumeController {
     public void createResume(@RequestBody Resume resume) {
         resumeService.create(resume);
     }
+    @PostMapping("/full")
+    public ResponseEntity<String> createFullResume(@RequestBody Resume resume) {
+        resumeService.createWithDetails(resume);
+        return ResponseEntity.ok("Резюме с образованием и опытом успешно создано");
+    }
+
 
     @PutMapping("/{id}")
     public ResponseEntity<Void> updateResume(@PathVariable int id, @RequestBody Resume resume) {

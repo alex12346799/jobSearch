@@ -1,6 +1,8 @@
 package com.example.jobsearch.service.impl;
 
+import com.example.jobsearch.dao.EducationInfoDao;
 import com.example.jobsearch.dao.ResumeDao;
+import com.example.jobsearch.dao.WorkExperienceInfoDao;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.service.ResumeService;
@@ -13,7 +15,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ResumeServiceImpl implements ResumeService {
     private final ResumeDao resumeDao;
-
+    private final WorkExperienceInfoDao workExperienceInfoDao;
+    private final EducationInfoDao educationInfoDao;
 
     @Override
     public List<Resume> getAllResumes() {
@@ -34,6 +37,22 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public void create(Resume resume) {
         resumeDao.save(resume);
+    }
+
+    @Override
+    public void createWithDetails(Resume resume) {
+     resumeDao.save(resume);
+     int resumeId = resumeDao.findAllByApplicantId(resume.getApplicantId())
+             .stream()
+             .mapToInt(Resume::getId)
+             .max()
+             .orElseThrow(()-> new NotFoundException("Не удалось получить ID"));
+     if (resume.getEducationInfoList()!= null) {
+         educationInfoDao.saveAll(resume.getEducationInfoList(),resumeId);
+     }
+     if (resume.getWorkExperienceInfoList()!= null) {
+         workExperienceInfoDao.saveAll(resume.getWorkExperienceInfoList(),resumeId);
+     }
     }
 
     @Override
