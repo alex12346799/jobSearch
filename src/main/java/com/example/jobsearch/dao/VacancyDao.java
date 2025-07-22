@@ -7,9 +7,14 @@ import java.util.Optional;
 
 public interface VacancyDao {
     void saveVacancy(Vacancy vacancy);
+
     Optional<Vacancy> findVacancyById(int id);
+
     List<Vacancy> findAllVacancies();
+
     List<Vacancy> findByUserId(int userId);
+
     void updateVacancy(Vacancy vacancy);
+
     void deleteVacancyById(int id);
 }

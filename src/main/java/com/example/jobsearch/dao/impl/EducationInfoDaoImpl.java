@@ -20,7 +20,7 @@ public class EducationInfoDaoImpl implements EducationInfoDao {
         String sql = "INSERT INTO education_info(resume_id, institution ,program,start_date,end_date,degree)" +
                 " VALUES (?, ?,?,?,?,?)";
         for (EducationInfo educationInfo : educationInfoList) {
-            jdbcTemplate.update(sql,resumeId,
+            jdbcTemplate.update(sql, resumeId,
                     educationInfo.getInstitution(),
                     educationInfo.getProgram(),
                     educationInfo.getStartDate(),

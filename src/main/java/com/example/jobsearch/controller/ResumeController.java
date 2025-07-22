@@ -36,6 +36,7 @@ public class ResumeController {
     public void createResume(@RequestBody Resume resume) {
         resumeService.create(resume);
     }
+
     @PostMapping("/full")
     public ResponseEntity<String> createFullResume(@RequestBody Resume resume) {
         resumeService.createWithDetails(resume);

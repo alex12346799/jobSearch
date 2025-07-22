@@ -41,18 +41,18 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public void createWithDetails(Resume resume) {
-     resumeDao.save(resume);
-     int resumeId = resumeDao.findAllByApplicantId(resume.getApplicantId())
-             .stream()
-             .mapToInt(Resume::getId)
-             .max()
-             .orElseThrow(()-> new NotFoundException("Не удалось получить ID"));
-     if (resume.getEducationInfoList()!= null) {
-         educationInfoDao.saveAll(resume.getEducationInfoList(),resumeId);
-     }
-     if (resume.getWorkExperienceInfoList()!= null) {
-         workExperienceInfoDao.saveAll(resume.getWorkExperienceInfoList(),resumeId);
-     }
+        resumeDao.save(resume);
+        int resumeId = resumeDao.findAllByApplicantId(resume.getApplicantId())
+                .stream()
+                .mapToInt(Resume::getId)
+                .max()
+                .orElseThrow(() -> new NotFoundException("Не удалось получить ID"));
+        if (resume.getEducationInfoList() != null) {
+            educationInfoDao.saveAll(resume.getEducationInfoList(), resumeId);
+        }
+        if (resume.getWorkExperienceInfoList() != null) {
+            workExperienceInfoDao.saveAll(resume.getWorkExperienceInfoList(), resumeId);
+        }
     }
 
     @Override

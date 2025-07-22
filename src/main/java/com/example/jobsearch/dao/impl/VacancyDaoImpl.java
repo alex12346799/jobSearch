@@ -77,7 +77,7 @@ public class VacancyDaoImpl implements VacancyDao {
                 vacancy.isAsActive(),
                 vacancy.getEmployerId(),
                 vacancy.getUpdateDate(),
-                vacancy.getId() // переместили id в конец — для WHERE
+                vacancy.getId()
         );
     }
 

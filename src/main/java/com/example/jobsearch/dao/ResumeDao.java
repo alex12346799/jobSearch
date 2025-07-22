@@ -7,9 +7,14 @@ import java.util.Optional;
 
 public interface ResumeDao {
     List<Resume> findAll();
+
     Optional<Resume> findById(int id);
+
     List<Resume> findAllByApplicantId(int applicantId);
+
     void save(Resume resume);
+
     void update(Resume resume);
+
     void deleteById(int id);
 }

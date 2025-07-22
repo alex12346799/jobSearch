@@ -28,18 +28,27 @@ public class VacancyController {
     public ResponseEntity<Vacancy> getVacancyById(@PathVariable int id) {
         return ResponseEntity.ok(vacancyService.getById(id));
     }
+
+    @GetMapping
+    public ResponseEntity<List<Vacancy>> getAllVacancies() {
+        return ResponseEntity.ok(vacancyService.getAll());
+    }
+
     @GetMapping("/user/{userId}")
     public ResponseEntity<List<Vacancy>> getVacanciesByUser(@PathVariable int userId) {
         return ResponseEntity.ok(vacancyService.getByUser(userId));
     }
-    @PutMapping
-    public ResponseEntity<String> updateVacancy(@RequestBody Vacancy vacancy) {
+
+    @PutMapping("/{id}")
+    public ResponseEntity<String> updateVacancy(@PathVariable int id, @RequestBody Vacancy vacancy) {
+        vacancy.setId(id);
         vacancyService.update(vacancy);
         return ResponseEntity.ok("Вакансия обновлена");
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> deleteVacancyById(@PathVariable int id) {
         vacancyService.delete(id);
-       return ResponseEntity.ok("Вакансия удалена");
+        return ResponseEntity.ok("Вакансия удалена");
     }
 }
