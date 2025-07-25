@@ -61,11 +61,11 @@ public class VacancyDaoImpl implements VacancyDao {
     @Override
     public void updateVacancy(Vacancy vacancy) {
         String sql = """
-                    UPDATE vacancy 
-                    SET title = ?,    description = ?,     category_id = ?, 
+                    UPDATE vacancy\s
+                    SET title = ?,    description = ?,     category_id = ?,\s
                     salary = ?,     exp_from = ?,    exp_to = ?,    as_active = ?,    employer_id = ?,    update_date = ?
                     WHERE id = ?
-                """;
+               \s""";
 
         jdbcTemplate.update(sql,
                 vacancy.getTitle(),

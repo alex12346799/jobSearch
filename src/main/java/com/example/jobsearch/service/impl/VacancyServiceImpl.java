@@ -2,7 +2,9 @@ package com.example.jobsearch.service.impl;
 
 
 import com.example.jobsearch.dao.VacancyDao;
+import com.example.jobsearch.dto.VacancyCreateDto;
 import com.example.jobsearch.exceptions.NotFoundException;
+import com.example.jobsearch.mapper.VacancyMapper;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.service.VacancyService;
 import org.springframework.stereotype.Service;
@@ -19,7 +21,8 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
-    public void create(Vacancy vacancy) {
+    public void create(VacancyCreateDto vacancyCreateDto) {
+        Vacancy vacancy = VacancyMapper.fromTo(vacancyCreateDto);
         vacancyDao.saveVacancy(vacancy);
     }
 

@@ -12,7 +12,8 @@ public class UserMapper {
         user.setAddress(userCreateDto.getAddress());
         user.setAvatar(userCreateDto.getAvatar());
         user.setEmail(userCreateDto.getEmail());
-        user.setEmail(userCreateDto.getEmail());
+        user.setAccountType(userCreateDto.getAccountType());
+        user.setPhoneNumber(userCreateDto.getPhoneNumber());
         user.setAge(user.getAge());
         return user;
     }

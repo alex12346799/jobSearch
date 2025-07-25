@@ -1,6 +1,31 @@
 databaseChangeLog:
   - changeSet:
-      id: crate_table_users
+      id: create_table_category
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: category
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: name
+                  type: varchar(45)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: parent_id
+                  type: int
+                  constraints:
+                    nullable: true
+
+  - changeSet:
+      id: create_table_users
       author: aleksei
       changes:
         - createTable:
@@ -11,8 +36,8 @@ databaseChangeLog:
                   type: int
                   autoIncrement: true
                   constraints:
-                   primaryKey: true
-                   nullable: false
+                    primaryKey: true
+                    nullable: false
               - column:
                   name: email
                   type: varchar(45)
@@ -45,6 +70,7 @@ databaseChangeLog:
               - column:
                   name: account_type
                   type: varchar(255)
+
   - changeSet:
       id: create_table_resume
       author: aleksei
@@ -64,6 +90,9 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_resume_applicant
+                    references: users(id)
+                    deleteCascade: true
               - column:
                   name: name
                   type: varchar(45)
@@ -72,6 +101,9 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_resume_category
+                    references: category(id)
+                    deleteCascade: true
               - column:
                   name: salary
                   type: double
@@ -84,30 +116,7 @@ databaseChangeLog:
               - column:
                   name: update_date
                   type: timestamp
-  - changeSet:
-      id: create_table_category
-      author: aleksei
-      changes:
-        - createTable:
-            tableName: category
-            columns:
-              - column:
-                  name: id
-                  type: int
-                  autoIncrement: true
-                  constraints:
-                    primaryKey: true
-                    nullable: false
-              - column:
-                  name: name
-                  type: varchar(45)
-                  constraints:
-                    nullable: false
-              - column:
-                  name: parent_id
-                  type: int
-                  constraints:
-                    nullable: true
+
   - changeSet:
       id: create_table_vacancy
       author: aleksei
@@ -116,12 +125,12 @@ databaseChangeLog:
             tableName: vacancy
             columns:
               - column:
-                 name: id
-                 type: int
-                 autoIncrement: true
-                 constraints:
-                   primaryKey: true
-                   nullable: false
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
               - column:
                   name: title
                   type: varchar(255)
@@ -133,6 +142,9 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_vacancy_category
+                    references: category(id)
+                    deleteCascade: true
               - column:
                   name: salary
                   type: double
@@ -150,14 +162,18 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_vacancy_employer
+                    references: users(id)
+                    deleteCascade: true
               - column:
                   name: created_date
                   type: timestamp
               - column:
                   name: update_date
                   type: timestamp
+
   - changeSet:
-      id: create_table_Respondent_applicant
+      id: create_table_respondent_applicant
       author: aleksei
       changes:
         - createTable:
@@ -175,17 +191,24 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_respondent_resume
+                    references: resume(id)
+                    deleteCascade: true
               - column:
                   name: vacancy_id
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_respondent_vacancy
+                    references: vacancy(id)
+                    deleteCascade: true
               - column:
                   name: confirmation
                   type: boolean
               - column:
                   name: create_date
                   type: timestamp
+
   - changeSet:
       id: create_table_education_info
       author: aleksei
@@ -205,6 +228,9 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_education_resume
+                    references: resume(id)
+                    deleteCascade: true
               - column:
                   name: institution
                   type: varchar(255)
@@ -220,6 +246,7 @@ databaseChangeLog:
               - column:
                   name: degree
                   type: varchar(255)
+
   - changeSet:
       id: create_table_work_experience_info
       author: aleksei
@@ -239,6 +266,9 @@ databaseChangeLog:
                   type: int
                   constraints:
                     nullable: false
+                    foreignKeyName: fk_work_experience_resume
+                    references: resume(id)
+                    deleteCascade: true
               - column:
                   name: years
                   type: int
@@ -251,9 +281,3 @@ databaseChangeLog:
               - column:
                   name: responsibilities
                   type: varchar(255)
-
-
-
-
-
-

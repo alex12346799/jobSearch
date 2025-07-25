@@ -1,8 +1,10 @@
 package com.example.jobsearch.controller;
 
 
+import com.example.jobsearch.dto.VacancyCreateDto;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.service.VacancyService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,8 +21,8 @@ public class VacancyController {
 
 
     @PostMapping
-    public ResponseEntity<String> createVacancy(@RequestBody Vacancy vacancy) {
-        vacancyService.create(vacancy);
+    public ResponseEntity<String> createVacancy(@RequestBody @Valid VacancyCreateDto vacancyDto) {
+        vacancyService.create(vacancyDto);
         return ResponseEntity.ok("Вакансия создана");
     }
 

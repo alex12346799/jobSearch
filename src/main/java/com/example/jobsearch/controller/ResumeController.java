@@ -1,8 +1,10 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dao.ResumeDao;
+import com.example.jobsearch.dto.ResumeCreateDto;
+import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.service.ResumeService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -33,7 +35,9 @@ public class ResumeController {
     }
 
     @PostMapping
-    public void createResume(@RequestBody Resume resume) {
+    public void create (@RequestBody @Valid ResumeCreateDto resumeDto)
+    {
+        Resume resume = ResumeMapper.fromDto(resumeDto);
         resumeService.create(resume);
     }
 
