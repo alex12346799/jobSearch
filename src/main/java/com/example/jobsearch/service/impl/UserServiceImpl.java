@@ -1,8 +1,9 @@
 package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.UserDao;
-import com.example.jobsearch.dto.UserDto;
+import com.example.jobsearch.dto.UserCreateDto;
 import com.example.jobsearch.exceptions.NotFoundException;
+import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.UserService;
 import lombok.extern.slf4j.Slf4j;
@@ -31,13 +32,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(User user) {
+    public void createUser(UserCreateDto userCreateDto) {
+        User user = UserMapper.fromDto(userCreateDto);
         userDao.save(user);
 
     }
 
     @Override
-    public void updateUser(long id, UserDto dto) {
+    public void updateUser(long id, UserCreateDto dto) {
         User user = getUserById(id);
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());

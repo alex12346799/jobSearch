@@ -1,6 +1,6 @@
 package com.example.jobsearch.service.impl;
 
-import com.example.jobsearch.exceptions.ErrorResponceBody;
+import com.example.jobsearch.exceptions.ErrorResponseBody;
 import com.example.jobsearch.service.ErrorService;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
@@ -15,21 +15,22 @@ import java.util.Map;
 public class ErrorServiceImpl implements  ErrorService {
 
     @Override
-    public ErrorResponceBody makeResponce(BindingResult bindingResult){
+    public ErrorResponseBody makeResponse(BindingResult bindingResult){
         Map<String, List<String>> reasons = new HashMap<>();
 
         bindingResult.getFieldErrors().stream()
                 .filter(e->e.getDefaultMessage() != null)
                 .forEach(e->{
+
                     List<String> errors = new ArrayList<String>();
                     errors.add(e.getDefaultMessage());
                     if(!reasons.containsKey(e.getField())) {
                         reasons.put(e.getField(),errors);
                     }
                 });
-        return ErrorResponceBody.builder()
+        return ErrorResponseBody.builder()
                 .title("Validation errors")
-                .responce(reasons)
+                .response(reasons)
                 .build();
     }
 }

@@ -1,6 +1,6 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto.UserDto;
+import com.example.jobsearch.dto.UserCreateDto;
 import com.example.jobsearch.model.User;
 
 import java.util.List;
@@ -10,9 +10,11 @@ public interface UserService {
 
     List<User> getAllUsers();
 
-    void createUser(User user);
 
-    void updateUser(long id, UserDto dto);
+    void createUser(UserCreateDto userCreateDto);
+
+    void updateUser(long id, UserCreateDto dto);
 
     void deleteUser(long id);
+
 }

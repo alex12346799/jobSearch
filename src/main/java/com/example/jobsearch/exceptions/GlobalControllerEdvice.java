@@ -18,7 +18,7 @@ public class GlobalControllerEdvice {
         return ErrorResponse.builder(ex, HttpStatus.NOT_FOUND, ex.getMessage()).build();
     }
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ResponseEntity<ErrorResponceBody>  validationHandler(MethodArgumentNotValidException ex) {
-   return new ResponseEntity<>(errorService.makeResponce(ex.getBindingResult()), HttpStatus.BAD_REQUEST);
+    public ResponseEntity<ErrorResponseBody>  validationHandler(MethodArgumentNotValidException ex) {
+   return new ResponseEntity<>(errorService.makeResponse(ex.getBindingResult()), HttpStatus.BAD_REQUEST);
     }
 }

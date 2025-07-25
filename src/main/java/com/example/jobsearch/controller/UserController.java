@@ -1,8 +1,9 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto.UserDto;
+import com.example.jobsearch.dto.UserCreateDto;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -28,13 +29,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        userService.createUser(user);
-        return ResponseEntity.ok(user);
+    public ResponseEntity<String> createUser(@RequestBody @Valid UserCreateDto userDto) {
+        userService.createUser(userDto);
+        return ResponseEntity.ok("Пользователь упешно создан! ");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UserDto userDto) {
+    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UserCreateDto userDto) {
         userService.updateUser(id, userDto);
         User updatedUser = userService.getUserById(id);
         return ResponseEntity.ok(updatedUser);

@@ -8,7 +8,8 @@ import java.util.Map;
 
 @Data
 @Builder
-public class ErrorResponceBody {
+public class ErrorResponseBody {
     private String title;
-    private Map<String, List<String>> responce;
+    private Map<String, List<String>> response;
+
 }
