@@ -13,6 +13,7 @@ import java.util.Optional;
 public class UserDaoImpl implements UserDao {
     private final JdbcTemplate jdbcTemplate;
 
+
     public UserDaoImpl(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -50,8 +51,8 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public void save(User user) {
-        String sql = "INSERT INTO USERS (name, surname, role,age, email, password, phone_number, address, avatar, account_type) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO USERS (name, surname, role,age, email, password, phone_number, address, avatar, account_type, ENABLED, USERNAME, ROLE_ID) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,?,?)";
         jdbcTemplate.update(sql,
                 user.getName(),
                 user.getSurname(),
@@ -62,7 +63,10 @@ public class UserDaoImpl implements UserDao {
                 user.getPhoneNumber(),
                 user.getAddress(),
                 user.getAvatar(),
-                user.getAccountType()
+                user.getAccountType(),
+                user.getEnabled(),
+                user.getUsername(),
+                user.getRoleId()
         );
     }
 

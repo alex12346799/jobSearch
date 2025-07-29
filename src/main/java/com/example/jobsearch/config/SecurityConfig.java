@@ -48,10 +48,11 @@ public class SecurityConfig {
              .formLogin(AbstractHttpConfigurer::disable)
              .logout(AbstractHttpConfigurer::disable)
              .csrf(AbstractHttpConfigurer::disable)
-             .authorizeHttpRequests(authorize -> authorize
+             .authorizeHttpRequests(
+                     authorize -> authorize
                      .requestMatchers(HttpMethod.POST, "/resumes").hasRole("ADMIN")
-                             .requestMatchers(HttpMethod.POST, "/vacancies").hasRole("ADMIN")
-                             .anyRequest().permitAll()
+                     .requestMatchers(HttpMethod.POST, "/vacancies").hasRole("ADMIN")
+                     .anyRequest().permitAll()
                      );
      return http.build();
     }

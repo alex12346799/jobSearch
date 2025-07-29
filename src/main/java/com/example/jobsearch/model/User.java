@@ -17,4 +17,7 @@ public class User {
     private String address;
     private String avatar;
     private String accountType;
+    private String enabled;
+    private String username;
+    private int roleId;
 }
