@@ -2546,3 +2546,679 @@ where username = 'aleksey' [42001-232]
 2025-17-29 03:17:10 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
 2025-17-29 03:17:10 INFO  com.zaxxer.hikari.HikariDataSource -msg
 2025-17-29 03:17:10 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-18-29 03:18:38 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-18-29 03:18:38 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-18-29 03:18:39 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-18-29 03:18:39 INFO  o.a.catalina.core.StandardService -msg
+2025-18-29 03:18:39 INFO  o.a.catalina.core.StandardEngine -msg
+2025-18-29 03:18:39 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-18-29 03:18:39 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-18-29 03:18:39 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-18-29 03:18:39 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-18-29 03:18:39 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-18-29 03:18:39 INFO  liquibase.database -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.snapshot -msg
+2025-18-29 03:18:39 INFO  liquibase.lockservice -msg
+2025-18-29 03:18:39 INFO  liquibase.command -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.changelog -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.util -msg
+2025-18-29 03:18:39 INFO  liquibase.command -msg
+2025-18-29 03:18:39 INFO  liquibase.ui -msg
+2025-18-29 03:18:39 INFO  liquibase.lockservice -msg
+2025-18-29 03:18:39 INFO  liquibase.command -msg
+2025-18-29 03:18:42 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-18-29 03:18:42 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-18-29 03:18:42 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-18-29 03:18:42 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-18-29 03:18:42 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-18-29 03:18:45 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-18-29 03:18:45 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-18-29 03:18:45 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-18-29 03:18:45 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-19-29 03:19:45 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-19-29 03:19:45 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-19-29 03:19:46 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-19-29 03:19:46 INFO  o.a.catalina.core.StandardService -msg
+2025-19-29 03:19:46 INFO  o.a.catalina.core.StandardEngine -msg
+2025-19-29 03:19:46 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-19-29 03:19:46 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-19-29 03:19:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-19-29 03:19:46 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-19-29 03:19:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-19-29 03:19:46 INFO  liquibase.database -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.ui -msg
+2025-19-29 03:19:46 INFO  liquibase.changelog -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.util -msg
+2025-19-29 03:19:46 INFO  liquibase.command -msg
+2025-19-29 03:19:48 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-19-29 03:19:49 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-19-29 03:19:49 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-19-29 03:19:49 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-19-29 03:19:49 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-21-29 03:21:18 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-21-29 03:21:18 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-21-29 03:21:18 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-21-29 03:21:18 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:18 DEBUG o.s.security.web.csrf.CsrfFilter -msg
+2025-21-29 03:21:18 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-21-29 03:21:18 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:18 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter -msg
+2025-21-29 03:21:18 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:18 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:18 DEBUG o.s.s.web.DefaultRedirectStrategy -msg
+2025-21-29 03:21:18 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:18 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:23 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:23 DEBUG o.s.s.a.DefaultAuthenticationEventPublisher -msg
+2025-21-29 03:21:23 DEBUG o.s.s.authentication.ProviderManager -msg
+org.springframework.security.authentication.InternalAuthenticationServiceException: PreparedStatementCallback; bad SQL grammar [select username,authority from authorities where username = ?]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:136)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:136)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:214)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:87)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:239)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:134)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [select username,authority from authorities where username = ?]
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:103)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1556)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:677)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:723)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:754)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:767)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:825)
+	at org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl.loadUserAuthorities(JdbcDaoImpl.java:229)
+	at org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl.loadUserByUsername(JdbcDaoImpl.java:193)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:121)
+	... 70 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "USERNAME" не найден
+Column "USERNAME" not found; SQL statement:
+select username,authority from authorities where username = ? [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1228)
+	at org.h2.command.query.Query.prepare(Query.java:232)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.springframework.jdbc.core.JdbcTemplate$SimplePreparedStatementCreator.createPreparedStatement(JdbcTemplate.java:1719)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:656)
+	... 77 common frames omitted
+2025-21-29 03:21:23 DEBUG o.s.s.authentication.ProviderManager -msg
+2025-21-29 03:21:23 ERROR o.s.s.w.a.UsernamePasswordAuthenticationFilter -msg
+org.springframework.security.authentication.InternalAuthenticationServiceException: PreparedStatementCallback; bad SQL grammar [select username,authority from authorities where username = ?]
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:136)
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:136)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:214)
+	at org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter.attemptAuthentication(UsernamePasswordAuthenticationFilter.java:87)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:239)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:134)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.springframework.jdbc.BadSqlGrammarException: PreparedStatementCallback; bad SQL grammar [select username,authority from authorities where username = ?]
+	at org.springframework.jdbc.support.SQLExceptionSubclassTranslator.doTranslate(SQLExceptionSubclassTranslator.java:103)
+	at org.springframework.jdbc.support.AbstractFallbackSQLExceptionTranslator.translate(AbstractFallbackSQLExceptionTranslator.java:107)
+	at org.springframework.jdbc.core.JdbcTemplate.translateException(JdbcTemplate.java:1556)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:677)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:723)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:754)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:767)
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:825)
+	at org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl.loadUserAuthorities(JdbcDaoImpl.java:229)
+	at org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl.loadUserByUsername(JdbcDaoImpl.java:193)
+	at org.springframework.security.authentication.dao.DaoAuthenticationProvider.retrieveUser(DaoAuthenticationProvider.java:121)
+	... 70 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "USERNAME" не найден
+Column "USERNAME" not found; SQL statement:
+select username,authority from authorities where username = ? [42122-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:514)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:223)
+	at org.h2.message.DbException.get(DbException.java:199)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:244)
+	at org.h2.expression.ExpressionColumn.optimizeOther(ExpressionColumn.java:226)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:213)
+	at org.h2.command.query.Select.prepareExpressions(Select.java:1228)
+	at org.h2.command.query.Query.prepare(Query.java:232)
+	at org.h2.command.Parser.prepareCommand(Parser.java:489)
+	at org.h2.engine.SessionLocal.prepareLocal(SessionLocal.java:645)
+	at org.h2.engine.SessionLocal.prepareCommand(SessionLocal.java:561)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1164)
+	at org.h2.jdbc.JdbcPreparedStatement.<init>(JdbcPreparedStatement.java:93)
+	at org.h2.jdbc.JdbcConnection.prepareStatement(JdbcConnection.java:315)
+	at com.zaxxer.hikari.pool.ProxyConnection.prepareStatement(ProxyConnection.java:328)
+	at com.zaxxer.hikari.pool.HikariProxyConnection.prepareStatement(HikariProxyConnection.java)
+	at org.springframework.jdbc.core.JdbcTemplate$SimplePreparedStatementCreator.createPreparedStatement(JdbcTemplate.java:1719)
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:656)
+	... 77 common frames omitted
+2025-21-29 03:21:23 DEBUG o.s.s.web.DefaultRedirectStrategy -msg
+2025-21-29 03:21:23 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:23 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:49 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:49 DEBUG o.s.s.p.JdbcUserDetailsManager -msg
+2025-21-29 03:21:49 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-21-29 03:21:49 DEBUG o.s.s.authentication.ProviderManager -msg
+2025-21-29 03:21:49 DEBUG o.s.s.authentication.ProviderManager -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+org.springframework.security.authentication.BadCredentialsException: Bad credentials
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:214)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:187)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLogoutPageGeneratingFilter.doFilterInternal(DefaultLogoutPageGeneratingFilter.java:59)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:216)
+	at org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter.doFilter(DefaultLoginPageGeneratingFilter.java:202)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.ui.DefaultResourcesFilter.doFilter(DefaultResourcesFilter.java:72)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:235)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:229)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:107)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:93)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:117)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:49 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.s.HttpSessionRequestCache -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-21-29 03:21:49 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-22-29 03:22:52 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-22-29 03:22:52 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-23-29 03:23:26 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-23-29 03:23:26 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-23-29 03:23:27 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-23-29 03:23:27 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-28-29 03:28:59 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-28-29 03:28:59 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-28-29 03:28:59 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-28-29 03:28:59 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-31-29 03:31:32 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-31-29 03:31:32 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-31-29 03:31:32 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-31-29 03:31:32 INFO  o.a.catalina.core.StandardService -msg
+2025-31-29 03:31:32 INFO  o.a.catalina.core.StandardEngine -msg
+2025-31-29 03:31:32 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-31-29 03:31:32 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-31-29 03:31:33 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-31-29 03:31:33 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-31-29 03:31:33 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-31-29 03:31:33 INFO  liquibase.database -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.snapshot -msg
+2025-31-29 03:31:33 INFO  liquibase.lockservice -msg
+2025-31-29 03:31:33 INFO  liquibase.command -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.changelog -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.util -msg
+2025-31-29 03:31:33 INFO  liquibase.command -msg
+2025-31-29 03:31:33 INFO  liquibase.ui -msg
+2025-31-29 03:31:33 INFO  liquibase.lockservice -msg
+2025-31-29 03:31:33 INFO  liquibase.command -msg
+2025-31-29 03:31:35 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-31-29 03:31:36 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-31-29 03:31:36 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-31-29 03:31:36 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-31-29 03:31:36 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-31-29 03:31:36 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-33-29 03:33:57 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-33-29 03:33:57 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-33-29 03:33:57 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-33-29 03:33:57 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-34-29 03:34:10 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-34-29 03:34:10 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-34-29 03:34:10 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-34-29 03:34:10 INFO  o.a.catalina.core.StandardService -msg
+2025-34-29 03:34:10 INFO  o.a.catalina.core.StandardEngine -msg
+2025-34-29 03:34:10 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-34-29 03:34:10 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-34-29 03:34:10 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-34-29 03:34:11 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-34-29 03:34:11 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-34-29 03:34:11 INFO  liquibase.database -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.ui -msg
+2025-34-29 03:34:11 INFO  liquibase.changelog -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.util -msg
+2025-34-29 03:34:11 INFO  liquibase.command -msg
+2025-34-29 03:34:13 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-34-29 03:34:13 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-34-29 03:34:13 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-34-29 03:34:13 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-34-29 03:34:13 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-34-29 03:34:13 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 03:39:46 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-39-29 03:39:46 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-39-29 03:39:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 03:39:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 03:39:53 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 03:39:53 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 03:39:54 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-39-29 03:39:54 INFO  o.a.catalina.core.StandardService -msg
+2025-39-29 03:39:54 INFO  o.a.catalina.core.StandardEngine -msg
+2025-39-29 03:39:54 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-39-29 03:39:54 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-39-29 03:39:54 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 03:39:54 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-39-29 03:39:54 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 03:39:54 INFO  liquibase.database -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.ui -msg
+2025-39-29 03:39:54 INFO  liquibase.changelog -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.util -msg
+2025-39-29 03:39:54 INFO  liquibase.command -msg
+2025-39-29 03:39:56 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-39-29 03:39:57 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-39-29 03:39:57 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-39-29 03:39:57 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-39-29 03:39:57 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-39-29 03:39:57 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-40-29 03:40:01 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-40-29 03:40:01 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-40-29 03:40:01 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-40-29 03:40:01 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 03:40:01 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 03:40:06 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 03:40:06 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-40-29 03:40:06 DEBUG o.s.s.w.a.s.ChangeSessionIdAuthenticationStrategy -msg
+2025-40-29 03:40:06 DEBUG o.s.s.w.c.CsrfAuthenticationStrategy -msg
+2025-40-29 03:40:06 DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository -msg
+2025-40-29 03:40:06 DEBUG o.s.s.w.a.UsernamePasswordAuthenticationFilter -msg
+2025-40-29 03:40:06 DEBUG o.s.s.web.DefaultRedirectStrategy -msg
+2025-40-29 03:40:06 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 03:40:06 DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository -msg
+2025-40-29 03:40:06 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 03:40:06 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 03:40:06 DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository -msg
+2025-40-29 03:40:06 DEBUG o.s.security.web.FilterChainProxy -msg

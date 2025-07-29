@@ -43,7 +43,7 @@ databaseChangeLog:
               set password = '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
               role_id = (select id from roles where role_name = 'ADMIN'),
               username = 'aleksey'
-              where username = 'aleksey';
+              where name = 'John';
 
   - changeSet:
       id: insert_user_user
@@ -55,7 +55,7 @@ databaseChangeLog:
               set password = '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
               role_id = (select id from roles where role_name = 'USER'),
               username = 'user'
-              where username = 'user';
+              where name = 'Alice';
 
 
 
