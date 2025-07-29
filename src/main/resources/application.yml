@@ -15,6 +15,9 @@ server:
 logging:
   level:
     root: info
+    org:
+      springframework:
+        security: debug
   pattern:
     file: '%d{yyyy-mm-dd hh:mm:ss} %-5level %logger{36} -msg%n'
   file:

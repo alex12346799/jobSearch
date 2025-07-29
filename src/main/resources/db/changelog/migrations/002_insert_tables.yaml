@@ -22,9 +22,6 @@ databaseChangeLog:
                   name: age
                   value: 25
               - column:
-                  name: password
-                  value: "password123"
-              - column:
                   name: phone_number
                   value: "+1234567890"
               - column:
@@ -54,9 +51,6 @@ databaseChangeLog:
               - column:
                   name: age
                   value: 20
-              - column:
-                  name: password
-                  value: "employer1pass1"
               - column:
                   name: phone_number
                   value: "+1987654321"
@@ -193,6 +187,15 @@ databaseChangeLog:
               - column:
                   name: parent_id
                   value: 2
+        - insert:
+            tableName: category
+            columns:
+              - column:
+                  name: name
+                  value: "Программист Java'"
+              - column:
+                  name: parent_id
+                  value: 3
         - insert:
             tableName: work_experience_info
             columns:
