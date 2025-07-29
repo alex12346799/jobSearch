@@ -22,7 +22,7 @@ databaseChangeLog:
         - sql:
             sql: |
               insert into roles(role_name, authority_id)
-              values ('ADMIN', (select id from authorities where authority = 'FULL'))
+              values ('APPLICANT', (select id from authorities where authority = 'FULL'))
 
   - changeSet:
       id: insert_role_user
@@ -31,7 +31,7 @@ databaseChangeLog:
         - sql:
             sql: |
               insert into roles(role_name, authority_id)
-              values ('USER', (select id from authorities where authority = 'READ_ONLY'))
+              values ('EMPLOYEE', (select id from authorities where authority = 'READ_ONLY'))
 
   - changeSet:
       id: insert_user_admin
@@ -41,7 +41,7 @@ databaseChangeLog:
             sql: |
               update users
               set password = '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
-              role_id = (select id from roles where role_name = 'ADMIN'),
+              role_id = (select id from roles where role_name = 'APPLICANT'),
               username = 'aleksey'
               where name = 'John';
 
@@ -53,7 +53,7 @@ databaseChangeLog:
             sql: |
               update users
               set password = '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
-              role_id = (select id from roles where role_name = 'USER'),
+              role_id = (select id from roles where role_name = 'EMPLOYEE'),
               username = 'user'
               where name = 'Alice';
 

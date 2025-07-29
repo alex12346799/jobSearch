@@ -6222,3 +6222,1433 @@ org.springframework.security.authentication.BadCredentialsException: Bad credent
 2025-10-29 05:10:08 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter -msg
 2025-10-29 05:10:08 DEBUG o.s.s.w.s.SessionManagementFilter -msg
 2025-10-29 05:10:08 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-27-29 05:27:18 WARN  com.zaxxer.hikari.pool.HikariPool -msg
+2025-28-29 05:28:46 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-28-29 05:28:46 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-28-29 05:28:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-28-29 05:28:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-32-29 05:32:45 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-32-29 05:32:45 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-32-29 05:32:46 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-32-29 05:32:46 INFO  o.a.catalina.core.StandardService -msg
+2025-32-29 05:32:46 INFO  o.a.catalina.core.StandardEngine -msg
+2025-32-29 05:32:46 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-32-29 05:32:46 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-32-29 05:32:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-32-29 05:32:46 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-32-29 05:32:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-32-29 05:32:46 INFO  liquibase.database -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.snapshot -msg
+2025-32-29 05:32:46 INFO  liquibase.lockservice -msg
+2025-32-29 05:32:46 INFO  liquibase.command -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.changelog -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.util -msg
+2025-32-29 05:32:46 INFO  liquibase.command -msg
+2025-32-29 05:32:46 INFO  liquibase.ui -msg
+2025-32-29 05:32:46 INFO  liquibase.lockservice -msg
+2025-32-29 05:32:46 INFO  liquibase.command -msg
+2025-32-29 05:32:49 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-32-29 05:32:49 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-32-29 05:32:49 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-32-29 05:32:49 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-32-29 05:32:49 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-32-29 05:32:49 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-32-29 05:32:51 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-32-29 05:32:51 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-32-29 05:32:51 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-32-29 05:32:51 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-33-29 05:33:27 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-33-29 05:33:27 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-33-29 05:33:28 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-33-29 05:33:28 INFO  o.a.catalina.core.StandardService -msg
+2025-33-29 05:33:28 INFO  o.a.catalina.core.StandardEngine -msg
+2025-33-29 05:33:28 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-33-29 05:33:28 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-33-29 05:33:28 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-33-29 05:33:28 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-33-29 05:33:28 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-33-29 05:33:28 INFO  liquibase.database -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.ui -msg
+2025-33-29 05:33:28 INFO  liquibase.changelog -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.util -msg
+2025-33-29 05:33:28 INFO  liquibase.command -msg
+2025-33-29 05:33:32 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-33-29 05:33:32 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-33-29 05:33:32 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-33-29 05:33:32 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-33-29 05:33:32 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-33-29 05:33:32 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-34-29 05:34:15 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-34-29 05:34:15 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-34-29 05:34:15 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-34-29 05:34:15 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-37-29 05:37:23 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-37-29 05:37:23 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-37-29 05:37:23 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-37-29 05:37:23 INFO  o.a.catalina.core.StandardService -msg
+2025-37-29 05:37:23 INFO  o.a.catalina.core.StandardEngine -msg
+2025-37-29 05:37:23 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-37-29 05:37:23 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-37-29 05:37:24 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-37-29 05:37:24 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-37-29 05:37:24 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-37-29 05:37:24 INFO  liquibase.database -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.ui -msg
+2025-37-29 05:37:24 INFO  liquibase.changelog -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.util -msg
+2025-37-29 05:37:24 INFO  liquibase.command -msg
+2025-37-29 05:37:29 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-37-29 05:37:29 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-37-29 05:37:29 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-37-29 05:37:29 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-37-29 05:37:29 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-37-29 05:37:29 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-37-29 05:37:35 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-37-29 05:37:35 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-37-29 05:37:35 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-37-29 05:37:35 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-37-29 05:37:35 DEBUG o.s.s.p.JdbcUserDetailsManager -msg
+2025-37-29 05:37:35 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-37-29 05:37:35 DEBUG o.s.s.authentication.ProviderManager -msg
+2025-37-29 05:37:35 DEBUG o.s.s.authentication.ProviderManager -msg
+2025-37-29 05:37:35 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+org.springframework.security.authentication.BadCredentialsException: Bad credentials
+	at org.springframework.security.authentication.dao.AbstractUserDetailsAuthenticationProvider.authenticate(AbstractUserDetailsAuthenticationProvider.java:144)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:182)
+	at org.springframework.security.authentication.ProviderManager.authenticate(ProviderManager.java:214)
+	at org.springframework.security.web.authentication.www.BasicAuthenticationFilter.doFilterInternal(BasicAuthenticationFilter.java:187)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:374)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:233)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:191)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:319)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.servlet.handler.HandlerMappingIntrospector.lambda$createCacheFilter$4(HandlerMappingIntrospector.java:267)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebMvcSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebMvcSecurityConfiguration.java:240)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:362)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:278)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:164)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:140)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:167)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:90)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:483)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:116)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:93)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:344)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:398)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:903)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1769)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1189)
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:658)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:63)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+2025-37-29 05:37:35 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-37-29 05:37:35 DEBUG o.s.s.w.a.DelegatingAuthenticationEntryPoint -msg
+2025-37-29 05:37:35 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-37-29 05:37:35 DEBUG o.s.s.w.a.AnonymousAuthenticationFilter -msg
+2025-37-29 05:37:35 DEBUG o.s.s.w.s.SessionManagementFilter -msg
+2025-37-29 05:37:35 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-37-29 05:37:48 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-37-29 05:37:48 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-37-29 05:37:48 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-37-29 05:37:48 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-37-29 05:37:48 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-37-29 05:37:48 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-38-29 05:38:06 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-38-29 05:38:06 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-38-29 05:38:06 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-38-29 05:38:06 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 05:39:06 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 05:39:06 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 05:39:06 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-39-29 05:39:06 INFO  o.a.catalina.core.StandardService -msg
+2025-39-29 05:39:06 INFO  o.a.catalina.core.StandardEngine -msg
+2025-39-29 05:39:06 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-39-29 05:39:06 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-39-29 05:39:06 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 05:39:07 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext -msg
+2025-39-29 05:39:07 INFO  o.a.catalina.core.StandardService -msg
+2025-39-29 05:39:07 INFO  o.s.b.a.l.ConditionEvaluationReportLogger -msg
+2025-39-29 05:39:07 ERROR o.s.boot.SpringApplication -msg
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'resumeController' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/controller/ResumeController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'resumeServiceImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/service/impl/ResumeServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'resumeDaoImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/dao/impl/ResumeDaoImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.jobsearch.JobSearchApplication.main(JobSearchApplication.java:10)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'resumeServiceImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/service/impl/ResumeServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'resumeDaoImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/dao/impl/ResumeDaoImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'resumeDaoImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/dao/impl/ResumeDaoImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 35 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 49 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 61 common frames omitted
+Caused by: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:281)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	... 63 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:165)
+	at org.h2.mvstore.db.Store.<init>(Store.java:142)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:139)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:368)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:205)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:483)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:571)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:101)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:276)
+	... 68 common frames omitted
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db [2.3.232/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	... 83 common frames omitted
+2025-39-29 05:39:32 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 05:39:32 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 05:39:33 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-39-29 05:39:33 INFO  o.a.catalina.core.StandardService -msg
+2025-39-29 05:39:33 INFO  o.a.catalina.core.StandardEngine -msg
+2025-39-29 05:39:33 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-39-29 05:39:33 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-39-29 05:39:33 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 05:39:33 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-39-29 05:39:33 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-39-29 05:39:33 INFO  liquibase.database -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.ui -msg
+2025-39-29 05:39:33 INFO  liquibase.changelog -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.util -msg
+2025-39-29 05:39:33 INFO  liquibase.command -msg
+2025-39-29 05:39:35 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-39-29 05:39:35 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-39-29 05:39:35 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-39-29 05:39:35 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-39-29 05:39:35 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-39-29 05:39:35 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-39-29 05:39:39 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-39-29 05:39:39 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-39-29 05:39:39 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-39-29 05:39:39 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:40 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-39-29 05:39:40 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-39-29 05:39:40 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-39-29 05:39:40 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:40 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:41 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:42 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-39-29 05:39:42 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-39-29 05:39:42 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-39-29 05:39:42 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:42 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:42 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:43 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-39-29 05:39:43 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-39-29 05:39:43 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-39-29 05:39:43 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-39-29 05:39:43 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 05:40:21 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-40-29 05:40:21 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-40-29 05:40:21 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-40-29 05:40:21 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-42-29 05:42:35 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-42-29 05:42:35 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-42-29 05:42:35 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-42-29 05:42:35 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-45-29 05:45:45 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-45-29 05:45:45 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-45-29 05:45:45 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-45-29 05:45:45 INFO  o.a.catalina.core.StandardService -msg
+2025-45-29 05:45:45 INFO  o.a.catalina.core.StandardEngine -msg
+2025-45-29 05:45:45 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-45-29 05:45:45 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-45-29 05:45:45 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-45-29 05:45:46 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-45-29 05:45:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-45-29 05:45:46 INFO  liquibase.database -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.snapshot -msg
+2025-45-29 05:45:46 INFO  liquibase.lockservice -msg
+2025-45-29 05:45:46 INFO  liquibase.command -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.changelog -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.util -msg
+2025-45-29 05:45:46 INFO  liquibase.command -msg
+2025-45-29 05:45:46 INFO  liquibase.ui -msg
+2025-45-29 05:45:46 INFO  liquibase.lockservice -msg
+2025-45-29 05:45:46 INFO  liquibase.command -msg
+2025-45-29 05:45:48 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-45-29 05:45:48 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-45-29 05:45:49 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-45-29 05:45:49 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-45-29 05:45:49 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-45-29 05:45:49 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-45-29 05:45:50 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-45-29 05:45:50 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-45-29 05:45:50 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-45-29 05:45:50 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-46-29 05:46:03 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-46-29 05:46:03 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-46-29 05:46:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-46-29 05:46:04 INFO  o.a.catalina.core.StandardService -msg
+2025-46-29 05:46:04 INFO  o.a.catalina.core.StandardEngine -msg
+2025-46-29 05:46:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-46-29 05:46:04 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-46-29 05:46:04 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-46-29 05:46:04 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-46-29 05:46:04 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-46-29 05:46:04 INFO  liquibase.database -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.ui -msg
+2025-46-29 05:46:04 INFO  liquibase.changelog -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.util -msg
+2025-46-29 05:46:04 INFO  liquibase.command -msg
+2025-46-29 05:46:06 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-46-29 05:46:07 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-46-29 05:46:07 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-46-29 05:46:07 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-46-29 05:46:07 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-46-29 05:46:07 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-46-29 05:46:16 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-46-29 05:46:16 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-46-29 05:46:16 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-46-29 05:46:16 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:17 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-46-29 05:46:17 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-46-29 05:46:17 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-46-29 05:46:17 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:17 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:24 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:24 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-46-29 05:46:24 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-46-29 05:46:24 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-46-29 05:46:24 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:24 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:25 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:26 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-46-29 05:46:26 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-46-29 05:46:26 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-46-29 05:46:26 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:26 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:31 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-46-29 05:46:31 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-46-29 05:46:31 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-46-29 05:46:31 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-47-29 05:47:29 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-47-29 05:47:30 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-47-29 05:47:30 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-47-29 05:47:30 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-47-29 05:47:30 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-47-29 05:47:30 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-47-29 05:47:41 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-47-29 05:47:41 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-47-29 05:47:41 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-47-29 05:47:41 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-47-29 05:47:48 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-47-29 05:47:48 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-47-29 05:47:49 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-47-29 05:47:49 INFO  o.a.catalina.core.StandardService -msg
+2025-47-29 05:47:49 INFO  o.a.catalina.core.StandardEngine -msg
+2025-47-29 05:47:49 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-47-29 05:47:49 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-47-29 05:47:49 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-47-29 05:47:49 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-47-29 05:47:49 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-47-29 05:47:49 INFO  liquibase.database -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.ui -msg
+2025-47-29 05:47:49 INFO  liquibase.changelog -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.util -msg
+2025-47-29 05:47:49 INFO  liquibase.command -msg
+2025-47-29 05:47:51 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-47-29 05:47:52 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-47-29 05:47:52 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-47-29 05:47:52 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-47-29 05:47:52 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-47-29 05:47:52 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-47-29 05:47:54 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-47-29 05:47:54 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-47-29 05:47:54 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-47-29 05:47:54 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-47-29 05:47:54 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-47-29 05:47:54 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-47-29 05:47:54 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-48-29 05:48:13 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-48-29 05:48:13 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-48-29 05:48:13 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-48-29 05:48:13 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-49-29 05:49:53 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-49-29 05:49:53 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-49-29 05:49:54 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-49-29 05:49:54 INFO  o.a.catalina.core.StandardService -msg
+2025-49-29 05:49:54 INFO  o.a.catalina.core.StandardEngine -msg
+2025-49-29 05:49:54 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-49-29 05:49:54 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-49-29 05:49:54 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-49-29 05:49:54 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-49-29 05:49:54 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-49-29 05:49:54 INFO  liquibase.database -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:54 INFO  liquibase.snapshot -msg
+2025-49-29 05:49:54 INFO  liquibase.lockservice -msg
+2025-49-29 05:49:54 INFO  liquibase.command -msg
+2025-49-29 05:49:54 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.changelog -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.util -msg
+2025-49-29 05:49:55 INFO  liquibase.command -msg
+2025-49-29 05:49:55 INFO  liquibase.ui -msg
+2025-49-29 05:49:55 INFO  liquibase.lockservice -msg
+2025-49-29 05:49:55 INFO  liquibase.command -msg
+2025-49-29 05:49:57 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-49-29 05:49:57 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-49-29 05:49:57 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-49-29 05:49:57 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-49-29 05:49:57 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-49-29 05:49:57 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-50-29 05:50:02 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-50-29 05:50:02 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-50-29 05:50:02 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-50-29 05:50:02 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:02 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-50-29 05:50:02 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-50-29 05:50:02 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-50-29 05:50:02 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:02 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:03 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:04 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-50-29 05:50:04 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-50-29 05:50:04 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-50-29 05:50:04 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:04 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:09 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-50-29 05:50:09 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-50-29 05:50:09 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-50-29 05:50:09 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-50-29 05:50:30 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-50-29 05:50:30 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-50-29 05:50:30 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-50-29 05:50:30 INFO  o.a.catalina.core.StandardService -msg
+2025-50-29 05:50:30 INFO  o.a.catalina.core.StandardEngine -msg
+2025-50-29 05:50:30 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-50-29 05:50:30 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-50-29 05:50:31 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-50-29 05:50:31 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-50-29 05:50:31 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-50-29 05:50:31 INFO  liquibase.database -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.ui -msg
+2025-50-29 05:50:31 INFO  liquibase.changelog -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.util -msg
+2025-50-29 05:50:31 INFO  liquibase.command -msg
+2025-50-29 05:50:33 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-50-29 05:50:33 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-50-29 05:50:33 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-50-29 05:50:33 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-50-29 05:50:33 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-50-29 05:50:33 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-50-29 05:50:36 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-50-29 05:50:36 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-50-29 05:50:36 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-50-29 05:50:36 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:37 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-50-29 05:50:37 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-50-29 05:50:37 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-50-29 05:50:37 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:37 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:38 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:38 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-50-29 05:50:38 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-50-29 05:50:38 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-50-29 05:50:38 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-50-29 05:50:38 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-51-29 05:51:53 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-51-29 05:51:53 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-51-29 05:51:53 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-51-29 05:51:53 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-51-29 05:51:53 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-51-29 05:51:53 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-52-29 05:52:17 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-52-29 05:52:17 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-52-29 05:52:17 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-52-29 05:52:17 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-52-29 05:52:25 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-52-29 05:52:25 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-52-29 05:52:25 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-52-29 05:52:25 INFO  o.a.catalina.core.StandardService -msg
+2025-52-29 05:52:25 INFO  o.a.catalina.core.StandardEngine -msg
+2025-52-29 05:52:25 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-52-29 05:52:25 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-52-29 05:52:25 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-52-29 05:52:25 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-52-29 05:52:25 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-52-29 05:52:25 INFO  liquibase.database -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.ui -msg
+2025-52-29 05:52:26 INFO  liquibase.changelog -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.util -msg
+2025-52-29 05:52:26 INFO  liquibase.command -msg
+2025-52-29 05:52:28 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-52-29 05:52:28 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-52-29 05:52:28 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-52-29 05:52:28 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-52-29 05:52:28 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-52-29 05:52:28 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-52-29 05:52:31 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-52-29 05:52:31 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-52-29 05:52:31 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-52-29 05:52:31 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-52-29 05:52:32 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-52-29 05:52:32 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-52-29 05:52:32 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-52-29 05:52:40 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-52-29 05:52:40 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-52-29 05:52:40 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-52-29 05:52:40 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-54-29 05:54:35 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-54-29 05:54:35 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-54-29 05:54:36 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-54-29 05:54:36 INFO  o.a.catalina.core.StandardService -msg
+2025-54-29 05:54:36 INFO  o.a.catalina.core.StandardEngine -msg
+2025-54-29 05:54:36 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-54-29 05:54:36 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-54-29 05:54:36 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-54-29 05:54:37 WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext -msg
+2025-54-29 05:54:37 INFO  o.a.catalina.core.StandardService -msg
+2025-54-29 05:54:37 INFO  o.s.b.a.l.ConditionEvaluationReportLogger -msg
+2025-54-29 05:54:37 ERROR o.s.boot.SpringApplication -msg
+org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'resumeController' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/controller/ResumeController.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'resumeServiceImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/service/impl/ResumeServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'resumeDaoImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/dao/impl/ResumeDaoImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.instantiateSingleton(DefaultListableBeanFactory.java:1222)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingleton(DefaultListableBeanFactory.java:1188)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:1123)
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:987)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:627)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.example.jobsearch.JobSearchApplication.main(JobSearchApplication.java:10)
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'resumeServiceImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/service/impl/ResumeServiceImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'resumeDaoImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/dao/impl/ResumeDaoImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 21 common frames omitted
+Caused by: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'resumeDaoImpl' defined in file [/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/target/classes/com/example/jobsearch/dao/impl/ResumeDaoImpl.class]: Unsatisfied dependency expressed through constructor parameter 0: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:804)
+	at org.springframework.beans.factory.support.ConstructorResolver.autowireConstructor(ConstructorResolver.java:240)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.autowireConstructor(AbstractAutowireCapableBeanFactory.java:1395)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBeanInstance(AbstractAutowireCapableBeanFactory.java:1232)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:569)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.config.DependencyDescriptor.resolveCandidate(DependencyDescriptor.java:254)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1745)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 35 common frames omitted
+Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'liquibase' defined in class path resource [org/springframework/boot/autoconfigure/liquibase/LiquibaseAutoConfiguration$LiquibaseConfiguration.class]: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1826)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:607)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:529)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:339)
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:373)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:337)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315)
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:202)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1683)
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1628)
+	at org.springframework.beans.factory.support.ConstructorResolver.resolveAutowiredArgument(ConstructorResolver.java:913)
+	at org.springframework.beans.factory.support.ConstructorResolver.createArgumentArray(ConstructorResolver.java:791)
+	... 49 common frames omitted
+Caused by: liquibase.exception.LiquibaseException: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:289)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.invokeInitMethods(AbstractAutowireCapableBeanFactory.java:1873)
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.initializeBean(AbstractAutowireCapableBeanFactory.java:1822)
+	... 61 common frames omitted
+Caused by: liquibase.exception.DatabaseException: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:281)
+	at liquibase.Scope.lambda$child$0(Scope.java:216)
+	at liquibase.Scope.child(Scope.java:225)
+	at liquibase.Scope.child(Scope.java:215)
+	at liquibase.Scope.child(Scope.java:194)
+	at liquibase.integration.spring.SpringLiquibase.afterPropertiesSet(SpringLiquibase.java:272)
+	... 63 common frames omitted
+Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: База данных уже используется: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Возможные решения: закрыть все другие соединения; использовать режим сервера
+Database may be already in use: "/Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db". Possible solutions: close all other connection(s); use the server mode [90020-232]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.mvstore.db.Store.convertMVStoreException(Store.java:165)
+	at org.h2.mvstore.db.Store.<init>(Store.java:142)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:344)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:124)
+	at org.h2.Driver.connect(Driver.java:59)
+	at com.zaxxer.hikari.util.DriverDataSource.getConnection(DriverDataSource.java:139)
+	at com.zaxxer.hikari.pool.PoolBase.newConnection(PoolBase.java:368)
+	at com.zaxxer.hikari.pool.PoolBase.newPoolEntry(PoolBase.java:205)
+	at com.zaxxer.hikari.pool.HikariPool.createPoolEntry(HikariPool.java:483)
+	at com.zaxxer.hikari.pool.HikariPool.checkFailFast(HikariPool.java:571)
+	at com.zaxxer.hikari.pool.HikariPool.<init>(HikariPool.java:101)
+	at com.zaxxer.hikari.HikariDataSource.getConnection(HikariDataSource.java:111)
+	at liquibase.integration.spring.SpringLiquibase.lambda$afterPropertiesSet$0(SpringLiquibase.java:276)
+	... 68 common frames omitted
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: /Users/aleksei/Desktop/HomeWork/jobSearch/jobSearch/db/jobsearch.mv.db [2.3.232/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	... 83 common frames omitted
+2025-54-29 05:54:58 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-54-29 05:54:58 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-54-29 05:54:58 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-54-29 05:54:58 INFO  o.a.catalina.core.StandardService -msg
+2025-54-29 05:54:58 INFO  o.a.catalina.core.StandardEngine -msg
+2025-54-29 05:54:58 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-54-29 05:54:58 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-54-29 05:54:59 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-54-29 05:54:59 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-54-29 05:54:59 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-54-29 05:54:59 INFO  liquibase.database -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.ui -msg
+2025-54-29 05:54:59 INFO  liquibase.changelog -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.util -msg
+2025-54-29 05:54:59 INFO  liquibase.command -msg
+2025-55-29 05:55:01 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-55-29 05:55:01 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-55-29 05:55:01 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-55-29 05:55:01 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-55-29 05:55:01 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-55-29 05:55:01 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-55-29 05:55:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-55-29 05:55:04 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-55-29 05:55:04 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-55-29 05:55:04 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-55-29 05:55:04 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-55-29 05:55:04 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-55-29 05:55:04 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-55-29 05:55:04 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-55-29 05:55:04 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-55-29 05:55:37 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-55-29 05:55:37 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-55-29 05:55:37 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-55-29 05:55:37 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-56-29 05:56:46 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-56-29 05:56:46 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-56-29 05:56:46 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-56-29 05:56:46 INFO  o.a.catalina.core.StandardService -msg
+2025-56-29 05:56:46 INFO  o.a.catalina.core.StandardEngine -msg
+2025-56-29 05:56:46 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-56-29 05:56:46 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-56-29 05:56:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-56-29 05:56:46 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-56-29 05:56:46 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-56-29 05:56:46 INFO  liquibase.database -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.ui -msg
+2025-56-29 05:56:47 INFO  liquibase.changelog -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.util -msg
+2025-56-29 05:56:47 INFO  liquibase.command -msg
+2025-56-29 05:56:49 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-56-29 05:56:49 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-56-29 05:56:49 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-56-29 05:56:49 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-56-29 05:56:49 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-56-29 05:56:49 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-56-29 05:56:51 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-56-29 05:56:51 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-56-29 05:56:51 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-56-29 05:56:51 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-56-29 05:56:51 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-56-29 05:56:51 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-56-29 05:56:51 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-56-29 05:56:51 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-56-29 05:56:51 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-57-29 05:57:49 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-57-29 05:57:49 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-57-29 05:57:49 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-57-29 05:57:49 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:03 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-59-29 05:59:03 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-59-29 05:59:04 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-59-29 05:59:04 INFO  o.a.catalina.core.StandardService -msg
+2025-59-29 05:59:04 INFO  o.a.catalina.core.StandardEngine -msg
+2025-59-29 05:59:04 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-59-29 05:59:04 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-59-29 05:59:04 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:04 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-59-29 05:59:04 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:04 INFO  liquibase.database -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.snapshot -msg
+2025-59-29 05:59:04 INFO  liquibase.lockservice -msg
+2025-59-29 05:59:04 INFO  liquibase.command -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.changelog -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.util -msg
+2025-59-29 05:59:04 INFO  liquibase.command -msg
+2025-59-29 05:59:04 INFO  liquibase.ui -msg
+2025-59-29 05:59:04 INFO  liquibase.lockservice -msg
+2025-59-29 05:59:04 INFO  liquibase.command -msg
+2025-59-29 05:59:06 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-59-29 05:59:06 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-59-29 05:59:06 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-59-29 05:59:06 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-59-29 05:59:06 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-59-29 05:59:06 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-59-29 05:59:10 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-59-29 05:59:10 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-59-29 05:59:10 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:10 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:57 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-59-29 05:59:57 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-59-29 05:59:57 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-59-29 05:59:57 INFO  o.a.catalina.core.StandardService -msg
+2025-59-29 05:59:57 INFO  o.a.catalina.core.StandardEngine -msg
+2025-59-29 05:59:57 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-59-29 05:59:57 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-59-29 05:59:57 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:57 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-59-29 05:59:57 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-59-29 05:59:57 INFO  liquibase.database -msg
+2025-59-29 05:59:57 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.snapshot -msg
+2025-59-29 05:59:58 INFO  liquibase.lockservice -msg
+2025-59-29 05:59:58 INFO  liquibase.command -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.changelog -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.util -msg
+2025-59-29 05:59:58 INFO  liquibase.command -msg
+2025-59-29 05:59:58 INFO  liquibase.ui -msg
+2025-59-29 05:59:58 INFO  liquibase.lockservice -msg
+2025-59-29 05:59:58 INFO  liquibase.command -msg
+2025-00-29 06:00:00 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-00-29 06:00:00 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-00-29 06:00:00 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-00-29 06:00:00 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-00-29 06:00:00 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-00-29 06:00:00 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-00-29 06:00:02 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-00-29 06:00:02 INFO  o.s.b.w.e.tomcat.GracefulShutdown -msg
+2025-00-29 06:00:02 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-00-29 06:00:02 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-00-29 06:00:16 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-00-29 06:00:16 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-00-29 06:00:16 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-00-29 06:00:16 INFO  o.a.catalina.core.StandardService -msg
+2025-00-29 06:00:16 INFO  o.a.catalina.core.StandardEngine -msg
+2025-00-29 06:00:16 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-00-29 06:00:16 INFO  o.s.b.w.s.c.ServletWebServerApplicationContext -msg
+2025-00-29 06:00:16 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-00-29 06:00:16 INFO  com.zaxxer.hikari.pool.HikariPool -msg
+2025-00-29 06:00:16 INFO  com.zaxxer.hikari.HikariDataSource -msg
+2025-00-29 06:00:16 INFO  liquibase.database -msg
+2025-00-29 06:00:16 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.ui -msg
+2025-00-29 06:00:17 INFO  liquibase.changelog -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.util -msg
+2025-00-29 06:00:17 INFO  liquibase.command -msg
+2025-00-29 06:00:19 WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer -msg
+2025-00-29 06:00:19 DEBUG o.s.s.web.DefaultSecurityFilterChain -msg
+2025-00-29 06:00:19 INFO  o.s.v.b.OptionalValidatorFactoryBean -msg
+2025-00-29 06:00:19 WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration -msg
+2025-00-29 06:00:19 INFO  o.s.b.w.e.tomcat.TomcatWebServer -msg
+2025-00-29 06:00:19 INFO  c.e.jobsearch.JobSearchApplication -msg
+2025-00-29 06:00:21 INFO  o.a.c.c.C.[Tomcat].[localhost].[/] -msg
+2025-00-29 06:00:21 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-00-29 06:00:21 INFO  o.s.web.servlet.DispatcherServlet -msg
+2025-00-29 06:00:21 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:22 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-00-29 06:00:22 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-00-29 06:00:22 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:29 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:30 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-00-29 06:00:30 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-00-29 06:00:30 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-00-29 06:00:30 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:30 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:44 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:44 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-00-29 06:00:44 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-00-29 06:00:44 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-00-29 06:00:44 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:44 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:52 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-00-29 06:00:52 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-00-29 06:00:52 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-00-29 06:00:52 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:01 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:01 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-01-29 06:01:01 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-01-29 06:01:01 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:01 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:01 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:09 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:10 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-01-29 06:01:10 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-01-29 06:01:10 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:10 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:10 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:14 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:15 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-01-29 06:01:15 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-01-29 06:01:15 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:23 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:23 DEBUG o.s.s.a.d.DaoAuthenticationProvider -msg
+2025-01-29 06:01:23 DEBUG o.s.s.w.a.w.BasicAuthenticationFilter -msg
+2025-01-29 06:01:23 DEBUG o.s.s.w.a.AccessDeniedHandlerImpl -msg
+2025-01-29 06:01:23 DEBUG o.s.security.web.FilterChainProxy -msg
+2025-01-29 06:01:23 DEBUG o.s.security.web.FilterChainProxy -msg
