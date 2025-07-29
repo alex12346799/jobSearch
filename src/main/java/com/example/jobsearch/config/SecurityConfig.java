@@ -1,8 +1,12 @@
 package com.example.jobsearch.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -25,10 +29,11 @@ public class SecurityConfig {
        String userQuery = "select username, password, enabled\n" +
                "from USERS\n" +
                "where username = ?;";
-       String roleQuery = "select username, role_name\n" +
-               "from USERS us, ROLES rl\n" +
-               "where us.USERNAME=?\n" +
-               "and us.ROLE_ID = rl.ID";
+        String roleQuery = "select username, concat('ROLE_', role_name) as role\n" +
+                "from USERS us, ROLES r\n" +
+                "where us.USERNAME=?\n" +
+                "and us.ROLE_ID = r.ID";
+
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
                 .usersByUsernameQuery(userQuery)
@@ -37,6 +42,17 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-
+     http
+             .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+             .httpBasic(Customizer.withDefaults())
+             .formLogin(AbstractHttpConfigurer::disable)
+             .logout(AbstractHttpConfigurer::disable)
+             .csrf(AbstractHttpConfigurer::disable)
+             .authorizeHttpRequests(authorize -> authorize
+                     .requestMatchers(HttpMethod.POST, "/resumes").hasRole("ADMIN")
+                             .requestMatchers(HttpMethod.POST, "/vacancies").hasRole("ADMIN")
+                             .anyRequest().permitAll()
+                     );
+     return http.build();
     }
 }
