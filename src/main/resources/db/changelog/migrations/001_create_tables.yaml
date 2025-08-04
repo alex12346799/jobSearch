@@ -155,7 +155,7 @@ databaseChangeLog:
                   name: exp_to
                   type: int
               - column:
-                  name: as_active
+                  name: is_active
                   type: boolean
               - column:
                   name: employer_id

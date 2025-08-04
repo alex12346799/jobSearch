@@ -12,7 +12,7 @@ public class VacancyMapper {
         vacancy.setSalary(vacancyCreateDto.getSalary());
         vacancy.setExpFrom(vacancyCreateDto.getExpFrom());
         vacancy.setExpTo(vacancyCreateDto.getExpTo());
-        vacancy.setAsActive(vacancyCreateDto.isAsActive());
+//        vacancy.set(vacancyCreateDto.isAsActive());
         vacancy.setEmployerId(vacancyCreateDto.getEmployerId());
         vacancy.setCreatedDate(vacancyCreateDto.getCreatedDate());
         vacancy.setUpdateDate(vacancyCreateDto.getUpdatedDate());

@@ -1,9 +1,9 @@
-package com.example.jobsearch.model;
+package com.example.jobsearch.dto;
 
 import lombok.Data;
 
 @Data
-public class WorkExperienceInfo {
+public class WorkExperienceInfoResponseDto {
     private long id;
     private int resumeId;
     private int years;

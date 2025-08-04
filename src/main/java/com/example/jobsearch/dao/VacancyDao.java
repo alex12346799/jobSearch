@@ -8,7 +8,8 @@ import java.util.Optional;
 public interface VacancyDao {
     void saveVacancy(Vacancy vacancy);
 
-    Optional<Vacancy> findVacancyById(int id);
+    Optional<Vacancy> findVacancyById(long id);
+
 
     List<Vacancy> findAllVacancies();
 
@@ -16,5 +17,5 @@ public interface VacancyDao {
 
     void updateVacancy(Vacancy vacancy);
 
-    void deleteVacancyById(int id);
+    void deleteVacancyById(long id);
 }

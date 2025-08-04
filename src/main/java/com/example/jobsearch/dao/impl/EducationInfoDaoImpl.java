@@ -16,7 +16,7 @@ public class EducationInfoDaoImpl implements EducationInfoDao {
     }
 
     @Override
-    public void saveAll(List<EducationInfo> educationInfoList, int resumeId) {
+    public void saveAll(List<EducationInfo> educationInfoList, long resumeId) {
         String sql = "INSERT INTO education_info(resume_id, institution ,program,start_date,end_date,degree)" +
                 " VALUES (?, ?,?,?,?,?)";
         for (EducationInfo educationInfo : educationInfoList) {

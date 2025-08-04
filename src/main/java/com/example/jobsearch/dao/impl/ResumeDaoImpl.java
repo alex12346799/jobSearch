@@ -23,7 +23,7 @@ public class ResumeDaoImpl implements ResumeDao {
     }
 
     @Override
-    public Optional<Resume> findById(int id) {
+    public Optional<Resume> findById(long id) {
         String sql = "SELECT * FROM resume WHERE id = ?";
         List<Resume> resumes = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), id);
         return resumes.stream().findFirst();
@@ -66,7 +66,7 @@ public class ResumeDaoImpl implements ResumeDao {
     }
 
     @Override
-    public void deleteById(int id) {
+    public void deleteById(long id) {
         String sql = "DELETE FROM resume WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }

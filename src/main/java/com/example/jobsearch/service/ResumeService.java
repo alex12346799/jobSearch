@@ -7,7 +7,7 @@ import java.util.List;
 public interface ResumeService {
     List<Resume> getAllResumes();
 
-    Resume getById(int id);
+    Resume getById(long id);
 
     List<Resume> getAllByApplicantId(int applicantId);
 
@@ -15,7 +15,8 @@ public interface ResumeService {
 
     void createWithDetails(Resume resume);
 
-    void update(int id, Resume resume);
+    void update(long id, Resume resume);
 
-    void delete(int id);
+    void delete(long id);
+
 }

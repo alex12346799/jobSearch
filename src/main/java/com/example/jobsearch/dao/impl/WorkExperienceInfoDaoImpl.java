@@ -16,7 +16,7 @@ public class WorkExperienceInfoDaoImpl implements WorkExperienceInfoDao {
     }
 
     @Override
-    public void saveAll(List<WorkExperienceInfo> workExperienceInfos, int resumeId) {
+    public void saveAll(List<WorkExperienceInfo> workExperienceInfos, long resumeId) {
         String sql = "INSERT INTO work_experience_info(resume_id, years, company_name, position, responsibilities)" +
                 "VALUES(?,?,?,?,?)";
         for (WorkExperienceInfo workExperienceInfo : workExperienceInfos) {

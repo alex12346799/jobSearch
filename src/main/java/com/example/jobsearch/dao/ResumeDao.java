@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface ResumeDao {
     List<Resume> findAll();
 
-    Optional<Resume> findById(int id);
+    Optional<Resume> findById(long id);
 
     List<Resume> findAllByApplicantId(int applicantId);
 
@@ -16,5 +16,5 @@ public interface ResumeDao {
 
     void update(Resume resume);
 
-    void deleteById(int id);
+    void deleteById(long id);
 }

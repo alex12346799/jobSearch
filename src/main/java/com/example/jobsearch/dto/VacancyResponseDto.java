@@ -1,10 +1,11 @@
-package com.example.jobsearch.model;
+package com.example.jobsearch.dto;
 
 import lombok.Data;
 
 import java.time.LocalDateTime;
+
 @Data
-public class Vacancy {
+public class VacancyResponseDto {
     private long id;
     private String title;
     private String description;

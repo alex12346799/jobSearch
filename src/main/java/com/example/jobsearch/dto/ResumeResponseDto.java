@@ -1,14 +1,11 @@
-package com.example.jobsearch.model;
-
+package com.example.jobsearch.dto;
 
 import lombok.Data;
-import lombok.Getter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
-public class Resume {
+public class ResumeResponseDto {
     private long id;
     private int applicantId;
     private String name;
@@ -17,6 +14,4 @@ public class Resume {
     private boolean isActive;
     private LocalDateTime createdDate;
     private LocalDateTime updateTime;
-    private List<EducationInfo> educationInfoList;
-    private List<WorkExperienceInfo> workExperienceInfoList;
 }

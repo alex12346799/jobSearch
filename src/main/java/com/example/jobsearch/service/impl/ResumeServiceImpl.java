@@ -24,7 +24,7 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public Resume getById(int id) {
+    public Resume getById(long id) {
         return resumeDao.findById(id)
                 .orElseThrow(() -> new NotFoundException("Вот это " + id + " резюме не найдено"));
     }
@@ -42,7 +42,7 @@ public class ResumeServiceImpl implements ResumeService {
     @Override
     public void createWithDetails(Resume resume) {
         Resume savedResume = resumeDao.save(resume);
-        int resumeId = savedResume.getId();
+        long resumeId = savedResume.getId();
 
         if(resume.getEducationInfoList()!=null||!resume.getEducationInfoList().isEmpty()){
             educationInfoDao.saveAll(resume.getEducationInfoList(),resumeId);
@@ -54,7 +54,7 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void update(int id, Resume resume) {
+    public void update(long id, Resume resume) {
         if (resumeDao.findById(id).isEmpty()) {
             throw new NotFoundException("Ошибка. Резюме с таким " + id + " не найдено");
         } else {
@@ -64,11 +64,14 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id) {
         if (resumeDao.findById(id).isEmpty()) {
             throw new NotFoundException("Ошибка. Не могу удалить резюме так как. Резюме с таким " + id + " не найдено");
         } else {
             resumeDao.deleteById(id);
         }
     }
+
+
+
 }

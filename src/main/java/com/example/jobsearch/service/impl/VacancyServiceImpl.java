@@ -26,8 +26,10 @@ public class VacancyServiceImpl implements VacancyService {
         vacancyDao.saveVacancy(vacancy);
     }
 
+
+
     @Override
-    public Vacancy getById(int id) {
+    public Vacancy getById(long id) {
         return vacancyDao.findVacancyById(id)
                 .orElseThrow(() -> new NotFoundException("Вакансия с таким id " + id + " не найден"));
     }
@@ -50,6 +52,11 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public void delete(int id) {
+
+    }
+
+    @Override
+    public void delete(long id) {
         getById(id);
         vacancyDao.deleteVacancyById(id);
 

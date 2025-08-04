@@ -15,7 +15,7 @@ VALUES
     (1, 'Financial Analyst', 2, 55000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
-INSERT INTO vacancy (title, description, category_id, salary, exp_from, exp_to, as_active, employer_id, created_date, update_date)
+INSERT INTO vacancy (title, description, category_id, salary, exp_from, exp_to, is_active, employer_id, created_date, update_date)
 VALUES
     ('Senior Java Developer', 'Develop backend systems', 1, 70000, 3, 5, TRUE, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Junior Accountant', 'Manage company accounts', 2, 45000, 0, 2, TRUE, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

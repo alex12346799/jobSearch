@@ -30,7 +30,7 @@ public class VacancyDaoImpl implements VacancyDao {
                 vacancy.getSalary(),
                 vacancy.getExpFrom(),
                 vacancy.getExpTo(),
-                vacancy.isAsActive(),
+                vacancy.isActive(),
                 vacancy.getEmployerId(),
                 vacancy.getCreatedDate(),
                 vacancy.getUpdateDate()
@@ -39,7 +39,7 @@ public class VacancyDaoImpl implements VacancyDao {
 
 
     @Override
-    public Optional<Vacancy> findVacancyById(int id) {
+    public Optional<Vacancy> findVacancyById(long id) {
         String sql = "SELECT * FROM vacancy WHERE id = ?";
         List<Vacancy> vacancies = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Vacancy.class), id);
         return vacancies.stream().findFirst();
@@ -61,11 +61,11 @@ public class VacancyDaoImpl implements VacancyDao {
     @Override
     public void updateVacancy(Vacancy vacancy) {
         String sql = """
-                    UPDATE vacancy\s
-                    SET title = ?,    description = ?,     category_id = ?,\s
-                    salary = ?,     exp_from = ?,    exp_to = ?,    as_active = ?,    employer_id = ?,    update_date = ?
-                    WHERE id = ?
-               \s""";
+                     UPDATE vacancy\s
+                     SET title = ?,    description = ?,     category_id = ?,\s
+                     salary = ?,     exp_from = ?,    exp_to = ?,    as_active = ?,    employer_id = ?,    update_date = ?
+                     WHERE id = ?
+                \s""";
 
         jdbcTemplate.update(sql,
                 vacancy.getTitle(),
@@ -74,7 +74,7 @@ public class VacancyDaoImpl implements VacancyDao {
                 vacancy.getSalary(),
                 vacancy.getExpFrom(),
                 vacancy.getExpTo(),
-                vacancy.isAsActive(),
+                vacancy.isActive(),
                 vacancy.getEmployerId(),
                 vacancy.getUpdateDate(),
                 vacancy.getId()
@@ -83,7 +83,7 @@ public class VacancyDaoImpl implements VacancyDao {
 
 
     @Override
-    public void deleteVacancyById(int id) {
+    public void deleteVacancyById(long id) {
         String sql = "DELETE FROM vacancy WHERE id = ?";
         jdbcTemplate.update(sql, id);
     }

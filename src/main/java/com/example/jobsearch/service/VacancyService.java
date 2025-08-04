@@ -9,7 +9,8 @@ public interface VacancyService {
 
     void create(VacancyCreateDto vacancyCreateDto);
 
-    Vacancy getById(int id);
+
+    Vacancy getById(long id);
 
     List<Vacancy> getAll();
 
@@ -18,4 +19,6 @@ public interface VacancyService {
     void update(Vacancy vacancy);
 
     void delete(int id);
+
+    void delete(long id);
 }
