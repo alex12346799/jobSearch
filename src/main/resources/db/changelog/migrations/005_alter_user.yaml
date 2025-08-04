@@ -1,0 +1,26 @@
+databaseChangeLog:
+  - changeSet:
+      id: 005_modify_tables_users
+      author: aleksei
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: enabled
+                  type: boolean
+                  defaultValueBoolean: true
+                  constraints:
+                    nullable: false
+              - column:
+                  name: role_id
+                  type: long
+                  constraints:
+                    nullable: true
+                    foreignKeyName: fk_user_table_role_id
+                    references: roles(id)
+              - column:
+                  name: username
+                  type: varchar(55)
+                  constraints:
+                    nullable: true
