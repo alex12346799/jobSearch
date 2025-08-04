@@ -12,7 +12,7 @@ public interface ResumeDao {
 
     List<Resume> findAllByApplicantId(int applicantId);
 
-    void save(Resume resume);
+    Resume save(Resume resume);
 
     void update(Resume resume);
 

@@ -1,10 +1,9 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto.ImageDto;
+import com.example.jobsearch.dto1.ImageDto;
 import com.example.jobsearch.service.ImageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

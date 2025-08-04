@@ -1,8 +1,8 @@
 package com.example.jobsearch.mapper;
 
-import com.example.jobsearch.dto.EducationInfoDto;
-import com.example.jobsearch.dto.ResumeCreateDto;
-import com.example.jobsearch.dto.WorkExperienceInfoDto;
+import com.example.jobsearch.dto1.EducationInfoDto;
+import com.example.jobsearch.dto1.ResumeCreateDto;
+import com.example.jobsearch.dto1.WorkExperienceInfoDto;
 import com.example.jobsearch.model.EducationInfo;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.WorkExperienceInfo;

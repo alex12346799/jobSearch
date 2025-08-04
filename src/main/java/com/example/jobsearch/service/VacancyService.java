@@ -1,6 +1,6 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto.VacancyCreateDto;
+import com.example.jobsearch.dto1.VacancyCreateDto;
 import com.example.jobsearch.model.Vacancy;
 
 import java.util.List;

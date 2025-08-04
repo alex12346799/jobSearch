@@ -2,7 +2,7 @@ package com.example.jobsearch.service.impl;
 
 
 import com.example.jobsearch.dao.VacancyDao;
-import com.example.jobsearch.dto.VacancyCreateDto;
+import com.example.jobsearch.dto1.VacancyCreateDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.VacancyMapper;
 import com.example.jobsearch.model.Vacancy;

@@ -36,10 +36,10 @@ public class ResumeDaoImpl implements ResumeDao {
     }
 
     @Override
-    public void save(Resume resume) {
+    public Resume save(Resume resume) {
         String sql = "INSERT INTO resume (applicant_id, name, category_id, salary, is_active, created_date, update_date) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?)";
-        var result = jdbcTemplate.update(sql,
+         jdbcTemplate.update(sql,
                 resume.getApplicantId(),
                 resume.getName(),
                 resume.getCategoryId(),
@@ -48,7 +48,8 @@ public class ResumeDaoImpl implements ResumeDao {
                 resume.getCreatedDate(),
                 resume.getUpdateTime()
         );
-//        System.out.println(result.);
+         return resume;
+
     }
 
     @Override

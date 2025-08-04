@@ -1,6 +1,6 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto.ResumeCreateDto;
+import com.example.jobsearch.dto1.ResumeCreateDto;
 import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.service.ResumeService;

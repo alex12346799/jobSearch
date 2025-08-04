@@ -1,6 +1,6 @@
 package com.example.jobsearch.mapper;
 
-import com.example.jobsearch.dto.VacancyCreateDto;
+import com.example.jobsearch.dto1.VacancyCreateDto;
 import com.example.jobsearch.model.Vacancy;
 
 public class VacancyMapper {

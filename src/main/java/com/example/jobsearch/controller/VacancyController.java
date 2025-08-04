@@ -1,7 +1,7 @@
 package com.example.jobsearch.controller;
 
 
-import com.example.jobsearch.dto.VacancyCreateDto;
+import com.example.jobsearch.dto1.VacancyCreateDto;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;

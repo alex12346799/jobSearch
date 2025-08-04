@@ -1,6 +1,6 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto.UserCreateDto;
+import com.example.jobsearch.dto1.UserCreateDto;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.UserService;
 import jakarta.validation.Valid;

@@ -1,10 +1,9 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto.ImageDto;
+import com.example.jobsearch.dto1.ImageDto;
 import lombok.SneakyThrows;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.file.Files;

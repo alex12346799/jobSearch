@@ -1,6 +1,6 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto.UserCreateDto;
+import com.example.jobsearch.dto1.UserCreateDto;
 import com.example.jobsearch.model.User;
 
 import java.util.List;

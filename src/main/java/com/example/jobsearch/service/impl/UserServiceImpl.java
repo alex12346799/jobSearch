@@ -1,7 +1,7 @@
 package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.UserDao;
-import com.example.jobsearch.dto.UserCreateDto;
+import com.example.jobsearch.dto1.UserCreateDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.User;
