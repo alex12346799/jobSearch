@@ -1,20 +1,37 @@
 package com.example.jobsearch.mapper;
 
-import com.example.jobsearch.dto1.UserCreateDto;
+import com.example.jobsearch.dto.UserRequestDto;
+import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.model.User;
 
 public class UserMapper {
-    public static User fromDto(UserCreateDto userCreateDto) {
+
+
+    public static UserResponseDto toDto(User user) {
+        if (user == null) return null;
+        UserResponseDto userResponseDto = new UserResponseDto();
+        userResponseDto.setId(user.getId());
+        userResponseDto.setName(user.getName());
+        userResponseDto.setSurname(user.getSurname());
+        userResponseDto.setAge(user.getAge());
+        userResponseDto.setEmail(user.getEmail());
+        userResponseDto.setPhoneNumber(user.getPhoneNumber());
+        userResponseDto.setAddress(user.getAddress());
+        userResponseDto.setAvatar(user.getAvatar());
+        userResponseDto.setAccountType(user.getAccountType());
+        return userResponseDto;
+    }
+
+    public static User fromDto(UserRequestDto userRequestDto) {
+        if (userRequestDto == null) return null;
         User user = new User();
-        user.setName(userCreateDto.getName());
-        user.setSurname(userCreateDto.getSurname());
-        user.setPassword(userCreateDto.getPassword());
-        user.setAddress(userCreateDto.getAddress());
-        user.setAvatar(userCreateDto.getAvatar());
-        user.setEmail(userCreateDto.getEmail());
-        user.setAccountType(userCreateDto.getAccountType());
-        user.setPhoneNumber(userCreateDto.getPhoneNumber());
-        user.setAge(user.getAge());
+        user.setName(userRequestDto.getName());
+        user.setSurname(userRequestDto.getSurname());
+        user.setAge(userRequestDto.getAge());
+        user.setEmail(userRequestDto.getEmail());
+        user.setPassword(userRequestDto.getPassword());
+        user.setPhoneNumber(userRequestDto.getPhoneNumber());
+        user.setAddress(userRequestDto.getAddress());
         return user;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto1.UserCreateDto;
+import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.UserService;
 import jakarta.validation.Valid;
@@ -29,13 +29,13 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody @Valid UserCreateDto userDto) {
-        userService.createUser(userDto);
+    public ResponseEntity<String> createUser(@RequestBody @Valid UserRequestDto dto) {
+        userService.createUser(dto);
         return ResponseEntity.ok("Пользователь упешно создан! ");
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UserCreateDto userDto) {
+    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UserRequestDto userDto) {
         userService.updateUser(id, userDto);
         User updatedUser = userService.getUserById(id);
         return ResponseEntity.ok(updatedUser);

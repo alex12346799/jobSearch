@@ -1,38 +1,36 @@
 package com.example.jobsearch.mapper;
 
-import com.example.jobsearch.dto1.EducationInfoDto;
-import com.example.jobsearch.dto1.ResumeCreateDto;
-import com.example.jobsearch.dto1.WorkExperienceInfoDto;
+import com.example.jobsearch.dto.EducationInfoRequestDto;
+import com.example.jobsearch.dto.ResumeRequestDto;
+import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
 import com.example.jobsearch.model.EducationInfo;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.WorkExperienceInfo;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ResumeMapper {
 
-    public static Resume fromDto(ResumeCreateDto dto) {
+    public static Resume fromDto(ResumeRequestDto dto) {
         Resume resume = new Resume();
         resume.setApplicantId(dto.getApplicantId());
         resume.setName(dto.getName());
         resume.setCategoryId(dto.getCategoryId());
         resume.setSalary(dto.getSalary());
-        resume.setActive(dto.getIsActive());
         resume.setCreatedDate(LocalDateTime.now());
         resume.setUpdateTime(LocalDateTime.now());
 
 
         List<EducationInfo> educationList = new ArrayList<>();
         if (dto.getEducationInfoList() != null) {
-            for (EducationInfoDto eduDto : dto.getEducationInfoList()) {
+            for (EducationInfoRequestDto eduDto : dto.getEducationInfoList()) {
                 EducationInfo educationInfo = new EducationInfo();
                 educationInfo.setInstitution(eduDto.getInstitution());
                 educationInfo.setProgram(eduDto.getProgram());
-                educationInfo.setStartDate(LocalDate.parse(eduDto.getStartDate()));
-                educationInfo.setEndDate(LocalDate.parse(eduDto.getEndDate()));
+                educationInfo.setStartDate(eduDto.getStartDate());
+                educationInfo.setEndDate(eduDto.getEndDate());
                 educationList.add(educationInfo);
             }
         }
@@ -41,7 +39,7 @@ public class ResumeMapper {
 
         List<WorkExperienceInfo> workList = new ArrayList<>();
         if (dto.getWorkExperienceInfoList() != null) {
-            for (WorkExperienceInfoDto workDto : dto.getWorkExperienceInfoList()) {
+            for (WorkExperienceInfoRequestDto workDto : dto.getWorkExperienceInfoList()) {
                 WorkExperienceInfo work = new WorkExperienceInfo();
                 work.setCompanyName(workDto.getCompanyName());
                 work.setPosition(workDto.getPosition());

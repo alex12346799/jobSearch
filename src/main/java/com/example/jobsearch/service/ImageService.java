@@ -1,6 +1,6 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto1.ImageDto;
+import com.example.jobsearch.dto.ImageDto;
 import lombok.SneakyThrows;
 import org.springframework.web.multipart.MultipartFile;
 

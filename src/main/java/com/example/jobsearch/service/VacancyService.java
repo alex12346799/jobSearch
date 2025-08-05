@@ -1,13 +1,13 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto1.VacancyCreateDto;
+import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.model.Vacancy;
 
 import java.util.List;
 
 public interface VacancyService {
 
-    void create(VacancyCreateDto vacancyCreateDto);
+    void create(VacancyRequestDto vacancyRequestDto);
 
 
     Vacancy getById(long id);

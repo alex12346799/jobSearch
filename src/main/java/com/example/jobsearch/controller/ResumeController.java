@@ -1,6 +1,6 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto1.ResumeCreateDto;
+import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.service.ResumeService;
@@ -35,7 +35,7 @@ public class ResumeController {
     }
 
     @PostMapping
-    public void create (@RequestBody @Valid ResumeCreateDto resumeDto)
+    public void create (@RequestBody @Valid ResumeRequestDto resumeDto)
     {
         Resume resume = ResumeMapper.fromDto(resumeDto);
         resumeService.create(resume);

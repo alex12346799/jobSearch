@@ -1,7 +1,7 @@
 package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.UserDao;
-import com.example.jobsearch.dto1.UserCreateDto;
+import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.User;
@@ -32,21 +32,19 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void createUser(UserCreateDto userCreateDto) {
-        User user = UserMapper.fromDto(userCreateDto);
+    public void createUser(UserRequestDto dto) {
+        User user = UserMapper.fromDto(dto);
         userDao.save(user);
 
     }
 
     @Override
-    public void updateUser(long id, UserCreateDto dto) {
+    public void updateUser(long id, UserRequestDto dto) {
         User user = getUserById(id);
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setAddress(dto.getAddress());
-        user.setAvatar(dto.getAvatar());
-        user.setAccountType(dto.getAccountType());
         userDao.update(user);
     }
 

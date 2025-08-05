@@ -2,7 +2,7 @@ package com.example.jobsearch.service.impl;
 
 
 import com.example.jobsearch.dao.VacancyDao;
-import com.example.jobsearch.dto1.VacancyCreateDto;
+import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.VacancyMapper;
 import com.example.jobsearch.model.Vacancy;
@@ -21,8 +21,8 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
-    public void create(VacancyCreateDto vacancyCreateDto) {
-        Vacancy vacancy = VacancyMapper.fromTo(vacancyCreateDto);
+    public void create(VacancyRequestDto vacancyRequestDto) {
+        Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto);
         vacancyDao.saveVacancy(vacancy);
     }
 

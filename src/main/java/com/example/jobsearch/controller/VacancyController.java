@@ -1,7 +1,7 @@
 package com.example.jobsearch.controller;
 
 
-import com.example.jobsearch.dto1.VacancyCreateDto;
+import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;
@@ -21,8 +21,8 @@ public class VacancyController {
 
 
     @PostMapping
-    public ResponseEntity<String> createVacancy(@RequestBody @Valid VacancyCreateDto vacancyDto) {
-        vacancyService.create(vacancyDto);
+    public ResponseEntity<String> createVacancy(@RequestBody @Valid VacancyRequestDto vacancyRequestDto) {
+        vacancyService.create(vacancyRequestDto);
         return ResponseEntity.ok("Вакансия создана");
     }
 
