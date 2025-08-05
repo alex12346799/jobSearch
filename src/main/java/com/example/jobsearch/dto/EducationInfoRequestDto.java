@@ -19,7 +19,7 @@ public class EducationInfoRequestDto {
     private String program;
 
     @NotNull(message = "Укажите дату начала")
-    @PastOrPresent(message = "Дата начала не млжет быть в будущем")
+    @PastOrPresent(message = "Дата начала не может быть в будущем")
     private LocalDate startDate;
 
     private LocalDate endDate;
