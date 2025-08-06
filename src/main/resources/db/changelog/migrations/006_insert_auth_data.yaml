@@ -55,7 +55,30 @@ databaseChangeLog:
               set password = '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2',
               role_id = (select id from roles where role_name = 'EMPLOYEE'),
               username = 'user'
-              where name = 'Alice';
+              where name = 'Jane';
+
+  - changeSet:
+        id: insert_alex_admin
+        author: aleksei
+        changes:
+          - sql:
+              sql: |
+                update users
+                set role_id = (select id from roles where role_name = 'APPLICANT'),
+                username = 'alex'
+                where name = 'Alex';
+
+  - changeSet:
+      id: insert_vova_user
+      author: aleksei
+      changes:
+        - sql:
+            sql: |
+              update users
+              set role_id = (select id from roles where role_name = 'EMPLOYEE'),
+              username = 'vova'
+              where name = 'Vova';
+              
 
 
 

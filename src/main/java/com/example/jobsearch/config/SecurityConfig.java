@@ -21,6 +21,7 @@ public class SecurityConfig {
     private final PasswordEncoder encoder;
     private final DataSource dataSource;
 
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
        String userQuery = "select username, password, enabled\n" +
@@ -30,6 +31,13 @@ public class SecurityConfig {
                 "from USERS us, ROLES r\n" +
                 "where us.USERNAME=?\n" +
                 "and us.ROLE_ID = r.ID";
+//        String userQuery = "SELECT email, password, enabled " +
+//                "FROM USERS " +
+//                "WHERE email = ?;";
+//        String roleQuery = "select email, concat('ROLE_', role_name) as role" +
+//                "from USERS us, ROLES r" +
+//                "where us.email=?" +
+//                "and us.ROLE_ID = r.ID";
 
         auth.jdbcAuthentication()
                 .dataSource(dataSource)

@@ -20,7 +20,7 @@ public class VacancyDaoImpl implements VacancyDao {
     @Override
     public void saveVacancy(Vacancy vacancy) {
         String sql = "INSERT INTO vacancy(title, description, category_id, salary," +
-                " exp_from, exp_to, as_active, employer_id, " +
+                " exp_from, exp_to, IS_ACTIVE, employer_id, " +
                 "created_date, update_date) " +
                 "VALUES (?,?,?,?,?,?,?,?,?,?)";
         jdbcTemplate.update(sql,
@@ -63,7 +63,7 @@ public class VacancyDaoImpl implements VacancyDao {
         String sql = """
                      UPDATE vacancy\s
                      SET title = ?,    description = ?,     category_id = ?,\s
-                     salary = ?,     exp_from = ?,    exp_to = ?,    as_active = ?,    employer_id = ?,    update_date = ?
+                     salary = ?,     exp_from = ?,    exp_to = ?,    IS_ACTIVE = ?,    employer_id = ?,    update_date = ?
                      WHERE id = ?
                 \s""";
 

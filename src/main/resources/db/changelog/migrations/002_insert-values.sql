@@ -6,7 +6,11 @@ INSERT INTO category (name, parent_id) VALUES ('Finance', NULL);
 INSERT INTO users (email, name, surname, role, age, password, phone_number, address, avatar, account_type)
 VALUES
     ('john@example.com', 'John', 'Doe', 'APPLICANT', 30, 'pass1', '1234567890', 'NYC', 'avatar1.png', 'STANDARD'),
-    ('jane@example.com', 'Jane', 'Smith', 'EMPLOYER', 28, 'pass2', '0987654321', 'LA', 'avatar2.png', 'PREMIUM');
+    ('jane@example.com', 'Jane', 'Smith', 'EMPLOYER', 28, 'pass2', '0987654321', 'LA', 'avatar2.png', 'PREMIUM'),
+    ('alex@mail.com', 'Alex', 'Lee', 'APPLICANT', 23, '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', '0700332232', 'SLA', 'avatar3.png', 'STANDARD'),
+    ('Vova@example.com', 'Vova', 'Kim', 'EMPLOYER', 24, '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', '0555227744', 'FLO', 'avatar4.png', 'PREMIUM');
+
+
 
 
 INSERT INTO resume (applicant_id, name, category_id, salary, is_active, created_date, update_date)
@@ -15,7 +19,7 @@ VALUES
     (1, 'Financial Analyst', 2, 55000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
 
-INSERT INTO vacancy (title, description, category_id, salary, exp_from, exp_to, is_active, employer_id, created_date, update_date)
+INSERT INTO vacancy (title, description, category_id, salary, exp_from, exp_to, IS_ACTIVE, employer_id, created_date, update_date)
 VALUES
     ('Senior Java Developer', 'Develop backend systems', 1, 70000, 3, 5, TRUE, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
     ('Junior Accountant', 'Manage company accounts', 2, 45000, 0, 2, TRUE, 2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

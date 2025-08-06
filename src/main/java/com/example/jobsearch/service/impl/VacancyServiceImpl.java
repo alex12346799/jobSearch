@@ -1,31 +1,33 @@
 package com.example.jobsearch.service.impl;
 
 
+import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dao.VacancyDao;
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.VacancyMapper;
+import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.service.VacancyService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class VacancyServiceImpl implements VacancyService {
     private final VacancyDao vacancyDao;
+    private final UserDao userDao;
 
-    public VacancyServiceImpl(VacancyDao vacancyDao) {
-        this.vacancyDao = vacancyDao;
-    }
 
     @Override
     public void create(VacancyRequestDto vacancyRequestDto) {
         Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto);
         vacancyDao.saveVacancy(vacancy);
     }
-
 
 
     @Override
@@ -36,7 +38,7 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public List<Vacancy> getAll() {
-       return vacancyDao.findAllVacancies();
+        return vacancyDao.findAllVacancies();
     }
 
     @Override
@@ -45,21 +47,33 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
-    public void update(Vacancy vacancy) {
-        getById(vacancy.getId());
+    public void update(Vacancy vacancy, long id, Authentication auth) {
+        String username = auth.getName();
+        User user = userDao.findByUsername(username)
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+        Vacancy exestingVacancy = vacancyDao.findVacancyById(id)
+                .orElseThrow(() -> new NotFoundException("Вакансия не найдена"));
+        if (exestingVacancy.getEmployerId() != user.getId()) {
+            throw new NotFoundException("У вас нет прав для изменения этого ваканасии");
+        }
+
         vacancyDao.updateVacancy(vacancy);
     }
 
     @Override
-    public void delete(int id) {
+    public void delete(long id, Authentication auth) {
+        String username = auth.getName();
+        User user = userDao.findByUsername(username)
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+        Vacancy exestingVacancy = vacancyDao.findVacancyById(id)
+                .orElseThrow(() -> new NotFoundException("Вакансия не найдена"));
+        if (exestingVacancy.getEmployerId() != user.getId()) {
+            throw new NotFoundException("У вас нет прав для удаления этой ваканасии");
+        }
 
-    }
-
-    @Override
-    public void delete(long id) {
-        getById(id);
         vacancyDao.deleteVacancyById(id);
-
     }
+
+
 }
 

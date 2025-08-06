@@ -19,4 +19,7 @@ public class Resume {
     private LocalDateTime updateTime;
     private List<EducationInfo> educationInfoList;
     private List<WorkExperienceInfo> workExperienceInfoList;
+
+
+
 }

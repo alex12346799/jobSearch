@@ -1,6 +1,8 @@
 package com.example.jobsearch.service;
 
+import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.model.Resume;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -11,12 +13,20 @@ public interface ResumeService {
 
     List<Resume> getAllByApplicantId(int applicantId);
 
-    void create(Resume resume);
+
+
+    void create(ResumeRequestDto dto);
 
     void createWithDetails(Resume resume);
 
-    void update(long id, Resume resume);
 
-    void delete(long id);
 
+
+
+
+    void update(Resume resume, long id, Authentication auth);
+
+
+
+    void delete(long id, Authentication auth);
 }

@@ -6,6 +6,7 @@ import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,15 +43,15 @@ public class VacancyController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<String> updateVacancy(@PathVariable int id, @RequestBody Vacancy vacancy) {
+    public ResponseEntity<String> updateVacancy(@PathVariable int id, @RequestBody Vacancy vacancy, Authentication auth) {
         vacancy.setId(id);
-        vacancyService.update(vacancy);
+        vacancyService.update(vacancy,id,auth);
         return ResponseEntity.ok("Вакансия обновлена");
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteVacancyById(@PathVariable int id) {
-        vacancyService.delete(id);
-        return ResponseEntity.ok("Вакансия удалена");
+    public void deleteVacancyById(@PathVariable int id, Authentication auth) {
+        vacancyService.delete(id, auth);
+
     }
 }

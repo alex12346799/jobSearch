@@ -8,6 +8,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -35,27 +36,22 @@ public class ResumeController {
     }
 
     @PostMapping
-    public void create (@RequestBody @Valid ResumeRequestDto resumeDto)
-    {
-        Resume resume = ResumeMapper.fromDto(resumeDto);
-        resumeService.create(resume);
-    }
+    public ResponseEntity<String> create(@RequestBody @Valid ResumeRequestDto resumeDto) {
 
-    @PostMapping("/full")
-    public ResponseEntity<String> createFullResume(@RequestBody Resume resume) {
-        resumeService.createWithDetails(resume);
-        return ResponseEntity.ok("Резюме с образованием и опытом успешно создано");
+        resumeService.create(resumeDto);
+        return ResponseEntity.ok("Резюме создана");
     }
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateResume(@PathVariable int id, @RequestBody Resume resume) {
-        resumeService.update(id, resume);
+    public ResponseEntity<Void> updateResume(@PathVariable int id, @RequestBody Resume resume, Authentication auth) {
+        resume.setId(id);
+        resumeService.update(resume, id, auth);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteResume(@PathVariable int id) {
-        resumeService.delete(id);
+    public void deleteResume(@PathVariable int id,  Authentication auth) {
+        resumeService.delete(id, auth);
     }
 }

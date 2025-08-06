@@ -2,11 +2,17 @@ package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.EducationInfoDao;
 import com.example.jobsearch.dao.ResumeDao;
+import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dao.WorkExperienceInfoDao;
+import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
+import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.model.Resume;
+import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +23,7 @@ public class ResumeServiceImpl implements ResumeService {
     private final ResumeDao resumeDao;
     private final WorkExperienceInfoDao workExperienceInfoDao;
     private final EducationInfoDao educationInfoDao;
+    private final UserDao userDao;
 
     @Override
     public List<Resume> getAllResumes() {
@@ -35,7 +42,9 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void create(Resume resume) {
+    public void create(ResumeRequestDto dto)
+    {
+        Resume resume = ResumeMapper.fromDto(dto);
         resumeDao.save(resume);
     }
 
@@ -54,23 +63,41 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void update(long id, Resume resume) {
-        if (resumeDao.findById(id).isEmpty()) {
-            throw new NotFoundException("Ошибка. Резюме с таким " + id + " не найдено");
-        } else {
-            resume.setId(id);
-            resumeDao.update(resume);
+    public void update(Resume resume, long id, Authentication auth) {
+        String username = auth.getName();
+
+
+        User user = userDao.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+
+        Resume existingResume = resumeDao.findById(id)
+                .orElseThrow(() -> new NotFoundException("Резюме не найдено"));
+        if (existingResume.getApplicantId() != user.getId()) {
+            throw new NotFoundException("У вас нет прав для изменения этого резюме");
         }
+
+        resumeDao.update(resume);
     }
 
+
+
     @Override
-    public void delete(long id) {
-        if (resumeDao.findById(id).isEmpty()) {
-            throw new NotFoundException("Ошибка. Не могу удалить резюме так как. Резюме с таким " + id + " не найдено");
-        } else {
-            resumeDao.deleteById(id);
+    public void delete(long id, Authentication auth) {
+        String username = auth.getName();
+
+
+        User user = userDao.findByUsername(username)
+                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+
+        Resume existingResume = resumeDao.findById(id)
+                .orElseThrow(() -> new NotFoundException("Резюме не найдено"));
+        if (existingResume.getApplicantId() != user.getId()) {
+            throw new NotFoundException("У вас нет прав для удаления этого резюме");
         }
+
+        resumeDao.deleteById(id);
     }
+
 
 
 

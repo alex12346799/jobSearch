@@ -2,9 +2,11 @@ package com.example.jobsearch.dao.impl;
 
 import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.model.User;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+
 
 import java.util.List;
 import java.util.Optional;
@@ -41,6 +43,12 @@ public class UserDaoImpl implements UserDao {
         return users.stream().findFirst();
 
     }
+    @Override
+    public List<User> findByEmail(String email) {
+        String sql = "SELECT * FROM USERS WHERE email = ?";
+        return  jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), email);
+    }
+
 
     @Override
     public List<User> findAll() {
@@ -67,6 +75,8 @@ public class UserDaoImpl implements UserDao {
     }
 
 
+
+
     @Override
     public void update(User user) {
         String sql = "UPDATE users SET name=?, surname=?, role=?, age=?, email=?, password=?, phone_number=?, address=?, avatar=?, account_type=? WHERE id=?";
@@ -88,5 +98,12 @@ public class UserDaoImpl implements UserDao {
     @Override
     public void deleteById(Long id) {
         jdbcTemplate.update("DELETE FROM users WHERE id=?", id);
+    }
+
+    @Override
+    public Optional <User> findByUsername(String username) {
+        String sql = "SELECT * FROM USERS WHERE username = ?";
+      List<User> users= jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class),username);
+     return users.stream().findFirst();
     }
 }
