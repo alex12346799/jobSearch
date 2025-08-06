@@ -16,6 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -42,8 +43,15 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void create(ResumeRequestDto dto)
-    {
+    public void create(ResumeRequestDto dto) {
+        Optional<User> appllicant = userDao.findById(dto.getApplicantId());
+        if (appllicant.isEmpty()) {
+            throw new NotFoundException("Пользователь с данным " + dto.getApplicantId() + " Id не найден");
+        }
+        Optional<User> category = userDao.findById(dto.getCategoryId());
+        if (category.isEmpty()) {
+            throw new NotFoundException("Пользователь с данным " + dto.getCategoryId() + " Id не найден");
+        }
         Resume resume = ResumeMapper.fromDto(dto);
         resumeDao.save(resume);
     }
@@ -53,11 +61,11 @@ public class ResumeServiceImpl implements ResumeService {
         Resume savedResume = resumeDao.save(resume);
         long resumeId = savedResume.getId();
 
-        if(resume.getEducationInfoList()!=null||!resume.getEducationInfoList().isEmpty()){
-            educationInfoDao.saveAll(resume.getEducationInfoList(),resumeId);
+        if (resume.getEducationInfoList() != null || !resume.getEducationInfoList().isEmpty()) {
+            educationInfoDao.saveAll(resume.getEducationInfoList(), resumeId);
         }
 
-        if (resume.getWorkExperienceInfoList() != null|| !resume.getWorkExperienceInfoList().isEmpty()) {
+        if (resume.getWorkExperienceInfoList() != null || !resume.getWorkExperienceInfoList().isEmpty()) {
             workExperienceInfoDao.saveAll(resume.getWorkExperienceInfoList(), resumeId);
         }
     }
@@ -80,7 +88,6 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
 
-
     @Override
     public void delete(long id, Authentication auth) {
         String username = auth.getName();
@@ -97,8 +104,6 @@ public class ResumeServiceImpl implements ResumeService {
 
         resumeDao.deleteById(id);
     }
-
-
 
 
 }

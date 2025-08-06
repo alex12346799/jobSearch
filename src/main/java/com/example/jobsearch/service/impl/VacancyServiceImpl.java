@@ -14,6 +14,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -25,6 +26,14 @@ public class VacancyServiceImpl implements VacancyService {
 
     @Override
     public void create(VacancyRequestDto vacancyRequestDto) {
+        Optional<User> categoriId = userDao.findById(vacancyRequestDto.getCategoryId());
+        if (categoriId.isEmpty()) {
+            throw new NotFoundException("Пользователь с данным " + vacancyRequestDto.getCategoryId() + " Id не найден");
+        }
+        Optional<User> employerId = userDao.findById(vacancyRequestDto.getEmployerId());
+        if (employerId.isEmpty()) {
+            throw new NotFoundException("Пользователь с данным " + vacancyRequestDto.getEmployerId() + " Id не найден");
+        }
         Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto);
         vacancyDao.saveVacancy(vacancy);
     }

@@ -15,7 +15,7 @@ public class VacancyRequestDto {
     private String description;
 
     @NotNull(message = "Обязательно введите categoryId")
-    private Integer categoryId;
+    private Long categoryId;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Зарплата должна быть больше нуля")
     private double salary;
@@ -28,5 +28,5 @@ public class VacancyRequestDto {
 
 
     @NotNull(message = "Обязательно введите employerId")
-    private Integer employerId;
+    private Long employerId;
 }

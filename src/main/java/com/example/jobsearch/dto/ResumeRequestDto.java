@@ -10,13 +10,13 @@ import java.util.List;
 @Data
 public class ResumeRequestDto {
     @NotNull(message = "Нужно обязательно указать applicantId")
-    private Integer applicantId;
+    private Long applicantId;
 
     @NotBlank(message = "Имя не должно быть пустым")
     private String name;
 
     @NotNull(message = "Нужно обязательно указать categoryId")
-    private Integer categoryId;
+    private Long categoryId;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Зарплата должна быть больше нуля")
     private double salary;
