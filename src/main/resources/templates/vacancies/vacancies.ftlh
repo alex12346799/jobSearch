@@ -5,11 +5,13 @@
         <thead>
         <tr>
             <th>#</th>
-            <th>Salary</th>
-            <th>Name</th>
-            <th>create date</th>
-            <th>Applicant_Id</th>
-            <th>Актуально</th>
+            <th>заголовок</th>
+            <th>описание</th>
+            <th>категории</th>
+            <th>зарплата</th>
+            <th>employear name</th>
+<#--            <th>дата создания</th>-->
+<#--            <th>дата обновления</th>-->
 
         </tr>
         </thead>
@@ -19,9 +21,11 @@
                 <td>${vacancy?index + 1}</td>
                 <td>${vacancy.title}</td>
                 <td>${vacancy.description}</td>
-                <td>${vacancy.categoryId}</td>
-                <td>${vacancy.expFrom}</td>
-                <td>${vacancy.expTo}</td>
+                <td>${vacancy.categoryName}</td>
+                <td>${vacancy.salary}</td>
+                <td>${vacancy.employerName}</td>
+<#--                <td>${vacancy.createdDate}</td>-->
+<#--                <td>${vacancy.updateDate}</td>-->
             </tr>
         </#list>
         </tbody>

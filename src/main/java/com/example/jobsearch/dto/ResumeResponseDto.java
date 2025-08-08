@@ -11,7 +11,9 @@ import java.time.LocalDateTime;
 public class ResumeResponseDto {
     private long id;
     private Long applicantId;
+    private String applicantName;
     private String name;
+    private String categoryName;
     private Long categoryId;
     private double salary;
     private boolean isActive;

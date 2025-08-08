@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
@@ -44,16 +45,38 @@ public class UserDaoImpl implements UserDao {
 
     }
     @Override
-    public List<User> findByEmail(String email) {
+    public String findNameById(Long id) {
+        String sql = "SELECT name FROM USERS WHERE id = ?";
+
+            return jdbcTemplate.queryForObject(sql, String.class, id);
+
+       }
+
+
+
+
+    @Override
+    public User findByEmail(String email) {
         String sql = "SELECT * FROM USERS WHERE email = ?";
-        return  jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), email);
+        List<User> users = jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(User.class), email);
+        if (users.isEmpty()) {
+            return null;
+        }
+        return users.get(0);
     }
+
 
 
     @Override
     public List<User> findAll() {
 
         return jdbcTemplate.query("SELECT * FROM USERS", rowMapper);
+    }
+    @Override
+    public boolean findByName(String name) {
+        String sql = "SELECT COUNT(*) FROM USERS WHERE name = ?";
+        Integer count = jdbcTemplate.queryForObject(sql, Integer.class, name);
+        return count != null && count > 0;
     }
 
     @Override

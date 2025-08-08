@@ -12,12 +12,14 @@ public class VacancyResponseDto {
     private Long id;
     private String title;
     private String description;
+    private String categoryName;
     private Long categoryId;
     private double salary;
     private int expFrom;
     private int expTo;
     private boolean isActive;
     private Long employerId;
+    private String employerName;
     private LocalDateTime createdDate;
     private LocalDateTime updateDate;
 }

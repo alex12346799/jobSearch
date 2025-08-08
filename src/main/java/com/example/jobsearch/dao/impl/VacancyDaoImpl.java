@@ -45,6 +45,7 @@ public class VacancyDaoImpl implements VacancyDao {
         return vacancies.stream().findFirst();
     }
 
+
     @Override
     public List<Vacancy> findAllVacancies() {
         String sql = "SELECT * FROM vacancy";

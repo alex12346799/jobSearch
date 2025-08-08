@@ -3,6 +3,7 @@ package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dao.VacancyDao;
+import com.example.jobsearch.dao.impl.CategoryDao;
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
@@ -24,6 +25,7 @@ import java.util.Optional;
 public class VacancyServiceImpl implements VacancyService {
     private final VacancyDao vacancyDao;
     private final UserDao userDao;
+    private final CategoryDao categoryDao;
 
 
     @Override
@@ -47,10 +49,7 @@ public class VacancyServiceImpl implements VacancyService {
                 .orElseThrow(() -> new NotFoundException("Вакансия с таким id " + id + " не найден"));
     }
 
-    //    @Override
-//    public List<Vacancy> getAll() {
-//        return vacancyDao.findAllVacancies();
-//    }
+
     @Override
     public List<VacancyResponseDto> getAll() {
         List<Vacancy> vacancies = vacancyDao.findAllVacancies();
@@ -59,12 +58,12 @@ public class VacancyServiceImpl implements VacancyService {
                         .id(a.getId())
                         .title(a.getTitle())
                         .description(a.getDescription())
-                        .categoryId(a.getCategoryId())
+                        .categoryName(categoryDao.findNameById(a.getCategoryId()))
                         .salary(a.getSalary())
                         .expFrom(a.getExpFrom())
                         .expTo(a.getExpTo())
                         .isActive(a.isActive())
-                        .employerId(a.getEmployerId())
+                        .employerName(userDao.findNameById(a.getEmployerId()))
                         .createdDate(a.getCreatedDate())
                         .updateDate(a.getUpdateDate())
                         .build())

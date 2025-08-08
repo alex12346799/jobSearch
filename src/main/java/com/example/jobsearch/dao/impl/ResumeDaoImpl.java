@@ -29,6 +29,18 @@ public class ResumeDaoImpl implements ResumeDao {
         return resumes.stream().findFirst();
     }
 
+//    @Override
+//    public List<Resume> findByApplicantIdName(long applicantId) {
+//        String sql = "SELECT u.name AS applicant_name, r.applicant_id FROM resume r JOIN users u ON r.applicant_id = u.id;";
+//        return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), applicantId);
+//    }
+@Override
+public String findApplicantNameById(long applicantId) {
+    String sql = "SELECT u.name FROM users u WHERE u.id = ?";
+    return jdbcTemplate.queryForObject(sql, String.class, applicantId);
+}
+
+
     @Override
     public List<Resume> findAllByApplicantId(int applicantId) {
         String sql = "SELECT * FROM resume WHERE applicant_id = ?";

@@ -10,22 +10,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
 
-//@Controller
 @Controller("resumeWebController")
 @RequestMapping("resumes")
 @RequiredArgsConstructor
 public class ResumeController {
     private final ResumeService resumeService;
-//    @GetMapping
-//    public String getResumes(Model model) {
-//        model.addAllAttributes("resumes", resumeService)
-//    }
 
-@GetMapping()
-public String showAllResumes(Model model) {
-    List<ResumeResponseDto> resumes = resumeService.getAllResumes();
-    model.addAttribute("resumes", resumes);
+    @GetMapping()
+    public String showAllResumes(Model model) {
+        List<ResumeResponseDto> resumes = resumeService.getAllResumes();
+        model.addAttribute("resumes", resumes);
 
-    return "resumes/resumes";
-}
+        return "resumes/resumes";
+    }
 }

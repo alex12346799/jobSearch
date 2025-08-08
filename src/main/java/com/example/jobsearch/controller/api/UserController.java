@@ -28,18 +28,18 @@ public class UserController {
         return ResponseEntity.ok(userService.getAllUsers());
     }
 
-    @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody @Valid UserRequestDto dto) {
-        userService.createUser(dto);
-        return ResponseEntity.ok("Пользователь упешно создан! ");
-    }
+//    @PostMapping
+//    public ResponseEntity<String> createUser(@RequestBody @Valid UserRequestDto dto) {
+//        userService.createUser(dto);
+//        return ResponseEntity.ok("Пользователь упешно создан! ");
+//    }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UserRequestDto userDto) {
-        userService.updateUser(id, userDto);
-        User updatedUser = userService.getUserById(id);
-        return ResponseEntity.ok(updatedUser);
-    }
+//    @PutMapping("/{id}")
+//    public ResponseEntity<User> updateUser(@PathVariable long id, @RequestBody UserRequestDto userDto) {
+//        userService.updateUser(id, userDto);
+//        User updatedUser = userService.getUserById(id);
+//        return ResponseEntity.ok(updatedUser);
+//    }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<User> deleteUser(@PathVariable long id) {

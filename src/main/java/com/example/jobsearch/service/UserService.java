@@ -2,6 +2,7 @@ package com.example.jobsearch.service;
 
 import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.model.User;
+import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
@@ -13,10 +14,11 @@ public interface UserService {
 
 
 
-    void createUser(UserRequestDto dto);
 
-    void updateUser(long id, UserRequestDto dto);
+
+    void updateUser(UserRequestDto dto);
 
     void deleteUser(long id);
 
+    void register(UserRequestDto dto);
 }

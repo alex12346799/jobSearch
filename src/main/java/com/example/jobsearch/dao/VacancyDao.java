@@ -11,6 +11,8 @@ public interface VacancyDao {
     Optional<Vacancy> findVacancyById(long id);
 
 
+
+
     List<Vacancy> findAllVacancies();
 
     List<Vacancy> findByUserId(int userId);

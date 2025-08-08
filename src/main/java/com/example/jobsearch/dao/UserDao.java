@@ -9,9 +9,20 @@ import java.util.Optional;
 public interface UserDao {
     Optional<User> findById(Long id);
 
-    List<User> findByEmail(String email);
+    //    @Override
+    //    public Optional<User> findById(Long id) {
+    //        String sql = "SELECT * FROM USERS WHERE id = ?";
+    //        List<User> users = jdbcTemplate.query(sql, rowMapper, id);
+    //        return users.stream().findFirst();
+    //
+    //    }
+    String findNameById(Long id);
+
+    User findByEmail(String email);
 
     List<User> findAll();
+
+    boolean findByName(String name);
 
     void save(User user);
 

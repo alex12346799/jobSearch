@@ -11,6 +11,11 @@ public interface ResumeDao {
 
     Optional<Resume> findById(long id);
 
+//    List<Resume>  findByApplicantIdName(long applicantId);
+
+
+    String findApplicantNameById(long applicantId);
+
     List<Resume> findAllByApplicantId(int applicantId);
 
     Resume save(Resume resume);
