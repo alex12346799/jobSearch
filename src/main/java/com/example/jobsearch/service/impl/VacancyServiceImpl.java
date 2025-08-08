@@ -4,7 +4,9 @@ package com.example.jobsearch.service.impl;
 import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dao.VacancyDao;
 import com.example.jobsearch.dto.VacancyRequestDto;
+import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
+import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.mapper.VacancyMapper;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
@@ -45,9 +47,30 @@ public class VacancyServiceImpl implements VacancyService {
                 .orElseThrow(() -> new NotFoundException("Вакансия с таким id " + id + " не найден"));
     }
 
+    //    @Override
+//    public List<Vacancy> getAll() {
+//        return vacancyDao.findAllVacancies();
+//    }
     @Override
-    public List<Vacancy> getAll() {
-        return vacancyDao.findAllVacancies();
+    public List<VacancyResponseDto> getAll() {
+        List<Vacancy> vacancies = vacancyDao.findAllVacancies();
+        return vacancies.stream()
+                .map(a -> VacancyResponseDto.builder()
+                        .id(a.getId())
+                        .title(a.getTitle())
+                        .description(a.getDescription())
+                        .categoryId(a.getCategoryId())
+                        .salary(a.getSalary())
+                        .expFrom(a.getExpFrom())
+                        .expTo(a.getExpTo())
+                        .isActive(a.isActive())
+                        .employerId(a.getEmployerId())
+                        .createdDate(a.getCreatedDate())
+                        .updateDate(a.getUpdateDate())
+                        .build())
+                .toList();
+
+
     }
 
     @Override

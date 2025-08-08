@@ -1,13 +1,14 @@
 package com.example.jobsearch.service;
 
 import com.example.jobsearch.dto.ResumeRequestDto;
+import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.model.Resume;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
 public interface ResumeService {
-    List<Resume> getAllResumes();
+    List<ResumeResponseDto> getAllResumes();
 
     Resume getById(long id);
 

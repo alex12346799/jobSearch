@@ -1,5 +1,6 @@
 package com.example.jobsearch.dao;
 
+import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.model.Resume;
 
 import java.util.List;

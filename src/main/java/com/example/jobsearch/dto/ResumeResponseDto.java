@@ -1,17 +1,20 @@
 package com.example.jobsearch.dto;
 
-import lombok.Data;
+import lombok.*;
 
 import java.time.LocalDateTime;
 
 @Data
+@AllArgsConstructor(access = AccessLevel.PUBLIC)
+@Builder
+@NoArgsConstructor
 public class ResumeResponseDto {
     private long id;
-    private int applicantId;
+    private Long applicantId;
     private String name;
-    private int categoryId;
+    private Long categoryId;
     private double salary;
     private boolean isActive;
     private LocalDateTime createdDate;
-    private LocalDateTime updateTime;
+    private LocalDateTime updateDate;
 }

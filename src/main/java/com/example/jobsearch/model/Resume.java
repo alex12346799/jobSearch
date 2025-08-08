@@ -1,8 +1,9 @@
 package com.example.jobsearch.model;
 
 
+
 import lombok.Data;
-import lombok.Getter;
+
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,13 +11,13 @@ import java.util.List;
 @Data
 public class Resume {
     private long id;
-    private int applicantId;
+    private Long applicantId;
     private String name;
-    private int categoryId;
+    private Long categoryId;
     private double salary;
     private boolean isActive;
     private LocalDateTime createdDate;
-    private LocalDateTime updateTime;
+    private LocalDateTime updateDate;
     private List<EducationInfo> educationInfoList;
     private List<WorkExperienceInfo> workExperienceInfoList;
 

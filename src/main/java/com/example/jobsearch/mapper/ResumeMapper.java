@@ -20,7 +20,7 @@ public class ResumeMapper {
         resume.setCategoryId(dto.getCategoryId());
         resume.setSalary(dto.getSalary());
         resume.setCreatedDate(LocalDateTime.now());
-        resume.setUpdateTime(LocalDateTime.now());
+        resume.setUpdateDate(LocalDateTime.now());
 
 
         List<EducationInfo> educationList = new ArrayList<>();

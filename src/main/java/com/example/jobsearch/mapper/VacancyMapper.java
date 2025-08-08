@@ -5,24 +5,11 @@ import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.model.Vacancy;
 
 public class VacancyMapper {
-//    public static Vacancy fromTo(VacancyCreateDto vacancyCreateDto) {
-//        Vacancy vacancy = new Vacancy();
-//        vacancy.setTitle(vacancyCreateDto.getTitle());
-//        vacancy.setDescription(vacancyCreateDto.getDescription());
-//        vacancy.setCategoryId(vacancyCreateDto.getCategoryId());
-//        vacancy.setSalary(vacancyCreateDto.getSalary());
-//        vacancy.setExpFrom(vacancyCreateDto.getExpFrom());
-//        vacancy.setExpTo(vacancyCreateDto.getExpTo());
-////        vacancy.set(vacancyCreateDto.isAsActive());
-//        vacancy.setEmployerId(vacancyCreateDto.getEmployerId());
-//        vacancy.setCreatedDate(vacancyCreateDto.getCreatedDate());
-//        vacancy.setUpdateDate(vacancyCreateDto.getUpdatedDate());
-//        return vacancy;
-//    }
+
 
     public static VacancyResponseDto toDto(Vacancy vacancy) {
         if (vacancy == null) return null;
-        final VacancyResponseDto dto = new VacancyResponseDto();
+        VacancyResponseDto dto = new VacancyResponseDto();
         dto.setId(vacancy.getId());
         dto.setTitle(vacancy.getTitle());
         dto.setDescription(vacancy.getDescription());
@@ -36,6 +23,7 @@ public class VacancyMapper {
         dto.setUpdateDate(vacancy.getUpdateDate());
         return dto;
     }
+
     public static Vacancy fromDto(VacancyRequestDto dto) {
         if (dto == null) return null;
         Vacancy vacancy = new Vacancy();

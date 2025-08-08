@@ -1,4 +1,4 @@
-package com.example.jobsearch.controller;
+package com.example.jobsearch.controller.api;
 
 import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.model.User;
@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("api/users")
 public class UserController {
     private final UserService userService;
 

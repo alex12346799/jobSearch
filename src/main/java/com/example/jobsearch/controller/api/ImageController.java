@@ -1,4 +1,4 @@
-package com.example.jobsearch.controller;
+package com.example.jobsearch.controller.api;
 
 import com.example.jobsearch.dto.ImageDto;
 import com.example.jobsearch.service.ImageService;
@@ -7,7 +7,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("images")
+@RequestMapping("api/images")
 @RequiredArgsConstructor
 public class ImageController {
 private final ImageService imageService;

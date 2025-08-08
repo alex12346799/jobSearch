@@ -1,6 +1,7 @@
 package com.example.jobsearch.service;
 
 import com.example.jobsearch.dto.VacancyRequestDto;
+import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.model.Vacancy;
 import org.springframework.security.core.Authentication;
 
@@ -13,7 +14,7 @@ public interface VacancyService {
 
     Vacancy getById(long id);
 
-    List<Vacancy> getAll();
+    List<VacancyResponseDto> getAll();
 
     List<Vacancy> getByUser(int userId);
 

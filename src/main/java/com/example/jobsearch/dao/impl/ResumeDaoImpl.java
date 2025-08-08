@@ -46,7 +46,7 @@ public class ResumeDaoImpl implements ResumeDao {
                 resume.getSalary(),
                 resume.isActive(),
                 resume.getCreatedDate(),
-                resume.getUpdateTime()
+                resume.getUpdateDate()
         );
          return resume;
 
@@ -60,7 +60,7 @@ public class ResumeDaoImpl implements ResumeDao {
                 resume.getCategoryId(),
                 resume.getSalary(),
                 resume.isActive(),
-                resume.getUpdateTime(),
+                resume.getUpdateDate(),
                 resume.getId()
         );
     }

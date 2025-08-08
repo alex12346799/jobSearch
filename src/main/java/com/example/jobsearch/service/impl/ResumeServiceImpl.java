@@ -4,7 +4,11 @@ import com.example.jobsearch.dao.EducationInfoDao;
 import com.example.jobsearch.dao.ResumeDao;
 import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dao.WorkExperienceInfoDao;
+import com.example.jobsearch.dao.impl.RespondentApplicantDao;
+import com.example.jobsearch.dto.RespondentApplicantResponseDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
+import com.example.jobsearch.dto.ResumeResponseDto;
+import com.example.jobsearch.exceptions.ApplicantNotFoundException;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.model.Resume;
@@ -15,6 +19,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,11 +30,50 @@ public class ResumeServiceImpl implements ResumeService {
     private final WorkExperienceInfoDao workExperienceInfoDao;
     private final EducationInfoDao educationInfoDao;
     private final UserDao userDao;
+    private final RespondentApplicantDao respondentApplicantDao;
 
+    //    @Override
+//    public List<Resume> getAllResumes() {
+//        return resumeDao.findAll();
+//    }
+//    @Override
+//    public List<ResumeResponseDto> getAllResumes() {
+//        List<Resume> resumes = resumeDao.findAll();
+//        List<ResumeResponseDto> resumeResponseDtos = resumes.stream()
+//                .map(e->{
+////                    RespondentApplicantResponse respondentApplicantResponse =
+////                            respondentApplicantDao.findById(e.getRespondentApplicant().getId())
+////                                    .orElseThrow(ApplicantNotFoundException::new);
+//                    ResumeResponseDto dto =  ResumeResponseDto.builder()
+//                            .id(e.getId())
+//                            .name(e.getName())
+//                            .salary(e.getSalary())
+//                            .isActive(e.isActive())
+//                            .createdDate(e.getCreatedDate())
+//                            .updateDate(e.getUpdateDate())
+//                            .applicantId(e.getApplicantId())
+//                            .categoryId(e.getCategoryId())
+//                            .build();
+//        })
+//                .toList();
+//    }
     @Override
-    public List<Resume> getAllResumes() {
-        return resumeDao.findAll();
+    public List<ResumeResponseDto> getAllResumes() {
+        List<Resume> resumes = resumeDao.findAll();
+        return resumes.stream()
+                .map(e -> ResumeResponseDto.builder()
+                        .id(e.getId())
+                        .name(e.getName())
+                        .salary(e.getSalary())
+                        .isActive(e.isActive())
+                        .createdDate(e.getCreatedDate())
+                        .updateDate(e.getUpdateDate())
+                        .applicantId(e.getApplicantId())
+                        .categoryId(e.getCategoryId())
+                        .build())
+                .toList();
     }
+
 
     @Override
     public Resume getById(long id) {
