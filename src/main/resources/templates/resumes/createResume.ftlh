@@ -1,6 +1,6 @@
 
 <#import "../layout.ftlh" as main>
-<@main.layout>
+<@main.layout ; spring>
 
     <div class="container mt-4 p-4 border rounded" style="max-width:600px;">
         <h3 class="text-danger mb-4 text-center">Создание резюме:</h3>

@@ -1,6 +1,8 @@
 package com.example.jobsearch.exceptions;
 
 import com.example.jobsearch.service.ErrorService;
+import com.sun.net.httpserver.HttpServer;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +27,10 @@ public class GlobalControllerAdvice {
 //   return new ResponseEntity<>(errorService.makeResponse(ex.getBindingResult()), HttpStatus.BAD_REQUEST);
 //    }
     @ExceptionHandler(NotFoundException.class)
-    public String handleNotFoundException(Model model){
+    public String handleNotFoundException(HttpServletRequest request, Model model){
     model.addAttribute("message", HttpStatus.NOT_FOUND.value());
     model.addAttribute("reason", HttpStatus.NOT_FOUND.getReasonPhrase());
-//    model.addAttribute("details", request);
+    model.addAttribute("details", request);
     model.addAttribute("status", HttpStatus.NOT_FOUND.value());
     return "errors/error";
     }

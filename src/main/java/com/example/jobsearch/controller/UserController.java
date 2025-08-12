@@ -44,6 +44,6 @@ public class UserController {
     public String infoUser(UserRequestDto dto, Model model) {
         userService.updateUser(dto);
         model.addAttribute("userRequestDto", dto);
-        return "infoUser/infoUser";
+        return "profile/profile";
     }
 }

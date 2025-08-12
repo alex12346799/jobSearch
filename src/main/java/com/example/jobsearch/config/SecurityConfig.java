@@ -31,13 +31,13 @@
 //                "from USERS us, ROLES r\n" +
 //                "where us.USERNAME=?\n" +
 //                "and us.ROLE_ID = r.ID";
-////        String userQuery = "SELECT email, password, enabled " +
-////                "FROM USERS " +
-////                "WHERE email = ?;";
-////        String roleQuery = "select email, concat('ROLE_', role_name) as role" +
-////                "from USERS us, ROLES r" +
-////                "where us.email=?" +
-////                "and us.ROLE_ID = r.ID";
+/// /        String userQuery = "SELECT email, password, enabled " +
+/// /                "FROM USERS " +
+/// /                "WHERE email = ?;";
+/// /        String roleQuery = "select email, concat('ROLE_', role_name) as role" +
+/// /                "from USERS us, ROLES r" +
+/// /                "where us.email=?" +
+/// /                "and us.ROLE_ID = r.ID";
 //
 //        auth.jdbcAuthentication()
 //                .dataSource(dataSource)
@@ -143,12 +143,10 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorize -> authorize
-                                .requestMatchers(HttpMethod.GET, "/resumes").hasRole("APPLICANT")
-                                .requestMatchers(HttpMethod.POST, "/resumes").hasRole("APPLICANT")
                                 .requestMatchers(HttpMethod.GET, "/vacancies").hasRole("EMPLOYEE")
                                 .requestMatchers(HttpMethod.POST, "/vacancies").hasRole("EMPLOYEE")
-                                .requestMatchers(HttpMethod.GET, "/resumes").hasRole("EMPLOYEE")
-
+                                .requestMatchers(HttpMethod.GET, "/resumes").hasAnyRole("EMPLOYEE", "APPLICANT")
+                                .requestMatchers(HttpMethod.POST, "/resumes").hasRole("APPLICANT")
                                 .anyRequest().permitAll()
                 );
         return http.build();
