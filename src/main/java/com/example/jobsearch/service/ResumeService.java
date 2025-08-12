@@ -16,9 +16,9 @@ public interface ResumeService {
 
 
 
-    void create(ResumeRequestDto dto);
+    Resume create(ResumeRequestDto dto);
 
-    void createWithDetails(Resume resume);
+
 
 
 

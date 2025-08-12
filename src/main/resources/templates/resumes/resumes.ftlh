@@ -6,10 +6,11 @@
             <th>#</th>
             <th>название</th>
             <th>зарплата</th>
-            <th>дата начала</th>
+            <th>дата создания</th>
             <th>имя</th>
-            <th>Актуально</th>
+            <th>дата обновления</th>
             <th>категория</th>
+            <th></th>
 
         </tr>
         </thead>
@@ -23,6 +24,7 @@
                 <td>${resume.applicantName}</td>
                 <td>${resume.updateDate}</td>
                 <td>${resume.categoryName}</td>
+                <td><a href="resumes/${resume.id}">More</a></td>
             </tr>
         </#list>
         </tbody>

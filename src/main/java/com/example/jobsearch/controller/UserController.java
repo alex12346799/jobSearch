@@ -22,15 +22,25 @@ public class UserController {
     @PostMapping("/register")
     public String registerUser(UserRequestDto dto) {
         userService.register(dto);
-        return "redirect:/auth/login";
+        return "redirect:/";
     }
-    @GetMapping("/dasfdsf")
+    @GetMapping("/login")
+    public String login() {
+        return "auth/login";
+    }
+    @PostMapping("/login")
+    public String loginUser(UserRequestDto dto) {
+        userService.login(dto.getEmail(), dto.getPassword());
+        return "redirect:/auth/profile";
+    }
+
+    @GetMapping("/update")
     public String updateUser(UserRequestDto dto, Model model) {
         userService.updateUser(dto);
         model.addAttribute("userRequestDto", dto);
         return "editUser/editingUser";
     }
-    @GetMapping("/qwe")
+    @GetMapping("/profile")
     public String infoUser(UserRequestDto dto, Model model) {
         userService.updateUser(dto);
         model.addAttribute("userRequestDto", dto);

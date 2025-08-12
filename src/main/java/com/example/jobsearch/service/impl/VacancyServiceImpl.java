@@ -29,9 +29,9 @@ public class VacancyServiceImpl implements VacancyService {
 
 
     @Override
-    public void create(VacancyRequestDto vacancyRequestDto) {
-        Optional<User> categoriId = userDao.findById(vacancyRequestDto.getCategoryId());
-        if (categoriId.isEmpty()) {
+    public Vacancy create(VacancyRequestDto vacancyRequestDto) {
+        Optional<User> categoryId = userDao.findById(vacancyRequestDto.getCategoryId());
+        if (categoryId.isEmpty()) {
             throw new NotFoundException("Пользователь с данным " + vacancyRequestDto.getCategoryId() + " Id не найден");
         }
         Optional<User> employerId = userDao.findById(vacancyRequestDto.getEmployerId());
@@ -40,6 +40,7 @@ public class VacancyServiceImpl implements VacancyService {
         }
         Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto);
         vacancyDao.saveVacancy(vacancy);
+        return vacancy;
     }
 
 

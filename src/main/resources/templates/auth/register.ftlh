@@ -1,4 +1,5 @@
-
+<#import "../layout.ftlh" as main>
+<@main.layout>
 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#authModal">
     Войти / Регистрация
 </button>
@@ -15,7 +16,7 @@
             </div>
 
             <div class="modal-body">
-                <!-- Вкладки -->
+
                 <ul class="nav nav-pills mb-3 justify-content-center" id="pills-tab" role="tablist">
                     <li class="nav-item" role="presentation">
                         <button class="nav-link active" id="login-tab" data-bs-toggle="pill"
@@ -31,7 +32,7 @@
 
 
                 <div class="tab-content" id="pills-tabContent">
-                    <!-- Вход -->
+
                     <div class="tab-pane fade show active" id="login" role="tabpanel">
                         <form>
                             <div class="mb-3">
@@ -124,3 +125,4 @@
     }
 </style>
 </div>
+</@main.layout>

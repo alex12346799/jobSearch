@@ -5,8 +5,13 @@ import com.example.jobsearch.model.Resume;
 import lombok.RequiredArgsConstructor;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
+import java.sql.PreparedStatement;
+import java.sql.Statement;
+import java.sql.Timestamp;
 import java.util.List;
 import java.util.Optional;
 
@@ -41,28 +46,60 @@ public String findApplicantNameById(long applicantId) {
 }
 
 
+
     @Override
     public List<Resume> findAllByApplicantId(int applicantId) {
         String sql = "SELECT * FROM resume WHERE applicant_id = ?";
         return jdbcTemplate.query(sql, new BeanPropertyRowMapper<>(Resume.class), applicantId);
     }
 
-    @Override
-    public Resume save(Resume resume) {
-        String sql = "INSERT INTO resume (applicant_id, name, category_id, salary, is_active, created_date, update_date) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?)";
-         jdbcTemplate.update(sql,
-                resume.getApplicantId(),
-                resume.getName(),
-                resume.getCategoryId(),
-                resume.getSalary(),
-                resume.isActive(),
-                resume.getCreatedDate(),
-                resume.getUpdateDate()
-        );
-         return resume;
+//    @Override
+//    public Resume save(Resume resume) {
+//        String sql = "INSERT INTO resume (applicant_id, name, category_id, salary, is_active, created_date, update_date) " +
+//                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+//         jdbcTemplate.update(sql,
+//                resume.getApplicantId(),
+//                resume.getName(),
+//                resume.getCategoryId(),
+//                resume.getSalary(),
+//                resume.isActive(),
+//                resume.getCreatedDate(),
+//                resume.getUpdateDate()
+//        );
+//         return resume;
+//
+//    }
+@Override
+public Resume save(Resume resume) {
+    String sql = "INSERT INTO resume (applicant_id, name, category_id, salary, is_active, created_date, update_date) " +
+            "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
+    KeyHolder keyHolder = new GeneratedKeyHolder();
+
+    jdbcTemplate.update(connection -> {
+        PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+        ps.setLong(1, resume.getApplicantId());
+        ps.setString(2, resume.getName());
+        ps.setLong(3, resume.getCategoryId());
+        ps.setDouble(4, resume.getSalary());
+        ps.setBoolean(5, resume.isActive());
+        ps.setTimestamp(6, Timestamp.valueOf(resume.getCreatedDate()));
+        ps.setTimestamp(7, Timestamp.valueOf(resume.getUpdateDate()));
+        return ps;
+    }, keyHolder);
+
+
+    Number generatedId = keyHolder.getKey();
+    if (generatedId != null) {
+        resume.setId(generatedId.longValue());
+        System.out.println("Generated Resume ID: " + generatedId.longValue());
+    } else {
+        System.out.println("No ID generated!");
     }
+
+    return resume;
+}
+
 
     @Override
     public void update(Resume resume) {

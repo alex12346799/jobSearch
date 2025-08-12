@@ -8,7 +8,6 @@ import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -60,7 +59,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser( UserRequestDto dto) {
+    public User login(String email, String password) {
+        User user = userDao.findByEmail(email);
+        if (user == null) {
+            throw new NotFoundException("Пользователя с таким email не найден");
+        }
+
+
+        if (!passwordEncoder.matches(password, user.getPassword())) {
+            throw new NotFoundException("Неверный пароль");
+        }
+        return user;
+    }
+
+    @Override
+    public void updateUser(UserRequestDto dto) {
         User user = new User();
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());
@@ -68,9 +81,7 @@ public class UserServiceImpl implements UserService {
         user.setAddress(dto.getAddress());
         userDao.update(user);
     }
-//    public void updateUser(UserRequestDto dto) {
-//
-//    }
+
 
     @Override
     public void deleteUser(long id) {

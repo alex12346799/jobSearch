@@ -1,0 +1,32 @@
+databaseChangeLog:
+  - changeSet:
+      id: create_table_social_links
+      author: aleksei
+      changes:
+        - createTable:
+            tableName: social_links
+            columns:
+              - column:
+                  name: id
+                  type: int
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: resume_id
+                  type: int
+                  constraints:
+                    nullable: false
+                    foreignKeyName: fk_social_resume
+                    references: resume(id)
+                    deleteCascade: true
+              - column:
+                  name: telegram
+                  type: varchar(255)
+              - column:
+                  name: facebook
+                  type: varchar(255)
+              - column:
+                  name: linkedin
+                  type: varchar(255)

@@ -2,9 +2,11 @@ package com.example.jobsearch.mapper;
 
 import com.example.jobsearch.dto.EducationInfoRequestDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
+import com.example.jobsearch.dto.SocialLinksDto;
 import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
 import com.example.jobsearch.model.EducationInfo;
 import com.example.jobsearch.model.Resume;
+import com.example.jobsearch.model.SocialLinks;
 import com.example.jobsearch.model.WorkExperienceInfo;
 
 import java.time.LocalDateTime;
@@ -51,4 +53,14 @@ public class ResumeMapper {
 
         return resume;
     }
+
+    public static SocialLinks fromDto(SocialLinksDto dto, long resumeId) {
+        SocialLinks socialLinks = new SocialLinks();
+        socialLinks.setResumeId(resumeId);
+        socialLinks.setTelegram(dto.getTelegram());
+        socialLinks.setFacebook(dto.getFacebook());
+        socialLinks.setLinkedin(dto.getLinkedin());
+        return socialLinks;
+    }
+
 }

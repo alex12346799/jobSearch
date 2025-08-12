@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface VacancyService {
 
-    void create(VacancyRequestDto vacancyRequestDto);
+    Vacancy create(VacancyRequestDto vacancyRequestDto);
 
 
     Vacancy getById(long id);

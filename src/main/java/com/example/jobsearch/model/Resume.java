@@ -20,6 +20,7 @@ public class Resume {
     private LocalDateTime updateDate;
     private List<EducationInfo> educationInfoList;
     private List<WorkExperienceInfo> workExperienceInfoList;
+    private SocialLinks socialLinks;
 
 
 

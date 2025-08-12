@@ -6,13 +6,16 @@ import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dao.WorkExperienceInfoDao;
 import com.example.jobsearch.dao.impl.CategoryDao;
 import com.example.jobsearch.dao.impl.RespondentApplicantDao;
+import com.example.jobsearch.dao.impl.SocialLinksDao;
 import com.example.jobsearch.dto.RespondentApplicantResponseDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.exceptions.ApplicantNotFoundException;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.ResumeMapper;
+import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.Resume;
+import com.example.jobsearch.model.SocialLinks;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +34,8 @@ public class ResumeServiceImpl implements ResumeService {
     private final WorkExperienceInfoDao workExperienceInfoDao;
     private final EducationInfoDao educationInfoDao;
     private final UserDao userDao;
-    private final CategoryDao  categoryDao;
+    private final CategoryDao categoryDao;
+    private final SocialLinksDao socialLinksDao;
 
     @Override
     public List<ResumeResponseDto> getAllResumes() {
@@ -63,32 +67,38 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public void create(ResumeRequestDto dto) {
+    public Resume create(ResumeRequestDto dto) {
         Optional<User> appllicant = userDao.findById(dto.getApplicantId());
         if (appllicant.isEmpty()) {
             throw new NotFoundException("Пользователь с данным " + dto.getApplicantId() + " Id не найден");
         }
-        Optional<User> category = userDao.findById(dto.getCategoryId());
-        if (category.isEmpty()) {
-            throw new NotFoundException("Пользователь с данным " + dto.getCategoryId() + " Id не найден");
+        Category category = categoryDao.findById(dto.getCategoryId());
+        if (category == null) {
+            throw new NotFoundException("Категория с id " + dto.getCategoryId() + " не найден");
         }
+
         Resume resume = ResumeMapper.fromDto(dto);
+        resume.setApplicantId(appllicant.get().getId());
+        resume.setCategoryId(category.getId());
         resumeDao.save(resume);
-    }
-
-    @Override
-    public void createWithDetails(Resume resume) {
-        Resume savedResume = resumeDao.save(resume);
-        long resumeId = savedResume.getId();
-
-        if (resume.getEducationInfoList() != null || !resume.getEducationInfoList().isEmpty()) {
+        Long resumeId = resume.getId();
+        if (resume.getEducationInfoList() != null && !resume.getEducationInfoList().isEmpty()) {
             educationInfoDao.saveAll(resume.getEducationInfoList(), resumeId);
         }
-
-        if (resume.getWorkExperienceInfoList() != null || !resume.getWorkExperienceInfoList().isEmpty()) {
+        if (resume.getWorkExperienceInfoList() != null && !resume.getWorkExperienceInfoList().isEmpty()) {
             workExperienceInfoDao.saveAll(resume.getWorkExperienceInfoList(), resumeId);
         }
+        if (dto.getSocialLinksDto() != null) {
+            SocialLinks socialLinks = ResumeMapper.fromDto(dto.getSocialLinksDto(), resumeId);
+            socialLinksDao.save(socialLinks);
+            resume.setSocialLinks(socialLinks);
+        }
+
+
+        return resume;
+
     }
+
 
     @Override
     public void update(Resume resume, long id, Authentication auth) {
