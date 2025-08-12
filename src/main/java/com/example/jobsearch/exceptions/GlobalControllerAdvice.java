@@ -28,6 +28,7 @@ public class GlobalControllerAdvice {
     public String handleNotFoundException(Model model){
     model.addAttribute("message", HttpStatus.NOT_FOUND.value());
     model.addAttribute("reason", HttpStatus.NOT_FOUND.getReasonPhrase());
+//    model.addAttribute("details", request);
     model.addAttribute("status", HttpStatus.NOT_FOUND.value());
     return "errors/error";
     }

@@ -143,8 +143,12 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         authorize -> authorize
+                                .requestMatchers(HttpMethod.GET, "/resumes").hasRole("APPLICANT")
                                 .requestMatchers(HttpMethod.POST, "/resumes").hasRole("APPLICANT")
+                                .requestMatchers(HttpMethod.GET, "/vacancies").hasRole("EMPLOYEE")
                                 .requestMatchers(HttpMethod.POST, "/vacancies").hasRole("EMPLOYEE")
+                                .requestMatchers(HttpMethod.GET, "/resumes").hasRole("EMPLOYEE")
+
                                 .anyRequest().permitAll()
                 );
         return http.build();
