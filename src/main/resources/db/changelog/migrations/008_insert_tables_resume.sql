@@ -1,0 +1,16 @@
+INSERT INTO resume (applicant_id, name, category_id, salary, is_active, created_date, update_date) VALUES
+                                                                                                       (1, 'Java Developer 1', 1, 60000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Java Developer 2', 1, 61000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'Financial Analyst 1', 2, 55000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Financial Analyst 2', 2, 56000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'Frontend Developer', 1, 58000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Accountant', 2, 50000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'Fullstack Developer', 1, 62000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Financial Consultant', 2, 57000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'QA Engineer', 1, 59000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Tax Specialist', 2, 53000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'System Administrator', 1, 60000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Budget Analyst', 2, 54000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'DevOps Engineer', 1, 61000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (3, 'Investment Analyst', 2, 58000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+                                                                                                       (1, 'Data Scientist', 1, 63000, TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
