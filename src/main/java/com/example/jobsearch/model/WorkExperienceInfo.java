@@ -1,12 +1,24 @@
 package com.example.jobsearch.model;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Entity
+@Table(name = "work_experience_info")
 public class WorkExperienceInfo {
-    private long id;
-    private int resumeId;
-    private int years;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne
+    @JoinColumn(name = "resume_id")
+    private Resume resume;
+    private Long years;
+
+    @Column(name = "company_name")
     private String companyName;
     private String position;
     private String responsibilities;

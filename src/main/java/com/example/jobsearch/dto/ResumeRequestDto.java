@@ -22,7 +22,7 @@ public class ResumeRequestDto {
     private double salary;
     private List<EducationInfoRequestDto> educationInfoList;
     private List<WorkExperienceInfoRequestDto> workExperienceInfoList;
-    private SocialLinksDto socialLinksDto;
+    private SocialLinkRequestDto socialLinkRequestDto;
 
 
 }

@@ -1,45 +1,35 @@
 package com.example.jobsearch.service.impl;
 
-import com.example.jobsearch.dao.EducationInfoDao;
-import com.example.jobsearch.dao.ResumeDao;
-import com.example.jobsearch.dao.UserDao;
-import com.example.jobsearch.dao.WorkExperienceInfoDao;
-import com.example.jobsearch.dao.impl.CategoryDao;
-import com.example.jobsearch.dao.impl.RespondentApplicantDao;
-import com.example.jobsearch.dao.impl.SocialLinksDao;
-import com.example.jobsearch.dto.RespondentApplicantResponseDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
-import com.example.jobsearch.exceptions.ApplicantNotFoundException;
+
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.ResumeMapper;
-import com.example.jobsearch.model.Category;
-import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.model.SocialLinks;
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.mapper.SocialLinksMapper;
+import com.example.jobsearch.model.*;
+import com.example.jobsearch.repository.*;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ResumeServiceImpl implements ResumeService {
-    private final ResumeDao resumeDao;
-    private final WorkExperienceInfoDao workExperienceInfoDao;
-    private final EducationInfoDao educationInfoDao;
-    private final UserDao userDao;
-    private final CategoryDao categoryDao;
-    private final SocialLinksDao socialLinksDao;
-
+    private final ResumeRepository resumeRepository;
+    private final WorkExperienceInfoRepository workExperienceInfoRepository;
+    private final EducationInfoRepository educationInfoRepository;
+    private final UserRepository userRepository;
+    private final CategoryRepository categoryRepository;
+    private final SocialLinksRepository socialLinksRepository;
     @Override
     public List<ResumeResponseDto> getAllResumes() {
-        List<Resume> resumes = resumeDao.findAll();
+        List<Resume> resumes = resumeRepository.findAll();
         return resumes.stream()
                 .map(e -> ResumeResponseDto.builder()
                         .id(e.getId())
@@ -48,8 +38,8 @@ public class ResumeServiceImpl implements ResumeService {
                         .isActive(e.isActive())
                         .createdDate(e.getCreatedDate())
                         .updateDate(e.getUpdateDate())
-                        .applicantName(userDao.findNameById(e.getApplicantId()))
-                        .categoryName(categoryDao.findNameById(e.getCategoryId()))
+                        .applicantName(userRepository.findNameById(e.getApplicant().getId()))
+                        .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
                         .build())
                 .toList();
     }
@@ -57,82 +47,99 @@ public class ResumeServiceImpl implements ResumeService {
 
     @Override
     public Resume getById(long id) {
-        return resumeDao.findById(id)
+        return resumeRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Вот это " + id + " резюме не найдено"));
     }
 
     @Override
     public List<Resume> getAllByApplicantId(int applicantId) {
-        return resumeDao.findAllByApplicantId(applicantId);
+        return resumeRepository.findAllByApplicantId(applicantId);
     }
 
     @Override
     public Resume create(ResumeRequestDto dto) {
-        Optional<User> appllicant = userDao.findById(dto.getApplicantId());
+        Optional<User> appllicant = userRepository.findById(dto.getApplicantId());
         if (appllicant.isEmpty()) {
             throw new NotFoundException("Пользователь с данным " + dto.getApplicantId() + " Id не найден");
         }
-        Category category = categoryDao.findById(dto.getCategoryId());
+        Category category = categoryRepository.findById(dto.getCategoryId())
+                .orElseThrow(()-> new NotFoundException( "Категория с id " + dto.getCategoryId() + " не найдена"));
         if (category == null) {
             throw new NotFoundException("Категория с id " + dto.getCategoryId() + " не найден");
         }
 
         Resume resume = ResumeMapper.fromDto(dto);
-        resume.setApplicantId(appllicant.get().getId());
-        resume.setCategoryId(category.getId());
-        resumeDao.save(resume);
-        Long resumeId = resume.getId();
-        if (resume.getEducationInfoList() != null && !resume.getEducationInfoList().isEmpty()) {
-            educationInfoDao.saveAll(resume.getEducationInfoList(), resumeId);
+        resume.setApplicant(appllicant.get());
+        resume.setCategory(category);
+
+
+        if (resume.getEducationInfoList() != null) {
+            for (EducationInfo educationInfo : resume.getEducationInfoList()) {
+                educationInfo.setResume(resume);
+            }
         }
-        if (resume.getWorkExperienceInfoList() != null && !resume.getWorkExperienceInfoList().isEmpty()) {
-            workExperienceInfoDao.saveAll(resume.getWorkExperienceInfoList(), resumeId);
+        if (resume.getWorkExperienceInfoList() != null) {
+            for (WorkExperienceInfo workExperienceInfo : resume.getWorkExperienceInfoList()) {
+                workExperienceInfo.setResume(resume);
+            }
+
+
         }
-        if (dto.getSocialLinksDto() != null) {
-            SocialLinks socialLinks = ResumeMapper.fromDto(dto.getSocialLinksDto(), resumeId);
-            socialLinksDao.save(socialLinks);
+        if (dto.getSocialLinkRequestDto() != null) {
+            SocialLinks socialLinks = SocialLinksMapper.fromDto(dto.getSocialLinkRequestDto());
+            socialLinks.setResume(resume);
             resume.setSocialLinks(socialLinks);
         }
 
 
-        return resume;
+        return resumeRepository.save(resume);
 
     }
 
 
     @Override
     public void update(Resume resume, long id, Authentication auth) {
-        String username = auth.getName();
+        String email = auth.getName();
 
 
-        User user = userDao.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
+            User user = userRepository.findByEmail(email)
+                    .orElseThrow(()->new NotFoundException("Пользователь не найден"));
 
-        Resume existingResume = resumeDao.findById(id)
+
+
+        Resume existingResume = resumeRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Резюме не найдено"));
-        if (existingResume.getApplicantId() != user.getId()) {
+        if (existingResume.getApplicant().getId() != user.getId()) {
             throw new NotFoundException("У вас нет прав для изменения этого резюме");
         }
+        existingResume.setName(resume.getName());
+        existingResume.setCategory(resume.getCategory());
+        existingResume.setSalary(resume.getSalary());
+        existingResume.setActive(resume.isActive());
+        existingResume.setUpdateDate(resume.getUpdateDate());
+        resumeRepository.save(existingResume);
 
-        resumeDao.update(resume);
     }
 
 
     @Override
     public void delete(long id, Authentication auth) {
-        String username = auth.getName();
+        String email = auth.getName();
 
 
-        User user = userDao.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
-
-        Resume existingResume = resumeDao.findById(id)
+//        User user = userRepository.findByEmail(email);
+//        if(user == null) {
+//                throw  new NotFoundException("Пользователь не найден");
+//        }
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+        Resume existingResume = resumeRepository.findById(id)
                 .orElseThrow(() -> new NotFoundException("Резюме не найдено"));
-        if (existingResume.getApplicantId() != user.getId()) {
+        if (existingResume.getApplicant().getId() != user.getId()) {
             throw new NotFoundException("У вас нет прав для удаления этого резюме");
         }
 
-        resumeDao.deleteById(id);
+        resumeRepository.deleteById(id);
     }
 
 

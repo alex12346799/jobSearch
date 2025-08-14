@@ -5,6 +5,7 @@ import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.User;
+import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,19 +18,20 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImpl implements UserService {
-    private final UserDao userDao;
+//    private final UserDao userDao;
+    private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
 
     @Override
     public User getUserById(Long id) {
-        return userDao.findById(id).
+        return userRepository.findById(id).
                 orElseThrow(() -> new NotFoundException("Пользователь с таким " + id + " не найден"));
     }
 
     @Override
     public List<User> getAllUsers() {
-        return userDao.findAll();
+        return userRepository.findAll();
     }
 
     @Override
@@ -43,27 +45,25 @@ public class UserServiceImpl implements UserService {
         if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
             throw new NotFoundException("Пароль обязательно");
         }
-        if (userDao.findByName(dto.getName())) {
+        if (userRepository.existsByName(dto.getName())) {
             throw new NotFoundException("Пользователь с таким именем уже существует");
         }
-        User existingUser = userDao.findByEmail(dto.getEmail());
-        if (existingUser != null) {
-            throw new NotFoundException("Пользователь с таким email уже занят");
-        }
+        User existingUser = userRepository.findByEmail(dto.getEmail())
+                .orElseThrow(()->new NotFoundException("Пользователь с таким email уже занят"));
+
         User user = UserMapper.fromDto(dto);
         user.setRole("Employer");
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        userDao.save(user);
+        userRepository.save(user);
 
     }
 
     @Override
     public User login(String email, String password) {
-        User user = userDao.findByEmail(email);
-        if (user == null) {
-            throw new NotFoundException("Пользователя с таким email не найден");
-        }
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(()->new NotFoundException("Пользователя с таким email не найден"));
+
 
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
@@ -74,19 +74,21 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void updateUser(UserRequestDto dto) {
-        User user = new User();
+        User user = userRepository.findByEmail(dto.getEmail())
+                .orElseThrow(()->new NotFoundException("Пользователь с таким email не найден"));
+
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setAddress(dto.getAddress());
-        userDao.update(user);
+        userRepository.save(user);
     }
 
 
     @Override
     public void deleteUser(long id) {
         getUserById(id);
-        userDao.deleteById(id);
+        userRepository.deleteById(id);
     }
 
 

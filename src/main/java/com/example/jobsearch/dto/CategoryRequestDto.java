@@ -8,5 +8,5 @@ public class CategoryRequestDto {
     @NotBlank(message = "Имя не может быть пустым. Введите имя")
     private String name;
 
-    private Integer parentId;
+    private Long parentId;
 }

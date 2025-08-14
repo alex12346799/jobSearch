@@ -8,7 +8,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -20,7 +20,7 @@ databaseChangeLog:
                     nullable: false
               - column:
                   name: parent_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: true
 
@@ -33,7 +33,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -80,14 +80,14 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: applicant_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_resume_applicant
@@ -98,7 +98,7 @@ databaseChangeLog:
                   type: varchar(45)
               - column:
                   name: category_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_resume_category
@@ -126,7 +126,7 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
@@ -139,7 +139,7 @@ databaseChangeLog:
                   type: varchar(255)
               - column:
                   name: category_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_vacancy_category
@@ -159,7 +159,7 @@ databaseChangeLog:
                   type: boolean
               - column:
                   name: employer_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_vacancy_employer
@@ -181,14 +181,14 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: resume_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_respondent_resume
@@ -196,7 +196,7 @@ databaseChangeLog:
                     deleteCascade: true
               - column:
                   name: vacancy_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_respondent_vacancy
@@ -218,14 +218,14 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: resume_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_education_resume
@@ -239,10 +239,10 @@ databaseChangeLog:
                   type: varchar(255)
               - column:
                   name: start_date
-                  type: timestamp
+                  type: date
               - column:
                   name: end_date
-                  type: timestamp
+                  type: date
               - column:
                   name: degree
                   type: varchar(255)
@@ -256,14 +256,14 @@ databaseChangeLog:
             columns:
               - column:
                   name: id
-                  type: int
+                  type: bigint
                   autoIncrement: true
                   constraints:
                     primaryKey: true
                     nullable: false
               - column:
                   name: resume_id
-                  type: int
+                  type: bigint
                   constraints:
                     nullable: false
                     foreignKeyName: fk_work_experience_resume
@@ -271,7 +271,7 @@ databaseChangeLog:
                     deleteCascade: true
               - column:
                   name: years
-                  type: int
+                  type: bigint
               - column:
                   name: company_name
                   type: varchar(255)

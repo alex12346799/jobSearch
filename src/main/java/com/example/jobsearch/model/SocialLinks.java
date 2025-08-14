@@ -1,12 +1,27 @@
 package com.example.jobsearch.model;
 
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Entity
+@Table(name = "social_links")
 public class SocialLinks {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long resumeId;
+
+    @OneToOne
+    @JoinColumn(name = "resume_id", nullable = false)
+    private Resume resume;
+
     private String telegram;
     private String facebook;
     private String linkedin;
+
+//    @OneToOne(mappedBy = "socialLinks")
+//    private SocialLinks socialLinks;
 }

@@ -34,7 +34,7 @@ public class VacancyDaoImpl implements VacancyDao {
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
             ps.setString(1, vacancy.getTitle());
             ps.setString(2, vacancy.getDescription());
-            ps.setLong(3, vacancy.getCategoryId());
+            ps.setLong(3, vacancy.getCategory().getId());
             ps.setDouble(4, vacancy.getSalary());
             if (vacancy.getExpFrom() != null) {
                 ps.setLong(5, vacancy.getExpFrom());
@@ -48,7 +48,7 @@ public class VacancyDaoImpl implements VacancyDao {
                 ps.setNull(6, Types.BIGINT);
             }
             ps.setBoolean(7, vacancy.isActive());
-            ps.setLong(8, vacancy.getEmployerId());
+            ps.setLong(8, vacancy.getEmployer().getId());
             if (vacancy.getCreatedDate() != null) {
                 ps.setTimestamp(9, Timestamp.valueOf(vacancy.getCreatedDate()));
             } else {
@@ -104,12 +104,12 @@ public class VacancyDaoImpl implements VacancyDao {
         jdbcTemplate.update(sql,
                 vacancy.getTitle(),
                 vacancy.getDescription(),
-                vacancy.getCategoryId(),
+                vacancy.getCategory().getId(),
                 vacancy.getSalary(),
                 vacancy.getExpFrom(),
                 vacancy.getExpTo(),
                 vacancy.isActive(),
-                vacancy.getEmployerId(),
+                vacancy.getEmployer().getId(),
                 vacancy.getUpdateDate(),
                 vacancy.getId()
         );

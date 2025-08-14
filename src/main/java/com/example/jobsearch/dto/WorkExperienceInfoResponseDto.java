@@ -5,8 +5,8 @@ import lombok.Data;
 @Data
 public class WorkExperienceInfoResponseDto {
     private long id;
-    private int resumeId;
-    private int years;
+    private Long resumeId;
+    private Long years;
     private String companyName;
     private String position;
     private String responsibilities;

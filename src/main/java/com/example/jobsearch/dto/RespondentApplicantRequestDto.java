@@ -8,9 +8,9 @@ import lombok.Data;
 @Data
 public class RespondentApplicantRequestDto {
     @NotNull(message = "Обязательно укажите resumeId")
-    private Integer resumeId;
+    private Long resumeId;
 
     @NotNull(message = "Обязательно укажите vacancyId")
-    private Integer vacancyId;
+    private Long vacancyId;
 
 }

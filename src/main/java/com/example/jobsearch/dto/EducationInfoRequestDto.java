@@ -10,7 +10,7 @@ import java.time.LocalDate;
 @Data
 public class EducationInfoRequestDto {
     @NotNull(message = "Обязательно укажите resumeId")
-    private Integer resumeId;
+    private Long resumeId;
 
     @NotBlank(message = "Поле institution не должен быть пустым")
     private String institution;

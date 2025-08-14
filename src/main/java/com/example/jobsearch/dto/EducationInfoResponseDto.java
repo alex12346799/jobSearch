@@ -6,8 +6,8 @@ import java.time.LocalDate;
 
 @Data
 public class EducationInfoResponseDto {
-    private int id;
-    private Integer resumeId;
+    private Long id;
+    private Long resumeId;
     private String institution;
     private String program;
     private LocalDate startDate;

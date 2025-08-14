@@ -1,10 +1,21 @@
 package com.example.jobsearch.model;
 
-import lombok.Data;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@Entity
+@Table(name = "category")
 public class Category {
-    private long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
     private String name;
-    private Integer parentId;
+
+    @Column(name = "parent_id")
+    private Long parentId;
 }

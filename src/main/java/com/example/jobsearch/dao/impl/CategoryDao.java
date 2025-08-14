@@ -19,6 +19,7 @@ private final JdbcTemplate jdbcTemplate;
         String sql = "select name from CATEGORY where id=?";
         return jdbcTemplate.queryForObject(sql, String.class, id);
     }
+
     public Category findById(long id) {
         String sql = "select id, name from CATEGORY where id=?";
         try {

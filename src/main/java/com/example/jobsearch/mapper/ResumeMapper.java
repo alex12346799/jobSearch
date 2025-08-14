@@ -2,12 +2,9 @@ package com.example.jobsearch.mapper;
 
 import com.example.jobsearch.dto.EducationInfoRequestDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
-import com.example.jobsearch.dto.SocialLinksDto;
+import com.example.jobsearch.dto.SocialLinkRequestDto;
 import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
-import com.example.jobsearch.model.EducationInfo;
-import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.model.SocialLinks;
-import com.example.jobsearch.model.WorkExperienceInfo;
+import com.example.jobsearch.model.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -17,9 +14,15 @@ public class ResumeMapper {
 
     public static Resume fromDto(ResumeRequestDto dto) {
         Resume resume = new Resume();
-        resume.setApplicantId(dto.getApplicantId());
+        User applicant = new User();
+        Category category = new Category();
+        applicant.setId(dto.getApplicantId());
+        resume.setApplicant(applicant);
         resume.setName(dto.getName());
-        resume.setCategoryId(dto.getCategoryId());
+
+        category.setId(dto.getCategoryId());
+        resume.setCategory(category);
+
         resume.setSalary(dto.getSalary());
         resume.setCreatedDate(LocalDateTime.now());
         resume.setUpdateDate(LocalDateTime.now());
@@ -54,9 +57,11 @@ public class ResumeMapper {
         return resume;
     }
 
-    public static SocialLinks fromDto(SocialLinksDto dto, long resumeId) {
+    public static SocialLinks fromDto(SocialLinkRequestDto dto, long resumeId) {
         SocialLinks socialLinks = new SocialLinks();
-        socialLinks.setResumeId(resumeId);
+        Resume resume = new Resume();
+        resume.setId(resumeId);
+        socialLinks.setResume(resume);
         socialLinks.setTelegram(dto.getTelegram());
         socialLinks.setFacebook(dto.getFacebook());
         socialLinks.setLinkedin(dto.getLinkedin());

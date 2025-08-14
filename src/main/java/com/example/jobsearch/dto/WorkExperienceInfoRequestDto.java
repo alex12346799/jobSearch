@@ -7,10 +7,10 @@ import lombok.Data;
 @Data
 public class WorkExperienceInfoRequestDto {
     @NotNull(message = "Обязательно укажите resumeId")
-    private Integer resumeId;
+    private Long resumeId;
 
     @NotBlank(message = "Обязательно укажите количество лет")
-    private Integer years;
+    private Long years;
 
     @NotBlank(message = "Поле companyName не должен быть пустым")
     private String companyName;

@@ -78,9 +78,9 @@ public Resume save(Resume resume) {
 
     jdbcTemplate.update(connection -> {
         PreparedStatement ps = connection.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        ps.setLong(1, resume.getApplicantId());
+        ps.setLong(1, resume.getApplicant().getId());
         ps.setString(2, resume.getName());
-        ps.setLong(3, resume.getCategoryId());
+        ps.setLong(3, resume.getCategory().getId());
         ps.setDouble(4, resume.getSalary());
         ps.setBoolean(5, resume.isActive());
         ps.setTimestamp(6, Timestamp.valueOf(resume.getCreatedDate()));
@@ -106,7 +106,7 @@ public Resume save(Resume resume) {
         String sql = "UPDATE resume SET name = ?, category_id = ?, salary = ?, is_active = ?, update_date = ? WHERE id = ?";
         jdbcTemplate.update(sql,
                 resume.getName(),
-                resume.getCategoryId(),
+                resume.getCategory().getId(),
                 resume.getSalary(),
                 resume.isActive(),
                 resume.getUpdateDate(),

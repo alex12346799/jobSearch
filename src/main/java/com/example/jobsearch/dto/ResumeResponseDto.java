@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 @Builder
 @NoArgsConstructor
 public class ResumeResponseDto {
-    private long id;
+    private Long id;
     private Long applicantId;
     private String applicantName;
     private String name;

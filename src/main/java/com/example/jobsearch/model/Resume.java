@@ -1,27 +1,55 @@
 package com.example.jobsearch.model;
 
 
-
+import jakarta.persistence.*;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Data
+@Getter
+@Setter
+@Entity
+@Table(name = "resume")
 public class Resume {
-    private long id;
-    private Long applicantId;
-    private String name;
-    private Long categoryId;
-    private double salary;
-    private boolean isActive;
-    private LocalDateTime createdDate;
-    private LocalDateTime updateDate;
-    private List<EducationInfo> educationInfoList;
-    private List<WorkExperienceInfo> workExperienceInfoList;
-    private SocialLinks socialLinks;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "applicant_id", nullable = false)
+    private User applicant;
+
+    @OneToMany(mappedBy = "resume")
+    private List<RespondentApplicant> respondentApplicant;
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id", nullable = false)
+    private Category category;
+
+    private double salary;
+
+    @Column(name = "is_active")
+    private boolean isActive;
+
+    @Column(name = "created_date")
+    private LocalDateTime createdDate;
+
+    @Column(name = "update_date")
+    private LocalDateTime updateDate;
+
+    @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL)
+    private List<EducationInfo> educationInfoList;
+
+    @OneToMany(mappedBy = "resume",  cascade = CascadeType.ALL)
+    private List<WorkExperienceInfo> workExperienceInfoList;
+
+    @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL)
+    private SocialLinks socialLinks;
 
 
 }

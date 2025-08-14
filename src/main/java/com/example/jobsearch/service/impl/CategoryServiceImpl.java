@@ -2,6 +2,7 @@ package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dao.impl.CategoryDao;
 import com.example.jobsearch.model.Category;
+import com.example.jobsearch.repository.CategoryRepository;
 import com.example.jobsearch.service.CategoryService;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
@@ -13,10 +14,10 @@ import java.util.List;
 @Service
 @RequiredArgsConstructor
 public class CategoryServiceImpl implements CategoryService {
-    private final CategoryDao categoryDao;
+    private final CategoryRepository categoryRepository;
 
     @Override
     public List<Category> findAll() {
-        return categoryDao.findAll();
+        return categoryRepository.findAll();
     }
 }
