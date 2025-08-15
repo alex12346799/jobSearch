@@ -15,8 +15,8 @@ public class VacancyResponseDto {
     private String categoryName;
     private Long categoryId;
     private double salary;
-    private int expFrom;
-    private int expTo;
+    private Integer expFrom;
+    private Integer expTo;
     private boolean isActive;
     private Long employerId;
     private String employerName;

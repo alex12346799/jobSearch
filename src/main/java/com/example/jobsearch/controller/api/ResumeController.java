@@ -36,9 +36,9 @@ public class ResumeController {
     }
 
     @PostMapping
-    public ResponseEntity<String> create(@RequestBody @Valid ResumeRequestDto resumeDto) {
+    public ResponseEntity<String> create(@RequestBody @Valid ResumeRequestDto resumeDto, Authentication auth) {
 
-        resumeService.create(resumeDto);
+        resumeService.create(resumeDto, auth);
         return ResponseEntity.ok("Резюме создана");
     }
 

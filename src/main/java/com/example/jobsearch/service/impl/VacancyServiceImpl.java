@@ -27,12 +27,9 @@ import java.util.Optional;
 @Service
 @RequiredArgsConstructor
 public class VacancyServiceImpl implements VacancyService {
-    //    private final VacancyDao vacancyDao;
     private final VacancyRepository vacancyRepository;
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
-//    private final UserDao userDao;
-//    private final CategoryDao categoryDao;
 
 
     @Override

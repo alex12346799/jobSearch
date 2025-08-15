@@ -1,22 +1,24 @@
 package com.example.jobsearch.service.impl;
 
+import com.example.jobsearch.dto.EducationInfoRequestDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 
+import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
+import com.example.jobsearch.mapper.EducationInfoMapper;
 import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.mapper.SocialLinksMapper;
+import com.example.jobsearch.mapper.WorkExperienceInfoMapper;
 import com.example.jobsearch.model.*;
 import com.example.jobsearch.repository.*;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +29,7 @@ public class ResumeServiceImpl implements ResumeService {
     private final UserRepository userRepository;
     private final CategoryRepository categoryRepository;
     private final SocialLinksRepository socialLinksRepository;
+
     @Override
     public List<ResumeResponseDto> getAllResumes() {
         List<Resume> resumes = resumeRepository.findAll();
@@ -57,44 +60,50 @@ public class ResumeServiceImpl implements ResumeService {
     }
 
     @Override
-    public Resume create(ResumeRequestDto dto) {
-        Optional<User> appllicant = userRepository.findById(dto.getApplicantId());
-        if (appllicant.isEmpty()) {
-            throw new NotFoundException("Пользователь с данным " + dto.getApplicantId() + " Id не найден");
-        }
+    public Resume create(ResumeRequestDto dto, Authentication auth) {
+     String email = auth.getName();
+
+        User applicant = userRepository.findByEmail(email)
+                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + email + "  не найден"));
+
         Category category = categoryRepository.findById(dto.getCategoryId())
-                .orElseThrow(()-> new NotFoundException( "Категория с id " + dto.getCategoryId() + " не найдена"));
-        if (category == null) {
-            throw new NotFoundException("Категория с id " + dto.getCategoryId() + " не найден");
-        }
+                .orElseThrow(() -> new NotFoundException("Категория с id " + dto.getCategoryId() + " не найдена"));
+
 
         Resume resume = ResumeMapper.fromDto(dto);
-        resume.setApplicant(appllicant.get());
+        resume.setApplicant(applicant);
         resume.setCategory(category);
 
+        Resume resumeFromDb = resumeRepository.saveAndFlush(resume);
 
-        if (resume.getEducationInfoList() != null) {
-            for (EducationInfo educationInfo : resume.getEducationInfoList()) {
-                educationInfo.setResume(resume);
+
+        if (dto.getEducationInfoList() != null) {
+            for (EducationInfoRequestDto educationInfoDto : dto.getEducationInfoList()) {
+                EducationInfo educationInfo = EducationInfoMapper.fromDto(educationInfoDto);
+                educationInfo.setResume(resumeFromDb);
+                educationInfoRepository.save(educationInfo);
             }
         }
-        if (resume.getWorkExperienceInfoList() != null) {
-            for (WorkExperienceInfo workExperienceInfo : resume.getWorkExperienceInfoList()) {
-                workExperienceInfo.setResume(resume);
+
+        if (dto.getWorkExperienceInfoList() != null) {
+            for (WorkExperienceInfoRequestDto workExperienceDto : dto.getWorkExperienceInfoList()) {
+                WorkExperienceInfo workExperienceInfo = WorkExperienceInfoMapper.fronDto(workExperienceDto);
+                workExperienceInfo.setResume(resumeFromDb);
+                workExperienceInfoRepository.save(workExperienceInfo);
             }
-
-
         }
+
         if (dto.getSocialLinkRequestDto() != null) {
             SocialLinks socialLinks = SocialLinksMapper.fromDto(dto.getSocialLinkRequestDto());
-            socialLinks.setResume(resume);
-            resume.setSocialLinks(socialLinks);
+            socialLinks.setResume(resumeFromDb);
+            socialLinksRepository.save(socialLinks);
+        }
+
+          return resumeFromDb;
+
         }
 
 
-        return resumeRepository.save(resume);
-
-    }
 
 
     @Override
@@ -102,9 +111,8 @@ public class ResumeServiceImpl implements ResumeService {
         String email = auth.getName();
 
 
-            User user = userRepository.findByEmail(email)
-                    .orElseThrow(()->new NotFoundException("Пользователь не найден"));
-
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
 
 
         Resume existingResume = resumeRepository.findById(id)
@@ -127,10 +135,6 @@ public class ResumeServiceImpl implements ResumeService {
         String email = auth.getName();
 
 
-//        User user = userRepository.findByEmail(email);
-//        if(user == null) {
-//                throw  new NotFoundException("Пользователь не найден");
-//        }
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
         Resume existingResume = resumeRepository.findById(id)

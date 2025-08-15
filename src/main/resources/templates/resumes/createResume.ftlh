@@ -54,9 +54,9 @@
 
             <div class="mb-3">
                 <label>Социальные ссылки:</label>
-                <input type="text" name="socialLinksDto.telegram" class="form-control mb-2" placeholder="Telegram ссылка">
-                <input type="text" name="socialLinksDto.facebook" class="form-control mb-2" placeholder="Facebook ссылка">
-                <input type="text" name="socialLinksDto.linkedin" class="form-control" placeholder="LinkedIn ссылка">
+                <input type="text" name="socialLinkRequestDto.telegram" class="form-control mb-2" placeholder="Telegram ссылка">
+                <input type="text" name="socialLinkRequestDto.facebook" class="form-control mb-2" placeholder="Facebook ссылка">
+                <input type="text" name="socialLinkRequestDto.linkedin" class="form-control" placeholder="LinkedIn ссылка">
             </div>
 
             <div class="form-check mb-3">

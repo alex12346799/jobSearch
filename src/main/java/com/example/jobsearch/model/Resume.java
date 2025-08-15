@@ -42,13 +42,13 @@ public class Resume {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
-    @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resume")
     private List<EducationInfo> educationInfoList;
 
-    @OneToMany(mappedBy = "resume",  cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "resume")
     private List<WorkExperienceInfo> workExperienceInfoList;
 
-    @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "resume")
     private SocialLinks socialLinks;
 
 

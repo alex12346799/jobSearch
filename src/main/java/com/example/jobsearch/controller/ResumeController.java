@@ -1,10 +1,9 @@
 package com.example.jobsearch.controller;
-
-import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.User;
+import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.ResumeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,8 +24,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ResumeController {
     private final ResumeService resumeService;
-    private final UserDao userDao;
-
+    private final UserRepository userRepository;
     @GetMapping()
     public String showAllResumes(Model model) {
         List<ResumeResponseDto> resumes = resumeService.getAllResumes();
@@ -41,23 +39,13 @@ public class ResumeController {
         return "resumes/view";
     }
 
-    //    @GetMapping("/create")
-//    public String createResume(Model model, Authentication authentication) {
-//        String username = authentication.getName();
-//        User user = userDao.findByEmail(username)
-//                .orElseThrow(() -> new UsernameNotFoundException("Пользователь не найден"));
-//        model.addAttribute("applicantId", user.getId());
-//        model.addAttribute("resumeRequestDto", new ResumeRequestDto());
-//        return "resumes/createResume";
-//    }
+
     @GetMapping("/create")
     public String createResume(@Valid Model model, Authentication authentication) {
         String username = authentication.getName();
-        User user = userDao.findByEmail(username);
+        User user = userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException(username));
 
-        if (user == null) {
-            throw new UsernameNotFoundException("Пользователь не найден");
-        }
+
 
         model.addAttribute("applicantId", user.getId());
         model.addAttribute("resumeRequestDto", new ResumeRequestDto());
@@ -65,12 +53,12 @@ public class ResumeController {
     }
 
     @PostMapping("/create")
-    public String createResume(@Valid ResumeRequestDto dto, BindingResult bindingResult, Model model) {
+    public String createResume(@Valid ResumeRequestDto dto, BindingResult bindingResult, Model model, Authentication authentication) {
       if (bindingResult.hasErrors()) {
           model.addAttribute("resumeRequestDto", dto);
           return "resumes/createResume";
       }
-        Resume createResume = resumeService.create(dto);
+        Resume createResume = resumeService.create(dto, authentication);
         model.addAttribute("resume", createResume);
         return "redirect:/" + createResume.getId();
     }

@@ -144,9 +144,9 @@ public class SecurityConfig {
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers(HttpMethod.GET, "/vacancies").hasRole("EMPLOYEE")
-                                .requestMatchers(HttpMethod.POST, "/vacancies").hasRole("EMPLOYEE")
+                                .requestMatchers("/vacancies/create").hasRole("EMPLOYEE")
                                 .requestMatchers(HttpMethod.GET, "/resumes").hasAnyRole("EMPLOYEE", "APPLICANT")
-                                .requestMatchers(HttpMethod.POST, "/resumes").hasRole("APPLICANT")
+                                .requestMatchers("/resumes/create").hasRole("APPLICANT")
                                 .anyRequest().permitAll()
                 );
         return http.build();

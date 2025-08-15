@@ -7,6 +7,7 @@ import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
+import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;
@@ -18,7 +19,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -28,7 +28,7 @@ import java.util.List;
 @RequestMapping("vacancies")
 public class VacancyController {
     private final VacancyService vacancyService;
-    private final UserDao userDao;
+    private final UserRepository userRepository;
     private final CategoryService categoryService;
 
 
@@ -41,12 +41,10 @@ public class VacancyController {
     }
 
     @GetMapping("/create")
-    public String createVacancy(@Valid Model model, Authentication auth) {
+    public String createVacancy(Model model, Authentication auth) {
         String username = auth.getName();
-        User user = userDao.findByEmail(username);
-        if (user == null) {
-            throw new NotFoundException("Пользователь не найден");
-        }
+        User user = userRepository.findByEmail(username).orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+
         model.addAttribute("employerId", user.getId());
         model.addAttribute("vacancy", new  VacancyRequestDto());
         model.addAttribute("vacancyRequestDto", new VacancyRequestDto());
@@ -58,7 +56,7 @@ public class VacancyController {
     @PostMapping("/create")
     public String createVacancy(@Valid VacancyRequestDto vacancyRequestDto, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("vacancy", vacancyRequestDto);
+            model.addAttribute("vacancyRequestDto", vacancyRequestDto);
             return "vacancies/createVacancies";
         }
 

@@ -16,14 +16,10 @@ public interface ResumeService {
 
 
 
-    Resume create(ResumeRequestDto dto);
 
 
 
-
-
-
-
+    Resume create(ResumeRequestDto dto, Authentication auth);
 
     void update(Resume resume, long id, Authentication auth);
 
