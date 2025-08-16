@@ -22,8 +22,8 @@ public class VacancyController {
 
 
     @PostMapping
-    public ResponseEntity<String> createVacancy(@RequestBody @Valid VacancyRequestDto vacancyRequestDto) {
-        vacancyService.create(vacancyRequestDto);
+    public ResponseEntity<String> createVacancy(@RequestBody @Valid VacancyRequestDto vacancyRequestDto, Authentication auth) {
+        vacancyService.create(vacancyRequestDto,auth);
         return ResponseEntity.ok("Вакансия создана");
     }
 

@@ -43,6 +43,16 @@ public class Vacancy {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
+    @PrePersist
+    public void prePersist() {
+        createdDate = LocalDateTime.now();
+
+    }
+    @PreUpdate
+    public void preUpdate() {
+        updateDate = LocalDateTime.now();
+    }
+
 
 }
 

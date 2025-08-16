@@ -1,13 +1,9 @@
 package com.example.jobsearch.service.impl;
 
 
-import com.example.jobsearch.dao.UserDao;
-import com.example.jobsearch.dao.VacancyDao;
-import com.example.jobsearch.dao.impl.CategoryDao;
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
-import com.example.jobsearch.mapper.ResumeMapper;
 import com.example.jobsearch.mapper.VacancyMapper;
 import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.User;
@@ -21,7 +17,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 
 @Service
@@ -32,18 +27,31 @@ public class VacancyServiceImpl implements VacancyService {
     private final CategoryRepository categoryRepository;
 
 
+//    @Override
+//    public Vacancy create(VacancyRequestDto vacancyRequestDto) {
+//        Category category = categoryRepository.findById(vacancyRequestDto.getCategoryId())
+//
+//                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + vacancyRequestDto.getCategoryId() + " Id не найден"));
+//
+//        User employer = userRepository.findById(vacancyRequestDto.getEmployerId())
+//                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + vacancyRequestDto.getEmployerId() + " Id не найден"));
+//
+//        Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto, category, employer);
+//        vacancyRepository.save(vacancy);
+//        return vacancy;
+//    }
+
     @Override
-    public Vacancy create(VacancyRequestDto vacancyRequestDto) {
+    public Vacancy create(VacancyRequestDto vacancyRequestDto, Authentication auth) {
+        String email = auth.getName();
+        User employer = userRepository.findByEmail(email)
+                .orElseThrow(() -> new NotFoundException("Работодатель с email " + email + " не найден"));
         Category category = categoryRepository.findById(vacancyRequestDto.getCategoryId())
-
-                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + vacancyRequestDto.getCategoryId() + " Id не найден"));
-
-        User employer = userRepository.findById(vacancyRequestDto.getEmployerId())
-                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + vacancyRequestDto.getEmployerId() + " Id не найден"));
-
+                .orElseThrow(() -> new NotFoundException("Категория с id " + vacancyRequestDto.getCategoryId() + " не найдена"));
         Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto, category, employer);
         vacancyRepository.save(vacancy);
         return vacancy;
+
     }
 
 

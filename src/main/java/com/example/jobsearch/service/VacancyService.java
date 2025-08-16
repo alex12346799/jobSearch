@@ -9,8 +9,9 @@ import java.util.List;
 
 public interface VacancyService {
 
-    Vacancy create(VacancyRequestDto vacancyRequestDto);
 
+
+    Vacancy create(VacancyRequestDto vacancyRequestDto, Authentication auth);
 
     Vacancy getById(long id);
 

@@ -90,13 +90,13 @@
 
             <label>Требуемый опыт:</label>
             <div class="experience">
-                от <input type="number" name="experienceFrom" min="0" value="${vacancy.experienceFrom!}">
-                до <input type="number" name="experienceTo" min="0" value="${vacancy.experienceTo!}">
+                от <input id="expFrom" type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
+                до <input id="expTo" type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
             </div>
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="active" <#if vacancy.active?? && vacancy.active>checked</#if>> Активно
+                    <input type="checkbox" name="active" <#if vacancyRequestDto.isActive()?? && vacancyRequestDto.isActive()>checked</#if>> Активно
                 </label>
             </div>
 

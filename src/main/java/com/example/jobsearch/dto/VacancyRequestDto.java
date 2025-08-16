@@ -18,7 +18,7 @@ public class VacancyRequestDto {
     private Long categoryId;
 
     @DecimalMin(value = "0.0", inclusive = false, message = "Зарплата должна быть больше нуля")
-    private double salary;
+    private Double salary;
 
     @Min(value = 0, message = "Минимальный опыт не может быть меньше 0")
     private Integer expFrom;
@@ -29,4 +29,7 @@ public class VacancyRequestDto {
 
     @NotNull(message = "Обязательно введите employerId")
     private Long employerId;
+
+    @NotNull(message = "Укажите активна ли вакансия или нет")
+    private boolean isActive;
 }

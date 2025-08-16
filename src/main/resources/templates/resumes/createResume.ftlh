@@ -15,14 +15,17 @@
             </div>
 
             <div class="mb-3">
-                <label for="categoryId" class="form-label">Категория:</label>
-                <select id="categoryId" name="categoryId" class="form-select" required>
-                    <option value="" disabled selected>Выберите категорию</option>
-                    <option value="1">IT</option>
-                    <option value="2">Маркетинг</option>
-                    <option value="3">Дизайн</option>
+                <label>Категория:
+                    <select name="categoryId" required>
+                        <option value="">Выберите категорию</option>
+                        <#list categories as category>
+                            <option value="${category.id}" <#if resume?has_content && resume.categoryId?? && (resume.categoryId?string == category.id?string)>selected</#if>>
 
-                </select>
+                                ${category.name}
+                            </option>
+                        </#list>
+                    </select>
+                </label>
             </div>
 
             <div class="mb-3">

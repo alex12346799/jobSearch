@@ -18,6 +18,9 @@ public class ResumeRequestDto {
     @NotNull(message = "Нужно обязательно указать categoryId")
     private Long categoryId;
 
+    @NotNull(message = "Укажите активна ли вакансия или нет")
+    private  boolean isActive;
+
     @DecimalMin(value = "0.0", inclusive = false, message = "Зарплата должна быть больше нуля")
     private double salary;
     private List<EducationInfoRequestDto> educationInfoList;

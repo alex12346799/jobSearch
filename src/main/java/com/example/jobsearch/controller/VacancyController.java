@@ -43,7 +43,8 @@ public class VacancyController {
     @GetMapping("/create")
     public String createVacancy(Model model, Authentication auth) {
         String username = auth.getName();
-        User user = userRepository.findByEmail(username).orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+        User user = userRepository.findByEmail(username).orElseThrow(()
+                -> new NotFoundException("Пользователь не найден"));
 
         model.addAttribute("employerId", user.getId());
         model.addAttribute("vacancy", new  VacancyRequestDto());
@@ -54,14 +55,15 @@ public class VacancyController {
     }
 
     @PostMapping("/create")
-    public String createVacancy(@Valid VacancyRequestDto vacancyRequestDto, BindingResult bindingResult, Model model) {
+    public String createVacancy(@Valid VacancyRequestDto vacancyRequestDto, BindingResult bindingResult, Model model,Authentication auth) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("vacancyRequestDto", vacancyRequestDto);
             return "vacancies/createVacancies";
         }
 
 
-        Vacancy vacancy = vacancyService.create(vacancyRequestDto);
+
+        Vacancy vacancy =  vacancyService.create(vacancyRequestDto,auth);
 
         model.addAttribute("vacancy", vacancy);
         return "redirect:/";

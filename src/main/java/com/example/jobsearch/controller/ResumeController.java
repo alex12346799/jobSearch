@@ -1,9 +1,12 @@
 package com.example.jobsearch.controller;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
+import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.User;
+import com.example.jobsearch.repository.CategoryRepository;
 import com.example.jobsearch.repository.UserRepository;
+import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.ResumeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +28,7 @@ import java.util.List;
 public class ResumeController {
     private final ResumeService resumeService;
     private final UserRepository userRepository;
+    private final CategoryService categoryService;
     @GetMapping()
     public String showAllResumes(Model model) {
         List<ResumeResponseDto> resumes = resumeService.getAllResumes();
@@ -49,6 +53,8 @@ public class ResumeController {
 
         model.addAttribute("applicantId", user.getId());
         model.addAttribute("resumeRequestDto", new ResumeRequestDto());
+        List<Category> categories = categoryService.findAll();
+        model.addAttribute("categories", categories);
         return "resumes/createResume";
     }
 
