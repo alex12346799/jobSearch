@@ -32,7 +32,6 @@ public class VacancyController {
     private final CategoryService categoryService;
 
 
-
     @GetMapping
     public String showVacancies(Model model) {
         List<VacancyResponseDto> vacancy = vacancyService.getAll();
@@ -40,32 +39,46 @@ public class VacancyController {
         return "vacancies/vacancies";
     }
 
+    //    @GetMapping("/create")
+//    public String createVacancy(Model model, Authentication auth) {
+//        String username = auth.getName();
+//        User user = userRepository.findByEmail(username).orElseThrow(()
+//                -> new NotFoundException("Пользователь не найден"));
+//
+//        model.addAttribute("employerId", user.getId());
+//        model.addAttribute("vacancy", new  VacancyRequestDto());
+//        model.addAttribute("vacancyRequestDto", new VacancyRequestDto());
+//        List<Category> categories = categoryService.findAll();
+//        model.addAttribute("categories", categories);
+//        return "vacancies/createVacancies";
+//    }
     @GetMapping("/create")
     public String createVacancy(Model model, Authentication auth) {
+        if (auth == null) {
+            return "redirect:/login";
+        }
         String username = auth.getName();
         User user = userRepository.findByEmail(username).orElseThrow(()
                 -> new NotFoundException("Пользователь не найден"));
 
         model.addAttribute("employerId", user.getId());
-        model.addAttribute("vacancy", new  VacancyRequestDto());
         model.addAttribute("vacancyRequestDto", new VacancyRequestDto());
-        List<Category> categories = categoryService.findAll();
-        model.addAttribute("categories", categories);
+        model.addAttribute("categories", categoryService.findAll());
+        List<VacancyResponseDto> vacancy = vacancyService.getAll();
         return "vacancies/createVacancies";
     }
 
     @PostMapping("/create")
-    public String createVacancy(@Valid VacancyRequestDto vacancyRequestDto, BindingResult bindingResult, Model model,Authentication auth) {
+    public String createVacancy(@Valid VacancyRequestDto vacancyRequestDto, BindingResult bindingResult, Model model, Authentication auth) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("vacancyRequestDto", vacancyRequestDto);
             return "vacancies/createVacancies";
         }
 
 
-
-        Vacancy vacancy =  vacancyService.create(vacancyRequestDto,auth);
+        Vacancy vacancy = vacancyService.create(vacancyRequestDto, auth);
 
         model.addAttribute("vacancy", vacancy);
-        return "redirect:/";
+        return "redirect:/" + vacancy.getId();
     }
 }

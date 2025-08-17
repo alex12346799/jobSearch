@@ -14,6 +14,9 @@ import com.example.jobsearch.model.*;
 import com.example.jobsearch.repository.*;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +48,39 @@ public class ResumeServiceImpl implements ResumeService {
                         .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
                         .build())
                 .toList();
+    }
+//    @Override
+//    public List<ResumeResponseDto> getAllSortedResume(String sortedValue) {
+//        List<Resume> resumes = resumeRepository.findAll(getSortMethod(sortedValue));
+//        return resumes.stream()
+//                .map(e -> ResumeResponseDto.builder()
+//                        .id(e.getId())
+//                        .name(e.getName())
+//                        .salary(e.getSalary())
+//                        .isActive(e.isActive())
+//                        .createdDate(e.getCreatedDate())
+//                        .updateDate(e.getUpdateDate())
+//                        .applicantName(userRepository.findNameById(e.getApplicant().getId()))
+//                        .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
+//                        .build())
+//                .toList();
+//    }
+@Override
+public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
+//       Pageable pageable = PageRequest.of(page, size,getSortMethod(sortedValue));
+        Page<Resume> resumes = resumeRepository.findAll(pageable);
+       return resumes.getContent().stream()
+               .map(e -> ResumeResponseDto.builder()
+                       .id(e.getId())
+                       .name(e.getName())
+                       .salary(e.getSalary())
+                       .isActive(e.isActive())
+                       .createdDate(e.getCreatedDate())
+                       .updateDate(e.getUpdateDate())
+                       .applicantName(userRepository.findNameById(e.getApplicant().getId()))
+                       .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
+                       .build())
+               .toList();
     }
 
 

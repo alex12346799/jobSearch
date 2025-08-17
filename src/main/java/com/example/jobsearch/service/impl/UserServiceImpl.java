@@ -1,7 +1,7 @@
 package com.example.jobsearch.service.impl;
 
-import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dto.UserRequestDto;
+import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.User;
@@ -27,6 +27,12 @@ public class UserServiceImpl implements UserService {
     public User getUserById(Long id) {
         return userRepository.findById(id).
                 orElseThrow(() -> new NotFoundException("Пользователь с таким " + id + " не найден"));
+    }
+    @Override
+    public UserResponseDto getByEmail(String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(()
+                -> new NotFoundException("Пользователь с таким " + email + " не найден"));
+        return UserMapper.toDto(user);
     }
 
     @Override

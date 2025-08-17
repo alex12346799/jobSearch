@@ -36,12 +36,29 @@
             <div class="mb-3">
                 <label>Опыт работы:</label>
                 <div class="mb-2">
-                    <input type="text" name="workExperienceInfoList[0].companyName" class="form-control mb-2" placeholder="Компания" required>
+<#--                    <input type="text" name="workExperienceInfoList[0].companyName" class="form-control mb-2" placeholder="Компания" required>-->
+<#--                    <input type="text" name="workExperienceInfoList[0].position" class="form-control mb-2" placeholder="Должность" required>-->
+<#--                    <input type="number" name="workExperienceInfoList[0].years" class="form-control" placeholder="Годы" required>-->
+                    <div class="form-outline mb-2">
+                        <label class="form-label" for="companyName">Компания</label>
+                        <@spring.formInput "workExperienceDto.companyName" 'id="companyName" class="form-control"' />
+                        <@spring.showErrors "<br>" "error text-danger" />
+                    </div>
+
                     <input type="text" name="workExperienceInfoList[0].position" class="form-control mb-2" placeholder="Должность" required>
-                    <input type="number" name="workExperienceInfoList[0].years" class="form-control" placeholder="Годы" required>
+                                        <input type="number" name="workExperienceInfoList[0].years" class="form-control" placeholder="Годы" required>
+
+<#--                        <div data-mdb-input-init class="form-outline mb-4">-->
+<#--                            <label class="form-label" for="form3Example3cg">Your Email</label>-->
+<#--                            <@spring.formInput "userDto.email" 'id="form3Example3cg" class="form-control form-control-lg"' />-->
+<#--                            <@spring.showErrors "<br>" "error text-danger" />-->
+<#--                        </div>-->
+
+
+                    </div>
                 </div>
 
-            </div>
+
 
             <div class="mb-3">
                 <label>Образование:</label>
@@ -61,6 +78,8 @@
                 <input type="text" name="socialLinkRequestDto.facebook" class="form-control mb-2" placeholder="Facebook ссылка">
                 <input type="text" name="socialLinkRequestDto.linkedin" class="form-control" placeholder="LinkedIn ссылка">
             </div>
+
+
 
             <div class="form-check mb-3">
                 <input type="checkbox" id="isActive" name="isActive" class="form-check-input" checked>
