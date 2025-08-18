@@ -89,21 +89,8 @@ public class SecurityConfig {
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        String userQuery = "select username, password, enabled\n" +
-//                "from USERS\n" +
-//                "where username = ?;";
-//        String roleQuery = "select username, concat('ROLE_', role_name) as role\n" +
-//                "from USERS us, ROLES r\n" +
-//                "where us.USERNAME=?\n" +
-//                "and us.ROLE_ID = r.ID";
-//        String userQuery = "SELECT email, password, enabled " +
-//                "FROM USERS " +
-//                "WHERE email = ?;";
-//        String roleQuery = "select email, concat('ROLE_', role_name) as role" +
-//                "from USERS us, ROLES r" +
-//                "where us.email=?" +
-//                "and us.ROLE_ID = r.ID";
-        String userQuery = "select email, password, enabled " +
+
+        String userQuery = "select email as username, password, enabled " +
                 "from USERS " +
                 "where email = ?;";
 
@@ -111,11 +98,10 @@ public class SecurityConfig {
                 "from USERS us, ROLES r " +
                 "where us.EMAIL = ? " +
                 "and us.ROLE_ID = r.ID";
-//        String roleQuery = "select EMAIL, ROLE_NAME\n" +
-//                "from USER_TABLE ut,\n" +
-//                "     ROLES r\n" +
-//                "where ut.EMAIL = ?\n" +
-//                "  and ut.ROLE_ID = r.ID;";
+//        String roleQuery = "select email, concat('ROLE_', role) as role " +
+//                "from USERS us " +
+//                "where us.EMAIL = ? ";
+
 
 
         auth.jdbcAuthentication()

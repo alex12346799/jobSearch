@@ -10,6 +10,6 @@ import java.util.Optional;
 
 @Repository
 public interface VacancyRepository extends JpaRepository<Vacancy, Long> {
-    List<Vacancy> findByEmployerId(long employerId);
+    List<Vacancy> findByEmployer(User employer);
 
 }

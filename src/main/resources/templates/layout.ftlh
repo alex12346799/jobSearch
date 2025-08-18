@@ -36,7 +36,7 @@
                         <a class="nav-link" href="/auth/profile">Личный кабинет</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/auth/profile">Логин</a>
+                        <a class="nav-link" href="/auth/profileAdmin">1213</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/resumes/create">Создать резюме</a>
@@ -53,6 +53,7 @@
                 <#--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>-->
                 <#--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
                 <#--                </form>-->
+
 
 
 

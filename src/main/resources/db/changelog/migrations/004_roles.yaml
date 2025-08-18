@@ -16,10 +16,17 @@ databaseChangeLog:
               - column:
                   name: role_name
                   type: varchar(50)
+        - insert:
+            tableName: roles
+            columns:
               - column:
-                  name: authority_id
-                  type: long
-                  constraints:
-                    nullable: false
-                    foreignKeyName: fk_roles_authority_id
-                    references: authorities(id)
+                  name: role_name
+                  value: EMPLOYEE
+        - insert:
+                  tableName: roles
+                  columns:
+                    - column:
+                        name: role_name
+                        value: APPLICANT
+
+

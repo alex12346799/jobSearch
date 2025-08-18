@@ -46,6 +46,7 @@ public class Vacancy {
     @PrePersist
     public void prePersist() {
         createdDate = LocalDateTime.now();
+        updateDate = LocalDateTime.now();
 
     }
     @PreUpdate

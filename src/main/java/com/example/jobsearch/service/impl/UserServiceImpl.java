@@ -6,11 +6,13 @@ import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.repository.UserRepository;
+import com.example.jobsearch.service.ImageService;
 import com.example.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,6 +23,7 @@ public class UserServiceImpl implements UserService {
 //    private final UserDao userDao;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+    private final ImageService imageService;
 
 
     @Override
@@ -88,6 +91,16 @@ public class UserServiceImpl implements UserService {
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setAddress(dto.getAddress());
         userRepository.save(user);
+    }
+@Override
+public void uploadImageUser(MultipartFile file, String email) {
+    User user = userRepository.findByEmail(email).orElseThrow(()->
+            new NotFoundException("Пользователь не найден"));
+    if (!file.isEmpty()) {
+        String fileName = imageService.saveUploadedFile(file, "image");
+        user.setAvatar(fileName);
+    }
+    userRepository.save(user);
     }
 
 

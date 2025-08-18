@@ -26,13 +26,13 @@ server:
    8089
 logging:
   level:
-    root: warn
+    root: info
     org:
       hibernate:
-        trace
+        error
       springframework:
-        security: error
-    sql: trace
+        security: debug
+    sql: info
   pattern:
     file: '%d{yyyy-mm-dd hh:mm:ss} %-5level %logger{36} -msg%n'
   file:

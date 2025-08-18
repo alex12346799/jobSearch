@@ -85,9 +85,14 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
-    public List<Vacancy> getByUser(int userId) {
-        return vacancyRepository.findByEmployerId(userId);
+    public List<Vacancy> findByEmployer(Authentication auth) {
+        String email = auth.getName();
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new NotFoundException("Пользователь не найден"));
+        return vacancyRepository.findByEmployer(user);
     }
+
+
+
 
     @Override
     public void update(Vacancy vacancy, long id, Authentication auth) {

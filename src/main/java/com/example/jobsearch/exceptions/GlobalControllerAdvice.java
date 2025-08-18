@@ -26,7 +26,7 @@ public class GlobalControllerAdvice {
 //    public ResponseEntity<ErrorResponseBody>  validationHandler(MethodArgumentNotValidException ex) {
 //   return new ResponseEntity<>(errorService.makeResponse(ex.getBindingResult()), HttpStatus.BAD_REQUEST);
 //    }
-    @ExceptionHandler(NotFoundException.class)
+    @ExceptionHandler(Exception.class)
     public String handleNotFoundException(HttpServletRequest request, Model model){
     model.addAttribute("message", HttpStatus.NOT_FOUND.value());
     model.addAttribute("reason", HttpStatus.NOT_FOUND.getReasonPhrase());

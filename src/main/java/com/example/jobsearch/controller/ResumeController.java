@@ -55,19 +55,7 @@ public class ResumeController {
     }
 
 
-//    @GetMapping("/create")
-//    public String createResume(Model model, Authentication authentication) {
-//        String username = authentication.getName();
-//        User user = userRepository.findByEmail(username).orElseThrow(() -> new UsernameNotFoundException(username));
-//
-//
-//
-//        model.addAttribute("applicantId", user.getId());
-//        model.addAttribute("resumeRequestDto", new ResumeRequestDto());
-//        List<Category> categories = categoryService.findAll();
-//        model.addAttribute("categories", categories);
-//        return "resumes/createResume";
-//    }
+
 @GetMapping("/create")
 public String createResume(Model model, Authentication auth) {
     User user = userRepository.findByEmail(auth.getName())
@@ -90,4 +78,6 @@ public String createResume(Model model, Authentication auth) {
         model.addAttribute("resume", createResume);
         return "redirect:/" + createResume.getId();
     }
+
+
 }

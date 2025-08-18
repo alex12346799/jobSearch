@@ -15,7 +15,6 @@ import com.example.jobsearch.repository.*;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -91,8 +90,11 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
     }
 
     @Override
-    public List<Resume> getAllByApplicantId(int applicantId) {
-        return resumeRepository.findAllByApplicantId(applicantId);
+    public List<Resume> findByApplicantId(Authentication auth) {
+        String email = auth.getName();
+        User user = userRepository.findByEmail(email).orElseThrow(()-> new NotFoundException("Пользователь не найден"));
+
+        return resumeRepository.findByApplicant(user);
     }
 
     @Override
@@ -181,6 +183,7 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
 
         resumeRepository.deleteById(id);
     }
+
 
 
 }

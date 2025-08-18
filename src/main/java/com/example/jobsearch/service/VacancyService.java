@@ -2,6 +2,7 @@ package com.example.jobsearch.service;
 
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
+import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.Vacancy;
 import org.springframework.security.core.Authentication;
 
@@ -17,8 +18,7 @@ public interface VacancyService {
 
     List<VacancyResponseDto> getAll();
 
-    List<Vacancy> getByUser(int userId);
-
+    List<Vacancy> findByEmployer(Authentication auth);
 
 
     void update(Vacancy vacancy, long id, Authentication auth);

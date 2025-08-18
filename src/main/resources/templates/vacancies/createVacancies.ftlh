@@ -80,13 +80,29 @@
                 </select>
             </label>
 
+
+
+
+
+
             <label>Заработная плата:
-                <input type="number" name="salary" placeholder="Введите оклад" value="${vacancy.salary!}" required>
+                <input type="text" id="salary" name="salary"
+                       value="${vacancyRequestDto.salary!}" class="form-control" placeholder="Введите зарплату" required>
             </label>
 
             <label>Описание вакансии:
-                <textarea name="description" placeholder="Введите описание">${vacancy.description!}</textarea>
+                <textarea id="description" name="description" class="form-control"
+                          placeholder="Введите описание вакансии" required>${vacancyRequestDto.description!}</textarea>
             </label>
+
+
+<#--            <label>Заработная плата:-->
+<#--                <input type="number" name="salary" placeholder="Введите оклад" value="${vacancy.salary!}" required>-->
+<#--            </label>-->
+
+<#--            <label>Описание вакансии:-->
+<#--                <textarea name="description" placeholder="Введите описание">${vacancy.description!}</textarea>-->
+<#--            </label>-->
 
             <label>Требуемый опыт:</label>
             <div class="experience">

@@ -3,6 +3,7 @@ package com.example.jobsearch.service;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.model.Resume;
+import com.example.jobsearch.model.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;
@@ -10,6 +11,7 @@ import org.springframework.security.core.Authentication;
 import java.util.List;
 
 public interface ResumeService {
+
     default Sort getSortMethod(String sortValue) {
         return switch (sortValue) {
             case "createdDate" -> Sort.by("createdDate");
@@ -45,7 +47,10 @@ public interface ResumeService {
 
     Resume getById(long id);
 
-    List<Resume> getAllByApplicantId(int applicantId);
+
+
+    List<Resume> findByApplicantId(Authentication auth);
+
 
 
     Resume create(ResumeRequestDto dto, Authentication auth);
