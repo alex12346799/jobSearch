@@ -15,6 +15,7 @@ import com.example.jobsearch.repository.*;
 import com.example.jobsearch.service.ResumeService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
@@ -66,8 +67,11 @@ public class ResumeServiceImpl implements ResumeService {
 //    }
 @Override
 public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
-//       Pageable pageable = PageRequest.of(page, size,getSortMethod(sortedValue));
         Page<Resume> resumes = resumeRepository.findAll(pageable);
+        if (pageable.getPageNumber()>=resumes.getTotalPages()&& resumes.getTotalPages()>0) {
+            pageable = PageRequest.of(resumes.getTotalPages()-1, pageable.getPageSize(), pageable.getSort());
+            resumes = resumeRepository.findAll(pageable);
+        }
        return resumes.getContent().stream()
                .map(e -> ResumeResponseDto.builder()
                        .id(e.getId())

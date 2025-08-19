@@ -13,6 +13,9 @@ import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.repository.VacancyRepository;
 import com.example.jobsearch.service.VacancyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +43,8 @@ public class VacancyServiceImpl implements VacancyService {
 //        vacancyRepository.save(vacancy);
 //        return vacancy;
 //    }
+
+
 
     @Override
     public Vacancy create(VacancyRequestDto vacancyRequestDto, Authentication auth) {
@@ -85,6 +90,30 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
     @Override
+    public List<VacancyResponseDto> getAllSortedAndPagedVacancy(Pageable pageable) {
+        Page<Vacancy> vacancies = vacancyRepository.findAll(pageable);
+        if (pageable.getPageNumber()>= vacancies.getTotalPages()&& vacancies.getTotalPages()>0) {
+            pageable = PageRequest.of(vacancies.getTotalPages()-1, pageable.getPageSize(), pageable.getSort());
+            vacancies = vacancyRepository.findAll(pageable);
+        }
+        return vacancies.stream()
+                .map(a -> VacancyResponseDto.builder()
+                        .id(a.getId())
+                        .title(a.getTitle())
+                        .description(a.getDescription())
+                        .categoryName(categoryRepository.findNameById(a.getCategory().getId()))
+                        .salary(a.getSalary())
+                        .expFrom(a.getExpFrom())
+                        .expTo(a.getExpTo())
+                        .isActive(a.isActive())
+                        .employerName(userRepository.findNameById(a.getEmployer().getId()))
+                        .createdDate(a.getCreatedDate())
+                        .updateDate(a.getUpdateDate())
+                        .build())
+                .toList();
+    }
+
+    @Override
     public List<Vacancy> findByEmployer(Authentication auth) {
         String email = auth.getName();
         User user = userRepository.findByEmail(email).orElseThrow(()-> new NotFoundException("Пользователь не найден"));
@@ -121,6 +150,8 @@ public class VacancyServiceImpl implements VacancyService {
 //
 //        vacancyRepository.deleteVacancyById(id);
     }
+
+
 
 
 }

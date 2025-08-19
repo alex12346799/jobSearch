@@ -4,13 +4,14 @@ import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.Vacancy;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
 
 import java.util.List;
 
 public interface VacancyService {
 
-
+    List<VacancyResponseDto> getAllSortedAndPagedVacancy(Pageable pageable);
 
     Vacancy create(VacancyRequestDto vacancyRequestDto, Authentication auth);
 
@@ -24,4 +25,6 @@ public interface VacancyService {
     void update(Vacancy vacancy, long id, Authentication auth);
 
     void delete(long id, Authentication auth);
+
+
 }

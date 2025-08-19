@@ -45,9 +45,6 @@ public class ResumeController {
 
     @GetMapping("sorted")
     public String getResumesSorted(
-//            @RequestParam(name = "sort", required = false, defaultValue = "name") String sortValue,
-//            @RequestParam(name = "page", required = false) int page,
-//            @RequestParam(name = "size", required = false) int size,
             Pageable pageable,
          Model model) {
         model.addAttribute("resumes", resumeService.getAllSortedAndPagedResume(pageable));

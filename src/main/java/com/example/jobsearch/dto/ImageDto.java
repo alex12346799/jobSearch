@@ -7,5 +7,6 @@ import org.springframework.web.multipart.MultipartFile;
 @Builder
 public class ImageDto {
     private MultipartFile file;
+    private String imageName;
 
 }

@@ -251,124 +251,6 @@
         font-size: 2rem;
     }
 </style>
-<#--<#if SPRING_SECURITY_CONTEXT??>-->
-<#--    <#assign user = SPRING_SECURITY_CONTEXT.authentication.principal>-->
-<#--    <#if user?? && user.authorities?has_content>-->
-<#--        <#list user.authorities as a>-->
-<#--            <#assign role = a.authority>-->
-<#--            <#if role == "ROLE_EMPLOYER">-->
-<#--                <h1>Личный кабинет Работодателя</h1>-->
-<#--                <div class="profile-container">-->
-<#--                    <h1 class="profile-title">Личный кабинет Соискателя</h1>-->
-<#--                    <div class="profile-header">-->
-<#--                        <div class="profile-photo"></div>-->
-<#--                        <div class="profile-info">-->
-<#--                            <h2>${user.name} ${user.surname}</h2>-->
-<#--                            <p><strong>Возраст:</strong> ${user.age}</p>-->
-<#--                            <button class="btn btn-edit">Редактировать</button>-->
-<#--                        </div>-->
-
-<#--                        <div class="profile-actions">-->
-<#--                            <a class="btn btn-create" href="/resumes/create">Создать резюме</a>-->
-<#--                            <button class="btn btn-feedbacks">Отклики <span-->
-<#--                                        style="color:white;border-radius:50%;padding:2px 6px;"></span></button>-->
-<#--                        </div>-->
-<#--                    </div>-->
-<#--                    <h2>Резюме:</h2>-->
-<#--                    <div class="resumes">-->
-
-<#--                        <#list resumes as resume>-->
-<#--                            <div class="resume-card">-->
-<#--                                <p><strong>${resume.name}</strong></p>-->
-<#--                                <p>Дата обновления: ${resume.updateDate.toLocalDate()}</p>-->
-<#--                                <div class="card-actions">-->
-<#--                                    <a class="btn btn-update" href="/resumes/${resume.id}/edit">Обновить</a>-->
-<#--                                    <a class="btn btn-red" href="/resumes/${resume.id}/delete">Удалить</a>-->
-<#--                                </div>-->
-<#--                            </div>-->
-<#--                        </#list>-->
-
-<#--                    </div>-->
-<#--                </div>-->
-<#--            <#elseif role == "ROLE_EMPLOYER">-->
-<#--                <div class="profile-container">-->
-<#--                    <h1 class="profile-title">Личный кабинет Работодателя</h1>-->
-<#--                    <div class="profile-header">-->
-<#--                        <div class="profile-photo"></div>-->
-<#--                        <div class="profile-info">-->
-<#--                            <h2>${vacancies.companyName}</h2>-->
-<#--                            <p><strong>Описание компании:</strong> ${vacancies.description}</p>-->
-<#--                            <button class="btn btn-edit">Редактировать</button>-->
-<#--                        </div>-->
-<#--                        <div class="profile-actions">-->
-<#--                            <a class="btn btn-create" href="/vacancies/create">Создать вакансию</a>-->
-<#--                            <button class="btn btn-feedbacks">Отклики</button>-->
-<#--                        </div>-->
-<#--                    </div>-->
-
-<#--                    <h2>Вакансии:</h2>-->
-<#--                    <div class="resumes">-->
-<#--                        <#list vacancies as vacancy>-->
-<#--                            <div class="resume-card">-->
-<#--                                <p><strong>${vacancy.title}</strong></p>-->
-<#--                                <p>Дата обновления: ${vacancy.updateDate.toLocalDate()}</p>-->
-<#--                                <div class="card-actions">-->
-<#--                                    <a class="btn btn-update" href="/vacancies/${vacancy.id}/edit">Обновить</a>-->
-<#--                                    <a class="btn btn-red" href="/vacancies/${vacancy.id}/delete">Удалить</a>-->
-<#--                                </div>-->
-<#--                            </div>-->
-<#--                        </#list>-->
-<#--                    </div>-->
-<#--                </div>-->
-<#--            </#if>-->
-
-<#--        </#list>-->
-<#--    </#if>-->
-<#--</#if>-->
-
-
-
-
-
-
-
-
-
-
-
-<#--    <div class="profile-container">-->
-<#--        <h1 class="profile-title">Личный кабинет Соискателя</h1>-->
-<#--        <div class="profile-header">-->
-<#--            <div class="profile-photo"></div>-->
-<#--            <div class="profile-info">-->
-<#--                <h2>${user.name} ${user.surname}</h2>-->
-<#--                <p><strong>Возраст:</strong> ${user.age}</p>-->
-<#--                <button class="btn btn-edit">Редактировать</button>-->
-<#--            </div>-->
-
-<#--            <div class="profile-actions">-->
-<#--                <a class="btn btn-create" href="/resumes/create">Создать резюме</a>-->
-<#--                <button class="btn btn-feedbacks">Отклики <span-->
-<#--                            style="color:white;border-radius:50%;padding:2px 6px;"></span></button>-->
-<#--            </div>-->
-<#--        </div>-->
-
-<#--        <h2>Резюме:</h2>-->
-<#--        <div class="resumes">-->
-
-<#--            <#list resumes as resume>-->
-<#--                <div class="resume-card">-->
-<#--                    <p><strong>${resume.name}</strong></p>-->
-<#--                    <p>Дата обновления: ${resume.updateDate.toLocalDate()}</p>-->
-<#--                    <div class="card-actions">-->
-<#--                        <a class="btn btn-update" href="/resumes/${resume.id}/edit">Обновить</a>-->
-<#--                        <a class="btn btn-red" href="/resumes/${resume.id}/delete">Удалить</a>-->
-<#--                    </div>-->
-<#--                </div>-->
-<#--            </#list>-->
-
-<#--        </div>-->
-
 
 <div class="profile-container">
     <h1 class="profile-title">
@@ -377,9 +259,25 @@
     </h1>
 
     <div class="profile-header">
-        <div class="profile-photo"></div>
+<#--        <div class="profile-photo"></div>-->
+
         <div class="profile-info">
-            <h2>${user.name} ${user.surname}</h2>
+
+
+
+            <div class="profile-photo"
+                 style="background-image: url('${user.avatar!"/images/default-avatar.png"}');">
+            </div>
+
+
+            <form action="/auth/upload-avatar" method="post" enctype="multipart/form-data">
+            <input type="file" name="avatar" accept="image/*"/>
+            <button type="submit" class="btn btn-edit">Загрузить фото</button>
+        </form>
+
+
+
+        <h2>${user.name} ${user.surname}</h2>
             <p><strong>Возраст:</strong> ${user.age}</p>
             <button class="btn btn-edit">Редактировать</button>
         </div>

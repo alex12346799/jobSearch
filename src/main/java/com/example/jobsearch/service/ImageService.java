@@ -31,4 +31,6 @@ public interface ImageService {
     ImageDto getById(long id);
 
     void create(ImageDto imageDto);
+
+    void uploadImageUser(MultipartFile file, String email);
 }

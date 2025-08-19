@@ -12,6 +12,7 @@ import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -52,6 +53,14 @@ public class VacancyController {
 //        model.addAttribute("categories", categories);
 //        return "vacancies/createVacancies";
 //    }
+
+    @GetMapping("sorted")
+    public String vacancySorted (Pageable pageable, Model model){
+    model.addAttribute("vacancy", vacancyService.getAllSortedAndPagedVacancy(pageable));
+    return "vacancies/vacancies";
+    }
+
+
     @GetMapping("/create")
     public String createVacancy(Model model, Authentication auth) {
         if (auth == null) {

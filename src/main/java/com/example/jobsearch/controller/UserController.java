@@ -32,15 +32,18 @@ public class UserController {
         model.addAttribute("userRequestDto", new UserRequestDto());
         return "register/register";
     }
+
     @PostMapping("/register")
     public String registerUser(UserRequestDto dto) {
         userService.register(dto);
         return "redirect:/";
     }
+
     @GetMapping("/login")
     public String login() {
         return "auth/login";
     }
+
     @PostMapping("/login")
     public String loginUser(UserRequestDto dto) {
         userService.login(dto.getEmail(), dto.getPassword());
@@ -53,7 +56,8 @@ public class UserController {
         model.addAttribute("userRequestDto", dto);
         return "editUser/editingUser";
     }
-//    @GetMapping("/profile")
+
+    //    @GetMapping("/profile")
 //    public String infoUser(Model model, Authentication authentication) {
 //        if (authentication == null) {
 //            return "redirect:/login";
@@ -65,34 +69,33 @@ public class UserController {
 //        model.addAttribute("resumes", resumes);
 //        return "profile/profile";
 //    }
-@GetMapping("/profile")
-public String infoUser(Model model, Authentication authentication) {
-    if (authentication == null) {
-        return "redirect:/login";
+    @GetMapping("/profile")
+    public String infoUser(Model model, Authentication authentication) {
+        if (authentication == null) {
+            return "redirect:/login";
+        }
+        String email = authentication.getName();
+        UserResponseDto user = userService.getByEmail(email);
+        model.addAttribute("user", user);
+        boolean isApplicant = authentication.getAuthorities().stream()
+                .anyMatch(a -> a
+                        .getAuthority().equals("ROLE_APPLICANT"));
+        boolean isEmployer = authentication.getAuthorities().stream()
+                .anyMatch(e -> e
+                        .getAuthority().equals("ROLE_EMPLOYEE"));
+        model.addAttribute("isApplicant", isApplicant);
+        model.addAttribute("isEmployer", isEmployer);
+        if (isApplicant) {
+            List<Resume> resumes = resumeService.findByApplicantId(authentication);
+            model.addAttribute("resumes", resumes);
+        } else if (isEmployer) {
+            List<Vacancy> vacancies = vacancyService.findByEmployer(authentication);
+            model.addAttribute("vacancies", vacancies);
+        } else {
+            return "redirect:/login";
+        }
+        return "profile/profile";
     }
-    String email = authentication.getName();
-    UserResponseDto user = userService.getByEmail(email);
-    model.addAttribute("user", user);
-    boolean isApplicant = authentication.getAuthorities().stream()
-            .anyMatch(a -> a
-                    .getAuthority().equals("ROLE_APPLICANT"));
-    boolean isEmployer = authentication.getAuthorities().stream()
-            .anyMatch(e -> e
-                    .getAuthority().equals("ROLE_EMPLOYEE"));
-    model.addAttribute("isApplicant", isApplicant);
-    model.addAttribute("isEmployer", isEmployer);
-    if (isApplicant) {
-        List<Resume> resumes = resumeService.findByApplicantId(authentication);
-        model.addAttribute("resumes", resumes);
-    }
-   else if (isEmployer) {
-        List<Vacancy> vacancies = vacancyService.findByEmployer(authentication);
-        model.addAttribute("vacancies", vacancies);
-    } else {
-       return "redirect:/login";
-    }
-  return "profile/profile";
-}
 
     @GetMapping("/profileAdmin")
     public String profileAdmin(Model model, Authentication authentication) {
@@ -113,6 +116,6 @@ public String infoUser(Model model, Authentication authentication) {
         String email = authentication.getName();
         userService.uploadImageUser(file, email);
         return "redirect:/auth/profile";
-
     }
+
 }
