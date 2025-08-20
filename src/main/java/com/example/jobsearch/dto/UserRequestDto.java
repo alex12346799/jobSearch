@@ -1,5 +1,8 @@
 package com.example.jobsearch.dto;
 
+import com.example.jobsearch.model.Role;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -30,5 +33,6 @@ public class UserRequestDto {
     @NotBlank(message = "Поле адресс не должен быть пустым")
     private String address;
 
-    private String role;
+    @NotNull(message = "Роль обязателна")
+    private Long roleId;
 }

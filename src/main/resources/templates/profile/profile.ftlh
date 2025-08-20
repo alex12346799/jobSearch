@@ -259,21 +259,21 @@
     </h1>
 
     <div class="profile-header">
-<#--        <div class="profile-photo"></div>-->
+        <div class="profile-photo"></div>
 
         <div class="profile-info">
 
 
 
-            <div class="profile-photo"
-                 style="background-image: url('${user.avatar!"/images/default-avatar.png"}');">
-            </div>
+<#--            <div class="profile-photo"-->
+<#--                 style="background-image: url('${user.avatar!"/images/default-avatar.png"}');">-->
+<#--            </div>-->
 
 
-            <form action="/auth/upload-avatar" method="post" enctype="multipart/form-data">
-            <input type="file" name="avatar" accept="image/*"/>
-            <button type="submit" class="btn btn-edit">Загрузить фото</button>
-        </form>
+<#--            <form action="/auth/upload-avatar" method="post" enctype="multipart/form-data">-->
+<#--            <input type="file" name="avatar" accept="image/*"/>-->
+<#--            <button type="submit" class="btn btn-edit">Загрузить фото</button>-->
+<#--        </form>-->
 
 
 

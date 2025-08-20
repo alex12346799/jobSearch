@@ -19,7 +19,6 @@ public class User {
     private Long id;
     private String name;
     private String surname;
-    private String role;
     private int age;
 
     @Column(unique = true, nullable = false)
@@ -33,5 +32,9 @@ public class User {
 
     @Column(name = "account_type")
     private String accountType;
+
+    @ManyToOne
+    @JoinColumn(name = "role_id")
+    private Role role;
 
 }

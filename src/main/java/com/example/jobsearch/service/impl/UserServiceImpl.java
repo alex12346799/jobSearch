@@ -4,7 +4,9 @@ import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
+import com.example.jobsearch.model.Role;
 import com.example.jobsearch.model.User;
+import com.example.jobsearch.repository.RoleRepository;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.ImageService;
 import com.example.jobsearch.service.UserService;
@@ -24,6 +26,7 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ImageService imageService;
+    private final RoleRepository roleRepository;
 
 
     @Override
@@ -64,11 +67,13 @@ public class UserServiceImpl implements UserService {
         if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
             throw  new NotFoundException("Пользователь с таким email уже занят");
         }
+        Role role = roleRepository.findById(dto.getRoleId())
+                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
+
 
         User user = UserMapper.fromDto(dto);
-        user.setRole(dto.getRole());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-
+        user.setRole(role);
        return userRepository.save(user);
 
     }

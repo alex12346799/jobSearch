@@ -50,9 +50,6 @@ databaseChangeLog:
                   name: surname
                   type: varchar(255)
               - column:
-                  name: role
-                  type: varchar(45)
-              - column:
                   name: age
                   type: int
               - column:

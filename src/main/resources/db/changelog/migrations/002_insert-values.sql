@@ -3,12 +3,12 @@ INSERT INTO category (name, parent_id) VALUES ('IT', NULL);
 INSERT INTO category (name, parent_id) VALUES ('Finance', NULL);
 
 
-INSERT INTO users (email, name, surname, role, age, password, phone_number, address, avatar, account_type)
+INSERT INTO users (email, name, surname,  age, password, phone_number, address, avatar, account_type)
 VALUES
-    ('john@example.com', 'John', 'Doe', 'APPLICANT', 30, 'pass1', '1234567890', 'NYC', 'avatar1.png', 'STANDARD'),
-    ('jane@example.com', 'Jane', 'Smith', 'EMPLOYER', 28, 'pass2', '0987654321', 'LA', 'avatar2.png', 'PREMIUM'),
-    ('alex@mail.com', 'Alex', 'Lee', 'APPLICANT', 23, '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', '0700332232', 'SLA', 'avatar3.png', 'STANDARD'),
-    ('Vova@example.com', 'Vova', 'Kim', 'EMPLOYER', 24, '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', '0555227744', 'FLO', 'avatar4.png', 'PREMIUM');
+    ('john@example.com', 'John', 'Doe',  30, 'pass1', '1234567890', 'NYC', 'avatar1.png', 'STANDARD'),
+    ('jane@example.com', 'Jane', 'Smith',  28, 'pass2', '0987654321', 'LA', 'avatar2.png', 'PREMIUM'),
+    ('alex@mail.com', 'Alex', 'Lee',  23, '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', '0700332232', 'SLA', 'avatar3.png', 'STANDARD'),
+    ('Vova@example.com', 'Vova', 'Kim',  24, '$2a$12$WB2YUbFcCN0tm44SBcKUjua9yiFBsfB3vW02IjuwzY7HGtlQIKzy2', '0555227744', 'FLO', 'avatar4.png', 'PREMIUM');
 
 
 
