@@ -29,4 +29,6 @@ public class UserRequestDto {
 
     @NotBlank(message = "Поле адресс не должен быть пустым")
     private String address;
+
+    private String role;
 }

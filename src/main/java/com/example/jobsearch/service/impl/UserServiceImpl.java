@@ -44,9 +44,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void register(UserRequestDto dto) {
+    public User register(UserRequestDto dto) {
         if (dto.getName() == null || dto.getName().isEmpty()) {
             throw new NotFoundException("Имя обязательно");
+        }
+        if (dto.getSurname() == null || dto.getSurname().isEmpty()) {
+            throw new NotFoundException("фамилия обязательно");
         }
         if (dto.getEmail() == null || dto.getEmail().isEmpty()) {
             throw new NotFoundException("Email  обязательно");
@@ -57,14 +60,16 @@ public class UserServiceImpl implements UserService {
         if (userRepository.existsByName(dto.getName())) {
             throw new NotFoundException("Пользователь с таким именем уже существует");
         }
-        User existingUser = userRepository.findByEmail(dto.getEmail())
-                .orElseThrow(()->new NotFoundException("Пользователь с таким email уже занят"));
+
+        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw  new NotFoundException("Пользователь с таким email уже занят");
+        }
 
         User user = UserMapper.fromDto(dto);
-        user.setRole("Employer");
+        user.setRole(dto.getRole());
         user.setPassword(passwordEncoder.encode(user.getPassword()));
 
-        userRepository.save(user);
+       return userRepository.save(user);
 
     }
 
