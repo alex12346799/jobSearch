@@ -12,6 +12,12 @@ import com.example.jobsearch.service.ImageService;
 import com.example.jobsearch.service.UserService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -74,7 +80,14 @@ public class UserServiceImpl implements UserService {
         User user = UserMapper.fromDto(dto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(role);
-       return userRepository.save(user);
+//       userRepository.save(user);
+//        Authentication auth = new UsernamePasswordAuthenticationToken(
+//                user,
+//                user.getPassword(),
+//                List.of(new SimpleGrantedAuthority("ROLE_" +user.getRole()))
+//        );
+//        SecurityContextHolder.getContext().setAuthentication(auth);
+        return userRepository.save(user);
 
     }
 
@@ -121,4 +134,15 @@ public void uploadImageUser(MultipartFile file, String email) {
     }
 
 
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        var user = userRepository.findByEmail(username)
+                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+        return new org.springframework.security.core.userdetails.User(
+                user.getEmail(),
+                user.getPassword(),
+                user.getAuthorities()
+        );
+
+    }
 }

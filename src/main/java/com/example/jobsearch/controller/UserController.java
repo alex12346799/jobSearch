@@ -79,10 +79,10 @@ public class UserController {
         model.addAttribute("user", user);
         boolean isApplicant = authentication.getAuthorities().stream()
                 .anyMatch(a -> a
-                        .getAuthority().equals("ROLE_APPLICANT"));
+                        .getAuthority().equals("APPLICANT"));
         boolean isEmployer = authentication.getAuthorities().stream()
                 .anyMatch(e -> e
-                        .getAuthority().equals("ROLE_EMPLOYEE"));
+                        .getAuthority().equals("EMPLOYEE"));
         model.addAttribute("isApplicant", isApplicant);
         model.addAttribute("isEmployer", isEmployer);
         if (isApplicant) {

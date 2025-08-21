@@ -63,6 +63,16 @@
     <div class="container">
         <h2>Создание вакансии:</h2>
         <form action="/vacancies/create" method="post">
+
+
+            <#if _csrf??>
+                <input
+                        type="hidden"
+                        name="${(_csrf.parameterName)!'csrf-param-name'}"
+                        value="${(_csrf.token)!'csrf-token'}"/>
+            </#if>
+
+
             <input type="hidden" name="employerId" value="${employerId!}">
             <label>Название вакансии:
                 <input type="text" name="title" placeholder="Введите название" value="${vacancyRequestDto.title!}" required>

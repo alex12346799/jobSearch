@@ -14,17 +14,14 @@ public interface UserRepository extends JpaRepository<User, Long> {
     @Query("SELECT u.name FROM User u WHERE u.id = :id")
     String findNameById(@Param("id") Long id);
 
-   Optional<User> findByEmail(String email);
-
+    Optional<User> findByEmail(String email);
 
 
     @Query("SELECT CASE WHEN COUNT(u) > 0 THEN true ELSE false END FROM User u WHERE u.name = :name")
     boolean existsByName(@Param("name") String name);
 
 
-
 //    Role findRoleByUser(User user);
-
 
 
 }

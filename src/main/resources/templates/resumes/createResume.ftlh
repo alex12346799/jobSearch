@@ -7,6 +7,13 @@
 
         <form action="/resumes/create" method="post">
 
+            <#if _csrf??>
+                <input
+                        type="hidden"
+                        name="${(_csrf.parameterName)!'csrf-param-name'}"
+                        value="${(_csrf.token)!'csrf-token'}"/>
+            </#if>
+
             <input type="hidden" name="applicantId" value="${applicantId}">
 
             <div class="mb-3">

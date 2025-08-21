@@ -34,6 +34,7 @@ public class AuthController {
         return "auth/register";
     }
         userService.register(dto);
+
         return "redirect:/";
     }
 }

@@ -32,7 +32,7 @@ logging:
         error
       springframework:
         security: debug
-    sql: info
+    sql: error
   pattern:
     file: '%d{yyyy-mm-dd hh:mm:ss} %-5level %logger{36} -msg%n'
   file:
