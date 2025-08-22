@@ -10,6 +10,8 @@ import com.example.jobsearch.repository.RoleRepository;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.ImageService;
 import com.example.jobsearch.service.UserService;
+import com.example.jobsearch.utils.RedirectHelper;
+import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -19,6 +21,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,12 +31,10 @@ import java.util.List;
 @RequiredArgsConstructor
 @Slf4j
 public class UserServiceImpl implements UserService {
-//    private final UserDao userDao;
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final ImageService imageService;
     private final RoleRepository roleRepository;
-
 
     @Override
     public User getUserById(Long id) {
@@ -53,7 +54,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User register(UserRequestDto dto) {
+    public User register(UserRequestDto dto, HttpServletRequest request) {
         if (dto.getName() == null || dto.getName().isEmpty()) {
             throw new NotFoundException("Имя обязательно");
         }
@@ -80,14 +81,24 @@ public class UserServiceImpl implements UserService {
         User user = UserMapper.fromDto(dto);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(role);
-//       userRepository.save(user);
-//        Authentication auth = new UsernamePasswordAuthenticationToken(
-//                user,
-//                user.getPassword(),
-//                List.of(new SimpleGrantedAuthority("ROLE_" +user.getRole()))
-//        );
-//        SecurityContextHolder.getContext().setAuthentication(auth);
-        return userRepository.save(user);
+
+        user.setEnabled(true);
+
+        User registeredUser = userRepository.save(user);
+
+
+        UserDetails userDetails = loadUserByUsername(user.getEmail());
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContextHolder.getContext().setAuthentication(auth);
+     request.getSession(true).setAttribute(
+             HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+             SecurityContextHolder.getContext()
+     );
+        return registeredUser;
 
     }
 

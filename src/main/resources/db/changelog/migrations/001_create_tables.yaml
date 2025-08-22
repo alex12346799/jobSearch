@@ -64,9 +64,7 @@ databaseChangeLog:
               - column:
                   name: avatar
                   type: varchar(255)
-              - column:
-                  name: account_type
-                  type: varchar(255)
+
 
   - changeSet:
       id: create_table_resume

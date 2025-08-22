@@ -3,6 +3,7 @@ package com.example.jobsearch.service;
 import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.model.User;
+import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.multipart.MultipartFile;
@@ -25,5 +26,5 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser(long id);
 
-    User register(UserRequestDto dto);
+    User register(UserRequestDto dto, HttpServletRequest request);
 }

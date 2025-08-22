@@ -36,8 +36,6 @@ public class User implements UserDetails{
     private String address;
     private String avatar;
 
-    @Column(name = "account_type")
-    private String accountType;
 
     @ManyToOne
     @JoinColumn(name = "role_id")

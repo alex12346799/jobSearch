@@ -18,7 +18,6 @@ public class UserMapper {
         userResponseDto.setPhoneNumber(user.getPhoneNumber());
         userResponseDto.setAddress(user.getAddress());
         userResponseDto.setAvatar(user.getAvatar());
-        userResponseDto.setAccountType(user.getAccountType());
         return userResponseDto;
     }
 

@@ -31,7 +31,6 @@ public class UserDaoImpl implements UserDao {
         user.setPhoneNumber(rs.getString("phone_number"));
         user.setAddress(rs.getString("address"));
         user.setAvatar(rs.getString("avatar"));
-        user.setAccountType(rs.getString("account_type"));
         return user;
     };
 
@@ -91,8 +90,8 @@ public class UserDaoImpl implements UserDao {
                 user.getPassword(),
                 user.getPhoneNumber(),
                 user.getAddress(),
-                user.getAvatar(),
-                user.getAccountType()
+                user.getAvatar()
+
         );
     }
 
@@ -112,7 +111,6 @@ public class UserDaoImpl implements UserDao {
                 user.getPhoneNumber(),
                 user.getAddress(),
                 user.getAvatar(),
-                user.getAccountType(),
                 user.getId()
         );
     }

@@ -10,6 +10,9 @@
                 </div>
                 <div class="col-lg-8">
                     <div class="card-body py-5 px-md-5">
+                        <#if error>
+                            <h2>Неверный логин или пароль. Введите занова!!!</h2>
+                        </#if>
 
                         <form id="login-form" action="/login" method="post">
 

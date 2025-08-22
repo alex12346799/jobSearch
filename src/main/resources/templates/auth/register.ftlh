@@ -28,7 +28,6 @@
         <div class="auth-card">
             <h2>Регистрация</h2>
             <form action="/auth/register" method="post">
-
                 <#if _csrf??>
                     <input
                             type="hidden"
