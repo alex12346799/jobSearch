@@ -21,6 +21,19 @@ spring:
   freemarker:
     expose-session-attributes: true
 
+#================= Mail config
+  mail:
+    host: smtp.gmail.com
+    username: hvan.ms.kg1994@gmail.com
+    password: "mdcr sgos zpcg enrz"
+    port: 587
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls.enable: true
+#================= Mail config
+
 server:
   port:
    8089

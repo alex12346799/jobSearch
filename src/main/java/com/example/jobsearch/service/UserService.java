@@ -27,4 +27,6 @@ public interface UserService extends UserDetailsService {
     void deleteUser(long id);
 
     User register(UserRequestDto dto, HttpServletRequest request);
+
+    void makeResetPasswordLink(HttpServletRequest request);
 }
