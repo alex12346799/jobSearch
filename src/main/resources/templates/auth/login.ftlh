@@ -40,7 +40,7 @@
                                     class="btn btn-primary btn-block mb-4">Sign in
                             </button>
 
-                            <a href="forgot-password">Forgot password?</a>
+                            <a href="/auth/forgot-password">Forgot password?</a>
 
                         </form>
 

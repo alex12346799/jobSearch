@@ -1,10 +1,12 @@
 spring:
+  config:
+    import: optional:file:.env[.properties]
   application:
     name: jobSearch
   datasource:
     url: jdbc:h2:./db/jobsearch;AUTO_SERVER=TRUE
-    username: root
-    password: qwerty
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
     driver-class-name: org.h2.Driver
   jpa:
     hibernate:
@@ -24,8 +26,8 @@ spring:
 #================= Mail config
   mail:
     host: smtp.gmail.com
-    username: hvan.ms.kg1994@gmail.com
-    password: "mdcr sgos zpcg enrz"
+    username: ${MAIL_USERNAME}
+    password: ${GOOGLE_APP_PASSWORD}
     port: 587
     properties:
       mail:

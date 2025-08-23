@@ -10,7 +10,7 @@
     <div class="py-5 h-100">
         <div class="row d-flex align-items-center justify-content-center h-100">
             <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
-                <form action="/forgot_password" method="post">
+                <form action="/auth/forgot-password" method="post">
                     <#if _csrf??>
                         <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}"
                                value="${(_csrf.token)!'csrf-token'}"/>
