@@ -14,6 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -94,6 +95,22 @@ public class UserController {
         String email = authentication.getName();
         userService.uploadImageUser(file, email);
         return "redirect:/auth/profile";
+    }
+
+    @GetMapping("forgot-password")
+    public String showForgotPasswordPage(Model model, Authentication authentication) {
+        return "auth/forgot_password";
+    }
+
+    @PostMapping("forgot-password")
+    public String proccessForgotPassword(HttpServletRequest request, Model model) {
+        try {
+            userService.makeResetPasswordLink(request);
+            model.addAttribute("message", "we have sent a reset password link to your email. Please check it.");
+        } catch (UsernameNotFoundException e ){
+            model.addAttribute("error", e.getMessage());
+        }
+        return "auth/forgot_password_form";
     }
 
 }

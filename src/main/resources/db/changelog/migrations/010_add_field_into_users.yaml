@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 010_add_field_into_USER_TABLE_for_reset_password
+      author: admin
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: reset_password_token
+                  type: varchar(255)

@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findById(id).
                 orElseThrow(() -> new NotFoundException("Пользователь с таким " + id + " не найден"));
     }
+
     @Override
     public UserResponseDto getByEmail(String email) {
         User user = userRepository.findByEmail(email).orElseThrow(()
@@ -72,7 +73,7 @@ public class UserServiceImpl implements UserService {
         }
 
         if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
-            throw  new NotFoundException("Пользователь с таким email уже занят");
+            throw new NotFoundException("Пользователь с таким email уже занят");
         }
         Role role = roleRepository.findById(dto.getRoleId())
                 .orElseThrow(() -> new NotFoundException("Роль не найдена"));
@@ -94,10 +95,10 @@ public class UserServiceImpl implements UserService {
                 userDetails.getAuthorities()
         );
         SecurityContextHolder.getContext().setAuthentication(auth);
-     request.getSession(true).setAttribute(
-             HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-             SecurityContextHolder.getContext()
-     );
+        request.getSession(true).setAttribute(
+                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+                SecurityContextHolder.getContext()
+        );
         return registeredUser;
 
     }
@@ -105,8 +106,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User login(String email, String password) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(()->new NotFoundException("Пользователя с таким email не найден"));
-
+                .orElseThrow(() -> new NotFoundException("Пользователя с таким email не найден"));
 
 
         if (!passwordEncoder.matches(password, user.getPassword())) {
@@ -118,7 +118,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public void updateUser(UserRequestDto dto) {
         User user = userRepository.findByEmail(dto.getEmail())
-                .orElseThrow(()->new NotFoundException("Пользователь с таким email не найден"));
+                .orElseThrow(() -> new NotFoundException("Пользователь с таким email не найден"));
 
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());
@@ -126,15 +126,16 @@ public class UserServiceImpl implements UserService {
         user.setAddress(dto.getAddress());
         userRepository.save(user);
     }
-@Override
-public void uploadImageUser(MultipartFile file, String email) {
-    User user = userRepository.findByEmail(email).orElseThrow(()->
-            new NotFoundException("Пользователь не найден"));
-    if (!file.isEmpty()) {
-        String fileName = imageService.saveUploadedFile(file, "image");
-        user.setAvatar(fileName);
-    }
-    userRepository.save(user);
+
+    @Override
+    public void uploadImageUser(MultipartFile file, String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() ->
+                new NotFoundException("Пользователь не найден"));
+        if (!file.isEmpty()) {
+            String fileName = imageService.saveUploadedFile(file, "image");
+            user.setAvatar(fileName);
+        }
+        userRepository.save(user);
     }
 
 
@@ -155,5 +156,22 @@ public void uploadImageUser(MultipartFile file, String email) {
                 user.getAuthorities()
         );
 
+    }
+
+    private void updateResetPasswordToken(String token, String email) {
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new NotFoundException("User not found"));
+        user.setResetPasswordToken(token);
+        userRepository.saveAndFlush(user);
+    }
+
+    public User getByResetPasswordToken(String token) {
+        return userRepository.findByResetPasswordToken(token).orElseThrow(() -> new NotFoundException("User not found"));
+    }
+
+    public void updatePassword(User user, String newPassword) {
+        String encodedPassword = passwordEncoder.encode(newPassword);
+        user.setPassword(encodedPassword);
+        user.setResetPasswordToken(null);
+        userRepository.saveAndFlush(user);
     }
 }

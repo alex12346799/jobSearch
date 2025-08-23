@@ -30,6 +30,7 @@ public class User implements UserDetails{
     private String email;
     private String password;
     private boolean enabled;
+    private String resetPasswordToken;
 
     @Column(name = "phone_number")
     private String phoneNumber;
