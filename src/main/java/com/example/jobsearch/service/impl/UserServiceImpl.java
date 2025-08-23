@@ -10,6 +10,8 @@ import com.example.jobsearch.repository.RoleRepository;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.ImageService;
 import com.example.jobsearch.service.UserService;
+import com.example.jobsearch.utils.Utility;
+import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -23,6 +25,7 @@ import org.springframework.security.web.context.HttpSessionSecurityContextReposi
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 import java.util.UUID;
 
@@ -34,6 +37,7 @@ public class UserServiceImpl implements UserService {
     private final PasswordEncoder passwordEncoder;
     private final ImageService imageService;
     private final RoleRepository roleRepository;
+    private final EmailService emailService;
 
     @Override
     public User getUserById(Long id) {
@@ -163,20 +167,26 @@ public class UserServiceImpl implements UserService {
         userRepository.saveAndFlush(user);
     }
 
+    @Override
     public User getByResetPasswordToken(String token) {
         return userRepository.findByResetPasswordToken(token).orElseThrow(() -> new NotFoundException("User not found"));
     }
 
+    @Override
     public void updatePassword(User user, String newPassword) {
         String encodedPassword = passwordEncoder.encode(newPassword);
         user.setPassword(encodedPassword);
         user.setResetPasswordToken(null);
         userRepository.saveAndFlush(user);
     }
+
     @Override
-    public void makeResetPasswordLink(HttpServletRequest request) throws UsernameNotFoundException {
+    public void makeResetPasswordLink(HttpServletRequest request) throws UsernameNotFoundException, MessagingException, UnsupportedEncodingException {
         String email = request.getParameter("email");
         String token = UUID.randomUUID().toString();
         updateResetPasswordToken(token, email);
+
+        String url = Utility.makeSiteUrl(request) + "/auth/reset-password?token=" + token;
+        emailService.sendEmail(email, url);
     }
 }
