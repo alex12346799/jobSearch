@@ -40,7 +40,12 @@
                                     class="btn btn-primary btn-block mb-4">Sign in
                             </button>
 
-                            <a href="/auth/forgot-password">Forgot password?</a>
+<#--                            <a href="/auth/forgot-password">Forgot password?</a>-->
+                            <div class="text-center mt-3">
+                                <a href="/auth/forgot-password" class="btn btn-outline-primary btn-sm">
+                                    Забыли пароль?
+                                </a>
+                            </div>
 
                         </form>
 
