@@ -1,5 +1,6 @@
 package com.example.jobsearch.service.impl;
 
+import com.example.jobsearch.dto.UserEditRequestDto;
 import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
@@ -119,16 +120,21 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(UserRequestDto dto) {
-        User user = userRepository.findByEmail(dto.getEmail())
+    public void updateUser(UserEditRequestDto dto, Authentication authentication) {
+        String email = authentication.getName();
+
+        User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new NotFoundException("Пользователь с таким email не найден"));
 
         user.setName(dto.getName());
         user.setSurname(dto.getSurname());
+        user.setAge(dto.getAge());
         user.setPhoneNumber(dto.getPhoneNumber());
         user.setAddress(dto.getAddress());
         userRepository.save(user);
     }
+
+
 
     @Override
     public void uploadImageUser(MultipartFile file, String email) {
@@ -188,5 +194,9 @@ public class UserServiceImpl implements UserService {
 
         String url = Utility.makeSiteUrl(request) + "/auth/reset-password?token=" + token;
         emailService.sendEmail(email, url);
+    }
+
+    private Boolean isAuthor(Authentication authentication, String author) {
+        return true;
     }
 }

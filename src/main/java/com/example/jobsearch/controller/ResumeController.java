@@ -1,4 +1,5 @@
 package com.example.jobsearch.controller;
+
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
@@ -7,12 +8,16 @@ import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.repository.CategoryRepository;
+import com.example.jobsearch.repository.ResumeRepository;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.ResumeService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -29,10 +34,24 @@ public class ResumeController {
     private final ResumeService resumeService;
     private final UserRepository userRepository;
     private final CategoryService categoryService;
+    private final ResumeRepository resumeRepository;
+//    @GetMapping()
+//    public String showAllResumes(Model model) {
+//        List<ResumeResponseDto> resumes = resumeService.getAllResumes();
+//        model.addAttribute("resumes", resumes);
+//
+//        return "resumes/resumes";
+//    }
+
     @GetMapping()
-    public String showAllResumes(Model model) {
-        List<ResumeResponseDto> resumes = resumeService.getAllResumes();
-        model.addAttribute("resumes", resumes);
+    public String showAllResumes(@RequestParam(required = false, defaultValue = "") String filter,
+                                 Model model, @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Resume> page;
+
+        page = resumeRepository.findAll(pageable);
+
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/resumes");
 
         return "resumes/resumes";
     }
@@ -46,31 +65,30 @@ public class ResumeController {
     @GetMapping("sorted")
     public String getResumesSorted(
             Pageable pageable,
-         Model model) {
+            Model model) {
         model.addAttribute("resumes", resumeService.getAllSortedAndPagedResume(pageable));
         return "resumes/resumes";
     }
 
 
-
-@GetMapping("/create")
-public String createResume(Model model, Authentication auth) {
-    User user = userRepository.findByEmail(auth.getName())
-            .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-    model.addAttribute("applicantId", user.getId());
-    WorkExperienceInfoRequestDto workExperienceDto = new WorkExperienceInfoRequestDto();
-    model.addAttribute("workExperienceDto", workExperienceDto);
-    model.addAttribute("categories", categoryService.findAll());
-    return "resumes/createResume";
-}
+    @GetMapping("/create")
+    public String createResume(Model model, Authentication auth) {
+        User user = userRepository.findByEmail(auth.getName())
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+        model.addAttribute("applicantId", user.getId());
+        WorkExperienceInfoRequestDto workExperienceDto = new WorkExperienceInfoRequestDto();
+        model.addAttribute("workExperienceDto", workExperienceDto);
+        model.addAttribute("categories", categoryService.findAll());
+        return "resumes/createResume";
+    }
 
 
     @PostMapping("/create")
     public String createResume(@Valid ResumeRequestDto dto, BindingResult bindingResult, Model model, Authentication authentication) {
-      if (bindingResult.hasErrors()) {
-          model.addAttribute("resumeRequestDto", dto);
-          return "resumes/createResume";
-      }
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("resumeRequestDto", dto);
+            return "resumes/createResume";
+        }
         Resume createResume = resumeService.create(dto, authentication);
         model.addAttribute("resume", createResume);
         return "redirect:/" + createResume.getId();
