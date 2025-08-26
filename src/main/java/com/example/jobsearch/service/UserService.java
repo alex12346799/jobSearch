@@ -1,5 +1,6 @@
 package com.example.jobsearch.service;
 
+import com.example.jobsearch.dto.UserEditRequestDto;
 import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.model.User;
@@ -22,7 +23,8 @@ public interface UserService extends UserDetailsService {
 
     User login(String email, String password);
 
-    void updateUser(UserRequestDto dto);
+
+    void updateUser(UserEditRequestDto dto, Authentication authentication);
 
     void uploadImageUser(MultipartFile file, String email);
 

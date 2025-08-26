@@ -1,3 +1,4 @@
+
 <style>
     body {
         background: linear-gradient(135deg, #6a11cb, #2575fc);
@@ -11,7 +12,7 @@
         border-radius: 16px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        max-width: 800px;
+        max-width: 600px;
         margin: auto;
     }
 
@@ -27,26 +28,10 @@
         color: #333;
     }
 
-    .custom-form .form-control {
-        border-radius: 10px;
-        border: 1px solid #ccc;
-        transition: all 0.3s ease;
-        padding: 12px 15px;
-        font-size: 1.1rem;
-    }
-    .form-control{
-        margin-left: auto;
-    }
-
-
-    .custom-form .form-control::placeholder {
-        padding-left: 3px;
-        color: #999;
-    }
-
-    .custom-form .form-control:focus {
-        border-color: #6a11cb;
-        box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
+    .custom-form .form-group {
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
     }
 
     .custom-form label {
@@ -55,21 +40,36 @@
         font-size: 1.1rem;
     }
 
+    .custom-form .form-control {
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        padding: 12px 15px;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+    }
+
+    .custom-form .form-control::placeholder {
+        color: #999;
+    }
+
+    .custom-form .form-control:focus {
+        border-color: #6a11cb;
+        box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
+    }
 
     .custom-form .btn-submit {
         background: linear-gradient(90deg, #6a11cb, #2575fc);
         border: none;
         border-radius: 10px;
-        padding: 10px 40px;
+        padding: 12px 40px;
         font-size: 1rem;
         font-weight: bold;
         color: white;
         transition: all 0.3s ease;
         display: block;
         margin: 25px auto 0 auto;
-        width: auto;
-        min-width: 120px;
         text-align: center;
+        cursor: pointer;
     }
 
     .custom-form .btn-submit:hover {
@@ -79,31 +79,44 @@
     }
 </style>
 
-<form class="custom-form">
+<form class="custom-form" enctype="multipart/form-data" method="post" action="/auth/update">
+    <#if _csrf??>
+        <input
+                type="hidden"
+                name="${(_csrf.parameterName)!'csrf-param-name'}"
+                value="${(_csrf.token)!'csrf-token'}"/>
+    </#if>
     <h2>Редактирование профиля</h2>
-    <div class="row g-4">
-        <div class="col-md-6">
-            <label for="firstName" class="form-label">Имя</label>
-            <input type="text" class="form-control" id="firstName" placeholder="Введите имя">
-        </div>
-        <div class="col-md-6">
-            <label for="lastName" class="form-label">Фамилия</label>
-            <input type="text" class="form-control" id="lastName" placeholder="Введите фамилию">
-        </div>
-        <div class="col-md-6">
-            <label for="email" class="form-label">Email</label>
-            <input type="email" class="form-control" id="email" placeholder="Введите email">
-        </div>
-        <div class="col-md-3">
-            <label for="age" class="form-label">Возраст</label>
-            <input type="number" class="form-control" id="age" placeholder="18">
-        </div>
-        <div class="col-md-3">
-            <label for="phone" class="form-label">Телефон</label>
-            <input type="tel" class="form-control" id="phone" placeholder="+996 (___) __-__-__">
-        </div>
-        <div class="col-12">
-            <button type="submit" class="btn-submit">Сохранить</button>
-        </div>
+
+    <div class="form-group">
+        <label for="firstName">Имя</label>
+        <input type="text" class="form-control" id="firstName" placeholder="Введите имя" name="name" value="${user.name}">
     </div>
+
+    <div class="form-group">
+        <label for="lastName">Фамилия</label>
+        <input type="text" class="form-control" id="lastName" placeholder="Введите фамилию" name="surname" value="${user.surname}">
+    </div>
+
+    <div class="form-group">
+        <label for="age">Возраст</label>
+        <input type="number" class="form-control" id="age" placeholder="18" name="age" value="${user.age}">
+    </div>
+
+    <div class="form-group">
+        <label for="phone">Телефон</label>
+        <input type="tel" class="form-control" id="phone" placeholder="+996 (___) __-__-__" name="phoneNumber" value="${user.phoneNumber!""}">
+    </div>
+
+    <div class="form-group">
+        <label for="address">Адрес</label>
+        <input type="text" class="form-control" id="address" placeholder="Введите адрес" name="address" value="${user.address!""}">
+    </div>
+
+<#--    <div class="form-group">-->
+<#--        <label for="photo">Фото профиля</label>-->
+<#--        <input type="file" class="form-control" id="photo" name="photo">-->
+<#--    </div>-->
+
+    <button type="submit" class="btn-submit">Сохранить</button>
 </form>

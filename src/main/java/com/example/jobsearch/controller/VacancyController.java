@@ -8,11 +8,15 @@ import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.repository.UserRepository;
+import com.example.jobsearch.repository.VacancyRepository;
 import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -21,6 +25,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -31,28 +36,22 @@ public class VacancyController {
     private final VacancyService vacancyService;
     private final UserRepository userRepository;
     private final CategoryService categoryService;
+    private final VacancyRepository vacancyRepository;
 
 
     @GetMapping
-    public String showVacancies(Model model) {
-        List<VacancyResponseDto> vacancy = vacancyService.getAll();
-        model.addAttribute("vacancy", vacancy);
+    public String showVacancies(@RequestParam(required = false, defaultValue = "") String filter, Model model,
+                                @PageableDefault(sort = {"id"}, direction = Sort.Direction.DESC) Pageable pageable) {
+        Page<Vacancy> page;
+        page = vacancyRepository.findAll(pageable);
+
+        model.addAttribute("page", page);
+        model.addAttribute("vacancy", page.getContent());
+        model.addAttribute("url", "/vacancies");
+
         return "vacancies/vacancies";
     }
 
-    //    @GetMapping("/create")
-//    public String createVacancy(Model model, Authentication auth) {
-//        String username = auth.getName();
-//        User user = userRepository.findByEmail(username).orElseThrow(()
-//                -> new NotFoundException("Пользователь не найден"));
-//
-//        model.addAttribute("employerId", user.getId());
-//        model.addAttribute("vacancy", new  VacancyRequestDto());
-//        model.addAttribute("vacancyRequestDto", new VacancyRequestDto());
-//        List<Category> categories = categoryService.findAll();
-//        model.addAttribute("categories", categories);
-//        return "vacancies/createVacancies";
-//    }
 
     @GetMapping("sorted")
     public String vacancySorted (Pageable pageable, Model model){
