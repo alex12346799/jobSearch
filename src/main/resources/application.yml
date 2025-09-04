@@ -18,7 +18,7 @@ spring:
   liquibase:
     change-log: classpath:/db/changelog/master.yaml
   mvc:
-    static-path-pattern: /static/**
+#    static-path-pattern: /static/**
     log-request-details: false
   freemarker:
     expose-session-attributes: true

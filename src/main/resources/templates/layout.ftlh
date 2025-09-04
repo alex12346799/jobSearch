@@ -38,31 +38,42 @@
 
 
                 </ul>
-                <#--                <form class="d-flex" role="search">-->
-                <#--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>-->
-                <#--                    <button class="btn btn-outline-success" type="submit">Search</button>-->
-                <#--                </form>-->
 
 
 
 
-            <#assign known = SPRING_SECURITY_CONTEXT?? >
+                <div class="ms-3 d-flex align-items-center">
+
+
+                    <a href="/?lang=ru" class="text-decoration-none me-2">
+                        <img src="/images/ru.png" alt="Русский" width="24" height="24">
+                    </a>
+
+                    <a href="/?lang=en" class="text-decoration-none">
+                        <img src="/images/en.png" alt="English" width="24" height="24">
+                    </a>
+                </div>
+
+
+                <#assign known = SPRING_SECURITY_CONTEXT?? >
             <#if known>
                 <#assign
                 user = SPRING_SECURITY_CONTEXT.authentication.principal
                 name = user.getUsername()
                 >
                 <#if user??>
-                    <a href="/profile/${name}" class="text-light m-2 m-sm-0">
-                        <@spring.message "layout.hello"/>, ${name}
+<#--                    <a href="/profile/${name}" class="text-light m-2 m-sm-0">-->
+<#--                        <@spring.message "layout.hello"/>, ${name}-->
 
-                        <#list user.authorities as auth>
-                            <span class="text-danger">${auth}</span>
-                            <#if auth?has_next>
-                                /
-                            </#if>
-                        </#list>
-                    </a>
+<#--                        <#list user.authorities as auth>-->
+<#--                            <span class="text-danger">${auth}</span>-->
+<#--                            <#if auth?has_next>-->
+<#--                                /-->
+<#--                            </#if>-->
+<#--                        </#list>-->
+<#--                    </a>-->
+
+
                     <form action="/logout" method="post">
                         <#if _csrf??>
                             <input
@@ -76,6 +87,7 @@
                         </button>
                     </form>
                 </#if>
+
             <#else>
                 <a href="/login"
                    class="btn btn-outline-info m-2"><@spring.message "layout.login"/></a>
@@ -83,6 +95,8 @@
                    class="btn btn-outline-info m-2"><@spring.message "layout.register"/></a>
             </#if>
 
+
+        </div>
         </div>
     </nav>
 
