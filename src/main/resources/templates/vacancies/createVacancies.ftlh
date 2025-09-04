@@ -1,4 +1,5 @@
 <#import "../layout.ftlh" as main>
+<#import "/spring.ftl" as spring>
 <@main.layout>
 
     <head>
@@ -61,7 +62,7 @@
     </head>
     <body>
     <div class="container">
-        <h2>Создание вакансии:</h2>
+        <h2><@spring.message"createVacancies.creating_a_vacancy"/>:</h2>
         <form action="/vacancies/create" method="post">
 
 
@@ -74,13 +75,13 @@
 
 
             <input type="hidden" name="employerId" value="${employerId!}">
-            <label>Название вакансии:
-                <input type="text" name="title" placeholder="Введите название" value="${vacancyRequestDto.title!}" required>
+            <label><@spring.message"createVacancies.job_title"/>:
+                <input type="text" name="title" placeholder="<@spring.message"createVacancies.placeholder.enter_a_name"/>" value="${vacancyRequestDto.title!}" required>
             </label>
 
-            <label>Категория:
+            <label><@spring.message"createVacancies.category"/>:
                 <select name="categoryId" required>
-                    <option value="">Выберите категорию</option>
+                    <option value=""><@spring.message"createVacancies.select_category"/></option>
                     <#list categories as category>
                         <option value="${category.id}" <#if vacancy?has_content && vacancy.categoryId?? && (vacancy.categoryId?string == category.id?string)>selected</#if>>
 
@@ -95,14 +96,14 @@
 
 
 
-            <label>Заработная плата:
+            <label><@spring.message"createVacancies.wages"/>:
                 <input type="text" id="salary" name="salary"
-                       value="${vacancyRequestDto.salary!}" class="form-control" placeholder="Введите зарплату" required>
+                       value="${vacancyRequestDto.salary!}" class="form-control" placeholder="<@spring.message"createVacancies.placeholder.enter_salary"/>" required>
             </label>
 
-            <label>Описание вакансии:
+            <label><@spring.message"createVacancies"/>:
                 <textarea id="description" name="description" class="form-control"
-                          placeholder="Введите описание вакансии" required>${vacancyRequestDto.description!}</textarea>
+                          placeholder="<@spring.message"createVacancies.placeholder.enter_a_job_description"/>" required>${vacancyRequestDto.description!}</textarea>
             </label>
 
 
@@ -114,19 +115,19 @@
 <#--                <textarea name="description" placeholder="Введите описание">${vacancy.description!}</textarea>-->
 <#--            </label>-->
 
-            <label>Требуемый опыт:</label>
+            <label><@spring.message"createVacancies.required_experience"/>:</label>
             <div class="experience">
-                от <input id="expFrom" type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
-                до <input id="expTo" type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
+                <@spring.message"createVacancies.from"/> <input id="expFrom" type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
+                <@spring.message"createVacancies.to"/> <input id="expTo" type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
             </div>
 
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="active" <#if vacancyRequestDto.isActive()?? && vacancyRequestDto.isActive()>checked</#if>> Активно
+                    <input type="checkbox" name="active" <#if vacancyRequestDto.isActive()?? && vacancyRequestDto.isActive()>checked</#if>> <@spring.message"createVacancies.actively"/>
                 </label>
             </div>
 
-            <button type="submit">Опубликовать</button>
+            <button type="submit"><@spring.message"createVacancies.publish"/></button>
         </form>
     </div>
     </body>

@@ -132,6 +132,8 @@
 <#--    <button type="submit" class="btn-submit">Сохранить</button>-->
 <#--</form>-->
 
+<#import "/spring.ftl" as spring>
+
 
 <style>
     body {
@@ -214,14 +216,7 @@
         margin-bottom: 20px;
     }
 
-    .avatar-preview {
-        width: 120px;
-        height: 120px;
-        border-radius: 50%;
-        /*object-fit: cover;*/
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        margin-bottom: 15px;
-    }
+
 
     .file-input {
         display: none;
@@ -250,43 +245,51 @@
                 name="${(_csrf.parameterName)!'csrf-param-name'}"
                 value="${(_csrf.token)!'csrf-token'}"/>
     </#if>
-
-
-
-
-    <h2>Редактирование профиля</h2>
-
     <div class="avatar-section">
         <img src="/images/${user.avatar! 'default.png'}" alt="" class="avatar-preview">
         <input type="file" id="avatar" name="avatar" accept="image/*" class="file-input"/>
         <label for="avatar" class="file-label">Выбрать фото</label>
     </div>
 
+
+
+    <form class="custom-form" method="post" action="/auth/update">
+        <#if _csrf??>
+            <input
+                    type="hidden"
+                    name="${(_csrf.parameterName)!'csrf-param-name'}"
+                    value="${(_csrf.token)!'csrf-token'}"/>
+        </#if>
+    <h2><@spring.message"editUser.editing_your_profile"/></h2>
+
+
     <div class="form-group">
-        <label for="firstName">Имя</label>
+        <label for="firstName"><@spring.message"editUser.name"/></label>
         <input type="text" class="form-control" id="firstName" placeholder="Введите имя" name="name" value="${user.name}">
     </div>
 
     <div class="form-group">
-        <label for="lastName">Фамилия</label>
+        <label for="lastName"><@spring.message"editUser.surname"/></label>
         <input type="text" class="form-control" id="lastName" placeholder="Введите фамилию" name="surname" value="${user.surname}">
     </div>
 
     <div class="form-group">
-        <label for="age">Возраст</label>
+        <label for="age"><@spring.message"editUser.age"/></label>
         <input type="number" class="form-control" id="age" placeholder="18" name="age" value="${user.age}">
     </div>
 
     <div class="form-group">
-        <label for="phone">Телефон</label>
+        <label for="phone"><@spring.message"editUser.number"/></label>
         <input type="tel" class="form-control" id="phone" placeholder="+996 (___) __-__-__" name="phoneNumber" value="${user.phoneNumber!""}">
     </div>
 
     <div class="form-group">
-        <label for="address">Адрес</label>
+        <label for="address"><@spring.message"editUser.address"/></label>
         <input type="text" class="form-control" id="address" placeholder="Введите адрес" name="address" value="${user.address!""}">
     </div>
 
-    <button type="submit" class="btn-submit">Сохранить</button>
+
+
+    <button type="submit" class="btn-submit"><@spring.message"editUser.save"/></button>
 </form>
 

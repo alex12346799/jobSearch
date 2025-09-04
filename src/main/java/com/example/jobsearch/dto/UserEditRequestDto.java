@@ -15,7 +15,7 @@ public class UserEditRequestDto {
     private String surname;
 
     @NotNull(message = "Возраст указывать обязательно")
-    private int age;
+    private Integer age;
 
 
     @NotBlank(message = "Телефон обязателен")
