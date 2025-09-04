@@ -6,6 +6,7 @@ import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.model.User;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.multipart.MultipartFile;
@@ -37,4 +38,6 @@ public interface UserService extends UserDetailsService {
     void updatePassword(User user, String newPassword);
 
     void makeResetPasswordLink(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException;
+
+ ResponseEntity<?> downloadImage(long imageId);
 }

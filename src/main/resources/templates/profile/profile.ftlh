@@ -161,13 +161,22 @@
 
 <#--        </div>-->
 
-
-
         <div class="profile-photo">
-            <img src="/images/image/${user.avatar}"
+            <img src="/auth/download/${user.id}"
                  alt="Avatar"
-                 class="avatar-preview">
+                 class="avatar-preview"
+                 style="width:100px; height:100px; border-radius:50%;">
         </div>
+
+
+
+
+        <#--        <div class="profile-photo">-->
+<#--            <img src="/images/image/${user.avatar}"-->
+<#--                 alt="Avatar"-->
+<#--                 class="avatar-preview">-->
+<#--        </div>-->
+
 
 
 

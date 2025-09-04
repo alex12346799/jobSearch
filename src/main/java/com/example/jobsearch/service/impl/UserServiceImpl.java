@@ -16,6 +16,8 @@ import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -39,6 +41,7 @@ public class UserServiceImpl implements UserService {
     private final ImageService imageService;
     private final RoleRepository roleRepository;
     private final EmailService emailService;
+    private final FileService fileService;
 
     @Override
     public User getUserById(Long id) {
@@ -199,4 +202,14 @@ public class UserServiceImpl implements UserService {
     private Boolean isAuthor(Authentication authentication, String author) {
         return true;
     }
+    @Override
+    public ResponseEntity<?> downloadImage(long imageId){
+        User user = getUserById(imageId);
+        String filename = user.getAvatar();
+        if (filename == null || filename.isEmpty()) {
+            filename = "picture.png";
+        }
+        return fileService.getOutputFile(filename, MediaType.IMAGE_PNG);
+    }
+
 }

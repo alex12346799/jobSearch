@@ -18,6 +18,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
@@ -39,7 +40,6 @@ public class UserController {
     private final ResumeService resumeService;
     private final VacancyService vacancyService;
     private final RedirectHelper redirectHelper;
-    private final UserRepository userRepository;
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
@@ -161,6 +161,11 @@ public class UserController {
             model.addAttribute("error", "invalid token");
         }
         return "message/message";
+    }
+
+    @GetMapping("/download/{imageId}")
+    public ResponseEntity<?> downloadImage(@PathVariable("imageId") long imageId) {
+        return userService.downloadImage(imageId);
     }
 
 }
