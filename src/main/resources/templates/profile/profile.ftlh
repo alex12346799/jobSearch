@@ -1,4 +1,3 @@
-
 <style>
     body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -157,27 +156,29 @@
     </h1>
 
     <div class="profile-header">
-        <div class="profile-photo"></div>
+<#--        <div class="profile-photo">-->
+
+
+<#--        </div>-->
+
+
+
+        <div class="profile-photo">
+            <img src="/images/image/${user.avatar}"
+                 alt="Avatar"
+                 class="avatar-preview">
+        </div>
+
+
 
         <div class="profile-info">
 
 
 
-<#--            <div class="profile-photo"-->
-<#--                 style="background-image: url('${user.avatar!"/images/default-avatar.png"}');">-->
-<#--            </div>-->
 
-
-<#--            <form action="/auth/upload-avatar" method="post" enctype="multipart/form-data">-->
-<#--            <input type="file" name="avatar" accept="image/*"/>-->
-<#--            <button type="submit" class="btn btn-edit">Загрузить фото</button>-->
-<#--        </form>-->
-
-
-
-        <h2>${user.name} ${user.surname}</h2>
+            <h2>${user.name} ${user.surname}</h2>
             <p><strong>Возраст:</strong> ${user.age}</p>
-<#--            <button class="btn btn-edit">Редактировать</button>-->
+            <#--            <button class="btn btn-edit">Редактировать</button>-->
             <a class="btn btn-create" href="/auth/update">Редактировать</a>
         </div>
 

@@ -13,21 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 @RequiredArgsConstructor
 public class ImageServiceImpl implements ImageService {
     private final UserRepository userRepository;
-//    @Override
-//    public String saveUploadedFile(MultipartFile file, String subDir) {
-//        return ImageService.super.saveUploadedFile(file, subDir);
-//    }
-//
-//    @Override
-//    public ImageDto getById(long id) {
-//        return null;
-//    }
-//
-//    @Override
-//    public void create(ImageDto imageDto){
-//        String filename = saveUploadedFile(imageDto.getFile(), "images");
-//        System.out.println(filename);
-//    }
+
 @Override
 public String saveUploadedFile(MultipartFile file, String subDir) {
     return ImageService.super.saveUploadedFile(file, subDir);
@@ -47,7 +33,7 @@ public String saveUploadedFile(MultipartFile file, String subDir) {
     public void uploadImageUser(MultipartFile file, String email) {
     User user = userRepository.findByEmail(email).orElseThrow(()->
             new NotFoundException("User not found"));
-    String filename = saveUploadedFile(file, "avatars");
+    String filename = saveUploadedFile(file, "image");
     user.setAvatar(filename);
     userRepository.save(user);
     }
