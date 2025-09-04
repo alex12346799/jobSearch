@@ -1,34 +1,27 @@
 <#import "../layout.ftlh" as main>
+<#import "/spring.ftl" as spring>
 <#import "../pages/pages.ftlh" as p>
 <@main.layout>
     <select class="form-select" aria-label="Default select example" onchange="window.location=this.value">
-        <option selected>Open this select menu</option>
-        <option value="/resumes/sorted?sort=name">Имя</option>
-        <option value="/resumes/sorted?sort=createdDate">Дата</option>
-        <option value="/resumes/sorted?sort=salary">Зарплата</option>
-        <option value="/resumes/sorted?sort=response">Отклик</option>
+        <option selected><@spring.message"resumes.sorting"/></option>
+        <option value="/resumes/sorted?sort=name"><@spring.message"resumes.sort.name"/></option>
+        <option value="/resumes/sorted?sort=createdDate"><@spring.message"resumes.sort.data"/></option>
+        <option value="/resumes/sorted?sort=salary"><@spring.message"resumes.sort.salary"/></option>
+        <option value="/resumes/sorted?sort=response"><@spring.message"resumes.sort.response"/></option>
     </select>
 
-<#--    <nav aria-label="Page navigation example">-->
-<#--        <ul class="pagination">-->
-<#--            <li class="page-item"><a class="page-link" href="/resumes/sorted?page=0&size=3">Previous</a></li>-->
-<#--            <li class="page-item"><a class="page-link" href="/resumes/sorted?page=1&size=3">1</a></li>-->
-<#--            <li class="page-item"><a class="page-link" href="/resumes/sorted?page=2&size=3">2</a></li>-->
-<#--            <li class="page-item"><a class="page-link" href="/resumes/sorted?page=3&size=3">3</a></li>-->
-<#--            <li class="page-item"><a class="page-link" href="/resumes/sorted?page=4&size=3">Next</a></li>-->
-<#--        </ul>-->
-<#--    </nav>-->
+
 <@p.pager url page/>
     <table class="table table-success table-striped">
         <thead>
         <tr>
             <th>#</th>
-            <th>название</th>
-            <th>зарплата</th>
-            <th>дата создания</th>
-            <th>имя</th>
-            <th>дата обновления</th>
-            <th>категория</th>
+            <th><@spring.message"resumes.th.resume_title"/></th>
+            <th><@spring.message"resumes.th.salary"/></th>
+            <th><@spring.message"resumes.th.creation_date"/></th>
+            <th><@spring.message"resumes.th.name"/></th>
+            <th><@spring.message"resumes.th.update_date"/></th>
+            <th><@spring.message"resumes.th.category"/></th>
             <th></th>
 
         </tr>
