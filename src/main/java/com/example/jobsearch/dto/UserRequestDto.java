@@ -35,4 +35,6 @@ public class UserRequestDto {
 
     @NotNull(message = "Роль обязателна")
     private Long roleId;
+
+
 }

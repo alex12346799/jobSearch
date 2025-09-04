@@ -24,25 +24,6 @@ public interface ResumeService {
     List<ResumeResponseDto> getAllResumes();
 
 
-
-
-
-    //    @Override
-    //    public List<ResumeResponseDto> getAllSortedResume(String sortedValue) {
-    //        List<Resume> resumes = resumeRepository.findAll(getSortMethod(sortedValue));
-    //        return resumes.stream()
-    //                .map(e -> ResumeResponseDto.builder()
-    //                        .id(e.getId())
-    //                        .name(e.getName())
-    //                        .salary(e.getSalary())
-    //                        .isActive(e.isActive())
-    //                        .createdDate(e.getCreatedDate())
-    //                        .updateDate(e.getUpdateDate())
-    //                        .applicantName(userRepository.findNameById(e.getApplicant().getId()))
-    //                        .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
-    //                        .build())
-    //                .toList();
-    //    }
     List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable);
 
     Resume getById(long id);

@@ -24,30 +24,19 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="resumes">Резюме</a>
+                        <a class="nav-link active" aria-current="page" href="resumes"><@spring.message "layout.resumes"/></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="vacancies">Вакансии</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/update">Редактирование</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/profile">Личный кабинет</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/auth/profileAdmin">1213</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/resumes/create">Создать резюме</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/vacancies/create">Создать вакансию</a>
+                        <a class="nav-link" href="vacancies"><@spring.message "layout.vacancies"/></a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                        <a class="nav-link" href="/auth/profile"><@spring.message "layout.Personal_account"/></a>
                     </li>
+
+
+
+
                 </ul>
                 <#--                <form class="d-flex" role="search">-->
                 <#--                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>-->
@@ -65,7 +54,7 @@
                 >
                 <#if user??>
                     <a href="/profile/${name}" class="text-light m-2 m-sm-0">
-                        Hello, ${name}
+                        <@spring.message "layout.hello"/>, ${name}
 
                         <#list user.authorities as auth>
                             <span class="text-danger">${auth}</span>
@@ -83,15 +72,15 @@
                         </#if>
                         <button type="submit" class="btn btn-outline-info m-2"
                                 id="logout">
-                            Logout
+                            <@spring.message "layout.logout"/>
                         </button>
                     </form>
                 </#if>
             <#else>
                 <a href="/login"
-                   class="btn btn-outline-info m-2">Login</a>
+                   class="btn btn-outline-info m-2"><@spring.message "layout.login"/></a>
                 <a href="/register"
-                   class="btn btn-outline-info m-2">Register</a>
+                   class="btn btn-outline-info m-2"><@spring.message "layout.register"/></a>
             </#if>
 
         </div>
