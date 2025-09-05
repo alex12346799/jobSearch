@@ -87,6 +87,6 @@ public class VacancyController {
         Vacancy vacancy = vacancyService.create(vacancyRequestDto, auth);
 
         model.addAttribute("vacancy", vacancy);
-        return "redirect:/" + vacancy.getId();
+        return "redirect:/auth/profile" ;
     }
 }

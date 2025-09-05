@@ -1,5 +1,6 @@
 <#import "../layout.ftlh" as main>
-<@main.layout>
+<#import "/spring.ftl" as spring>
+<@main.layout; spring>
 
     <style>
         .auth-bg {
@@ -26,7 +27,7 @@
 
     <div class="auth-bg">
         <div class="auth-card">
-            <h2>Регистрация</h2>
+            <h2><@spring.message"register.registration"/></h2>
             <form action="/auth/register" method="post">
                 <#if _csrf??>
                     <input
@@ -35,40 +36,62 @@
                             value="${(_csrf.token)!'csrf-token'}"/>
                 </#if>
                 <div class="row">
-                    <div class="col-md-6 mb-3">
-                        <label for="firstName" class="form-label">Имя</label>
-                        <input type="text" class="form-control" id="name" name="name" placeholder="Иван">
+
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3cg"><@spring.message"register.name"/></label>
+                        <@spring.formInput "userRequestRegisterDto.name" 'id="form3Example3cg" class="form-control form-control-lg"' />
+                        <@spring.showErrors "<br>" "error text-danger" />
                     </div>
-                    <div class="col-md-6 mb-3">
-                        <label for="lastName" class="form-label">Фамилия</label>
-                        <input type="text" class="form-control" id="surname" name="surname" placeholder="Иванов">
+
+
+
+
+
+                    <div data-mdb-input-init class="form-outline mb-4">
+                        <label class="form-label" for="form3Example3cg"><@spring.message"register.surname"/></label>
+                        <@spring.formInput "userRequestRegisterDto.surname" 'id="form3Example3cg" class="form-control form-control-lg"' />
+                        <@spring.showErrors "<br>" "error text-danger" />
                     </div>
+
+
+
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form3Example3cg"><@spring.message"register.email"/></label>
+                    <@spring.formInput "userRequestRegisterDto.email" 'id="form3Example3cg" class="form-control form-control-lg"' />
+                    <@spring.showErrors "<br>" "error text-danger" />
+                </div>
+
+
+
+
+
+
+
+
+
+                <div data-mdb-input-init class="form-outline mb-4">
+                    <label class="form-label" for="form3Example4cg"><@spring.message"register.password"/></label>
+                    <@spring.formInput "userRequestRegisterDto.password" 'id="form3Example4cg" class="form-control form-control-lg"' />
+                    <@spring.showErrors "<br>" "error text-danger" />
                 </div>
 
                 <div class="mb-3">
-                    <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
-                </div>
-
-                <div class="mb-3">
-                    <label for="password" class="form-label">Пароль</label>
-                    <input type="password" class="form-control" id="password" name="password" placeholder="••••••••">
-                </div>
-
-                <div class="mb-3">
-                    <label for="role" class="form-label">Роль</label>
+                    <label for="role" class="form-label"><@spring.message"register.role"/></label>
                     <select class="form-select" id="role" name="roleId">
-                        <option value="" disabled selected>Выберите роль</option>
-                        <option value="1">EMPLOYEE</option>
-                        <option value="2">APPLICANT</option>
+                        <option value="" disabled selected><@spring.message"register.select_a_role"/></option>
+                        <option value="1"><@spring.message"register.EMPLOYEE"/></option>
+                        <option value="2"><@spring.message"register.APPLICANT"/></option>
                     </select>
                 </div>
 
-                <button type="submit" class="btn btn-primary w-100">Создать аккаунт</button>
+                <button type="submit" class="btn btn-primary w-100"><@spring.message"register.create_an_account"/></button>
             </form>
 
             <div class="text-center mt-3">
-                Уже есть аккаунт? <a href="/auth/login">Войти</a>
+                <@spring.message"register.already_have_an_account"/>? <a href="/auth/login"><@spring.message"register.login"/></a>
             </div>
         </div>
     </div>

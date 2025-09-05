@@ -1,6 +1,7 @@
 package com.example.jobsearch.mapper;
 
 import com.example.jobsearch.dto.UserRequestDto;
+import com.example.jobsearch.dto.UserRequestRegisterDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.model.User;
 
@@ -31,6 +32,17 @@ public class UserMapper {
         user.setPassword(userRequestDto.getPassword());
         user.setPhoneNumber(userRequestDto.getPhoneNumber());
         user.setAddress(userRequestDto.getAddress());
+        return user;
+    }
+
+    public static User fromDtoRegister(UserRequestRegisterDto userRequestRegisterDto) {
+        if (userRequestRegisterDto == null) return null;
+        User user = new User();
+        user.setName(userRequestRegisterDto.getName());
+        user.setSurname(userRequestRegisterDto.getSurname());
+        user.setEmail(userRequestRegisterDto.getEmail());
+        user.setPassword(userRequestRegisterDto.getPassword());
+
         return user;
     }
 }

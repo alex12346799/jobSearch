@@ -26,7 +26,7 @@ public class ResumeMapper {
         resume.setSalary(dto.getSalary());
         resume.setCreatedDate(LocalDateTime.now());
         resume.setUpdateDate(LocalDateTime.now());
-        resume.setActive(dto.isActive());
+        resume.setActive(dto.getIsActive());
 
 
         List<EducationInfo> educationList = new ArrayList<>();

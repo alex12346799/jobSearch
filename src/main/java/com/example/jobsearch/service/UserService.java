@@ -2,6 +2,7 @@ package com.example.jobsearch.service;
 
 import com.example.jobsearch.dto.UserEditRequestDto;
 import com.example.jobsearch.dto.UserRequestDto;
+import com.example.jobsearch.dto.UserRequestRegisterDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.model.User;
 import jakarta.mail.MessagingException;
@@ -31,7 +32,7 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser(long id);
 
-    User register(UserRequestDto dto, HttpServletRequest request);
+    User register(UserRequestRegisterDto dto, HttpServletRequest request);
 
     User getByResetPasswordToken(String token);
 

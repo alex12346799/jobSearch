@@ -18,9 +18,22 @@ public class RedirectHelper {
         }
     }
 
+
+        public String getRedirectByRole(Collection<? extends GrantedAuthority> authorities) {
+            if (authorities.stream().anyMatch(a -> a.getAuthority().equals("EMPLOYEE"))) {
+                return "redirect:/resumes";
+            } else if (authorities.stream().anyMatch(a -> a.getAuthority().equals("APPLICANT"))) {
+                return "redirect:/vacancies";
+            } else {
+                return "redirect:/login";
+            }
+        }
+    }
+
+
 //    public void redirect(Collection<? extends GrantedAuthority> authorities,
 //                         HttpServletResponse response) throws IOException {
 //        if (authorities.stream().anyMatch(a -> a.getAuthority().equals("EMPLOYEE"))) response.sendRedirect("/resumes");
 //        response.sendRedirect("/vacancies");
 //    }
-}
+

@@ -35,13 +35,7 @@ public class ResumeController {
     private final UserRepository userRepository;
     private final CategoryService categoryService;
     private final ResumeRepository resumeRepository;
-//    @GetMapping()
-//    public String showAllResumes(Model model) {
-//        List<ResumeResponseDto> resumes = resumeService.getAllResumes();
-//        model.addAttribute("resumes", resumes);
-//
-//        return "resumes/resumes";
-//    }
+
 
     @GetMapping()
     public String showAllResumes(@RequestParam(required = false, defaultValue = "") String filter,
@@ -75,6 +69,7 @@ public class ResumeController {
     public String createResume(Model model, Authentication auth) {
         User user = userRepository.findByEmail(auth.getName())
                 .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+        model.addAttribute("resumeRequestDto", new ResumeRequestDto());
         model.addAttribute("applicantId", user.getId());
         WorkExperienceInfoRequestDto workExperienceDto = new WorkExperienceInfoRequestDto();
         model.addAttribute("workExperienceDto", workExperienceDto);
@@ -84,14 +79,15 @@ public class ResumeController {
 
 
     @PostMapping("/create")
-    public String createResume(@Valid ResumeRequestDto dto, BindingResult bindingResult, Model model, Authentication authentication) {
+    public String createResume(@Valid ResumeRequestDto resumeRequestDto, BindingResult bindingResult, Model model, Authentication authentication) {
         if (bindingResult.hasErrors()) {
-            model.addAttribute("resumeRequestDto", dto);
+            model.addAttribute("resumeRequestDto", resumeRequestDto);
             return "resumes/createResume";
         }
-        Resume createResume = resumeService.create(dto, authentication);
+        Resume createResume = resumeService.create(resumeRequestDto, authentication);
         model.addAttribute("resume", createResume);
-        return "redirect:/" + createResume.getId();
+//        return "redirect:/" + createResume.getId();
+        return "redirect:/auth/profile";
     }
 
 

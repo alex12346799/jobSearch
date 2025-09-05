@@ -23,7 +23,7 @@ public class UserRequestDto {
     @Email
     private String email;
 
-    @NotNull(message = "Пароль обязателен")
+    @NotBlank(message = "Пароль обязателен")
     private String password;
 
     @NotBlank(message = "Телефон обязателен")

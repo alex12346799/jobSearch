@@ -2,6 +2,7 @@ package com.example.jobsearch.controller;
 
 import com.example.jobsearch.dto.UserEditRequestDto;
 import com.example.jobsearch.dto.UserRequestDto;
+import com.example.jobsearch.dto.UserRequestRegisterDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Resume;
@@ -43,19 +44,34 @@ public class UserController {
 
     @GetMapping("/register")
     public String showRegistrationForm(Model model) {
-        model.addAttribute("userRequestDto", new UserRequestDto());
-        return "register/register";
+        model.addAttribute("userRequestRegisterDto", new UserRequestRegisterDto());
+        return "auth/register";
     }
+
 
     @PostMapping("/register")
-    public void registerUser(UserRequestDto dto, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        User registeredUser = userService.register(dto, request);
-        redirectHelper.redirectByRole(registeredUser.getAuthorities(), response);
+    public String registerUser(@Valid UserRequestRegisterDto dto,
+                               BindingResult bindingResult,
+                               HttpServletRequest request,
+                               Model model) {
 
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("userRequestRegisterDto", dto);
+            return "auth/register";
+        }
+
+        User registeredUser = userService.register(dto, request);
+
+        return redirectHelper.getRedirectByRole(registeredUser.getAuthorities());
     }
 
-    @GetMapping("/login")
-    public String login() {
+
+
+
+
+    @GetMapping("login")
+    public String login(Model model, @RequestParam(defaultValue = "false") Boolean error) {
+        model.addAttribute("error", error);
         return "auth/login";
     }
 
@@ -78,7 +94,7 @@ public class UserController {
             return "redirect:/auth/update";
         }
         userService.updateUser(dto, auth);
-        return  "redirect:/auth/profile";
+        return "redirect:/auth/profile";
     }
 
     @GetMapping("/profile")
