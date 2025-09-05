@@ -2,6 +2,7 @@ package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dto.UserEditRequestDto;
 import com.example.jobsearch.dto.UserRequestDto;
+import com.example.jobsearch.dto.UserRequestRegisterDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
@@ -61,54 +62,87 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll();
     }
 
-    @Override
-    public User register(UserRequestDto dto, HttpServletRequest request) {
-        if (dto.getName() == null || dto.getName().isEmpty()) {
-            throw new NotFoundException("Имя обязательно");
-        }
-        if (dto.getSurname() == null || dto.getSurname().isEmpty()) {
-            throw new NotFoundException("фамилия обязательно");
-        }
-        if (dto.getEmail() == null || dto.getEmail().isEmpty()) {
-            throw new NotFoundException("Email  обязательно");
-        }
-        if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
-            throw new NotFoundException("Пароль обязательно");
-        }
-        if (userRepository.existsByName(dto.getName())) {
-            throw new NotFoundException("Пользователь с таким именем уже существует");
-        }
+//    @Override
+//    public User register(UserRequestDto dto, HttpServletRequest request) {
+//        if (dto.getName() == null || dto.getName().isEmpty()) {
+//            throw new NotFoundException("Имя обязательно");
+//        }
+//        if (dto.getSurname() == null || dto.getSurname().isEmpty()) {
+//            throw new NotFoundException("фамилия обязательно");
+//        }
+//        if (dto.getEmail() == null || dto.getEmail().isEmpty()) {
+//            throw new NotFoundException("Email  обязательно");
+//        }
+//        if (dto.getPassword() == null || dto.getPassword().isEmpty()) {
+//            throw new NotFoundException("Пароль обязательно");
+//        }
+//        if (userRepository.existsByName(dto.getName())) {
+//            throw new NotFoundException("Пользователь с таким именем уже существует");
+//        }
+//
+//        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
+//            throw new NotFoundException("Пользователь с таким email уже занят");
+//        }
+//        Role role = roleRepository.findById(dto.getRoleId())
+//                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
+//
+//
+//        User user = UserMapper.fromDto(dto);
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setRole(role);
+//
+//        user.setEnabled(true);
+//
+//        User registeredUser = userRepository.save(user);
+//
+//
+//        UserDetails userDetails = loadUserByUsername(user.getEmail());
+//        Authentication auth = new UsernamePasswordAuthenticationToken(
+//                userDetails,
+//                userDetails.getPassword(),
+//                userDetails.getAuthorities()
+//        );
+//        SecurityContextHolder.getContext().setAuthentication(auth);
+//        request.getSession(true).setAttribute(
+//                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+//                SecurityContextHolder.getContext()
+//        );
+//        return registeredUser;
+//
+//    }
+@Override
+public User register(UserRequestRegisterDto dto, HttpServletRequest request) {
 
-        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
-            throw new NotFoundException("Пользователь с таким email уже занят");
-        }
-        Role role = roleRepository.findById(dto.getRoleId())
-                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
-
-
-        User user = UserMapper.fromDto(dto);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(role);
-
-        user.setEnabled(true);
-
-        User registeredUser = userRepository.save(user);
-
-
-        UserDetails userDetails = loadUserByUsername(user.getEmail());
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-                userDetails,
-                userDetails.getPassword(),
-                userDetails.getAuthorities()
-        );
-        SecurityContextHolder.getContext().setAuthentication(auth);
-        request.getSession(true).setAttribute(
-                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-                SecurityContextHolder.getContext()
-        );
-        return registeredUser;
-
+    if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
+        throw new NotFoundException("Пользователь с таким email уже занят");
     }
+    Role role = roleRepository.findById(dto.getRoleId())
+            .orElseThrow(() -> new NotFoundException("Роль не найдена"));
+
+
+    User user = UserMapper.fromDtoRegister(dto);
+    user.setPassword(passwordEncoder.encode(user.getPassword()));
+    user.setRole(role);
+
+    user.setEnabled(true);
+
+    User registeredUser = userRepository.save(user);
+
+
+    UserDetails userDetails = loadUserByUsername(user.getEmail());
+    Authentication auth = new UsernamePasswordAuthenticationToken(
+            userDetails,
+            userDetails.getPassword(),
+            userDetails.getAuthorities()
+    );
+    SecurityContextHolder.getContext().setAuthentication(auth);
+    request.getSession(true).setAttribute(
+            HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+            SecurityContextHolder.getContext()
+    );
+    return registeredUser;
+
+}
 
     @Override
     public User login(String email, String password) {

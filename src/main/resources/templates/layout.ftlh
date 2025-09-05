@@ -89,9 +89,9 @@
                 </#if>
 
             <#else>
-                <a href="/login"
+                <a href="/auth/login"
                    class="btn btn-outline-info m-2"><@spring.message "layout.login"/></a>
-                <a href="/register"
+                <a href="/auth/register"
                    class="btn btn-outline-info m-2"><@spring.message "layout.register"/></a>
             </#if>
 
