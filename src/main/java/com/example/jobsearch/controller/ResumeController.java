@@ -77,18 +77,74 @@ public class ResumeController {
         return "resumes/createResume";
     }
 
+//
+//    @PostMapping("/create")
+//    public String createResume(
+//            @Valid ResumeRequestDto resumeRequestDto,
+//            BindingResult bindingResult,
+//            Model model,
+//            Authentication authentication) {
+//
+//        if (bindingResult.hasErrors()) {
+//            model.addAttribute("resumeRequestDto", resumeRequestDto);
+//            return "resumes/createResume";
+//        }
+//
+//        Resume createResume = resumeService.create(resumeRequestDto, authentication);
+//        model.addAttribute("resume", createResume);
+//        return "redirect:/auth/profile";
+//    }
+
+//    @PostMapping("/create")
+//    public String createResume(
+//            @Valid ResumeRequestDto resumeRequestDto,
+//            WorkExperienceInfoRequestDto workExperienceInfoRequestDto,
+//            BindingResult bindingResult,
+//            Model model,
+//            Authentication authentication) {
+//
+//        if (bindingResult.hasErrors()) {
+//            User user = userRepository.findByEmail(authentication.getName())
+//                    .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+//
+//            model.addAttribute("resumeRequestDto", resumeRequestDto);
+//            model.addAttribute("applicantId", user.getId());
+//            model.addAttribute("workExperienceRequestDto", workExperienceInfoRequestDto);
+//            model.addAttribute("categories", categoryService.findAll());
+//
+//            return "resumes/createResume";
+//        }
+//
+//        Resume createResume = resumeService.create(resumeRequestDto, authentication);
+//        model.addAttribute("resume", createResume);
+//        return "redirect:/auth/profile";
+//    }
 
     @PostMapping("/create")
-    public String createResume(@Valid ResumeRequestDto resumeRequestDto, BindingResult bindingResult, Model model, Authentication authentication) {
+    public String createResume(
+            @Valid ResumeRequestDto resumeRequestDto,
+            BindingResult bindingResult,
+            Model model,
+            Authentication authentication) {
+
         if (bindingResult.hasErrors()) {
+            User user = userRepository.findByEmail(authentication.getName())
+                    .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+
             model.addAttribute("resumeRequestDto", resumeRequestDto);
+            model.addAttribute("applicantId", user.getId());
+            model.addAttribute("categories", categoryService.findAll());
+
             return "resumes/createResume";
         }
+
         Resume createResume = resumeService.create(resumeRequestDto, authentication);
         model.addAttribute("resume", createResume);
-//        return "redirect:/" + createResume.getId();
         return "redirect:/auth/profile";
     }
+
+
+
 
 
 }

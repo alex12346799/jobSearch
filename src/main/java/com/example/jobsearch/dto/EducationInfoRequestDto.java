@@ -12,16 +12,23 @@ public class EducationInfoRequestDto {
     @NotNull(message = "Обязательно укажите resumeId")
     private Long resumeId;
 
-    @NotBlank(message = "Поле institution не должен быть пустым")
+
+
+    @NotBlank(message = "{education.institution.notblank}")
     private String institution;
 
-    @NotBlank(message = "Поле program не должен быть пустым")
+    @NotBlank(message = "{education.program.notblank}")
     private String program;
 
-    @NotNull(message = "Укажите дату начала")
-    @PastOrPresent(message = "Дата начала не может быть в будущем")
+    @NotBlank(message = "{education.degree.notblank}")
+    private String degree;
+
+    @NotNull(message = "{education.startDate.notnull}")
+    @PastOrPresent(message = "{education.startDate.pastOrPresent}")
     private LocalDate startDate;
 
+    @NotNull(message = "{education.endDate.notnull}")
+    @PastOrPresent(message = "{education.endDate.pastOrPresent}")
     private LocalDate endDate;
-    private String degree;
+
 }
