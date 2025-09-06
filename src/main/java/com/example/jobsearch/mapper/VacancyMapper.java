@@ -36,7 +36,7 @@ public class VacancyMapper {
         vacancy.setExpFrom(dto.getExpFrom());
         vacancy.setExpTo(dto.getExpTo());
         vacancy.setEmployer(employer);
-        vacancy.setActive(dto.isActive());
+        vacancy.setActive(dto.getIsActive());
 
         return vacancy;
     }
