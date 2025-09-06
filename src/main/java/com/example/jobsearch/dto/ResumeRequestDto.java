@@ -1,5 +1,6 @@
 package com.example.jobsearch.dto;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -9,24 +10,29 @@ import java.util.List;
 
 @Data
 public class ResumeRequestDto {
-    @NotNull(message = "Нужно обязательно указать applicantId")
-    private Long applicantId;
 
-    @NotBlank(message = "Имя не должно быть пустым")
+@NotNull(message = "{resume.applicantId.notnull}")
+private Long applicantId;
+
+    @NotBlank(message = "{resume.name.notblank}")
     private String name;
 
-    @NotNull(message = "Нужно обязательно указать categoryId")
+    @NotNull(message = "{resume.categoryId.notnull}")
     private Long categoryId;
 
-    @NotNull(message = "Укажите активна ли вакансия или нет")
-    private Boolean isActive; 
+    @NotNull(message = "{resume.isActive.notnull}")
+    private Boolean isActive;
 
-    @DecimalMin(value = "0.0", inclusive = false, message = "Зарплата должна быть больше нуля")
-    @NotNull(message = "Укажите зарплату")
+    @DecimalMin(value = "0.0", inclusive = false, message = "{resume.salary.min}")
+    @NotNull(message = "{resume.salary.notnull}")
     private Double salary;
 
+
+    @Valid
     private List<EducationInfoRequestDto> educationInfoList;
+    @Valid
     private List<WorkExperienceInfoRequestDto> workExperienceInfoList;
+    @Valid
     private SocialLinkRequestDto socialLinkRequestDto;
 }
 
