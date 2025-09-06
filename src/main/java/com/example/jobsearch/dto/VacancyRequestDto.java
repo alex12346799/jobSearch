@@ -8,17 +8,21 @@ import lombok.Data;
 
 @Data
 public class VacancyRequestDto {
-    @NotBlank(message = "поле title не может быть пустым")
+
+
+    @NotBlank(message = "{createVacancies.validation.title}")
     private String title;
 
-    @NotBlank(message = "поле description не может быть пустым")
+    @NotNull(message = "{createVacancies.validation.salary}")
+    private Integer salary;
+
+    @NotBlank(message = "{createVacancies.validation.description}")
     private String description;
 
     @NotNull(message = "Обязательно введите categoryId")
     private Long categoryId;
 
-    @DecimalMin(value = "0.0", inclusive = false, message = "Зарплата должна быть больше нуля")
-    private Double salary;
+
 
     @Min(value = 0, message = "Минимальный опыт не может быть меньше 0")
     private Integer expFrom;
@@ -31,5 +35,5 @@ public class VacancyRequestDto {
     private Long employerId;
 
     @NotNull(message = "Укажите активна ли вакансия или нет")
-    private boolean isActive;
+    private Boolean isActive;
 }

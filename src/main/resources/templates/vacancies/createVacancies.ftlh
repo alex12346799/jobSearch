@@ -1,10 +1,11 @@
+
 <#import "../layout.ftlh" as main>
 <#import "/spring.ftl" as spring>
 <@main.layout>
 
     <head>
         <meta charset="UTF-8">
-        <title>Создание вакансии</title>
+        <title><@spring.message "createVacancies.creating_a_vacancy"/></title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -60,31 +61,35 @@
             }
         </style>
     </head>
+
     <body>
     <div class="container">
-        <h2><@spring.message"createVacancies.creating_a_vacancy"/>:</h2>
+        <h2><@spring.message "createVacancies.creating_a_vacancy"/>:</h2>
+
         <form action="/vacancies/create" method="post">
 
-
             <#if _csrf??>
-                <input
-                        type="hidden"
-                        name="${(_csrf.parameterName)!'csrf-param-name'}"
-                        value="${(_csrf.token)!'csrf-token'}"/>
+                <input type="hidden"
+                       name="${(_csrf.parameterName)!'csrf-param-name'}"
+                       value="${(_csrf.token)!'csrf-token'}"/>
             </#if>
 
-
             <input type="hidden" name="employerId" value="${employerId!}">
-            <label><@spring.message"createVacancies.job_title"/>:
-                <input type="text" name="title" placeholder="<@spring.message"createVacancies.placeholder.enter_a_name"/>" value="${vacancyRequestDto.title!}" required>
-            </label>
 
-            <label><@spring.message"createVacancies.category"/>:
-                <select name="categoryId" required>
-                    <option value=""><@spring.message"createVacancies.select_category"/></option>
+
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example3cg"><@spring.message "createVacancies.job_title"/>:</label>
+                <@spring.formInput "vacancyRequestDto.title" 'id="form3Example3cg" class="form-control form-control-lg"' />
+                <@spring.showErrors "<br>" "error text-danger" />
+            </div>
+
+            <!-- Категория -->
+            <label><@spring.message "createVacancies.category"/>:
+                <select name="categoryId" >
+                    <option value=""><@spring.message "createVacancies.select_category"/></option>
                     <#list categories as category>
                         <option value="${category.id}" <#if vacancy?has_content && vacancy.categoryId?? && (vacancy.categoryId?string == category.id?string)>selected</#if>>
-
                             ${category.name}
                         </option>
                     </#list>
@@ -93,44 +98,42 @@
 
 
 
-
-
-
-            <label><@spring.message"createVacancies.wages"/>:
-                <input type="text" id="salary" name="salary"
-                       value="${vacancyRequestDto.salary!}" class="form-control" placeholder="<@spring.message"createVacancies.placeholder.enter_salary"/>" required>
-            </label>
-
-            <label><@spring.message"createVacancies"/>:
-                <textarea id="description" name="description" class="form-control"
-                          placeholder="<@spring.message"createVacancies.placeholder.enter_a_job_description"/>" required>${vacancyRequestDto.description!}</textarea>
-            </label>
-
-
-<#--            <label>Заработная плата:-->
-<#--                <input type="number" name="salary" placeholder="Введите оклад" value="${vacancy.salary!}" required>-->
-<#--            </label>-->
-
-<#--            <label>Описание вакансии:-->
-<#--                <textarea name="description" placeholder="Введите описание">${vacancy.description!}</textarea>-->
-<#--            </label>-->
-
-            <label><@spring.message"createVacancies.required_experience"/>:</label>
-            <div class="experience">
-                <@spring.message"createVacancies.from"/> <input id="expFrom" type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
-                <@spring.message"createVacancies.to"/> <input id="expTo" type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example3cg1"><@spring.message "createVacancies.wages"/>:</label>
+                <@spring.formInput "vacancyRequestDto.salary" 'id="form3Example3cg1" class="form-control form-control-lg"' />
+                <@spring.showErrors "<br>" "error text-danger" />
             </div>
 
+
+
+            <div data-mdb-input-init class="form-outline mb-4">
+                <label class="form-label" for="form3Example3cg1"><@spring.message "createVacancies.job_description"/>:</label>
+                <@spring.formInput "vacancyRequestDto.description" 'id="form3Example3cg1" class="form-control form-control-lg"' />
+                <@spring.showErrors "<br>" "error text-danger" />
+            </div>
+
+
+            <!-- Опыт работы -->
+            <label><@spring.message "createVacancies.required_experience"/>:</label>
+            <div class="experience">
+                <@spring.message "createVacancies.from"/>
+                <input id="expFrom" type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
+                <@spring.message "createVacancies.to"/>
+                <input id="expTo" type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
+            </div>
+
+            <!-- Активность вакансии -->
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="active" <#if vacancyRequestDto.isActive()?? && vacancyRequestDto.isActive()>checked</#if>> <@spring.message"createVacancies.actively"/>
+                    <input type="checkbox" name="active" <#if vacancyRequestDto.active?? && vacancyRequestDto.active>checked</#if>>
+
+                    <@spring.message "createVacancies.actively"/>
                 </label>
             </div>
 
-            <button type="submit"><@spring.message"createVacancies.publish"/></button>
+            <button type="submit"><@spring.message "createVacancies.publish"/></button>
         </form>
     </div>
     </body>
-
 
 </@main.layout>

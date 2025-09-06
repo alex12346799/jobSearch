@@ -17,7 +17,7 @@
 
             <input type="hidden" name="applicantId" value="${applicantId}">
 
-
+            <!-- Название резюме -->
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="form3Example4cg"><@spring.message "createResume.resume_title"/>:</label>
                 <@spring.formInput "resumeRequestDto.name" 'id="form3Example4cg" class="form-control form-control-lg"' />
