@@ -22,7 +22,7 @@ public class EducationInfoMapper {
         if (dto == null) return null;
         Resume resume = new Resume();
         EducationInfo educationInfo = new EducationInfo();
-        resume.setId(dto.getResumeId());
+//        resume.setId(dto.getResumeId());
         educationInfo.setResume(resume);
         educationInfo.setInstitution(dto.getInstitution());
         educationInfo.setProgram(dto.getProgram());

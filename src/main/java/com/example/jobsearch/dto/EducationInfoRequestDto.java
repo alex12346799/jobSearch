@@ -9,8 +9,8 @@ import java.time.LocalDate;
 
 @Data
 public class EducationInfoRequestDto {
-    @NotNull(message = "Обязательно укажите resumeId")
-    private Long resumeId;
+//    @NotNull(message = "Обязательно укажите resumeId")
+//    private Long resumeId;
 
 
 

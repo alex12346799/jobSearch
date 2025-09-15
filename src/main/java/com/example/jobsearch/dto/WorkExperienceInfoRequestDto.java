@@ -7,8 +7,8 @@ import lombok.Data;
 @Data
 public class WorkExperienceInfoRequestDto {
 
-    @NotNull(message = "{work.resumeId.notnull}")
-    private Long resumeId;
+//    @NotNull(message = "{work.resumeId.notnull}")
+//    private Long resumeId;
 
     @NotNull(message = "{work.years.notnull}")
     private Long years;
@@ -19,6 +19,6 @@ public class WorkExperienceInfoRequestDto {
     @NotBlank(message = "{work.position.notblank}")
     private String position;
 
-    @NotBlank(message = "{work.responsibilities.notblank}")
-    private String responsibilities;
+//    @NotBlank(message = "{work.responsibilities.notblank}")
+//    private String responsibilities;
 }
