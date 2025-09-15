@@ -21,12 +21,12 @@
             if (requestDto == null) return null;
             Resume resume = new Resume();
             WorkExperienceInfo workExperienceInfo = new WorkExperienceInfo();
-            resume.setId(requestDto.getResumeId());
+//            resume.setId(requestDto.getResumeId());
             workExperienceInfo.setResume(resume);
             workExperienceInfo.setYears(requestDto.getYears());
             workExperienceInfo.setCompanyName(requestDto.getCompanyName());
             workExperienceInfo.setPosition(requestDto.getPosition());
-            workExperienceInfo.setResponsibilities(requestDto.getResponsibilities());
+//            workExperienceInfo.setResponsibilities(requestDto.getResponsibilities());
             return workExperienceInfo;
         }
     }

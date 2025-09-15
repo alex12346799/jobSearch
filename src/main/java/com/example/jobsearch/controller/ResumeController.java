@@ -12,8 +12,10 @@ import com.example.jobsearch.repository.ResumeRepository;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.ResumeService;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -27,6 +29,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@Slf4j
 @Controller("resumeWebController")
 @RequestMapping("resumes")
 @RequiredArgsConstructor
@@ -77,52 +80,11 @@ public class ResumeController {
         return "resumes/createResume";
     }
 
-//
-//    @PostMapping("/create")
-//    public String createResume(
-//            @Valid ResumeRequestDto resumeRequestDto,
-//            BindingResult bindingResult,
-//            Model model,
-//            Authentication authentication) {
-//
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("resumeRequestDto", resumeRequestDto);
-//            return "resumes/createResume";
-//        }
-//
-//        Resume createResume = resumeService.create(resumeRequestDto, authentication);
-//        model.addAttribute("resume", createResume);
-//        return "redirect:/auth/profile";
-//    }
-
-//    @PostMapping("/create")
-//    public String createResume(
-//            @Valid ResumeRequestDto resumeRequestDto,
-//            WorkExperienceInfoRequestDto workExperienceInfoRequestDto,
-//            BindingResult bindingResult,
-//            Model model,
-//            Authentication authentication) {
-//
-//        if (bindingResult.hasErrors()) {
-//            User user = userRepository.findByEmail(authentication.getName())
-//                    .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-//
-//            model.addAttribute("resumeRequestDto", resumeRequestDto);
-//            model.addAttribute("applicantId", user.getId());
-//            model.addAttribute("workExperienceRequestDto", workExperienceInfoRequestDto);
-//            model.addAttribute("categories", categoryService.findAll());
-//
-//            return "resumes/createResume";
-//        }
-//
-//        Resume createResume = resumeService.create(resumeRequestDto, authentication);
-//        model.addAttribute("resume", createResume);
-//        return "redirect:/auth/profile";
-//    }
 
     @PostMapping("/create")
     public String createResume(
             @Valid ResumeRequestDto resumeRequestDto,
+            HttpServletRequest request,
             BindingResult bindingResult,
             Model model,
             Authentication authentication) {
@@ -131,6 +93,7 @@ public class ResumeController {
             User user = userRepository.findByEmail(authentication.getName())
                     .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
 
+            bindingResult.getAllErrors().forEach(error -> log.error(error.getDefaultMessage()));
             model.addAttribute("resumeRequestDto", resumeRequestDto);
             model.addAttribute("applicantId", user.getId());
             model.addAttribute("categories", categoryService.findAll());
@@ -138,13 +101,14 @@ public class ResumeController {
             return "resumes/createResume";
         }
 
+        log.error("VALUE OF resumeRequestDto.isActive");
+        log.error(request.getParameter("resumeRequestDto.isActive"));
+
+        resumeRequestDto.setIsActive(request.getParameter("resumeRequestDto.isActive").equals("on"));
         Resume createResume = resumeService.create(resumeRequestDto, authentication);
         model.addAttribute("resume", createResume);
         return "redirect:/auth/profile";
     }
-
-
-
 
 
 }
