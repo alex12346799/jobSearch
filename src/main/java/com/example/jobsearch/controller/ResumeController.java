@@ -7,6 +7,7 @@ import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.User;
+import com.example.jobsearch.model.WorkExperienceInfo;
 import com.example.jobsearch.repository.CategoryRepository;
 import com.example.jobsearch.repository.ResumeRepository;
 import com.example.jobsearch.repository.UserRepository;
@@ -27,6 +28,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Slf4j
@@ -72,39 +74,28 @@ public class ResumeController {
     public String createResume(Model model, Authentication auth) {
         User user = userRepository.findByEmail(auth.getName())
                 .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-        model.addAttribute("resumeRequestDto", new ResumeRequestDto());
+
         model.addAttribute("applicantId", user.getId());
-        WorkExperienceInfoRequestDto workExperienceDto = new WorkExperienceInfoRequestDto();
-        model.addAttribute("workExperienceDto", workExperienceDto);
         model.addAttribute("categories", categoryService.findAll());
         return "resumes/createResume";
     }
 
 
     @PostMapping("/create")
-    public String createResume(
-            @Valid ResumeRequestDto resumeRequestDto,
+    public String createResume(ResumeRequestDto resumeRequestDto,
             HttpServletRequest request,
-            BindingResult bindingResult,
             Model model,
             Authentication authentication) {
 
-        if (bindingResult.hasErrors()) {
-            User user = userRepository.findByEmail(authentication.getName())
-                    .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-
-            bindingResult.getAllErrors().forEach(error -> log.error(error.getDefaultMessage()));
-            model.addAttribute("resumeRequestDto", resumeRequestDto);
-            model.addAttribute("applicantId", user.getId());
-            model.addAttribute("categories", categoryService.findAll());
-
-            return "resumes/createResume";
-        }
-
-        log.error("VALUE OF resumeRequestDto.isActive");
-        log.error(request.getParameter("resumeRequestDto.isActive"));
+        User user = userRepository.findByEmail(authentication.getName())
+                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+//        log.error("VALUE OF resumeRequestDto.isActive");
+//        log.error(request.getParameter("resumeRequestDto.isActive"));
 
         resumeRequestDto.setIsActive(request.getParameter("resumeRequestDto.isActive").equals("on"));
+
+        log.error("Object of resumeRequestDto: " + resumeRequestDto);
+        System.out.println("ОПЫТ РАБОТЫ (size) " + resumeRequestDto.getWorkExperienceInfoList().size());
         Resume createResume = resumeService.create(resumeRequestDto, authentication);
         model.addAttribute("resume", createResume);
         return "redirect:/auth/profile";

@@ -101,12 +101,56 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
         return resumeRepository.findByApplicant(user);
     }
 
+//    @Override
+//    public Resume create(ResumeRequestDto dto, Authentication auth) {
+//     String email = auth.getName();
+//
+//        User applicant = userRepository.findByEmail(email)
+//                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + email + "  не найден"));
+//
+//        Category category = categoryRepository.findById(dto.getCategoryId())
+//                .orElseThrow(() -> new NotFoundException("Категория с id " + dto.getCategoryId() + " не найдена"));
+//
+//
+//        Resume resume = ResumeMapper.fromDto(dto);
+//        resume.setApplicant(applicant);
+//        resume.setCategory(category);
+//
+//        Resume resumeFromDb = resumeRepository.saveAndFlush(resume);
+//
+//
+//        if (dto.getEducationInfoList() != null) {
+//            for (EducationInfoRequestDto educationInfoDto : dto.getEducationInfoList()) {
+//                EducationInfo educationInfo = EducationInfoMapper.fromDto(educationInfoDto);
+//                educationInfo.setResume(resumeFromDb);
+//                educationInfoRepository.save(educationInfo);
+//            }
+//        }
+//
+//        if (dto.getWorkExperienceInfoList() != null) {
+//            for (WorkExperienceInfoRequestDto workExperienceDto : dto.getWorkExperienceInfoList()) {
+//                WorkExperienceInfo workExperienceInfo = WorkExperienceInfoMapper.fronDto(workExperienceDto);
+//                workExperienceInfo.setResume(resumeFromDb);
+//                workExperienceInfoRepository.save(workExperienceInfo);
+//            }
+//        }
+//
+//        if (dto.getSocialLinkRequestDto() != null) {
+//            SocialLinks socialLinks = SocialLinksMapper.fromDto(dto.getSocialLinkRequestDto());
+//            socialLinks.setResume(resumeFromDb);
+//            socialLinksRepository.save(socialLinks);
+//        }
+//
+//          return resumeFromDb;
+//
+//        }
+
     @Override
     public Resume create(ResumeRequestDto dto, Authentication auth) {
-     String email = auth.getName();
+        String email = auth.getName();
 
         User applicant = userRepository.findByEmail(email)
-                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + email + "  не найден"));
+                .orElseThrow(() -> new NotFoundException("Пользователь с email " + email + " не найден"));
 
         Category category = categoryRepository.findById(dto.getCategoryId())
                 .orElseThrow(() -> new NotFoundException("Категория с id " + dto.getCategoryId() + " не найдена"));
@@ -116,34 +160,36 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
         resume.setApplicant(applicant);
         resume.setCategory(category);
 
+
         Resume resumeFromDb = resumeRepository.saveAndFlush(resume);
 
 
         if (dto.getEducationInfoList() != null) {
-            for (EducationInfoRequestDto educationInfoDto : dto.getEducationInfoList()) {
-                EducationInfo educationInfo = EducationInfoMapper.fromDto(educationInfoDto);
+            for (EducationInfoRequestDto eduDto : dto.getEducationInfoList()) {
+                EducationInfo educationInfo = EducationInfoMapper.fromDto(eduDto);
                 educationInfo.setResume(resumeFromDb);
                 educationInfoRepository.save(educationInfo);
             }
         }
 
+
         if (dto.getWorkExperienceInfoList() != null) {
-            for (WorkExperienceInfoRequestDto workExperienceDto : dto.getWorkExperienceInfoList()) {
-                WorkExperienceInfo workExperienceInfo = WorkExperienceInfoMapper.fronDto(workExperienceDto);
+            for (WorkExperienceInfoRequestDto workDto : dto.getWorkExperienceInfoList()) {
+                WorkExperienceInfo workExperienceInfo = WorkExperienceInfoMapper.fromDto(workDto);
                 workExperienceInfo.setResume(resumeFromDb);
                 workExperienceInfoRepository.save(workExperienceInfo);
             }
         }
 
+
         if (dto.getSocialLinkRequestDto() != null) {
-            SocialLinks socialLinks = SocialLinksMapper.fromDto(dto.getSocialLinkRequestDto());
+            SocialLinks socialLinks = ResumeMapper.fromDto(dto.getSocialLinkRequestDto());
             socialLinks.setResume(resumeFromDb);
             socialLinksRepository.save(socialLinks);
         }
 
-          return resumeFromDb;
-
-        }
+        return resumeFromDb;
+    }
 
 
 

@@ -5,12 +5,7 @@ import lombok.Data;
 
 @Data
 public class SocialLinkRequestDto {
-//    @NotBlank(message = "Укажите ссылку обязательно")
-//    private String telegram;
-//    @NotBlank(message = "Укажите ссылку обязательно")
-//    private String facebook;
-//    @NotBlank(message = "Укажите ссылку обязательно")
-//    private String linkedin;
+
 
     @NotBlank(message = "{social.telegram.notblank}")
     private String telegram;
