@@ -2,10 +2,12 @@ package com.example.jobsearch.model;
 
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "work_experience_info")
 public class WorkExperienceInfo {
@@ -16,6 +18,7 @@ public class WorkExperienceInfo {
     @ManyToOne
     @JoinColumn(name = "resume_id")
     private Resume resume;
+
     private Long years;
 
     @Column(name = "company_name")
