@@ -150,6 +150,17 @@
         margin: 0 0 20px 0;
         font-size: 2rem;
     }
+
+
+    .card-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .card-actions a {
+        flex: 1 1 30%;
+        text-align: center;
+    }
 </style>
 
 <div class="profile-container">
@@ -199,21 +210,46 @@
         </div>
     </div>
 
+<#--    <#if isApplicant>-->
+<#--        <h2><@spring.message"profile.resume"/>:</h2>-->
+<#--        <div class="resumes">-->
+<#--            <#list resumes as resume>-->
+<#--                <div class="resume-card">-->
+<#--                    <p><strong>${resume.name}</strong></p>-->
+<#--                    <p><@spring.message"profile.card.update_date"/>: ${resume.updateDate.toLocalDate()}</p>-->
+<#--                    <div class="card-actions">-->
+<#--                        <a class="btn btn-update" href="/resumes/${resume.id}/edit"><@spring.message"profile.card.update"/></a>-->
+<#--                        <a class="btn btn-red" href="/resumes/${resume.id}/delete"><@spring.message"profile.card.delete"/></a>-->
+<#--                    </div>-->
+<#--                </div>-->
+<#--            </#list>-->
+<#--        </div>-->
+<#--    </#if>-->
+
     <#if isApplicant>
-        <h2><@spring.message"profile.resume"/>:</h2>
+        <h2><@spring.message "profile.resume"/>:</h2>
         <div class="resumes">
             <#list resumes as resume>
                 <div class="resume-card">
                     <p><strong>${resume.name}</strong></p>
-                    <p>Д<@spring.message"profile.card.update_date"/>: ${resume.updateDate.toLocalDate()}</p>
+                    <p><@spring.message "profile.card.update_date"/>: ${resume.updateDate.toLocalDate()}</p>
                     <div class="card-actions">
-                        <a class="btn btn-update" href="/resumes/${resume.id}/edit"><@spring.message"profile.card.update"/></a>
-                        <a class="btn btn-red" href="/resumes/${resume.id}/delete"><@spring.message"profile.card.delete"/></a>
+
+                        <a class="btn btn-update" href="/resumes/${resume.id}/edit">
+                            <@spring.message "profile.card.update"/>
+                        </a>
+                        <a class="btn btn-red" href="/resumes/${resume.id}/delete">
+                            <@spring.message "profile.card.delete"/>
+                        </a>
+                        <a class="btn btn-detail" href="/resumes/${resume.id}">
+                            <@spring.message "profile.card.details"/>
+                        </a>
                     </div>
                 </div>
             </#list>
         </div>
     </#if>
+
 
     <#if isEmployer>
         <h2><@spring.message"profile.vacancies"/>:</h2>

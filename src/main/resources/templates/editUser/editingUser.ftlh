@@ -251,7 +251,7 @@
         <label for="avatar" class="file-label">Выбрать фото</label>
     </div>
 
-
+</form>
 
     <form class="custom-form" method="post" action="/auth/update">
         <#if _csrf??>

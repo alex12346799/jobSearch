@@ -58,7 +58,7 @@ public class ResumeController {
     @GetMapping("{resumeId}")
     public String getResumeId(@PathVariable long resumeId, Model model) {
         model.addAttribute("resume", resumeService.getById(resumeId));
-        return "resumes/view";
+        return "resumes/resumeDetails";
     }
 
     @GetMapping("sorted")

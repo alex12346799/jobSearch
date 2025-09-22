@@ -49,6 +49,7 @@ public static WorkExperienceInfoResponseDto toDto(WorkExperienceInfo workExperie
             workExperienceInfo.setYears(requestDto.getYears());
             workExperienceInfo.setCompanyName(requestDto.getCompanyName());
             workExperienceInfo.setPosition(requestDto.getPosition());
+            workExperienceInfo.setResponsibilities(requestDto.getResponsibilities());
             return workExperienceInfo;
         }
     }

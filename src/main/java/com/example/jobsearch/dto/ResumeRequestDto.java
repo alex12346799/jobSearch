@@ -25,8 +25,9 @@ public class ResumeRequestDto {
     private Double salary;
 
 
+
     private List<EducationInfoRequestDto> educationInfoList;
     private List<WorkExperienceInfoRequestDto> workExperienceInfoList;
-    private SocialLinkRequestDto socialLinkRequestDto = new SocialLinkRequestDto();
+    private SocialLinkRequestDto socialLinkRequestDto;
 }
 
