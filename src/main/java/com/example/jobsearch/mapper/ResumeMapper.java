@@ -90,6 +90,7 @@ public class ResumeMapper {
         resume.setEducationInfoList(new ArrayList<>());
         resume.setWorkExperienceInfoList(new ArrayList<>());
 
+
         return resume;
     }
 

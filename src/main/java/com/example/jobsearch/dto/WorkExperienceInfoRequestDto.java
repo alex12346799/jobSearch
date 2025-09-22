@@ -26,5 +26,5 @@ public class WorkExperienceInfoRequestDto {
     private String position;
 
 //    @NotBlank(message = "{work.responsibilities.notblank}")
-//    private String responsibilities;
+    private String responsibilities;
 }

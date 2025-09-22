@@ -8,6 +8,7 @@ import lombok.Setter;
 
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 @Getter
@@ -48,8 +49,22 @@ public class Resume {
     @OneToMany(mappedBy = "resume")
     private List<WorkExperienceInfo> workExperienceInfoList;
 
-    @OneToOne(mappedBy = "resume")
+    @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL)
     private SocialLinks socialLinks;
+
+
+
+    public String getFormattedCreatedDate() {
+        if (createdDate == null) return "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("Дата dd.MM.yyyy Время  HH:mm:ss");
+        return createdDate.format(formatter);
+    }
+
+    public String getFormattedUpdateDate() {
+        if (updateDate == null) return "";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("Дата dd.MM.yyyy Время  HH:mm:ss");
+        return updateDate.format(formatter);
+    }
 
 
 }

@@ -214,6 +214,8 @@
                                class="form-control mb-2"/>
                         <input type="text" name="WorkExperienceInfoList[0].position" placeholder="Должность"
                                class="form-control mb-2"/>
+                        <input type="text" name="WorkExperienceInfoList[0].responsibilities" placeholder="Обязаности"
+                               class="form-control mb-2"/>
                         <input type="number" name="WorkExperienceInfoList[0].years" placeholder="Годы"
                                class="form-control mb-2"/>
                     </div>
@@ -256,25 +258,35 @@
             <#--            </div>-->
 
 
-            <div class="mb-3">
-                <label><@spring.message "createResume.social_links"/>:</label>
+<#--            <div class="mb-3">-->
+<#--                <label><@spring.message "createResume.social_links"/>:</label>-->
 
 
-                <#--                <@spring.formInput "resumeRequestDto.socialLinkRequestDto.telegram" 'class="form-control mb-2" placeholder=telegram' />-->
-                <#--                <@spring.showErrors "resumeRequestDto.socialLinkRequestDto.telegram"  "error text-danger" />-->
-                <input type="text" class="form-control mb-2" id="socialLinkRequestDto.telegram" name="telegram"
-                       placeholder="telegram"/>
+<#--                &lt;#&ndash;                <@spring.formInput "resumeRequestDto.socialLinkRequestDto.telegram" 'class="form-control mb-2" placeholder=telegram' />&ndash;&gt;-->
+<#--                &lt;#&ndash;                <@spring.showErrors "resumeRequestDto.socialLinkRequestDto.telegram"  "error text-danger" />&ndash;&gt;-->
+<#--                <input type="text" class="form-control mb-2" id="socialLinkRequestDto.telegram" name="telegram"-->
+<#--                       placeholder="telegram"/>-->
 
-                <#--                <@spring.formInput "resumeRequestDto.socialLinkRequestDto.facebook" 'class="form-control mb-2" placeholder=facebook' />-->
-                <input type="text" class="form-control mb-2" id="socialLinkRequestDto.facebook" name="facebook"
-                       placeholder="facebook"/>
-                <#--                <@spring.showErrors "resumeRequestDto.socialLinkRequestDto.facebook" "error text-danger" />-->
+<#--                &lt;#&ndash;                <@spring.formInput "resumeRequestDto.socialLinkRequestDto.facebook" 'class="form-control mb-2" placeholder=facebook' />&ndash;&gt;-->
+<#--                <input type="text" class="form-control mb-2" id="socialLinkRequestDto.facebook" name="facebook"-->
+<#--                       placeholder="facebook"/>-->
+<#--                &lt;#&ndash;                <@spring.showErrors "resumeRequestDto.socialLinkRequestDto.facebook" "error text-danger" />&ndash;&gt;-->
 
-                <input type="text" class="form-control mb-2" id="socialLinkRequestDto.linkedin" name="facebook"
-                       placeholder="linkedin"/>
-                <#--                <@spring.formInput "resumeRequestDto.socialLinkRequestDto.linkedin" 'class="form-control" placeholder=linkedin' />-->
-                <#--                <@spring.showErrors "resumeRequestDto.socialLinkRequestDto.linkedin"  "error text-danger" />-->
-            </div>
+<#--                <input type="text" class="form-control mb-2" id="socialLinkRequestDto.linkedin" name="facebook"-->
+<#--                       placeholder="linkedin"/>-->
+<#--                &lt;#&ndash;                <@spring.formInput "resumeRequestDto.socialLinkRequestDto.linkedin" 'class="form-control" placeholder=linkedin' />&ndash;&gt;-->
+<#--                &lt;#&ndash;                <@spring.showErrors "resumeRequestDto.socialLinkRequestDto.linkedin"  "error text-danger" />&ndash;&gt;-->
+<#--            </div>-->
+
+
+            <input type="text" class="form-control mb-2" id="socialLinkRequestDto.telegram"
+                   name="socialLinkRequestDto.telegram" placeholder="telegram"/>
+
+            <input type="text" class="form-control mb-2" id="socialLinkRequestDto.facebook"
+                   name="socialLinkRequestDto.facebook" placeholder="facebook"/>
+
+            <input type="text" class="form-control mb-2" id="socialLinkRequestDto.linkedin"
+                   name="socialLinkRequestDto.linkedin" placeholder="linkedin"/>
 
 
             <div class="form-check mb-3">

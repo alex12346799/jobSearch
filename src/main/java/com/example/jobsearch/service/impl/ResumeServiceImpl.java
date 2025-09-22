@@ -145,6 +145,18 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
 //
 //        }
 
+
+
+
+
+
+
+
+
+
+
+
+
     @Override
     public Resume create(ResumeRequestDto dto, Authentication auth) {
         String email = auth.getName();
