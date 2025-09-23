@@ -30,21 +30,6 @@ public class VacancyServiceImpl implements VacancyService {
     private final CategoryRepository categoryRepository;
 
 
-//    @Override
-//    public Vacancy create(VacancyRequestDto vacancyRequestDto) {
-//        Category category = categoryRepository.findById(vacancyRequestDto.getCategoryId())
-//
-//                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + vacancyRequestDto.getCategoryId() + " Id не найден"));
-//
-//        User employer = userRepository.findById(vacancyRequestDto.getEmployerId())
-//                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + vacancyRequestDto.getEmployerId() + " Id не найден"));
-//
-//        Vacancy vacancy = VacancyMapper.fromDto(vacancyRequestDto, category, employer);
-//        vacancyRepository.save(vacancy);
-//        return vacancy;
-//    }
-
-
     @Override
     public Vacancy create(VacancyRequestDto vacancyRequestDto, Authentication auth) {
         String email = auth.getName();

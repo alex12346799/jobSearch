@@ -49,41 +49,26 @@ public class ResumeServiceImpl implements ResumeService {
                         .build())
                 .toList();
     }
-//    @Override
-//    public List<ResumeResponseDto> getAllSortedResume(String sortedValue) {
-//        List<Resume> resumes = resumeRepository.findAll(getSortMethod(sortedValue));
-//        return resumes.stream()
-//                .map(e -> ResumeResponseDto.builder()
-//                        .id(e.getId())
-//                        .name(e.getName())
-//                        .salary(e.getSalary())
-//                        .isActive(e.isActive())
-//                        .createdDate(e.getCreatedDate())
-//                        .updateDate(e.getUpdateDate())
-//                        .applicantName(userRepository.findNameById(e.getApplicant().getId()))
-//                        .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
-//                        .build())
-//                .toList();
-//    }
-@Override
-public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
+
+    @Override
+    public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
         Page<Resume> resumes = resumeRepository.findAll(pageable);
-        if (pageable.getPageNumber()>=resumes.getTotalPages()&& resumes.getTotalPages()>0) {
-            pageable = PageRequest.of(resumes.getTotalPages()-1, pageable.getPageSize(), pageable.getSort());
+        if (pageable.getPageNumber() >= resumes.getTotalPages() && resumes.getTotalPages() > 0) {
+            pageable = PageRequest.of(resumes.getTotalPages() - 1, pageable.getPageSize(), pageable.getSort());
             resumes = resumeRepository.findAll(pageable);
         }
-       return resumes.getContent().stream()
-               .map(e -> ResumeResponseDto.builder()
-                       .id(e.getId())
-                       .name(e.getName())
-                       .salary(e.getSalary())
-                       .isActive(e.isActive())
-                       .createdDate(e.getCreatedDate())
-                       .updateDate(e.getUpdateDate())
-                       .applicantName(userRepository.findNameById(e.getApplicant().getId()))
-                       .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
-                       .build())
-               .toList();
+        return resumes.getContent().stream()
+                .map(e -> ResumeResponseDto.builder()
+                        .id(e.getId())
+                        .name(e.getName())
+                        .salary(e.getSalary())
+                        .isActive(e.isActive())
+                        .createdDate(e.getCreatedDate())
+                        .updateDate(e.getUpdateDate())
+                        .applicantName(userRepository.findNameById(e.getApplicant().getId()))
+                        .categoryName(categoryRepository.findNameById(e.getCategory().getId()))
+                        .build())
+                .toList();
     }
 
 
@@ -96,65 +81,10 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
     @Override
     public List<Resume> findByApplicantId(Authentication auth) {
         String email = auth.getName();
-        User user = userRepository.findByEmail(email).orElseThrow(()-> new NotFoundException("Пользователь не найден"));
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new NotFoundException("Пользователь не найден"));
 
         return resumeRepository.findByApplicant(user);
     }
-
-//    @Override
-//    public Resume create(ResumeRequestDto dto, Authentication auth) {
-//     String email = auth.getName();
-//
-//        User applicant = userRepository.findByEmail(email)
-//                .orElseThrow(() -> new NotFoundException("Пользователь с данным " + email + "  не найден"));
-//
-//        Category category = categoryRepository.findById(dto.getCategoryId())
-//                .orElseThrow(() -> new NotFoundException("Категория с id " + dto.getCategoryId() + " не найдена"));
-//
-//
-//        Resume resume = ResumeMapper.fromDto(dto);
-//        resume.setApplicant(applicant);
-//        resume.setCategory(category);
-//
-//        Resume resumeFromDb = resumeRepository.saveAndFlush(resume);
-//
-//
-//        if (dto.getEducationInfoList() != null) {
-//            for (EducationInfoRequestDto educationInfoDto : dto.getEducationInfoList()) {
-//                EducationInfo educationInfo = EducationInfoMapper.fromDto(educationInfoDto);
-//                educationInfo.setResume(resumeFromDb);
-//                educationInfoRepository.save(educationInfo);
-//            }
-//        }
-//
-//        if (dto.getWorkExperienceInfoList() != null) {
-//            for (WorkExperienceInfoRequestDto workExperienceDto : dto.getWorkExperienceInfoList()) {
-//                WorkExperienceInfo workExperienceInfo = WorkExperienceInfoMapper.fronDto(workExperienceDto);
-//                workExperienceInfo.setResume(resumeFromDb);
-//                workExperienceInfoRepository.save(workExperienceInfo);
-//            }
-//        }
-//
-//        if (dto.getSocialLinkRequestDto() != null) {
-//            SocialLinks socialLinks = SocialLinksMapper.fromDto(dto.getSocialLinkRequestDto());
-//            socialLinks.setResume(resumeFromDb);
-//            socialLinksRepository.save(socialLinks);
-//        }
-//
-//          return resumeFromDb;
-//
-//        }
-
-
-
-
-
-
-
-
-
-
-
 
 
     @Override
@@ -204,8 +134,6 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
     }
 
 
-
-
     @Override
     public void update(Resume resume, long id, Authentication auth) {
         String email = auth.getName();
@@ -245,7 +173,6 @@ public List<ResumeResponseDto> getAllSortedAndPagedResume(Pageable pageable) {
 
         resumeRepository.deleteById(id);
     }
-
 
 
 }

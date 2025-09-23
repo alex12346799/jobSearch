@@ -31,9 +31,3 @@ public class RedirectHelper {
     }
 
 
-//    public void redirect(Collection<? extends GrantedAuthority> authorities,
-//                         HttpServletResponse response) throws IOException {
-//        if (authorities.stream().anyMatch(a -> a.getAuthority().equals("EMPLOYEE"))) response.sendRedirect("/resumes");
-//        response.sendRedirect("/vacancies");
-//    }
-

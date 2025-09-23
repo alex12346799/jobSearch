@@ -74,19 +74,6 @@ public class VacancyController {
         return "vacancies/createVacancies";
     }
 
-//    @PostMapping("/create")
-//    public String createVacancy(@Valid VacancyRequestDto vacancyRequestDto, BindingResult bindingResult, Model model, Authentication auth) {
-//        if (bindingResult.hasErrors()) {
-//            model.addAttribute("vacancyRequestDto", vacancyRequestDto);
-//            return "vacancies/createVacancies";
-//        }
-//
-//
-//        Vacancy vacancy = vacancyService.create(vacancyRequestDto, auth);
-//
-//        model.addAttribute("vacancy", vacancy);
-//        return "redirect:/auth/profile" ;
-//    }
 @PostMapping("/create")
 public String createVacancy(
         @Valid VacancyRequestDto vacancyRequestDto,

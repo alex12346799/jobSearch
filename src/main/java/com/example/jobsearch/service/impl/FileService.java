@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.nio.file.Files;
 import java.nio.file.NoSuchFileException;
+import java.nio.file.Path;
 import java.nio.file.Paths;
 @Service
 @Slf4j
@@ -36,24 +37,49 @@ public class FileService {
 //        }
 //    }
 
+//    @SneakyThrows
+//    public ResponseEntity<?> getOutputFile(String filename, MediaType mediaType) {
+//        try {
+//
+//            java.nio.file.Path path = Paths.get(UPLOAD_DIR, filename);
+//            log.info("Reading file from: {}", path.toAbsolutePath());
+//            byte[] image = Files.readAllBytes(path);
+//
+//            Resource resource = new ByteArrayResource(image);
+//            return ResponseEntity.ok()
+//                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
+//                    .contentLength(resource.contentLength())
+//                    .contentType(mediaType)
+//                    .body(resource);
+//        } catch (NoSuchFileException e) {
+//            log.error("No file found: {}", filename, e);
+//            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Image not found");
+//        }
+//    }
+
     @SneakyThrows
     public ResponseEntity<?> getOutputFile(String filename, MediaType mediaType) {
-        try {
+        Path path = Paths.get(UPLOAD_DIR, filename);
+        log.info("Reading file from: {}", path.toAbsolutePath());
 
-            java.nio.file.Path path = Paths.get(UPLOAD_DIR, filename);
-            log.info("Reading file from: {}", path.toAbsolutePath());
-            byte[] image = Files.readAllBytes(path);
-
-            Resource resource = new ByteArrayResource(image);
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + filename + "\"")
-                    .contentLength(resource.contentLength())
-                    .contentType(mediaType)
-                    .body(resource);
-        } catch (NoSuchFileException e) {
-            log.error("No file found: {}", filename, e);
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Image not found");
+        if (!Files.exists(path)) {
+            log.warn("File not found: {}, using default avatar", filename);
+            path = Paths.get(UPLOAD_DIR, "default-avatar.png");
+            if (!Files.exists(path)) {
+                log.error("Default avatar not found: {}", path.toAbsolutePath());
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Image not found");
+            }
         }
+
+        byte[] image = Files.readAllBytes(path);
+        Resource resource = new ByteArrayResource(image);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + path.getFileName() + "\"")
+                .contentLength(resource.contentLength())
+                .contentType(mediaType)
+                .body(resource);
     }
+
 
 }
