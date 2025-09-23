@@ -27,4 +27,7 @@ public interface VacancyService {
     void delete(long id, Authentication auth);
 
 
+
+
+
 }

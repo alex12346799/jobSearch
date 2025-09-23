@@ -45,7 +45,6 @@ public class VacancyServiceImpl implements VacancyService {
 //    }
 
 
-
     @Override
     public Vacancy create(VacancyRequestDto vacancyRequestDto, Authentication auth) {
         String email = auth.getName();
@@ -92,8 +91,8 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public List<VacancyResponseDto> getAllSortedAndPagedVacancy(Pageable pageable) {
         Page<Vacancy> vacancies = vacancyRepository.findAll(pageable);
-        if (pageable.getPageNumber()>= vacancies.getTotalPages()&& vacancies.getTotalPages()>0) {
-            pageable = PageRequest.of(vacancies.getTotalPages()-1, pageable.getPageSize(), pageable.getSort());
+        if (pageable.getPageNumber() >= vacancies.getTotalPages() && vacancies.getTotalPages() > 0) {
+            pageable = PageRequest.of(vacancies.getTotalPages() - 1, pageable.getPageSize(), pageable.getSort());
             vacancies = vacancyRepository.findAll(pageable);
         }
         return vacancies.stream()
@@ -116,24 +115,22 @@ public class VacancyServiceImpl implements VacancyService {
     @Override
     public List<Vacancy> findByEmployer(Authentication auth) {
         String email = auth.getName();
-        User user = userRepository.findByEmail(email).orElseThrow(()-> new NotFoundException("Пользователь не найден"));
+        User user = userRepository.findByEmail(email).orElseThrow(() -> new NotFoundException("Пользователь не найден"));
         return vacancyRepository.findByEmployer(user);
     }
-
-
 
 
     @Override
     public void update(Vacancy vacancy, long id, Authentication auth) {
         String email = auth.getName();
         User user = userRepository.findByEmail(email)
-                .orElseThrow(()->new NotFoundException("Пользователь с email " + email + " не найден"));
+                .orElseThrow(() -> new NotFoundException("Пользователь с email " + email + " не найден"));
 
 
         if (!vacancy.getEmployer().getId().equals(user.getId())) {
             throw new NotFoundException("Вы не являетесь владельцем этой вакансии");
         }
-       vacancy.setId(id);
+        vacancy.setId(id);
         vacancyRepository.save(vacancy);
     }
 
@@ -151,8 +148,8 @@ public class VacancyServiceImpl implements VacancyService {
 //        vacancyRepository.deleteVacancyById(id);
     }
 
-
-
-
 }
+
+
+
 
