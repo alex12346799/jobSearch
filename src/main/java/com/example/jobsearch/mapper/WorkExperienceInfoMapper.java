@@ -35,7 +35,9 @@ public static WorkExperienceInfoResponseDto toDto(WorkExperienceInfo workExperie
     WorkExperienceInfoResponseDto dto = new WorkExperienceInfoResponseDto();
     dto.setId(workExperienceInfo.getId());
     dto.setResumeId(workExperienceInfo.getResume().getId());
-    dto.setYears(workExperienceInfo.getYears());
+//    dto.setYears(workExperienceInfo.getYears());
+    dto.setStartDate(workExperienceInfo.getStartDate());
+    dto.setEndDate(workExperienceInfo.getEndDate());
     dto.setCompanyName(workExperienceInfo.getCompanyName());
     dto.setPosition(workExperienceInfo.getPosition());
     dto.setResponsibilities(workExperienceInfo.getResponsibilities());
@@ -46,7 +48,9 @@ public static WorkExperienceInfoResponseDto toDto(WorkExperienceInfo workExperie
             if (requestDto == null) return null;
 
             WorkExperienceInfo workExperienceInfo = new WorkExperienceInfo();
-            workExperienceInfo.setYears(requestDto.getYears());
+//            workExperienceInfo.setYears(requestDto.getYears());
+            workExperienceInfo.setStartDate(requestDto.getStartDate());
+            workExperienceInfo.setEndDate(requestDto.getEndDate());
             workExperienceInfo.setCompanyName(requestDto.getCompanyName());
             workExperienceInfo.setPosition(requestDto.getPosition());
             workExperienceInfo.setResponsibilities(requestDto.getResponsibilities());

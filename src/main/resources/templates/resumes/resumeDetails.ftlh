@@ -243,9 +243,9 @@
 
     <!-- Заголовок -->
     <div class="resume-header">
-        <div class="resume-avatar">
-            ${resume.applicant.name?substring(0,1)}${resume.applicant.surname?substring(0,1)}
-        </div>
+<#--        <div class="resume-avatar">-->
+<#--            ${resume.applicant.name?substring(0,1)}${resume.applicant.surname?substring(0,1)}-->
+<#--        </div>-->
         <div class="resume-title-block">
             <div class="resume-title">${resume.name}</div>
             <div class="resume-category">Категория: ${resume.category.name}</div>
@@ -284,13 +284,28 @@
     <#if resume.workExperienceInfoList?? && resume.workExperienceInfoList?size gt 0>
         <ul>
             <#list resume.workExperienceInfoList as exp>
+<#--                <li>-->
+<#--                    <strong>${exp.companyName!'Компания не указана'}</strong>-->
+<#--                    – ${exp.position!'Должность не указана'}-->
+<#--                    (${exp.startDate!'Срок не указан'} лет)-->
+<#--                    <br>-->
+<#--                    <strong>Обязанности:</strong> ${(exp.responsibilities!''?trim)!'не указаны'}-->
+<#--                </li>-->
                 <li>
                     <strong>${exp.companyName!'Компания не указана'}</strong>
                     – ${exp.position!'Должность не указана'}
-                    (${exp.years!'Срок не указан'} лет)
+                    <br>
+                    <strong>Период:</strong>
+                    ${exp.startDate!'не указан'} –
+                    <#if exp.endDate??>
+                        ${exp.endDate}
+                    <#else>
+                        по настоящее время
+                    </#if>
                     <br>
                     <strong>Обязанности:</strong> ${(exp.responsibilities!''?trim)!'не указаны'}
                 </li>
+
             </#list>
         </ul>
     <#else>

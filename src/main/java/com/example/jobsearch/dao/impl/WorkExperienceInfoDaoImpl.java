@@ -17,11 +17,12 @@ public class WorkExperienceInfoDaoImpl implements WorkExperienceInfoDao {
 
     @Override
     public void saveAll(List<WorkExperienceInfo> workExperienceInfos, long resumeId) {
-        String sql = "INSERT INTO work_experience_info(resume_id, years, company_name, position, responsibilities)" +
+        String sql = "INSERT INTO work_experience_info(resume_id, start_date, end_date, company_name, position, responsibilities)" +
                 "VALUES(?,?,?,?,?)";
         for (WorkExperienceInfo workExperienceInfo : workExperienceInfos) {
             jdbcTemplate.update(sql, resumeId,
-                    workExperienceInfo.getYears(),
+                    workExperienceInfo.getStartDate(),
+                    workExperienceInfo.getEndDate(),
                     workExperienceInfo.getCompanyName(),
                     workExperienceInfo.getPosition(),
                     workExperienceInfo.getResponsibilities());

@@ -37,7 +37,7 @@ VALUES
     (2, 'Harvard', 'Finance', '2014-09-01', '2018-06-01', 'Bachelor');
 
 
-INSERT INTO work_experience_info (resume_id, years, company_name, position, responsibilities)
+INSERT INTO work_experience_info (resume_id, start_date, end_date, company_name, position, responsibilities)
 VALUES
-    (1, 4, 'Google', 'Software Engineer', 'Backend development'),
-    (2, 3, 'Deloitte', 'Financial Analyst', 'Financial reporting');
+    (1, '2015-09-01', '2019-06-01', 'Google', 'Software Engineer', 'Backend development'),
+    (2, '2014-09-01', '2018-06-01', 'Deloitte', 'Financial Analyst', 'Financial reporting');

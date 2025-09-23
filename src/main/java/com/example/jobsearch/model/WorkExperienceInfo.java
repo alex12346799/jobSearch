@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.time.LocalDate;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,7 +21,11 @@ public class WorkExperienceInfo {
     @JoinColumn(name = "resume_id")
     private Resume resume;
 
-    private Long years;
+    @Column(name = "start_date")
+    private LocalDate startDate;
+
+    @Column(name = "end_date")
+    private LocalDate endDate;
 
     @Column(name = "company_name")
     private String companyName;

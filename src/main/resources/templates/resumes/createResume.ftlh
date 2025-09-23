@@ -216,8 +216,14 @@
                                class="form-control mb-2"/>
                         <input type="text" name="WorkExperienceInfoList[0].responsibilities" placeholder="Обязаности"
                                class="form-control mb-2"/>
-                        <input type="number" name="WorkExperienceInfoList[0].years" placeholder="Годы"
-                               class="form-control mb-2"/>
+<#--                        <input type="number" name="WorkExperienceInfoList[0].years" placeholder="Годы"-->
+<#--                               class="form-control mb-2"/>-->
+
+
+                        <input type="date" name="WorkExperienceInfoList[0].startDate" class="form-control mb-2"/>
+                        <input type="date" name="WorkExperienceInfoList[0].endDate" class="form-control mb-2"/>
+
+
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary btn-sm" onclick="addWorkExperience()">+ Добавить опыт

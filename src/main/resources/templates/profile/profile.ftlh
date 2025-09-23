@@ -261,6 +261,9 @@
                     <div class="card-actions">
                         <a class="btn btn-update" href="/vacancies/${vacancy.id}/edit"><@spring.message"profile.card.update"/></a>
                         <a class="btn btn-red" href="/vacancies/${vacancy.id}/delete"><@spring.message"profile.card.delete"/></a>
+                        <a class="btn btn-detail" href="/vacancies/${vacancy.id}">
+                            <@spring.message "profile.card.details"/>
+                        </a>
                     </div>
                 </div>
             </#list>
