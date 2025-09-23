@@ -22,6 +22,5 @@ public class SocialLinks {
     private String facebook;
     private String linkedin;
 
-//    @OneToOne(mappedBy = "socialLinks")
-//    private SocialLinks socialLinks;
+
 }

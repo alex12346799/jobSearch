@@ -1,48 +1,4 @@
 
-<#--<#import "../layout.ftlh" as main>-->
-<#--<#import "/spring.ftl" as spring>-->
-<#--<#import "../pages/pages.ftlh" as p>-->
-<#--<@main.layout>-->
-
-<#--    <select class="form-select" aria-label="Default select example" onchange="window.location=this.value">-->
-<#--        <option selected><@spring.message"resumes.sorting"/></option>-->
-<#--        <option value="/vacancies/sorted?sort=title"><@spring.message"resumes.sort.name"/></option>-->
-<#--        <option value="/vacancies/sorted?sort=createdDate"><@spring.message"resumes.sort.data"/></option>-->
-<#--        <option value="/vacancies/sorted?sort=response"><@spring.message"resumes.sort.response"/></option>-->
-<#--    </select>-->
-
-
-<#--    <@p.pager url page/>-->
-<#--    <table class="table table-success table-striped">-->
-<#--        <thead>-->
-<#--        <tr>-->
-<#--            <th>#</th>-->
-<#--            <th><@spring.message"vacancies.vacancies_title"/></th>-->
-<#--            <th><@spring.message"vacancies.description"/></th>-->
-<#--            <th><@spring.message"vacancies.category"/></th>-->
-<#--            <th><@spring.message"vacancies.salary"/></th>-->
-<#--            <th><@spring.message"vacancies.employer"/></th>-->
-
-
-<#--        </tr>-->
-<#--        </thead>-->
-<#--        <tbody>-->
-<#--        <#list vacancy as vacancy>-->
-<#--            <tr>-->
-<#--                <td>${vacancy?index + 1}</td>-->
-<#--                <td>${vacancy.title}</td>-->
-<#--                <td>${vacancy.description}</td>-->
-<#--                <td>${vacancy.category.name}</td>-->
-<#--                <td>${vacancy.salary}</td>-->
-<#--                <td>${vacancy.employer.name}</td>-->
-<#--&lt;#&ndash;                <td>${vacancy.createdDate}</td>&ndash;&gt;-->
-<#--&lt;#&ndash;                <td>${vacancy.updateDate}</td>&ndash;&gt;-->
-<#--            </tr>-->
-<#--        </#list>-->
-<#--        </tbody>-->
-<#--    </table>-->
-<#--</@main.layout>-->
-
 
 
 <#import "../layout.ftlh" as main>
@@ -63,6 +19,7 @@
         <input id="salaryFrom" type="number" placeholder="от зарплаты">
         <input id="salaryTo" type="number" placeholder="до зарплаты">
         <button id="applyFilter" class="btn btn-primary">Применить фильтр</button>
+        <button id="clearFilter" class="btn btn-secondary">Очистить фильтры</button>
     </div>
 
     <@p.pager url page/>
@@ -76,6 +33,8 @@
             <th><@spring.message "vacancies.category"/></th>
             <th><@spring.message "vacancies.salary"/></th>
             <th><@spring.message "vacancies.employer"/></th>
+            <th><@spring.message "vacancies.more"/></th>
+
         </tr>
         </thead>
         <tbody>
@@ -87,6 +46,7 @@
                 <td>${v.category.name}</td>
                 <td>${v.salary}</td>
                 <td>${v.employer.name}</td>
+                <td><a href="vacancies/${v.id}">More</a></td>
             </tr>
         </#list>
         </tbody>
@@ -101,6 +61,7 @@
             const salaryFromInput = document.getElementById('salaryFrom');
             const salaryToInput = document.getElementById('salaryTo');
             const applyBtn = document.getElementById('applyFilter');
+            const clearBtn = document.getElementById('clearFilter');
 
 
             const savedFilter = JSON.parse(localStorage.getItem('vacancyFilter')) || {};
@@ -113,6 +74,7 @@
                 const salaryFrom = salaryFromInput.value ? parseFloat(salaryFromInput.value) : null;
                 const salaryTo = salaryToInput.value ? parseFloat(salaryToInput.value) : null;
 
+
                 localStorage.setItem('vacancyFilter', JSON.stringify({category, salaryFrom, salaryTo}));
 
                 rows.forEach(row => {
@@ -120,7 +82,6 @@
                     const rowSalary = parseFloat(row.dataset.salary);
 
                     let show = true;
-
                     if(category && String(rowCategory) !== String(category)) show = false;
                     if(salaryFrom !== null && rowSalary < salaryFrom) show = false;
                     if(salaryTo !== null && rowSalary > salaryTo) show = false;
@@ -129,11 +90,20 @@
                 });
             }
 
+            function clearFilter() {
+                categorySelect.value = '';
+                salaryFromInput.value = '';
+                salaryToInput.value = '';
+                localStorage.removeItem('vacancyFilter');
+                rows.forEach(row => row.style.display = '');
+            }
+
 
             applyFilter();
 
 
             applyBtn.addEventListener('click', applyFilter);
+            clearBtn.addEventListener('click', clearFilter);
         });
 
     </script>

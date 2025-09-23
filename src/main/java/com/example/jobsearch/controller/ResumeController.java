@@ -89,8 +89,7 @@ public class ResumeController {
 
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
-//        log.error("VALUE OF resumeRequestDto.isActive");
-//        log.error(request.getParameter("resumeRequestDto.isActive"));
+
 
         resumeRequestDto.setIsActive(request.getParameter("resumeRequestDto.isActive").equals("on"));
 

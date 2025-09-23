@@ -60,7 +60,7 @@ public class SecurityConfig {
                         authorize -> authorize
                                 .requestMatchers(HttpMethod.GET, "/vacancies").hasAnyAuthority("EMPLOYEE", "APPLICANT")
                                 .requestMatchers("/vacancies/create").hasAuthority("EMPLOYEE")
-                                .requestMatchers(HttpMethod.GET, "/resumes").hasAnyAuthority("EMPLOYEE", "APPLICANT")
+                                .requestMatchers(HttpMethod.GET, "/resumes").hasAnyAuthority("EMPLOYEE")
                                 .requestMatchers("/resumes/create").hasAuthority("APPLICANT")
                                 .anyRequest().permitAll()
                 );
