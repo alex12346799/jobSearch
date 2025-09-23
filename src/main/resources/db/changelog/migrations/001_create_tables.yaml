@@ -265,8 +265,11 @@ databaseChangeLog:
                     references: resume(id)
                     deleteCascade: true
               - column:
-                  name: years
-                  type: bigint
+                  name: start_date
+                  type: date
+              - column:
+                  name: end_date
+                  type: date
               - column:
                   name: company_name
                   type: varchar(255)

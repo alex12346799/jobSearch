@@ -14,7 +14,10 @@ function addWorkExperience() {
         <input type="text" name="workExperienceInfoList[${workIndex}].companyName" placeholder="Компания" class="form-control mb-2" />
         <input type="text" name="workExperienceInfoList[${workIndex}].position" placeholder="Должность" class="form-control mb-2" />
                 <input type="text" name="workExperienceInfoList[${workIndex}].responsibilities" placeholder="Обязаности" class="form-control mb-2" />
-        <input type="number" name="workExperienceInfoList[${workIndex}].years" placeholder="Годы" class="form-control mb-2" />
+
+        
+        <input type="date" name="workExperienceInfoList[${workIndex}].startDate" class="form-control mb-2" />
+        <input type="date" name="workExperienceInfoList[${workIndex}].endDate"  class="form-control mb-2" />
         <button type="button" class="btn btn-danger btn-sm mb-2">Удалить</button>
     `;
 

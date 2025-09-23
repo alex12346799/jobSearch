@@ -22,10 +22,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -107,5 +104,9 @@ public String createVacancy(
     model.addAttribute("vacancy", vacancy);
     return "redirect:/auth/profile";
 }
-
+    @GetMapping("{vacanciesId}")
+    public String getVacanciesId(@PathVariable long vacanciesId, Model model) {
+        model.addAttribute("vacanciesRequest", vacancyService.getById(vacanciesId));
+        return "vacancies/vacanciesDetails";
+    }
 }

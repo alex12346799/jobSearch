@@ -27,11 +27,12 @@ public class RespondentApplicantDao {
         );
     }
     public void saveAll(List<WorkExperienceInfo> workExperienceInfoList, long resumeId) {
-        String sql = "INSERT INTO work_experience_info(resume_id, years, company_name, position, responsibilities) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO work_experience_info(resume_id, start_date, end_date, company_name, position, responsibilities) VALUES (?, ?, ?, ?, ?)";
         for (WorkExperienceInfo work : workExperienceInfoList) {
             jdbcTemplate.update(sql,
                     resumeId,
-                    work.getYears(),
+                    work.getStartDate(),
+                    work.getEndDate(),
                     work.getCompanyName(),
                     work.getPosition(),
                     work.getResponsibilities()
