@@ -45,6 +45,7 @@ public class VacancyController {
         model.addAttribute("page", page);
         model.addAttribute("vacancy", page.getContent());
         model.addAttribute("url", "/vacancies");
+        model.addAttribute("categories", categoryService.findAll());
 
         return "vacancies/vacancies";
     }

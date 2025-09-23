@@ -42,69 +42,32 @@
 <#--        </tbody>-->
 <#--    </table>-->
 <#--</@main.layout>-->
+
+
+
 <#import "../layout.ftlh" as main>
 <#import "/spring.ftl" as spring>
 <#import "../pages/pages.ftlh" as p>
 
 <@main.layout>
 
-    <!-- Панель фильтрации -->
-    <form id="filterForm" class="mb-3">
-        <div class="row">
-            <!-- Зарплата от -->
-            <div class="col">
-                <input type="number" id="salaryFrom" name="salaryFrom"
-                       class="form-control" placeholder="Зарплата от">
-            </div>
 
-            <!-- Зарплата до -->
-            <div class="col">
-                <input type="number" id="salaryTo" name="salaryTo"
-                       class="form-control" placeholder="Зарплата до">
-            </div>
+    <div class="filters">
+        <select id="filterCategory" class="form-select">
+            <option value="">Все категории</option>
+            <#list categories as cat>
+                <option value="${cat.id}">${cat.name}</option>
+            </#list>
+        </select>
 
-            <!-- Категория -->
-            <div class="col">
-                <select id="category" name="category" class="form-select">
-                    <option value="">Все категории</option>
-                    <#list vacancy as cat>
-                        <option value="${cat.category.id}">${cat.category.name}</option>
-                    </#list>
-                </select>
-            </div>
+        <input id="salaryFrom" type="number" placeholder="от зарплаты">
+        <input id="salaryTo" type="number" placeholder="до зарплаты">
+        <button id="applyFilter" class="btn btn-primary">Применить фильтр</button>
+    </div>
 
-            <!-- Активность -->
-            <div class="col">
-                <select id="isActive" name="isActive" class="form-select">
-                    <option value="">Все</option>
-                    <option value="true">Активные</option>
-                    <option value="false">Неактивные</option>
-                </select>
-            </div>
-
-            <!-- Сортировка -->
-            <div class="col">
-                <select id="sort" name="sort" class="form-select">
-                    <option value="">Без сортировки</option>
-                    <option value="title">По названию</option>
-                    <option value="createdDate">По дате создания</option>
-                    <option value="response">По откликам</option>
-                </select>
-            </div>
-
-            <!-- Кнопки -->
-            <div class="col">
-                <button type="submit" class="btn btn-primary">Применить</button>
-                <button type="button" id="resetFilter" class="btn btn-secondary">Сбросить</button>
-            </div>
-        </div>
-    </form>
-
-    <!-- Пагинация -->
     <@p.pager url page/>
 
-    <!-- Таблица вакансий -->
-    <table class="table table-success table-striped">
+    <table class="table table-success table-striped" id="vacanciesTable">
         <thead>
         <tr>
             <th>#</th>
@@ -117,7 +80,7 @@
         </thead>
         <tbody>
         <#list vacancy as v>
-            <tr>
+            <tr data-category="${v.category.id}" data-salary="${v.salary?string("0.##")}">
                 <td>${v?index + 1}</td>
                 <td>${v.title}</td>
                 <td>${v.description}</td>
@@ -129,50 +92,52 @@
         </tbody>
     </table>
 
-    <!-- Скрипт для фильтра и сортировки -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const form = document.getElementById("filterForm");
-            const resetBtn = document.getElementById("resetFilter");
 
-            // Восстановление фильтра и сортировки из localStorage
-            const savedFilter = JSON.parse(localStorage.getItem("vacancyFilter"));
-            if (savedFilter) {
-                for (const key in savedFilter) {
-                    if (form.elements[key]) {
-                        form.elements[key].value = savedFilter[key];
-                    }
-                }
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const table = document.getElementById('vacanciesTable');
+            const rows = Array.from(table.querySelectorAll('tbody tr'));
+            const categorySelect = document.getElementById('filterCategory');
+            const salaryFromInput = document.getElementById('salaryFrom');
+            const salaryToInput = document.getElementById('salaryTo');
+            const applyBtn = document.getElementById('applyFilter');
+
+
+            const savedFilter = JSON.parse(localStorage.getItem('vacancyFilter')) || {};
+            if(savedFilter.category) categorySelect.value = savedFilter.category;
+            if(savedFilter.salaryFrom) salaryFromInput.value = savedFilter.salaryFrom;
+            if(savedFilter.salaryTo) salaryToInput.value = savedFilter.salaryTo;
+
+            function applyFilter() {
+                const category = categorySelect.value;
+                const salaryFrom = salaryFromInput.value ? parseFloat(salaryFromInput.value) : null;
+                const salaryTo = salaryToInput.value ? parseFloat(salaryToInput.value) : null;
+
+                localStorage.setItem('vacancyFilter', JSON.stringify({category, salaryFrom, salaryTo}));
+
+                rows.forEach(row => {
+                    const rowCategory = row.dataset.category;
+                    const rowSalary = parseFloat(row.dataset.salary);
+
+                    let show = true;
+
+                    if(category && String(rowCategory) !== String(category)) show = false;
+                    if(salaryFrom !== null && rowSalary < salaryFrom) show = false;
+                    if(salaryTo !== null && rowSalary > salaryTo) show = false;
+
+                    row.style.display = show ? '' : 'none';
+                });
             }
 
-            // Применение фильтра + сортировки
-            form.addEventListener("submit", function (e) {
-                e.preventDefault();
-                const filterData = {};
-                const params = new URLSearchParams();
 
-                for (const el of form.elements) {
-                    if (el.name && el.value) {
-                        filterData[el.name] = el.value;
-                        params.append(el.name, el.value);
-                    }
-                }
+            applyFilter();
 
-                // Сохраняем фильтр и сортировку в localStorage
-                localStorage.setItem("vacancyFilter", JSON.stringify(filterData));
 
-                // Перенаправление на URL с параметрами фильтра + сортировки
-                window.location = "/vacancies?" + params.toString();
-            });
-
-            // Сброс фильтра
-            resetBtn.addEventListener("click", function () {
-                localStorage.removeItem("vacancyFilter");
-                form.reset();
-                window.location = "/vacancies";
-            });
+            applyBtn.addEventListener('click', applyFilter);
         });
+
     </script>
+
 
 
 </@main.layout>
