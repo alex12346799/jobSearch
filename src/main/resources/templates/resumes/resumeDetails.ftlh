@@ -236,6 +236,21 @@
             color: #a0aec0;
             font-size: 0.98rem;
         }
+        .links a{
+            text-decoration: none;
+            color: #000000;
+
+        }
+        .links li .label {
+            width: 100px;
+            font-weight: 500;
+            color: #7a8ca3;
+        }
+        .links li  {
+            display:  flex;
+            align-items: center;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
@@ -333,7 +348,7 @@
 
     <!-- Соц. сети -->
     <h3>Социальные сети</h3>
-    <ul>
+    <ul class="links">
         <#if resume.socialLinks?? && resume.socialLinks.telegram??>
             <li>Telegram: <a href="https://t.me/${resume.socialLinks.telegram}">
                     ${resume.socialLinks.telegram}</a></li>
