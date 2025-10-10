@@ -42,6 +42,7 @@ public class UserMapper {
         user.setSurname(userRequestRegisterDto.getSurname());
         user.setEmail(userRequestRegisterDto.getEmail());
         user.setPassword(userRequestRegisterDto.getPassword());
+        user.setCompanyName(userRequestRegisterDto.getCompanyName());
 
         return user;
     }

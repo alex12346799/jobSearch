@@ -1,7 +1,6 @@
 package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dto.UserEditRequestDto;
-import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.dto.UserRequestRegisterDto;
 import com.example.jobsearch.dto.UserResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
@@ -63,39 +62,39 @@ public class UserServiceImpl implements UserService {
     }
 
 
-    @Override
-    public User register(UserRequestRegisterDto dto, HttpServletRequest request) {
-
-        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
-            throw new NotFoundException("Пользователь с таким email уже занят");
-        }
-        Role role = roleRepository.findById(dto.getRoleId())
-                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
-
-
-        User user = UserMapper.fromDtoRegister(dto);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRole(role);
-
-        user.setEnabled(true);
-
-        User registeredUser = userRepository.save(user);
-
-
-        UserDetails userDetails = loadUserByUsername(user.getEmail());
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-                userDetails,
-                userDetails.getPassword(),
-                userDetails.getAuthorities()
-        );
-        SecurityContextHolder.getContext().setAuthentication(auth);
-        request.getSession(true).setAttribute(
-                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-                SecurityContextHolder.getContext()
-        );
-        return registeredUser;
-
-    }
+//    @Override
+//    public User register(UserRequestRegisterDto dto, HttpServletRequest request) {
+//
+//        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
+//            throw new NotFoundException("Пользователь с таким email уже занят");
+//        }
+//        Role role = roleRepository.findById(dto.getRoleId())
+//                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
+//
+//
+//        User user = UserMapper.fromDtoRegister(dto);
+//        user.setPassword(passwordEncoder.encode(user.getPassword()));
+//        user.setRole(role);
+//
+//        user.setEnabled(true);
+//
+//        User registeredUser = userRepository.save(user);
+//
+//
+//        UserDetails userDetails = loadUserByUsername(user.getEmail());
+//        Authentication auth = new UsernamePasswordAuthenticationToken(
+//                userDetails,
+//                userDetails.getPassword(),
+//                userDetails.getAuthorities()
+//        );
+//        SecurityContextHolder.getContext().setAuthentication(auth);
+//        request.getSession(true).setAttribute(
+//                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+//                SecurityContextHolder.getContext()
+//        );
+//        return registeredUser;
+//
+//    }
 
     @Override
     public User login(String email, String password) {
@@ -197,6 +196,46 @@ public class UserServiceImpl implements UserService {
             filename = "picture.png";
         }
         return fileService.getOutputFile(filename, MediaType.IMAGE_PNG);
+    }
+
+    @Override
+    public User register(UserRequestRegisterDto dto, Role role, HttpServletRequest request) {
+        if (userRepository.findByEmail(dto.getEmail()).isPresent()) {
+            throw new NotFoundException("Пользователь с таким email уже существует");
+        }
+        User user = UserMapper.fromDtoRegister(dto);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(role);
+        user.setEnabled(true);
+        User savedUser = userRepository.save(user);
+        UserDetails userDetails = loadUserByUsername(user.getEmail());
+        Authentication auth = new UsernamePasswordAuthenticationToken(
+                userDetails,
+                userDetails.getPassword(),
+                userDetails.getAuthorities()
+        );
+        SecurityContextHolder.getContext().setAuthentication(auth);
+        request.getSession(true).setAttribute(
+                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
+                SecurityContextHolder.getContext()
+        );
+
+        return savedUser;
+    }
+
+
+    @Override
+    public User registerApplicant(UserRequestRegisterDto dto, HttpServletRequest request) {
+        Role role = roleRepository.findByName("APPLICANT")
+                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
+        return register(dto, role, request);
+    }
+
+    @Override
+    public User registerEmployer(UserRequestRegisterDto dto, HttpServletRequest request) {
+        Role role = roleRepository.findByName("EMPLOYEE")
+                .orElseThrow(() -> new NotFoundException("Роль не найдена"));
+        return register(dto, role, request);
     }
 
 }

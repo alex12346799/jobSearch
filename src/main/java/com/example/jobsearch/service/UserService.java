@@ -4,6 +4,7 @@ import com.example.jobsearch.dto.UserEditRequestDto;
 import com.example.jobsearch.dto.UserRequestDto;
 import com.example.jobsearch.dto.UserRequestRegisterDto;
 import com.example.jobsearch.dto.UserResponseDto;
+import com.example.jobsearch.model.Role;
 import com.example.jobsearch.model.User;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -32,7 +33,9 @@ public interface UserService extends UserDetailsService {
 
     void deleteUser(long id);
 
-    User register(UserRequestRegisterDto dto, HttpServletRequest request);
+
+
+ User register(UserRequestRegisterDto dto, Role role, HttpServletRequest request);
 
     User getByResetPasswordToken(String token);
 
@@ -41,4 +44,8 @@ public interface UserService extends UserDetailsService {
     void makeResetPasswordLink(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException;
 
  ResponseEntity<?> downloadImage(long imageId);
+
+ User registerApplicant(UserRequestRegisterDto dto, HttpServletRequest request);
+
+ User registerEmployer(UserRequestRegisterDto dto, HttpServletRequest request);
 }

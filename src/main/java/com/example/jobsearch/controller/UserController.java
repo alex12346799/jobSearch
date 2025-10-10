@@ -1,9 +1,6 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto.UserEditRequestDto;
-import com.example.jobsearch.dto.UserRequestDto;
-import com.example.jobsearch.dto.UserRequestRegisterDto;
-import com.example.jobsearch.dto.UserResponseDto;
+import com.example.jobsearch.dto.*;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.User;
@@ -14,6 +11,8 @@ import com.example.jobsearch.service.ResumeService;
 import com.example.jobsearch.service.UserService;
 import com.example.jobsearch.service.VacancyService;
 import com.example.jobsearch.utils.RedirectHelper;
+import com.example.jobsearch.validation.ApplicantGroup;
+import com.example.jobsearch.validation.EmployerGroup;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
@@ -25,6 +24,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -41,32 +41,6 @@ public class UserController {
     private final ResumeService resumeService;
     private final VacancyService vacancyService;
     private final RedirectHelper redirectHelper;
-
-    @GetMapping("/register")
-    public String showRegistrationForm(Model model) {
-        model.addAttribute("userRequestRegisterDto", new UserRequestRegisterDto());
-        return "auth/register";
-    }
-
-
-
-    @PostMapping("/register")
-    public String registerUser(@Valid UserRequestRegisterDto dto,
-                               BindingResult bindingResult,
-                               HttpServletRequest request,
-                               Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("userRequestRegisterDto", dto);
-            return "auth/register";
-        }
-
-        User registeredUser = userService.register(dto, request);
-
-        return redirectHelper.getRedirectByRole(registeredUser.getAuthorities());
-    }
-
-
 
 
 
@@ -105,6 +79,7 @@ public class UserController {
         }
         String email = authentication.getName();
         UserResponseDto user = userService.getByEmail(email);
+
         model.addAttribute("user", user);
         boolean isApplicant = authentication.getAuthorities().stream()
                 .anyMatch(a -> a
@@ -184,5 +159,63 @@ public class UserController {
     public ResponseEntity<?> downloadImage(@PathVariable("imageId") long imageId) {
         return userService.downloadImage(imageId);
     }
+
+
+
+    @GetMapping("/register")
+    public String showRoleSelectionPage(){
+        return "auth/role-selection";
+    }
+
+
+    @GetMapping("/register/applicant")
+    public String showApplicantForm(Model model) {
+        model.addAttribute("userRequestRegisterDto", new UserRequestRegisterDto());
+        return "auth/register-applicant";
+    }
+
+    @PostMapping("/register/applicant")
+    public String registerApplicant(
+            @Validated(ApplicantGroup.class) UserRequestRegisterDto dto,
+            BindingResult bindingResult,
+            HttpServletRequest request,
+            Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("userRequestRegisterDto", dto);
+            return "auth/register-applicant";
+        }
+
+        User registeredUser = userService.registerApplicant(dto, request);
+        return redirectHelper.getRedirectByRole(registeredUser.getAuthorities());
+    }
+
+
+    @GetMapping("/register/employer")
+    public String showEmployerForm(Model model) {
+        model.addAttribute("userRequestRegisterDto", new UserRequestRegisterDto());
+        return "auth/register-employer";
+    }
+
+    @PostMapping("/register/employer")
+    public String registerEmployer(
+            @Validated(EmployerGroup.class) UserRequestRegisterDto dto,
+            BindingResult bindingResult,
+            HttpServletRequest request,
+            Model model) {
+
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("userRequestRegisterDto", dto);
+            return "auth/register-employer";
+        }
+
+        User registeredUser = userService.registerEmployer(dto, request);
+        return redirectHelper.getRedirectByRole(registeredUser.getAuthorities());
+    }
+
+
+
+
+
 
 }
