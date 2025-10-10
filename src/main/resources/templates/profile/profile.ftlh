@@ -179,19 +179,7 @@
                  style="width:100px; height:100px; border-radius:50%;">
         </div>
 
-
-
-
-
-
-
-
-
         <div class="profile-info">
-
-
-
-
             <h2>${user.name} ${user.surname}</h2>
             <p><strong><@spring.message"profile.age"/>:</strong> ${user.age}</p>
             <a class="btn btn-create" href="/auth/update"><@spring.message"profile.edit"/></a>

@@ -58,6 +58,7 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(
                         authorize -> authorize
+                                .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
                                 .requestMatchers(HttpMethod.GET, "/vacancies").hasAnyAuthority("EMPLOYEE", "APPLICANT")
                                 .requestMatchers("/vacancies/create").hasAuthority("EMPLOYEE")
                                 .requestMatchers(HttpMethod.GET, "/resumes").hasAnyAuthority("EMPLOYEE")
