@@ -16,7 +16,8 @@
             border-radius: 16px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
             margin: 50px auto;
-            padding: 40px;
+            padding: 40px 60px;
+            box-sizing: border-box;
         }
 
         .profile-title {
@@ -27,7 +28,6 @@
             margin-bottom: 40px;
         }
 
-
         .profile-header {
             display: flex;
             align-items: center;
@@ -35,7 +35,6 @@
             gap: 30px;
             flex-wrap: wrap;
         }
-
 
         .avatar-section {
             flex: 0 0 150px;
@@ -73,7 +72,6 @@
             color: #333;
             font-size: 1rem;
         }
-
 
         .profile-actions {
             display: flex;
@@ -117,7 +115,7 @@
             background-color: #cacaca;
         }
 
-        /* ===== Раздел резюме ===== */
+
         h2.section-title {
             text-align: center;
             font-size: 1.6rem;
@@ -127,10 +125,12 @@
 
         .resumes {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 25px;
             justify-items: center;
             align-items: start;
+            width: 100%;
+            box-sizing: border-box;
         }
 
         .resume-card {
@@ -156,7 +156,6 @@
             color: #333;
             font-size: 0.95rem;
         }
-
 
         .card-actions {
             margin-top: 12px;
@@ -192,7 +191,6 @@
             background-color: #95d180;
         }
 
-        /* Кнопка "Подробнее" ниже */
         .card-footer {
             margin-top: 15px;
             display: flex;
@@ -214,19 +212,17 @@
             transform: scale(1.03);
         }
 
-        /* ===== Адаптив ===== */
-        @media (max-width: 992px) {
-            .resumes {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
 
-        @media (max-width: 600px) {
-            .resumes {
-                grid-template-columns: 1fr;
+        @media (max-width: 992px) {
+            .profile-container {
+                padding: 30px 20px;
+            }
+            .profile-actions {
+                align-items: flex-start;
             }
         }
     </style>
+
 
     <div class="profile-container">
         <h1 class="profile-title">

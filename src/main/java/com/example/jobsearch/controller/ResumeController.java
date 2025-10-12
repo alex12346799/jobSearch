@@ -18,6 +18,7 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -61,11 +62,29 @@ public class ResumeController {
         return "resumes/resumeDetails";
     }
 
+
+
     @GetMapping("sorted")
     public String getResumesSorted(
-            Pageable pageable,
+            @RequestParam String sort,
+            @PageableDefault(size = 10) Pageable pageable,
             Model model) {
-        model.addAttribute("resumes", resumeService.getAllSortedAndPagedResume(pageable));
+
+
+        Pageable sortedPageable = PageRequest.of(
+                pageable.getPageNumber(),
+                pageable.getPageSize(),
+                Sort.by(sort).ascending()
+        );
+
+        Page<Resume> page = resumeRepository.findAll(sortedPageable);
+
+        model.addAttribute("page", page);
+        model.addAttribute("url", "/resumes/sorted");
+        model.addAttribute("extraParams", "sort=" + sort);
+        model.addAttribute("currentSort", sort);
+
+
         return "resumes/resumes";
     }
 
@@ -97,7 +116,7 @@ public class ResumeController {
         System.out.println("ОПЫТ РАБОТЫ (size) " + resumeRequestDto.getWorkExperienceInfoList().size());
         Resume createResume = resumeService.create(resumeRequestDto, authentication);
         model.addAttribute("resume", createResume);
-        return "redirect:/auth/profile";
+        return "redirect:/user/profile";
     }
 
 
