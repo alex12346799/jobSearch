@@ -133,29 +133,19 @@
         </#if>
 
         <label for="password"><@spring.message "register.company_name"/></label>
-        <@spring.formInput "userRequestRegisterDto.companyName" 'id="companyName" type="companyName"' />
+        <@spring.formInput "userRegisterRequest.companyName" 'id="companyName" type="companyName"' />
         <@spring.showErrors "<br>" "error" />
 
 
         <label for="password"><@spring.message "register.email"/></label>
-        <@spring.formInput "userRequestRegisterDto.email" 'id="email" type="email"' />
+        <@spring.formInput "userRegisterRequest.email" 'id="email" type="email"' />
         <@spring.showErrors "<br>" "error" />
 
 
         <label for="password"><@spring.message "register.password"/></label>
-        <@spring.formInput "userRequestRegisterDto.password" 'id="password" type="password"' />
+        <@spring.formInput "userRegisterRequest.password" 'id="password" type="password"' />
         <@spring.showErrors "<br>" "error" />
 
-
-
-<#--        <label>Название компании:</label>-->
-<#--        <input type="text" name="companyName" required>-->
-
-<#--        <label>Email:</label>-->
-<#--        <input type="email" name="email" required>-->
-
-<#--        <label>Пароль:</label>-->
-<#--        <input type="password" name="password" required>-->
 
 
 

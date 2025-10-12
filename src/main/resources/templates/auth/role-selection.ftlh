@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <title>Выбор роли — JobSearch</title>
     <style>
-        /* 🌄 Яркий, но сбалансированный фон */
+
         body {
             font-family: "Segoe UI", Roboto, sans-serif;
             background: linear-gradient(135deg, #e3f2fd 0%, #f8e9ff 100%);
@@ -18,7 +18,7 @@
             position: relative;
         }
 
-        /* 💧 Цветные мягкие акценты */
+
         body::before, body::after {
             content: "";
             position: absolute;
@@ -44,7 +44,7 @@
             right: -150px;
         }
 
-        /* 🧊 Контейнер */
+
         .container {
             position: relative;
             z-index: 1;
@@ -63,7 +63,7 @@
             box-shadow: 0 10px 60px rgba(0, 0, 0, 0.12);
         }
 
-        /* 📝 Заголовок */
+
         h2 {
             font-size: 30px;
             margin-bottom: 35px;
@@ -110,7 +110,7 @@
             box-shadow: 0 0 25px rgba(116, 185, 255, 0.6);
         }
 
-        /* 📄 Подпись */
+
         .footer {
             margin-top: 40px;
             font-size: 14px;

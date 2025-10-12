@@ -1,221 +1,88 @@
+
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dto.*;
-import com.example.jobsearch.exceptions.NotFoundException;
-import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.model.User;
-import com.example.jobsearch.model.Vacancy;
-import com.example.jobsearch.repository.UserRepository;
-import com.example.jobsearch.repository.VacancyRepository;
+import com.example.jobsearch.dto.user.UserEditRequest;
+import com.example.jobsearch.service.FileService;
 import com.example.jobsearch.service.ResumeService;
 import com.example.jobsearch.service.UserService;
 import com.example.jobsearch.service.VacancyService;
-import com.example.jobsearch.utils.RedirectHelper;
-import com.example.jobsearch.validation.ApplicantGroup;
-import com.example.jobsearch.validation.EmployerGroup;
-import jakarta.mail.MessagingException;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.util.List;
-
-
-@Controller("UserWebController")
-@RequestMapping("auth")
+@Controller
+@RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
+
     private final UserService userService;
-    private final ResumeService resumeService;
+    private final FileService fileService;
     private final VacancyService vacancyService;
-    private final RedirectHelper redirectHelper;
-
-
-
-    @GetMapping("login")
-    public String login(Model model, @RequestParam(defaultValue = "false") Boolean error) {
-        model.addAttribute("error", error);
-        return "auth/login";
-    }
-
-    @GetMapping("/update")
-    public String updateUser(Model model, Authentication authentication) {
-        if (authentication == null) {
-            return "redirect:/login";
-        }
-        String email = authentication.getName();
-        UserResponseDto user = userService.getByEmail(email);
-        model.addAttribute("user", user);
-        return "editUser/editingUser";
-    }
-
-    @PostMapping("/update")
-    public String updateUser(@Valid UserEditRequestDto dto, BindingResult bindingResult, Authentication auth, Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("userRequestDto", dto);
-            return "redirect:/auth/update";
-        }
-        userService.updateUser(dto, auth);
-        return "redirect:/auth/profile";
-    }
+    private final ResumeService resumeService;
 
     @GetMapping("/profile")
-    public String infoUser(Model model, Authentication authentication) {
-        if (authentication == null) {
-            return "redirect:/login";
-        }
-        String email = authentication.getName();
-        UserResponseDto user = userService.getByEmail(email);
-
+    public String profilePage(Authentication authentication, Model model) {
+        // заново загружаем юзера из БД, не кэшируем старый объект
+        var user = userService.getByEmail(authentication.getName());
         model.addAttribute("user", user);
+
         boolean isApplicant = authentication.getAuthorities().stream()
-                .anyMatch(a -> a
-                        .getAuthority().equals("APPLICANT"));
+                .anyMatch(a -> a.getAuthority().equals("APPLICANT"));
         boolean isEmployer = authentication.getAuthorities().stream()
-                .anyMatch(e -> e
-                        .getAuthority().equals("EMPLOYEE"));
+                .anyMatch(a -> a.getAuthority().equals("EMPLOYEE"));
+
         model.addAttribute("isApplicant", isApplicant);
         model.addAttribute("isEmployer", isEmployer);
+
         if (isApplicant) {
-            List<Resume> resumes = resumeService.findByApplicantId(authentication);
+            var resumes = resumeService.findByApplicantId(authentication);
             model.addAttribute("resumes", resumes);
-        } else if (isEmployer) {
-            List<Vacancy> vacancies = vacancyService.findByEmployer(authentication);
-            model.addAttribute("vacancies", vacancies);
-        } else {
-            return "redirect:/login";
         }
+        if (isEmployer) {
+            var vacancies = vacancyService.findByEmployer(authentication);
+            model.addAttribute("vacancies", vacancies);
+        }
+
         return "profile/profile";
     }
 
+    @GetMapping("/edit")
+    public String editPage(Authentication authentication, Model model) {
+        model.addAttribute("userEditRequest", new UserEditRequest());
+        model.addAttribute("user", userService.getCurrentUser(authentication));
+        return "editUser/editingUser";
+    }
+
+    @PostMapping("/edit")
+    public String updateProfile(@ModelAttribute("userEditRequest") UserEditRequest dto,
+                                BindingResult result,
+                                Authentication authentication,
+                                Model model) {
+
+        if (result.hasErrors()) {
+            model.addAttribute("user", userService.getCurrentUser(authentication));
+            return "profile/profile";
+        }
+
+        userService.updateUser(dto, authentication);
+        return "redirect:/user/profile";
+    }
 
     @PostMapping("/upload-avatar")
-    public String uploadAvatar(@RequestParam("avatar") MultipartFile file, Authentication authentication) {
-        if (authentication == null) {
-            return "redirect:/login";
-        }
+    public String uploadAvatar(@RequestParam("avatar") MultipartFile file,
+                               Authentication authentication) {
         String email = authentication.getName();
-        userService.uploadImageUser(file, email);
-        return "redirect:/auth/profile";
+        fileService.uploadUserAvatar(file, email);
+        return "redirect:/user/profile";
     }
 
-    @GetMapping("forgot-password")
-    public String showForgotPasswordPage(Model model, Authentication authentication) {
-        return "auth/forgot_password";
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable long id) {
+        userService.deleteUser(id);
+        return "redirect:/";
     }
-
-    @PostMapping("forgot-password")
-    public String processForgotPassword(HttpServletRequest request, Model model) {
-        try {
-            userService.makeResetPasswordLink(request);
-            model.addAttribute("message", "we have sent a reset password link to your email. Please check it.");
-        } catch (NotFoundException | UnsupportedEncodingException e) {
-            model.addAttribute("error", e.getMessage());
-        } catch (MessagingException e) {
-            model.addAttribute("error", "Error while sending email");
-        }
-        return "auth/forgot_password";
-    }
-
-    @GetMapping("reset-password")
-    public String resetPassword(@RequestParam(name = "token") String token, Model model) {
-        try {
-            userService.getByResetPasswordToken(token);
-            model.addAttribute("token", token);
-        } catch (UsernameNotFoundException e) {
-            model.addAttribute("error", "invalid token");
-        }
-        return "auth/reset_password_form";
-    }
-
-    @PostMapping("reset-password")
-    public String processResetPassword(HttpServletRequest request, Model model) {
-        String token = request.getParameter("token");
-        String password = request.getParameter("password");
-        try {
-            User user = userService.getByResetPasswordToken(token);
-            userService.updatePassword(user, password);
-            model.addAttribute("message", "You have successfully updated your password.");
-        } catch (UsernameNotFoundException e) {
-            model.addAttribute("error", "invalid token");
-        }
-        return "message/message";
-    }
-
-    @GetMapping("/download/{imageId}")
-    public ResponseEntity<?> downloadImage(@PathVariable("imageId") long imageId) {
-        return userService.downloadImage(imageId);
-    }
-
-
-
-    @GetMapping("/register")
-    public String showRoleSelectionPage(){
-        return "auth/role-selection";
-    }
-
-
-    @GetMapping("/register/applicant")
-    public String showApplicantForm(Model model) {
-        model.addAttribute("userRequestRegisterDto", new UserRequestRegisterDto());
-        return "auth/register-applicant";
-    }
-
-    @PostMapping("/register/applicant")
-    public String registerApplicant(
-            @Validated(ApplicantGroup.class) UserRequestRegisterDto dto,
-            BindingResult bindingResult,
-            HttpServletRequest request,
-            Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("userRequestRegisterDto", dto);
-            return "auth/register-applicant";
-        }
-
-        User registeredUser = userService.registerApplicant(dto, request);
-        return redirectHelper.getRedirectByRole(registeredUser.getAuthorities());
-    }
-
-
-    @GetMapping("/register/employer")
-    public String showEmployerForm(Model model) {
-        model.addAttribute("userRequestRegisterDto", new UserRequestRegisterDto());
-        return "auth/register-employer";
-    }
-
-    @PostMapping("/register/employer")
-    public String registerEmployer(
-            @Validated(EmployerGroup.class) UserRequestRegisterDto dto,
-            BindingResult bindingResult,
-            HttpServletRequest request,
-            Model model) {
-
-        if (bindingResult.hasErrors()) {
-            model.addAttribute("userRequestRegisterDto", dto);
-            return "auth/register-employer";
-        }
-
-        User registeredUser = userService.registerEmployer(dto, request);
-        return redirectHelper.getRedirectByRole(registeredUser.getAuthorities());
-    }
-
-
-
-
-
-
 }

@@ -125,7 +125,17 @@
             <!-- Активность вакансии -->
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" name="active" <#if vacancyRequestDto.active?? && vacancyRequestDto.active>checked</#if>>
+                    <!-- Активность вакансии -->
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"
+                                   name="isActive"
+                                   value="true"
+                                   <#if vacancyRequestDto.isActive?? && vacancyRequestDto.isActive>checked</#if>>
+                            <@spring.message "createVacancies.actively"/>
+                        </label>
+                    </div>
+
 
                     <@spring.message "createVacancies.actively"/>
                 </label>

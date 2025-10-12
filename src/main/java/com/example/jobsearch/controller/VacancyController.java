@@ -74,24 +74,47 @@ public class VacancyController {
         return "vacancies/createVacancies";
     }
 
-@PostMapping("/create")
-public String createVacancy(
-        @Valid VacancyRequestDto vacancyRequestDto,
-        BindingResult bindingResult,
-        Model model,
-        Authentication auth) {
+//@PostMapping("/create")
+//public String createVacancy(
+//        @Valid VacancyRequestDto vacancyRequestDto,
+//        BindingResult bindingResult,
+//        Model model,
+//        Authentication auth) {
+//
+//    if (bindingResult.hasErrors()) {
+//
+//        model.addAttribute("categories", categoryService.findAll());
+//        model.addAttribute("vacancyRequestDto", vacancyRequestDto);
+//        return "vacancies/createVacancies";
+//    }
+//
+//    Vacancy vacancy = vacancyService.create(vacancyRequestDto, auth);
+//    model.addAttribute("vacancy", vacancy);
+//    return "redirect:/user/profile";
+//}
 
-    if (bindingResult.hasErrors()) {
-        // обязательно возвращаем категории, иначе выпадающий список не покажется
-        model.addAttribute("categories", categoryService.findAll());
-        model.addAttribute("vacancyRequestDto", vacancyRequestDto);
-        return "vacancies/createVacancies";
+    @PostMapping("/create")
+    public String createVacancy(
+            @Valid VacancyRequestDto vacancyRequestDto,
+            BindingResult bindingResult,
+            Model model,
+            Authentication auth) {
+
+        System.out.println("=== POST /vacancies/create ===");
+        System.out.println("DTO: " + vacancyRequestDto);
+        System.out.println("Errors: " + bindingResult.getAllErrors());
+
+        if (bindingResult.hasErrors()) {
+            System.out.println("❌ Ошибка валидации, возвращаем форму");
+            model.addAttribute("categories", categoryService.findAll());
+            return "vacancies/createVacancies";
+        }
+
+        vacancyService.create(vacancyRequestDto, auth);
+        System.out.println("✅ Вакансия успешно создана!");
+        return "redirect:/user/profile";
     }
 
-    Vacancy vacancy = vacancyService.create(vacancyRequestDto, auth);
-    model.addAttribute("vacancy", vacancy);
-    return "redirect:/auth/profile";
-}
     @GetMapping("{vacanciesId}")
     public String getVacanciesId(@PathVariable long vacanciesId, Model model) {
         model.addAttribute("vacanciesRequest", vacancyService.getById(vacanciesId));

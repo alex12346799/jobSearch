@@ -1,51 +1,18 @@
 package com.example.jobsearch.service;
 
-import com.example.jobsearch.dto.UserEditRequestDto;
-import com.example.jobsearch.dto.UserRequestDto;
-import com.example.jobsearch.dto.UserRequestRegisterDto;
-import com.example.jobsearch.dto.UserResponseDto;
-import com.example.jobsearch.model.Role;
-import com.example.jobsearch.model.User;
-import jakarta.mail.MessagingException;
-import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.http.ResponseEntity;
+
+import com.example.jobsearch.dto.user.UserEditRequest;
+import com.example.jobsearch.dto.user.UserResponse;
+
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.UnsupportedEncodingException;
-import java.util.List;
+import java.util.Optional;
+
 
 public interface UserService extends UserDetailsService {
-    User getUserById(Long id);
-
-   UserResponseDto getByEmail(String email);
-
-    List<User> getAllUsers();
-
-
-    User login(String email, String password);
-
-
-    void updateUser(UserEditRequestDto dto, Authentication authentication);
-
-    void uploadImageUser(MultipartFile file, String email);
-
+    UserResponse getCurrentUser(Authentication authentication);
+    void updateUser(UserEditRequest dto, Authentication authentication);
     void deleteUser(long id);
-
-
-
- User register(UserRequestRegisterDto dto, Role role, HttpServletRequest request);
-
-    User getByResetPasswordToken(String token);
-
-    void updatePassword(User user, String newPassword);
-
-    void makeResetPasswordLink(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException;
-
- ResponseEntity<?> downloadImage(long imageId);
-
- User registerApplicant(UserRequestRegisterDto dto, HttpServletRequest request);
-
- User registerEmployer(UserRequestRegisterDto dto, HttpServletRequest request);
+    UserResponse getByEmail(String email);
 }
