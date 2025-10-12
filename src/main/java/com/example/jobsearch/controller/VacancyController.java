@@ -74,25 +74,6 @@ public class VacancyController {
         return "vacancies/createVacancies";
     }
 
-//@PostMapping("/create")
-//public String createVacancy(
-//        @Valid VacancyRequestDto vacancyRequestDto,
-//        BindingResult bindingResult,
-//        Model model,
-//        Authentication auth) {
-//
-//    if (bindingResult.hasErrors()) {
-//
-//        model.addAttribute("categories", categoryService.findAll());
-//        model.addAttribute("vacancyRequestDto", vacancyRequestDto);
-//        return "vacancies/createVacancies";
-//    }
-//
-//    Vacancy vacancy = vacancyService.create(vacancyRequestDto, auth);
-//    model.addAttribute("vacancy", vacancy);
-//    return "redirect:/user/profile";
-//}
-
     @PostMapping("/create")
     public String createVacancy(
             @Valid VacancyRequestDto vacancyRequestDto,
@@ -105,7 +86,7 @@ public class VacancyController {
         System.out.println("Errors: " + bindingResult.getAllErrors());
 
         if (bindingResult.hasErrors()) {
-            System.out.println("❌ Ошибка валидации, возвращаем форму");
+            System.out.println(" Ошибка валидации, возвращаем форму");
             model.addAttribute("categories", categoryService.findAll());
             return "vacancies/createVacancies";
         }
