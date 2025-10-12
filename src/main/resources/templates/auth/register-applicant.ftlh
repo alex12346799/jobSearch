@@ -104,19 +104,19 @@
         </#if>
 
         <label for="name"><@spring.message "register.name"/></label>
-        <@spring.formInput "userRequestRegisterDto.name" 'id="name"' />
+        <@spring.formInput "userRegisterRequest.name" 'id="name"' />
         <@spring.showErrors "<br>" "error" />
 
         <label for="surname"><@spring.message "register.surname"/></label>
-        <@spring.formInput "userRequestRegisterDto.surname" 'id="surname"' />
+        <@spring.formInput "userRegisterRequest.surname" 'id="surname"' />
         <@spring.showErrors "<br>" "error" />
 
         <label for="email"><@spring.message "register.email"/></label>
-        <@spring.formInput "userRequestRegisterDto.email" 'id="email"' />
+        <@spring.formInput "userRegisterRequest.email" 'id="email"' />
         <@spring.showErrors "<br>" "error" />
 
         <label for="password"><@spring.message "register.password"/></label>
-        <@spring.formInput "userRequestRegisterDto.password" 'id="password" type="password"' />
+        <@spring.formInput "userRegisterRequest.password" 'id="password" type="password"' />
         <@spring.showErrors "<br>" "error" />
 
         <button type="submit"><@spring.message "register.create_an_account"/></button>

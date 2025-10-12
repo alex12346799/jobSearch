@@ -1,162 +1,199 @@
 
 <#import "/spring.ftl" as spring>
 
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title><@spring.message "editUser.editing_your_profile"/></title>
 
-<style>
-    body {
-        background: linear-gradient(135deg, #6a11cb, #2575fc);
-        font-family: 'Segoe UI', sans-serif;
-        padding: 40px;
-    }
+    <style>
+        body {
+            font-family: "Segoe UI", Roboto, sans-serif;
+            background: linear-gradient(135deg, #e3f2fd 0%, #f8e9ff 100%);
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
 
-    .custom-form {
-        background: #ffffff;
-        padding: 40px;
-        border-radius: 16px;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-        max-width: 600px;
-        margin: auto;
-    }
+        body::before, body::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(140px);
+            opacity: 0.35;
+            z-index: 0;
+        }
 
-    .custom-form:hover {
-        transform: scale(1.02);
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-    }
+        body::before {
+            width: 500px;
+            height: 500px;
+            background: #74b9ff;
+            top: -150px;
+            left: -120px;
+        }
 
-    .custom-form h2 {
-        text-align: center;
-        margin-bottom: 30px;
-        font-weight: 700;
-        color: #333;
-    }
+        body::after {
+            width: 600px;
+            height: 600px;
+            background: #a29bfe;
+            bottom: -200px;
+            right: -150px;
+        }
 
-    .form-group {
-        margin-bottom: 20px;
-        display: flex;
-        flex-direction: column;
-    }
+        .container {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            border-radius: 22px;
+            padding: 45px 65px;
+            text-align: center;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
+            width: 460px;
+        }
 
-    .custom-form label {
-        font-weight: 600;
-        margin-bottom: 8px;
-        font-size: 1.1rem;
-    }
+        h2 {
+            font-size: 26px;
+            color: #2d3436;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
 
-    .form-control {
-        border-radius: 10px;
-        border: 1px solid #ccc;
-        padding: 12px 15px;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-    }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
 
-    .form-control:focus {
-        border-color: #6a11cb;
-        box-shadow: 0 0 10px rgba(106, 17, 203, 0.3);
-    }
+        label {
+            text-align: left;
+            font-size: 15px;
+            color: #333;
+            font-weight: 600;
+        }
 
-    .btn-submit {
-        background: linear-gradient(90deg, #6a11cb, #2575fc);
-        border: none;
-        border-radius: 10px;
-        padding: 12px 40px;
-        font-size: 1rem;
-        font-weight: bold;
-        color: white;
-        transition: all 0.3s ease;
-        display: block;
-        margin: 25px auto 0 auto;
-        text-align: center;
-        cursor: pointer;
-    }
+        input {
+            padding: 12px 15px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            font-size: 15px;
+            outline: none;
+            transition: 0.2s;
+        }
 
-    .btn-submit:hover {
-        background: linear-gradient(90deg, #2575fc, #6a11cb);
-        transform: scale(1.05);
-        box-shadow: 0 5px 15px rgba(37, 117, 252, 0.4);
-    }
+        input:focus {
+            border-color: #74b9ff;
+            box-shadow: 0 0 6px rgba(116, 185, 255, 0.4);
+        }
+
+        .avatar-section {
+            margin-bottom: 20px;
+        }
+
+        .avatar-preview {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #74b9ff;
+            margin-bottom: 10px;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .file-label {
+            display: inline-block;
+            padding: 8px 20px;
+            background: linear-gradient(90deg, #0984e3, #74b9ff);
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: 600;
+        }
+
+        .file-label:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 10px rgba(116, 185, 255, 0.6);
+        }
+
+        button {
+            margin-top: 10px;
+            background: linear-gradient(90deg, #0984e3, #74b9ff);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(116, 185, 255, 0.6);
+        }
+
+        a.back {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0984e3;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        a.back:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+
+    <h2><@spring.message "editUser.editing_your_profile"/></h2>
 
 
-    .avatar-section {
-        text-align: center;
-        margin-bottom: 20px;
-    }
 
-
-
-    .file-input {
-        display: none;
-    }
-
-    .file-label {
-        display: inline-block;
-        padding: 10px 20px;
-        background: #2575fc;
-        color: #fff;
-        border-radius: 8px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        font-weight: 600;
-    }
-
-    .file-label:hover {
-        background: #6a11cb;
-    }
-</style>
-
-<form class="custom-form" enctype="multipart/form-data" method="post" action="/auth/upload-avatar">
-    <#if _csrf??>
-        <input
-                type="hidden"
-                name="${(_csrf.parameterName)!'csrf-param-name'}"
-                value="${(_csrf.token)!'csrf-token'}"/>
-    </#if>
-    <div class="avatar-section">
-        <img src="/images/${user.avatar! 'default.png'}" alt="" class="avatar-preview">
-        <input type="file" id="avatar" name="avatar" accept="image/*" class="file-input"/>
-        <label for="avatar" class="file-label">Выбрать фото</label>
-    </div>
-
-</form>
-
-    <form class="custom-form" method="post" action="/auth/update">
+    <form action="/user/edit" method="post">
         <#if _csrf??>
-            <input
-                    type="hidden"
-                    name="${(_csrf.parameterName)!'csrf-param-name'}"
-                    value="${(_csrf.token)!'csrf-token'}"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         </#if>
-    <h2><@spring.message"editUser.editing_your_profile"/></h2>
 
+        <label for="firstName"><@spring.message "editUser.name"/></label>
+        <input type="text" id="firstName" placeholder="Введите имя"
+               name="name" value="${userEditRequest.name!''}">
 
-    <div class="form-group">
-        <label for="firstName"><@spring.message"editUser.name"/></label>
-        <input type="text" class="form-control" id="firstName" placeholder="Введите имя" name="name" value="${user.name}">
-    </div>
+        <label for="lastName"><@spring.message "editUser.surname"/></label>
+        <input type="text" id="lastName" placeholder="Введите фамилию"
+               name="surname" value="${userEditRequest.surname!''}">
 
-    <div class="form-group">
-        <label for="lastName"><@spring.message"editUser.surname"/></label>
-        <input type="text" class="form-control" id="lastName" placeholder="Введите фамилию" name="surname" value="${user.surname}">
-    </div>
+        <label for="age"><@spring.message "editUser.age"/></label>
+        <input type="number" id="age" placeholder="18"
+               name="age" value="${userEditRequest.age!''}">
 
-    <div class="form-group">
-        <label for="age"><@spring.message"editUser.age"/></label>
-        <input type="number" class="form-control" id="age" placeholder="18" name="age" value="${user.age}">
-    </div>
+        <label for="phone"><@spring.message "editUser.number"/></label>
+        <input type="tel" id="phone" placeholder="+996 (___) __-__-__"
+               name="phoneNumber" value="${userEditRequest.phoneNumber!''}">
 
-    <div class="form-group">
-        <label for="phone"><@spring.message"editUser.number"/></label>
-        <input type="tel" class="form-control" id="phone" placeholder="+996 (___) __-__-__" name="phoneNumber" value="${user.phoneNumber!""}">
-    </div>
+        <label for="address"><@spring.message "editUser.address"/></label>
+        <input type="text" id="address" placeholder="Введите адрес"
+               name="address" value="${userEditRequest.address!''}">
 
-    <div class="form-group">
-        <label for="address"><@spring.message"editUser.address"/></label>
-        <input type="text" class="form-control" id="address" placeholder="Введите адрес" name="address" value="${user.address!""}">
-    </div>
+        <button type="submit"><@spring.message "editUser.save"/></button>
+    </form>
 
-
-
-    <button type="submit" class="btn-submit"><@spring.message"editUser.save"/></button>
-</form>
-
+    <a href="/user/profile" class="back">← Назад к профилю</a>
+</div>
+</body>
+</html>

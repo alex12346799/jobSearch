@@ -1,16 +1,18 @@
-package com.example.jobsearch.dto;
+
+package com.example.jobsearch.dto.user;
 
 import lombok.Data;
 
 @Data
-public class UserResponseDto {
-    private long id;
+public class UserResponse {
+    private Long id;
     private String name;
     private String surname;
-    private int age;
+    private Integer age;
     private String email;
     private String phoneNumber;
     private String address;
     private String avatar;
-    private String accountType;
+    private String companyName;
+    private String roleName;
 }

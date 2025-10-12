@@ -290,7 +290,7 @@
         </li>
         <li class="resume-info-item">
             <span class="resume-info-label">Город:</span>
-            <span class="resume-info-value">${resume.applicant.address}</span>
+            <span class="resume-info-value">${resume.applicant.address! ''}</span>
         </li>
     </ul>
 
