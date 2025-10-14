@@ -35,6 +35,8 @@ spring:
     resources:
       static-locations: classpath:/static/, file:./data/images/
 
+
+
 server:
   port:
    8089

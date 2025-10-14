@@ -1,14 +1,14 @@
 package com.example.jobsearch.mapper;
 
-import com.example.jobsearch.dto.EducationInfoRequestDto;
-import com.example.jobsearch.dto.ResumeRequestDto;
-import com.example.jobsearch.dto.SocialLinkRequestDto;
-import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
+import com.example.jobsearch.dto.*;
 import com.example.jobsearch.model.*;
+import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class ResumeMapper {
 
@@ -27,6 +27,9 @@ public class ResumeMapper {
         resume.setSalary(dto.getSalary());
         resume.setCreatedDate(LocalDateTime.now());
         resume.setUpdateDate(LocalDateTime.now());
+
+
+
         resume.setActive(dto.getIsActive());
 
 
@@ -46,5 +49,10 @@ public class ResumeMapper {
         socialLinks.setLinkedin(dto.getLinkedin());
         return socialLinks;
     }
+
+
+
+
+
 
 }

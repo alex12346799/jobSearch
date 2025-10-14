@@ -56,15 +56,16 @@ public class Resume {
 
     public String getFormattedCreatedDate() {
         if (createdDate == null) return "";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("Дата dd.MM.yyyy Время  HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy | HH:mm:ss");
         return createdDate.format(formatter);
     }
 
     public String getFormattedUpdateDate() {
         if (updateDate == null) return "";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("Дата dd.MM.yyyy Время  HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy | HH:mm:ss");
         return updateDate.format(formatter);
     }
+
 
 
 }
