@@ -1,96 +1,118 @@
-<#--<#macro pager url page>-->
-<#--    <#import "/spring.ftl" as spring>-->
-
-<#--        <#assign body = 1..page.getTotalPages()>-->
-
-<#--    <div class="mt-3">-->
-<#--        <ul class="pagination">-->
-<#--            <li class="page-item">-->
-<#--                <a class="page-link disabled" href="#"><@spring.message"pages.pages_str"/></a>-->
-<#--            </li>-->
-<#--            <#list body as p>-->
-<#--                <#if (p-1)==page.getNumber()>-->
-<#--                    <li class="page-item active">-->
-<#--                        <a class="page-link" href="#">${p}</a>-->
-<#--                    </li>-->
-<#--                <#else >-->
-<#--                    <li class="page-item">-->
-<#--                        <a class="page-link" href="${url}?page=${p-1}&size=${page.getSize()}">${p}</a>-->
-<#--                    </li>-->
-<#--                </#if>-->
-<#--            </#list>-->
-
-<#--        </ul>-->
-
-<#--        <ul class="pagination">-->
-<#--            <li class="page-item">-->
-<#--                <a class="page-link disabled" href="#"><@spring.message"pages.elements_per_page"/></a>-->
-<#--            </li>-->
-<#--            <#list [2,5,10,25,50] as c>-->
-<#--                <#if c==page.getSize()>-->
-<#--                    <li class="page-item active">-->
-<#--                        <a class="page-link" href="#">${c}</a>-->
-<#--                    </li>-->
-<#--                <#else >-->
-<#--                    <li class="page-item">-->
-<#--                        <a class="page-link" href="${url}?page=${page.getNumber()}&size=${c}">${c}</a>-->
-<#--                    </li>-->
-<#--                </#if>-->
-<#--            </#list>-->
-
-<#--        </ul>-->
-<#--    </div>-->
-<#--</#macro>-->
-
-
-
-
 <#macro pager url page extraParams="">
     <#import "/spring.ftl" as spring>
 
 
-    <#assign body = (page.getTotalPages() > 0)?then(1..page.getTotalPages(), [1])>
+    <#assign totalPages = (page.getTotalPages()?number)!0>
+    <#assign cur        = ((page.getNumber()?number)!0) + 1>
+    <#assign size       = (page.getSize()?number)!10>
+    <#assign sep        = (url?contains("?"))?then("&", "?")>
+
+    <#assign effTotal = (totalPages gt 0)?then(totalPages, 1)>
+    <#if cur lt 1>
+        <#assign cur = 1>
+    </#if>
+    <#if cur gt effTotal>
+        <#assign cur = effTotal>
+    </#if>
+
+    <#assign start = cur - 2>
+    <#if start lt 1>
+        <#assign start = 1>
+    </#if>
+
+    <#assign end = cur + 2>
+    <#if end gt effTotal>
+        <#assign end = effTotal>
+    </#if>
+
+    <style>
+        .modern-pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: #fff;
+            border-radius: 50px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+            margin-top: 25px;
+            flex-wrap: wrap;
+        }
+
+        .modern-pagination a, .modern-pagination span {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-width: 34px;
+            height: 34px;
+            padding: 0 10px;
+            border-radius: 17px;
+            font-size: 14px;
+            color: #333;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }
+
+        .modern-pagination a:hover {
+            background: #f0f0ff;
+            color: #6c63ff;
+        }
+
+        .modern-pagination .active {
+            background: #6c63ff;
+            color: #fff;
+            font-weight: 600;
+            border: 1px solid #6c63ff;
+        }
+
+        .modern-pagination .ellipsis {
+            pointer-events: none;
+            color: #999;
+        }
+
+        .page-size-selector {
+            margin-left: 10px;
+            padding: 6px 10px;
+            border-radius: 20px;
+            border: 1px solid #ddd;
+            background: #fff;
+            font-size: 13px;
+            color: #333;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .page-size-selector:hover {
+            border-color: #6c63ff;
+        }
+    </style>
+
+    <div class="modern-pagination">
 
 
-    <#assign sep = (url?contains("?"))?then("&", "?")>
+        <#if start gt 1>
+            <a href="${url}${sep}page=0&size=${size}<#if extraParams?has_content>&${extraParams}</#if>">1</a>
+            <span class="ellipsis">…</span>
+        </#if>
 
-    <div class="mt-3">
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link disabled" href="#"><@spring.message "pages.pages_str"/></a>
-            </li>
+        <#list start..end as p>
+            <#if p == cur>
+                <span class="active">${p}</span>
+            <#else>
+                <a href="${url}${sep}page=${p - 1}&size=${size}<#if extraParams?has_content>&${extraParams}</#if>">${p}</a>
+            </#if>
+        </#list>
 
-            <#list body as p>
-                <#if (p - 1) == page.getNumber()>
-                    <li class="page-item active"><a class="page-link" href="#">${p}</a></li>
-                <#else>
-                    <li class="page-item">
-                        <a class="page-link"
-                           href="${url}${sep}page=${p-1}&size=${page.getSize()}<#if extraParams?has_content>&${extraParams}</#if>">
-                            ${p}
-                        </a>
-                    </li>
-                </#if>
-            </#list>
-        </ul>
+        <#if end lt effTotal>
+            <span class="ellipsis">…</span>
+            <a href="${url}${sep}page=${effTotal - 1}&size=${size}<#if extraParams?has_content>&${extraParams}</#if>">${effTotal}</a>
+        </#if>
 
-        <ul class="pagination">
-            <li class="page-item">
-                <a class="page-link disabled" href="#"><@spring.message "pages.elements_per_page"/></a>
-            </li>
-
+        <select class="page-size-selector"
+                onchange="location.href='${url}${sep}page=0&size=' + this.value + '<#if extraParams?has_content>&${extraParams}</#if>'">
             <#list [2,5,10,25,50] as c>
-                <#if c == page.getSize()>
-                    <li class="page-item active"><a class="page-link" href="#">${c}</a></li>
-                <#else>
-                    <li class="page-item">
-                        <a class="page-link"
-                           href="${url}${sep}page=${page.getNumber()}&size=${c}<#if extraParams?has_content>&${extraParams}</#if>">
-                            ${c}
-                        </a>
-                    </li>
-                </#if>
+                <option value="${c}" <#if c == size>selected</#if>>${c} / page</option>
             </#list>
-        </ul>
+        </select>
     </div>
 </#macro>
