@@ -62,37 +62,46 @@ public class ResumeController {
         return "resumes/resumeDetails";
     }
 
-
-
     @GetMapping("sorted")
     public String getResumesSorted(
-            @RequestParam String sort,
-            @PageableDefault(size = 10) Pageable pageable,
+            @RequestParam(defaultValue = "id") String sort,
+            @RequestParam(defaultValue = "asc") String direction,
+            @RequestParam(name = "page", defaultValue = "0") int pageNum,
+            @RequestParam(defaultValue = "10") int size,
             Model model) {
 
+        Sort.Direction dir = "desc".equalsIgnoreCase(direction) ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Pageable pageable = PageRequest.of(pageNum, size, Sort.by(dir, sort));
 
-        Pageable sortedPageable = PageRequest.of(
-                pageable.getPageNumber(),
-                pageable.getPageSize(),
-                Sort.by(sort).ascending()
-        );
+        Page<Resume> resumes = resumeRepository.findAll(pageable);
 
-        Page<Resume> page = resumeRepository.findAll(sortedPageable);
 
-        model.addAttribute("page", page);
+        if (pageNum >= resumes.getTotalPages() && resumes.getTotalPages() > 0) {
+            return "redirect:/resumes/sorted?page=0&size=" + size + "&sort=" + sort + "&direction=" + direction;
+        }
+
+
+        model.addAttribute("page", resumes);
+
+
         model.addAttribute("url", "/resumes/sorted");
-        model.addAttribute("extraParams", "sort=" + sort);
-        model.addAttribute("currentSort", sort);
+        model.addAttribute("extraParams",
 
+
+                "sort=" + sort + "&direction=" + direction);
+        model.addAttribute("currentSort", sort);
+        model.addAttribute("currentDirection", direction);
 
         return "resumes/resumes";
     }
 
 
     @GetMapping("/create")
-    public String createResume(Model model, Authentication auth) {
+    public String createResume
+            (Model model, Authentication auth) {
         User user = userRepository.findByEmail(auth.getName())
-                .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
+                .orElseThrow(()
+                        -> new NotFoundException("Пользователь не найден"));
 
         model.addAttribute("applicantId", user.getId());
         model.addAttribute("categories", categoryService.findAll());
@@ -102,9 +111,9 @@ public class ResumeController {
 
     @PostMapping("/create")
     public String createResume(ResumeRequestDto resumeRequestDto,
-            HttpServletRequest request,
-            Model model,
-            Authentication authentication) {
+                               HttpServletRequest request,
+                               Model model,
+                               Authentication authentication) {
 
         User user = userRepository.findByEmail(authentication.getName())
                 .orElseThrow(() -> new NotFoundException("Пользователь не найден"));
