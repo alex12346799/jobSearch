@@ -1,6 +1,7 @@
 package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.dto.user.UserRegisterRequest;
+import com.example.jobsearch.exceptions.AlreadyExistsException;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.UserMapper;
 import com.example.jobsearch.model.Role;
@@ -47,7 +48,7 @@ public class AuthServiceImpl implements RegistrationService {
 
     public User register(UserRegisterRequest dto, Role role, HttpServletRequest request){
         userRepository.findByEmail(dto.getEmail()).ifPresent(u -> {
-            throw new NotFoundException("Пользователь с таким email уже существует");
+            throw new AlreadyExistsException("Пользователь с таким email уже существует");
         });
         User user = userMapper.fromRegisterDto(dto);
         user.setPassword(passwordEncoder.encode(dto.getPassword()));

@@ -1,6 +1,7 @@
 package com.example.jobsearch.controller;
 
 import com.example.jobsearch.dto.user.UserRegisterRequest;
+import com.example.jobsearch.exceptions.AlreadyExistsException;
 import com.example.jobsearch.service.RegistrationService;
 import com.example.jobsearch.validation.ApplicantGroup;
 import com.example.jobsearch.validation.EmployerGroup;
@@ -40,14 +41,19 @@ public class AuthController {
     public String registerApplicant(
             @Validated(ApplicantGroup.class) @ModelAttribute("userRegisterRequest") UserRegisterRequest dto,
             BindingResult bindingResult,
-            HttpServletRequest request
-    ) {
+            HttpServletRequest request,
+            Model model) {
         if (bindingResult.hasErrors()) {
             return "auth/register-applicant";
         }
+  try {
+      var registeredUser = authService.registerApplicant(dto, request);
+      return "redirect:/user/profile";
+  }catch  (AlreadyExistsException ex){
+      model.addAttribute("errorMessage", ex.getMessage());
+      return "auth/register-applicant";
+        }
 
-        var registeredUser = authService.registerApplicant(dto, request);
-        return "redirect:/user/profile";
     }
 
     @GetMapping("/register/employer")
