@@ -96,7 +96,9 @@
 <body>
 <div class="container">
     <h2><@spring.message "register.applicant.title"/></h2>
-
+    <#if errorMessage??>
+        <div class="error">${errorMessage}</div>
+    </#if>
     <form action="/auth/register/applicant" method="post">
         <#if _csrf??>
             <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}"
