@@ -171,17 +171,18 @@
     <div class="vacancies-toolbar">
         <div class="filters">
             <select id="filterCategory" class="custom-select">
-                <option value="">Все категории</option>
+                <option value=""><@spring.message"pages.pages_category_all"/></option>
                 <#list categories as cat>
                     <option value="${cat.id}">${cat.name}</option>
                 </#list>
             </select>
 
-            <input id="salaryFrom" type="number" placeholder="от зарплаты" class="custom-select" style="width:150px;">
-            <input id="salaryTo" type="number" placeholder="до зарплаты" class="custom-select" style="width:150px;">
+            <input id="salaryFrom" type="number" placeholder="<@spring.message 'pages.vacancies_from_salary'/>"
+                   class="custom-select" style="width:150px;">
+            <input id="salaryTo" type="number" placeholder="<@spring.message 'pages.vacancies_before_payday'/>" class="custom-select" style="width:150px;">
 
-            <button id="applyFilter" class="btn btn-primary">Применить</button>
-            <button id="clearFilter" class="btn btn-secondary">Очистить</button>
+            <button id="applyFilter" class="btn btn-primary"><@spring.message"pages.vacancies_apply"/></button>
+            <button id="clearFilter" class="btn btn-secondary"><@spring.message"pages.vacancies_clear"/></button>
         </div>
 
         <div class="ms-auto">
@@ -256,7 +257,6 @@
                 localStorage.removeItem('vacancyFilter');
                 cards.forEach(card => card.style.display = '');
             }
-
             applyFilter();
             applyBtn.addEventListener('click', applyFilter);
             clearBtn.addEventListener('click', clearFilter);

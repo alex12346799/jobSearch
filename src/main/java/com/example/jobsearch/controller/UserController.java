@@ -26,7 +26,6 @@ public class UserController {
 
     @GetMapping("/profile")
     public String profilePage(Authentication authentication, Model model) {
-        // заново загружаем юзера из БД, не кэшируем старый объект
         var user = userService.getByEmail(authentication.getName());
         model.addAttribute("user", user);
 

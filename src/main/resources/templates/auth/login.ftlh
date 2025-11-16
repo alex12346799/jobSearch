@@ -129,7 +129,7 @@
 
     <section class="login-section">
         <div class="login-card">
-            <h2 class="login-title">Вход в JobSearch</h2>
+            <h2 class="login-title"><@spring.message"login.login_to_JobSearch"/></h2>
 
             <#if error>
                 <div class="error-message">
@@ -152,11 +152,11 @@
                        placeholder="Введите пароль" required>
 
                 <button type="submit" class="btn-primary">
-                    Войти
+                    <@spring.message"login.sign_up"/>
                 </button>
 
                 <a href="/auth/forgot-password" class="forgot-password">
-                    Забыли пароль?
+                   <@spring.message"login.forgot_your_password"/>
                 </a>
             </form>
         </div>

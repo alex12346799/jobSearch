@@ -1,230 +1,121 @@
+
 <#import "../layout.ftlh" as main>
 <#import "/spring.ftl" as spring>
 
 <@main.layout>
+
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
             background: #f3f3f3;
-            margin: 0;
-            padding: 0;
         }
 
         .profile-container {
             max-width: 1100px;
+            margin: 40px auto;
+            padding: 40px;
             background: #fff;
             border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            margin: 50px auto;
-            padding: 40px 60px;
-            box-sizing: border-box;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
         }
 
         .profile-title {
             text-align: center;
-            color: #d63031;
             font-size: 2rem;
             font-weight: bold;
-            margin-bottom: 40px;
+            margin-bottom: 30px;
+            color: #d63031;
         }
 
         .profile-header {
             display: flex;
-            align-items: center;
             justify-content: space-between;
             gap: 30px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
-        .avatar-section {
-            flex: 0 0 150px;
-            text-align: center;
-        }
-
-        .avatar-preview {
+        .avatar-section img {
             width: 140px;
             height: 140px;
             border-radius: 50%;
             border: 3px solid #74b9ff;
+            box-shadow: 0 0 10px rgba(116,185,255,0.6);
             object-fit: cover;
-            box-shadow: 0 0 15px rgba(116, 185, 255, 0.5);
-            transition: 0.3s;
+            cursor: pointer;
+            transition: .25s;
         }
 
-        .avatar-preview:hover {
+        .avatar-section img:hover {
             transform: scale(1.05);
-            box-shadow: 0 0 25px rgba(116, 185, 255, 0.7);
-        }
-
-        .profile-info {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        .profile-info h2 {
-            margin: 0;
-            font-size: 1.6rem;
-            color: #2d3436;
-        }
-
-        .profile-info p {
-            margin: 6px 0;
-            color: #333;
-            font-size: 1rem;
-        }
-
-        .profile-actions {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            align-items: flex-end;
-            justify-content: center;
         }
 
         .btn {
-            display: inline-block;
-            width: 180px;
-            text-align: center;
-            font-weight: 600;
-            padding: 12px 20px;
-            font-size: 0.95rem;
+            padding: 10px 18px;
             border-radius: 10px;
-            cursor: pointer;
-            border: none;
-            transition: 0.3s;
             text-decoration: none;
-            user-select: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: .25s;
+            display: inline-block;
         }
 
-        .btn-create {
-            background: linear-gradient(90deg, #2575fc, #6a11cb);
-            color: white;
+        .btn-main {
+            background: #4169E1;
+            color: #fff;
         }
 
-        .btn-create:hover {
-            background: linear-gradient(90deg, #6a11cb, #2575fc);
-            transform: scale(1.03);
+        .btn-main:hover {
+            transform: scale(1.05);
         }
 
-        .btn-feedbacks {
-            background: #e0e0e0;
-            color: #333;
-        }
-
-        .btn-feedbacks:hover {
-            background-color: #cacaca;
-        }
-
-
-        h2.section-title {
-            text-align: center;
-            font-size: 1.6rem;
+        .btn-gray {
+            background: #dfe6e9;
             color: #2d3436;
-            margin: 50px 0 25px;
         }
 
-        .resumes {
+        .cards-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 25px;
-            justify-items: center;
-            align-items: start;
-            width: 100%;
-            box-sizing: border-box;
+            margin-top: 25px;
         }
 
-        .resume-card {
-            width: 100%;
-            max-width: 250px;
-            background: #ffffff;
+        .card-item {
+            background: #fff;
+            padding: 18px;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: .25s;
         }
 
-        .resume-card:hover {
+        .card-item:hover {
             transform: translateY(-4px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
-        }
-
-        .resume-info p {
-            margin: 6px 0;
-            color: #333;
-            font-size: 0.95rem;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.12);
         }
 
         .card-actions {
-            margin-top: 12px;
+            margin-top: 10px;
             display: flex;
-            justify-content: space-between;
             gap: 10px;
         }
 
-        .card-actions .btn {
-            flex: 1;
-            padding: 8px 10px;
-            font-size: 0.85rem;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: 600;
-        }
-
         .btn-update {
-            background-color: #a0c4ff;
-            color: #000;
+            background: #a0c4ff;
         }
 
-        .btn-update:hover {
-            background-color: #79aaff;
-        }
-
-        .btn-red {
-            background-color: #b5e7a0;
-            color: #000;
-        }
-
-        .btn-red:hover {
-            background-color: #95d180;
-        }
-
-        .card-footer {
-            margin-top: 15px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .btn-detail {
+        .btn-delete {
+            background: #ff7675;
+            color: #fff;
             width: 100%;
             text-align: center;
-            background: linear-gradient(90deg, #2575fc, #6a11cb);
-            color: white;
-            padding: 10px;
-            font-weight: 600;
-            border-radius: 8px;
-            transition: 0.3s;
-        }
-
-        .btn-detail:hover {
-            transform: scale(1.03);
-        }
-
-
-        @media (max-width: 992px) {
-            .profile-container {
-                padding: 30px 20px;
-            }
-            .profile-actions {
-                align-items: flex-start;
-            }
+            display: block;
         }
     </style>
 
-
     <div class="profile-container">
+
+
         <h1 class="profile-title">
             <#if isApplicant?? && isApplicant>
                 <@spring.message "profile.personal_account_of_the_Applicant"/>
@@ -236,12 +127,14 @@
         </h1>
 
 
+
         <div class="profile-header">
 
             <div class="avatar-section">
                 <form id="avatarForm" action="/user/upload-avatar" method="post" enctype="multipart/form-data">
+
                     <#if _csrf??>
-                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
                     </#if>
 
                     <label for="avatarInput">
@@ -251,104 +144,134 @@
                               <#else>
                                 /images/default-avatar.png
                               </#if>"
-                             alt="Avatar"
-                             class="avatar-preview">
+                             alt="avatar">
                     </label>
-                    <input type="file" id="avatarInput" name="avatar" accept="image/*" style="display:none"
+
+                    <input id="avatarInput" name="avatar" type="file" accept="image/*" style="display:none"
                            onchange="previewAvatar()">
+
                 </form>
             </div>
 
 
-            <div class="profile-info">
+            <div>
                 <h2>${user.name!''} ${user.surname!''}</h2>
                 <p><strong><@spring.message "profile.age"/>:</strong> ${user.age!'—'}</p>
-                <p><strong>Email:</strong> ${user.email!''}</p>
-                <p><strong><@spring.message "profile.address"/>:</strong> ${user.address!'Не указан'}</p>
-                <a class="btn btn-create" href="/user/edit">
+                <p><strong>Email:</strong> ${user.email}</p>
+                <p><strong><@spring.message "profile.address"/>:</strong> ${user.address!'—'}</p>
+
+                <a class="btn btn-main" href="/user/edit">
                     <@spring.message "profile.edit"/>
                 </a>
             </div>
 
 
-            <div class="profile-actions">
+            <div>
                 <#if isApplicant?? && isApplicant>
-                    <a class="btn btn-create" href="/resumes/create">
+                    <a class="btn btn-main" href="/resumes/create">
                         <@spring.message "profile.create_a_resume"/>
                     </a>
-                    <button class="btn btn-feedbacks">
+                    <a class="btn btn-gray">
                         <@spring.message "profile.responses"/>
-                    </button>
-                <#elseif isEmployer?? && isEmployer>
-                    <a class="btn btn-create" href="/vacancies/create">
+                    </a>
+                </#if>
+
+                <#if isEmployer?? && isEmployer>
+                    <a class="btn btn-main" href="/vacancies/create">
                         <@spring.message "profile.create_a_vacancy"/>
                     </a>
-                    <button class="btn btn-feedbacks">
+                    <a class="btn btn-gray">
                         <@spring.message "profile.responses"/>
-                    </button>
+                    </a>
                 </#if>
             </div>
+
         </div>
 
 
+
         <#if isApplicant?? && isApplicant>
-            <h2 class="section-title"><@spring.message "profile.resume"/></h2>
+            <h2 style="margin-top:40px;"><@spring.message "profile.resume"/></h2>
+
             <#if resumes?? && (resumes?size > 0)>
-                <div class="resumes">
-                    <#list resumes as resume>
-                        <div class="resume-card">
-                            <div class="resume-info">
-                                <p><strong>${resume.name!'Без названия'}</strong></p>
-                                <p><@spring.message "profile.card.update_date"/>: ${resume.updateDate!''}</p>
-                            </div>
+                <div class="cards-grid">
+                    <#list resumes as r>
+                        <div class="card-item">
+                            <p><b>${r.name}</b></p>
+                            <p><@spring.message "profile.card.update_date"/>: ${r.updateDate}</p>
+
                             <div class="card-actions">
-                                <a class="btn btn-update" href="/resumes/${resume.id!0}/edit">
+                                <a class="btn btn-update" href="/resumes/${r.id}/edit">
                                     <@spring.message "profile.card.update"/>
                                 </a>
-                                <a class="btn btn-red" href="/resumes/${resume.id!0}/delete">
+                                <a class="btn btn-delete" href="/resumes/${r.id}/delete">
                                     <@spring.message "profile.card.delete"/>
                                 </a>
                             </div>
-                            <div class="card-footer">
-                                <a class="btn btn-detail" href="/resumes/${resume.id!0}">
-                                    <@spring.message "profile.card.details"/>
-                                </a>
-                            </div>
+
+                            <a class="btn btn-main" style="width:100%; margin-top:10px"
+                               href="/resumes/${r.id}">
+                                <@spring.message "profile.card.details"/>
+                            </a>
                         </div>
                     </#list>
                 </div>
+
             <#else>
                 <p style="text-align:center;"><@spring.message "profile.no_resumes"/></p>
             </#if>
         </#if>
+
+
+        <#if isEmployer?? && isEmployer>
+            <h2 style="margin-top:40px;"><@spring.message "profile.vacancies"/></h2>
+
+            <#if vacancies?? && (vacancies?size > 0)>
+                <div class="cards-grid">
+                    <#list vacancies as v>
+                        <div class="card-item">
+                            <p><b>${v.title}</b></p>
+                            <p><@spring.message "profile.salary"/>: ${v.salary}</p>
+                            <p><@spring.message "profile.card.update_date"/>: ${v.updateDate!'—'}</p>
+
+                            <div class="card-actions">
+                                <a class="btn btn-update" href="/vacancies/${v.id}/edit">
+                                    <@spring.message "profile.card.update"/>
+                                </a>
+                                <a class="btn btn-delete" href="/vacancies/${v.id}/delete">
+                                    <@spring.message "profile.card.delete"/>
+                                </a>
+                            </div>
+
+                            <a class="btn btn-main" style="width:100%; margin-top:10px"
+                               href="/vacancies/${v.id}">
+                                <@spring.message "profile.card.details"/>
+                            </a>
+                        </div>
+                    </#list>
+                </div>
+
+            <#else>
+                <p style="text-align:center;"><@spring.message "profile.no_vacancies"/></p>
+            </#if>
+        </#if>
+
     </div>
 
     <script>
         function previewAvatar() {
-            const fileInput = document.getElementById("avatarInput");
+            const input = document.getElementById("avatarInput");
             const preview = document.getElementById("avatarPreview");
             const form = document.getElementById("avatarForm");
 
-            if (fileInput.files && fileInput.files[0]) {
+            if (input.files && input.files[0]) {
                 const reader = new FileReader();
-                reader.onload = (e) => preview.src = e.target.result;
-                reader.readAsDataURL(fileInput.files[0]);
-                setTimeout(() => form.submit(), 500);
+                reader.onload = e => preview.src = e.target.result;
+                reader.readAsDataURL(input.files[0]);
+
+                setTimeout(() => form.submit(), 300);
             }
         }
     </script>
 
 </@main.layout>
-
-
-
-
-
-
-
-
-
-
-
-
-

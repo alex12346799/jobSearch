@@ -21,19 +21,17 @@
             <div data-mdb-input-init class="form-outline mb-4">
                 <label class="form-label" for="form3Example4cg"><@spring.message "createResume.resume_title"/>:</label>
                 <input type="text" class="form-control mb-2" id="form3Example4cg" name="name">
-                <#--                <@spring.formInput "name" 'id="form3Example4cg" class="form-control form-control-lg"' />-->
 
-                <#--                <@spring.showErrors "name" "error text-danger" />-->
             </div>
 
 
             <div class="mb-3">
-                <label>Категория</label>
+                <label> <@spring.message"createResume.category"/>   </label>
                 <select name="categoryId" class="form-select" required>
-                    <option value="">выберите категорию</option>
+                    <option value=""><@spring.message"createResume.select_category"/></option>
                     <#list categories as category>
                         <option value="${category.id}">
-                            <#--                                <#if categoryId?? && categoryId == category.id>selected</#if>>-->
+
                             ${category.name}
                         </option>
                     </#list>
@@ -47,23 +45,21 @@
                 <label class="form-label" for="form3Example4cg1"><@spring.message "createResume.expected_salary_level"/>
                     :</label>
                 <input type="number" class="form-control form-control-lg mb-2" id="form3Example4cg" name="salary">
-                <#--                <@spring.formInput "salary" 'id="form3Example4cg1" class="form-control form-control-lg"' />-->
-                <#--                <@spring.showErrors "salary"  "error text-danger" />-->
+
             </div>
 
 
             <div class="mb-3">
-                <label>Опыт работы:</label>
+                <label><@spring.message"createResume.experience"/>:</label>
                 <div id="experienceContainer">
                     <div class="mb-2">
-                        <input type="text" name="WorkExperienceInfoList[0].companyName" placeholder="Компания"
+                        <input type="text" name="WorkExperienceInfoList[0].companyName" placeholder=<@spring.message"createResume.company"/>
                                class="form-control mb-2"/>
-                        <input type="text" name="WorkExperienceInfoList[0].position" placeholder="Должность"
+                        <input type="text" name="WorkExperienceInfoList[0].position" placeholder=<@spring.message"createResume.job_title"/>
                                class="form-control mb-2"/>
-                        <input type="text" name="WorkExperienceInfoList[0].responsibilities" placeholder="Обязаности"
+                        <input type="text" name="WorkExperienceInfoList[0].responsibilities" placeholder=<@spring.message"createResume.placeholder.responsibilities"/>
                                class="form-control mb-2"/>
-<#--                        <input type="number" name="WorkExperienceInfoList[0].years" placeholder="Годы"-->
-<#--                               class="form-control mb-2"/>-->
+
 
 
                         <input type="date" name="WorkExperienceInfoList[0].startDate" class="form-control mb-2"/>
@@ -72,7 +68,7 @@
 
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm" onclick="addWorkExperience()">+ Добавить опыт
+                <button type="button" class="btn btn-primary btn-sm" onclick="addWorkExperience()">+ <@spring.message"createResume.add_experience"/>>
                 </button>
             </div>
 
@@ -80,17 +76,17 @@
                 <label>Образование:</label>
                 <div id="educationContainer">
                     <div class="mb-2">
-                        <input type="text" name="EducationInfoList[0].institution" placeholder="Учебное заведение"
+                        <input type="text" name="EducationInfoList[0].institution" placeholder=<@spring.message"createResume.placeholder.educational_institution"/>
                                class="form-control mb-2"/>
-                        <input type="text" name="EducationInfoList[0].program" placeholder="Программа"
+                        <input type="text" name="EducationInfoList[0].program" placeholder=<@spring.message"createResume.placeholder.program"/>
                                class="form-control mb-2"/>
-                        <input type="text" name="EducationInfoList[0].degree" placeholder="Степень"
+                        <input type="text" name="EducationInfoList[0].degree" placeholder=<@spring.message"createResume.placeholder.degree"/>
                                class="form-control mb-2"/>
                         <input type="date" name="EducationInfoList[0].startDate" class="form-control mb-2"/>
                         <input type="date" name="EducationInfoList[0].endDate" class="form-control mb-2"/>
                     </div>
                 </div>
-                <button type="button" class="btn btn-primary btn-sm" onclick="addEducation()">+ Добавить образование
+                <button type="button" class="btn btn-primary btn-sm" onclick="addEducation()">+ <@spring.message"createResume.add_education"/>
                 </button>
             </div>
 
@@ -109,7 +105,7 @@
                        class="form-check-input" checked>
                 <label for="resumeRequestDto.isActive"
                        class="form-check-label"><@spring.message "createResume.actively"/></label>
-                <#--                <@spring.showErrors "resumeRequestDto.isActive" "error text-danger" />-->
+
             </div>
 
 
