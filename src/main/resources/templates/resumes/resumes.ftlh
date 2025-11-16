@@ -162,7 +162,7 @@
             cursor: pointer;
         }
 
-        /* Ховер по селекту */
+
         .custom-select:hover {
             border-color: #6c63ff;
             background-color: #fff;

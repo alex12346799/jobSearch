@@ -1,6 +1,7 @@
 
 <#import "../layout.ftlh" as main>
 <#import "/spring.ftl" as spring>
+
 <@main.layout>
 
     <head>
@@ -9,62 +10,158 @@
         <style>
             body {
                 font-family: Arial, sans-serif;
+                background-color: #f5f5f5;
             }
+
             .container {
-                width: 400px;
-                margin: 50px auto;
-                border: 1px solid #ccc;
-                border-radius: 10px;
-                padding: 20px;
+                width: 480px;
+                margin: 40px auto;
+                background: #ffffff;
+                border-radius: 12px;
+                padding: 25px 30px;
+                box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+                border: 1px solid #eeeeee;
             }
+
+
             h2 {
-                color: red;
                 text-align: center;
+                margin-bottom: 20px;
+                color: #333;
+                font-size: 22px;
             }
+
             label {
                 display: block;
-                margin-top: 10px;
+                margin-top: 12px;
                 font-weight: bold;
+                color: #444;
             }
+
             input[type="text"], input[type="number"], select, textarea {
                 width: 100%;
-                padding: 5px;
-                margin-top: 5px;
+                padding: 8px;
+                margin-top: 6px;
+                border: 1px solid #ccc;
+                border-radius: 6px;
                 box-sizing: border-box;
+                font-size: 14px;
             }
+
             textarea {
-                height: 80px;
+                height: 90px;
                 resize: vertical;
             }
+
             .experience {
                 display: flex;
+                gap: 10px;
                 align-items: center;
-                gap: 5px;
+                margin-top: 5px;
             }
+
             .experience input {
-                width: 50px;
+                width: 80px;
             }
-            .checkbox {
-                margin-top: 10px;
+
+            .checkbox-block {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+                margin-top: 15px;
             }
+
+            .checkbox-block label {
+                margin: 0;
+                font-weight: normal;
+            }
+            .page-wrapper {
+                display: flex;
+                justify-content: center;
+                padding-top: 40px;
+            }
+
+
             button {
                 width: 100%;
-                background-color: #b2dfdb;
+                margin-top: 20px;
+                padding: 12px;
                 border: none;
-                padding: 10px;
-                margin-top: 15px;
-                cursor: pointer;
+                border-radius: 6px;
+                background-color: #26a69a;
+                color: white;
                 font-size: 16px;
+                cursor: pointer;
             }
+
             button:hover {
-                background-color: #80cbc4;
+                background-color: #1f8f84;
             }
+            .form-container {
+                max-width: 600px;
+                margin: 40px auto;
+                background: #ffffff;
+                padding: 25px;
+                border-radius: 12px;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            }
+
+            .form-container h2 {
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .form-container input,
+            .form-container select {
+                width: 100%;
+                padding: 12px;
+                margin-bottom: 15px;
+                border-radius: 8px;
+                border: 1px solid #ccc;
+                font-size: 15px;
+            }
+
+            .form-container label {
+                font-weight: 600;
+                margin-bottom: 5px;
+                display: block;
+            }
+
+            button {
+                width: 100%;
+                padding: 12px;
+                background: #1aa38e;
+                border: none;
+                border-radius: 8px;
+                font-size: 16px;
+                color: #fff;
+                cursor: pointer;
+            }
+
+            body > .container {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: flex-start !important;
+                background: transparent !important;
+                box-shadow: none !important;
+                border: none !important;
+                padding-top: 40px !important;
+                max-width: 100% !important;
+            }
+
+
+
+            button:hover {
+                background: #148f7a;
+            }
+
         </style>
     </head>
 
     <body>
+    <div class="page-wrapper">
     <div class="container">
-        <h2><@spring.message "createVacancies.creating_a_vacancy"/>:</h2>
+        <h2><@spring.message "createVacancies.creating_a_vacancy"/></h2>
 
         <form action="/vacancies/create" method="post">
 
@@ -77,72 +174,54 @@
             <input type="hidden" name="employerId" value="${employerId!}">
 
 
+            <label><@spring.message "createVacancies.job_title"/>:</label>
+            <@spring.formInput "vacancyRequestDto.title" 'class="form-control"' />
+            <@spring.showErrors "<br>" "error text-danger" />
 
-            <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example3cg"><@spring.message "createVacancies.job_title"/>:</label>
-                <@spring.formInput "vacancyRequestDto.title" 'id="form3Example3cg" class="form-control form-control-lg"' />
-                <@spring.showErrors "<br>" "error text-danger" />
-            </div>
+            <label><@spring.message "createVacancies.category"/>:</label>
+            <select name="categoryId">
+                <option value=""><@spring.message "createVacancies.select_category"/></option>
+                <#list categories as category>
+                    <option value="${category.id}"
+                            <#if vacancy?has_content && vacancy.categoryId?string == category.id?string>selected</#if>>
+                        ${category.name}
+                    </option>
+                </#list>
+            </select>
 
-            <!-- Категория -->
-            <label><@spring.message "createVacancies.category"/>:
-                <select name="categoryId" >
-                    <option value=""><@spring.message "createVacancies.select_category"/></option>
-                    <#list categories as category>
-                        <option value="${category.id}" <#if vacancy?has_content && vacancy.categoryId?? && (vacancy.categoryId?string == category.id?string)>selected</#if>>
-                            ${category.name}
-                        </option>
-                    </#list>
-                </select>
-            </label>
+            <label><@spring.message "createVacancies.wages"/>:</label>
+            <@spring.formInput "vacancyRequestDto.salary" 'class="form-control"' />
+            <@spring.showErrors "<br>" "error text-danger" />
 
+            <label><@spring.message "createVacancies.job_description"/>:</label>
+            <@spring.formInput "vacancyRequestDto.description" 'class="form-control"' />
+            <@spring.showErrors "<br>" "error text-danger" />
 
-
-            <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example3cg1"><@spring.message "createVacancies.wages"/>:</label>
-                <@spring.formInput "vacancyRequestDto.salary" 'id="form3Example3cg1" class="form-control form-control-lg"' />
-                <@spring.showErrors "<br>" "error text-danger" />
-            </div>
-
-
-
-            <div data-mdb-input-init class="form-outline mb-4">
-                <label class="form-label" for="form3Example3cg1"><@spring.message "createVacancies.job_description"/>:</label>
-                <@spring.formInput "vacancyRequestDto.description" 'id="form3Example3cg1" class="form-control form-control-lg"' />
-                <@spring.showErrors "<br>" "error text-danger" />
-            </div>
-
-
-            <!-- Опыт работы -->
             <label><@spring.message "createVacancies.required_experience"/>:</label>
             <div class="experience">
-                <@spring.message "createVacancies.from"/>
-                <input id="expFrom" type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
-                <@spring.message "createVacancies.to"/>
-                <input id="expTo" type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
+                <div>
+                    <@spring.message "createVacancies.from"/>
+                    <input type="number" name="expFrom" min="0" value="${vacancyRequestDto.expFrom!}">
+                </div>
+
+                <div>
+                    <@spring.message "createVacancies.to"/>
+                    <input type="number" name="expTo" min="0" value="${vacancyRequestDto.expTo!}">
+                </div>
             </div>
 
-            <!-- Активность вакансии -->
-            <div class="checkbox">
-                <label>
-                    <!-- Активность вакансии -->
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"
-                                   name="isActive"
-                                   value="true"
-                                   <#if vacancyRequestDto.isActive?? && vacancyRequestDto.isActive>checked</#if>>
-                            <@spring.message "createVacancies.actively"/>
-                        </label>
-                    </div>
-
-
-                    <@spring.message "createVacancies.actively"/>
-                </label>
+            <div class="checkbox-block">
+                <input type="checkbox"
+                       name="isActive"
+                       value="true"
+                       <#if vacancyRequestDto.isActive?? && vacancyRequestDto.isActive>checked</#if>>
+                <label><@spring.message "createVacancies.actively"/></label>
             </div>
 
             <button type="submit"><@spring.message "createVacancies.publish"/></button>
+
         </form>
+    </div>
     </div>
     </body>
 
