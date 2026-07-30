@@ -39,3 +39,6 @@ build/
 /logs/
 /logs/
 /env/
+
+# Local secrets
+.env
