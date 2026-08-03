@@ -4,10 +4,10 @@ spring:
   application:
     name: jobSearch
   datasource:
-    url: jdbc:h2:./db/jobsearch;AUTO_SERVER=TRUE
-    username: ${DB_USERNAME}
-    password: ${DB_PASSWORD}
-    driver-class-name: org.h2.Driver
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/jobsearch}
+    username: ${DB_USERNAME:jobsearch}
+    password: ${DB_PASSWORD:jobsearch_local}
+    driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
       ddl-auto: validate
@@ -53,5 +53,4 @@ logging:
     file: '%d{yyyy-mm-dd hh:mm:ss} %-5level %logger{36} -msg%n'
   file:
     path: logs
-
 
