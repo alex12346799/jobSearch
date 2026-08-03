@@ -10,7 +10,7 @@ public record UserProfileResponse(
         String email,
         String phoneNumber,
         String address,
-        String avatar,
+        boolean avatarAvailable,
         String companyName,
         RoleName role,
         boolean enabled

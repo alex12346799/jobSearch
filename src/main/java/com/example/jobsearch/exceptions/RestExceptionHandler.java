@@ -12,12 +12,14 @@ import com.example.jobsearch.vacancy.application.exception.VacancyValidationExce
 import com.example.jobsearch.user.application.UserProfileException;
 import com.example.jobsearch.resume.application.*;
 import com.example.jobsearch.jobapplication.application.*;
+import com.example.jobsearch.storage.application.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.web.multipart.MaxUploadSizeExceededException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -115,6 +117,30 @@ public class RestExceptionHandler {
     public ResponseEntity<RestErrorResponse> handleJobApplicationConflict(
             JobApplicationConflictException exception, HttpServletRequest request) {
         return response(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(AvatarValidationException.class)
+    public ResponseEntity<RestErrorResponse> handleInvalidAvatar(
+            AvatarValidationException exception, HttpServletRequest request) {
+        return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler({AvatarTooLargeException.class, MaxUploadSizeExceededException.class})
+    public ResponseEntity<RestErrorResponse> handleAvatarTooLarge(
+            Exception exception, HttpServletRequest request) {
+        return response(HttpStatus.PAYLOAD_TOO_LARGE, "Avatar file is too large", request, Map.of());
+    }
+
+    @ExceptionHandler(AvatarNotFoundException.class)
+    public ResponseEntity<RestErrorResponse> handleAvatarNotFound(
+            AvatarNotFoundException exception, HttpServletRequest request) {
+        return response(HttpStatus.NOT_FOUND, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(StorageUnavailableException.class)
+    public ResponseEntity<RestErrorResponse> handleStorageUnavailable(
+            StorageUnavailableException exception, HttpServletRequest request) {
+        return response(HttpStatus.SERVICE_UNAVAILABLE, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)

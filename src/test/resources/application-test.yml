@@ -12,3 +12,6 @@ auth:
     secret: dGVzdC1vbmx5LWp3dC1zZWNyZXQtdGhhdC1pcy1hdC1sZWFzdC0zMi1ieXRlcw==
     access-token-ttl: PT15M
     refresh-token-ttl: P30D
+storage:
+  minio:
+    enabled: false

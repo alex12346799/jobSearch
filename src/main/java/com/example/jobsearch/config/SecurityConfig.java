@@ -59,6 +59,7 @@ public class SecurityConfig {
                         .hasAnyAuthority("APPLICANT", "EMPLOYER", "ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/job-applications/**")
                         .hasAnyAuthority("APPLICANT", "ADMIN")
+                        .requestMatchers("/api/v1/users/me/avatar").authenticated()
                         .requestMatchers(HttpMethod.GET, "/vacancies").hasAnyAuthority("EMPLOYER", "APPLICANT")
                         .requestMatchers("/vacancies/create").hasAuthority("EMPLOYER")
                         .anyRequest().authenticated()

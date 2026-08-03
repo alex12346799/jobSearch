@@ -16,6 +16,10 @@ spring:
   mvc:
 #    static-path-pattern: /static/**
     log-request-details: false
+  servlet:
+    multipart:
+      max-file-size: ${AVATAR_MAX_SIZE:5242880}B
+      max-request-size: ${AVATAR_MAX_SIZE:5242880}B
   freemarker:
     expose-session-attributes: false
 
@@ -33,7 +37,16 @@ spring:
 #================= Mail config
   web:
     resources:
-      static-locations: classpath:/static/, file:./data/images/
+      static-locations: classpath:/static/
+
+storage:
+  minio:
+    enabled: ${MINIO_ENABLED:true}
+    endpoint: ${MINIO_ENDPOINT:}
+    access-key: ${MINIO_ACCESS_KEY:}
+    secret-key: ${MINIO_SECRET_KEY:}
+    bucket: ${MINIO_BUCKET:}
+    avatar-max-size: ${AVATAR_MAX_SIZE:5242880}
 
 auth:
   jwt:

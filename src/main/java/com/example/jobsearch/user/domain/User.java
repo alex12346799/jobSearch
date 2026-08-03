@@ -33,8 +33,6 @@ public class User implements Serializable {
     private String phoneNumber;
 
     private String address;
-    private String avatar;
-
     @Column(name = "company_name")
     private String companyName;
 

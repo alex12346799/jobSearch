@@ -1,0 +1,73 @@
+databaseChangeLog:
+  - changeSet:
+      id: 020_stored_files
+      author: codex
+      comment: Replace local avatar filenames with private object storage metadata
+      changes:
+        - createTable:
+            tableName: stored_files
+            columns:
+              - column:
+                  name: id
+                  type: bigint
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                    nullable: false
+              - column:
+                  name: owner_id
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: purpose
+                  type: varchar(20)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: object_key
+                  type: varchar(255)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: content_type
+                  type: varchar(50)
+                  constraints:
+                    nullable: false
+              - column:
+                  name: file_size
+                  type: bigint
+                  constraints:
+                    nullable: false
+              - column:
+                  name: created_at
+                  type: timestamp with time zone
+                  constraints:
+                    nullable: false
+        - addForeignKeyConstraint:
+            baseTableName: stored_files
+            baseColumnNames: owner_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_stored_files_owner
+            onDelete: CASCADE
+        - addUniqueConstraint:
+            tableName: stored_files
+            columnNames: object_key
+            constraintName: uq_stored_files_object_key
+        - addUniqueConstraint:
+            tableName: stored_files
+            columnNames: owner_id, purpose
+            constraintName: uq_stored_files_owner_purpose
+        - createIndex:
+            tableName: stored_files
+            indexName: ix_stored_files_owner
+            columns:
+              - column:
+                  name: owner_id
+        - sql:
+            sql: >-
+              ALTER TABLE stored_files ADD CONSTRAINT ck_stored_files_purpose CHECK (purpose IN ('AVATAR'))
+        - dropColumn:
+            tableName: users
+            columnName: avatar
