@@ -16,6 +16,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -25,6 +26,9 @@ public class Vacancy {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @jakarta.persistence.Version
+    private Long version;
 
     @Column(nullable = false, length = 255)
     private String title;
@@ -36,7 +40,8 @@ public class Vacancy {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    private double salary;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal salary;
 
     @Column(name = "exp_from")
     private Integer expFrom;

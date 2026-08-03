@@ -169,7 +169,7 @@ class VacancyServiceImplTest {
     }
 
     private VacancyRequest request(Long categoryId) {
-        return new VacancyRequest(" Java Developer ", " Build services ", categoryId, 1000, 1, 3, true);
+        return new VacancyRequest(" Java Developer ", " Build services ", categoryId, new java.math.BigDecimal("1000"), 1, 3, true);
     }
 
     private Authentication authentication(String email, String authority) {
@@ -198,7 +198,7 @@ class VacancyServiceImplTest {
         vacancy.setDescription("Old description");
         vacancy.setCategory(category);
         vacancy.setEmployer(owner);
-        vacancy.setSalary(500);
+        vacancy.setSalary(new java.math.BigDecimal("500"));
         vacancy.setActive(true);
         return vacancy;
     }

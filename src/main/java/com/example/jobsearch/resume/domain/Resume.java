@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -19,6 +20,9 @@ public class Resume {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Version
+    private Long version;
+
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "applicant_id", nullable = false)
     private User applicant;
@@ -30,7 +34,8 @@ public class Resume {
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
-    private double salary;
+    @Column(nullable = false, precision = 19, scale = 2)
+    private BigDecimal salary;
 
     @Column(name = "is_active")
     private boolean active;

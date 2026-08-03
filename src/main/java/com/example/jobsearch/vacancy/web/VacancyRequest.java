@@ -5,6 +5,7 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
+import java.math.BigDecimal;
 
 public record VacancyRequest(
         @NotBlank(message = "Title must not be blank")
@@ -17,7 +18,8 @@ public record VacancyRequest(
         @Positive(message = "Category id must be positive")
         Long categoryId,
         @Positive(message = "Salary must be positive")
-        double salary,
+        @NotNull(message = "Salary is required")
+        BigDecimal salary,
         @PositiveOrZero(message = "Minimum experience must not be negative")
         Integer expFrom,
         @PositiveOrZero(message = "Maximum experience must not be negative")

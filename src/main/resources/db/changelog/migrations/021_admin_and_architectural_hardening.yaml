@@ -1,0 +1,77 @@
+databaseChangeLog:
+  - changeSet:
+      id: 021_add_optimistic_lock_versions
+      author: codex
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column: { name: version, type: BIGINT, defaultValueNumeric: 0, constraints: { nullable: false } }
+        - addColumn:
+            tableName: vacancy
+            columns:
+              - column: { name: version, type: BIGINT, defaultValueNumeric: 0, constraints: { nullable: false } }
+        - addColumn:
+            tableName: resume
+            columns:
+              - column: { name: version, type: BIGINT, defaultValueNumeric: 0, constraints: { nullable: false } }
+        - addColumn:
+            tableName: respondent_applicant
+            columns:
+              - column: { name: version, type: BIGINT, defaultValueNumeric: 0, constraints: { nullable: false } }
+
+  - changeSet:
+      id: 021_convert_salaries_to_numeric
+      author: codex
+      changes:
+        - modifyDataType: { tableName: vacancy, columnName: salary, newDataType: "NUMERIC(19,2)" }
+        - modifyDataType: { tableName: resume, columnName: salary, newDataType: "NUMERIC(19,2)" }
+        - addNotNullConstraint: { tableName: vacancy, columnName: salary, columnDataType: "NUMERIC(19,2)", defaultNullValue: 0 }
+        - addNotNullConstraint: { tableName: resume, columnName: salary, columnDataType: "NUMERIC(19,2)", defaultNullValue: 0 }
+        - sql:
+            sql: ALTER TABLE vacancy ADD CONSTRAINT chk_vacancy_salary_nonnegative CHECK (salary >= 0)
+        - sql:
+            sql: ALTER TABLE resume ADD CONSTRAINT chk_resume_salary_nonnegative CHECK (salary >= 0)
+
+  - changeSet:
+      id: 021_protect_resume_ownership_and_category
+      author: codex
+      changes:
+        - dropForeignKeyConstraint: { baseTableName: resume, constraintName: fk_resume_applicant }
+        - addForeignKeyConstraint:
+            baseTableName: resume
+            baseColumnNames: applicant_id
+            referencedTableName: users
+            referencedColumnNames: id
+            constraintName: fk_resume_applicant
+            onDelete: RESTRICT
+        - dropForeignKeyConstraint: { baseTableName: resume, constraintName: fk_resume_category }
+        - addForeignKeyConstraint:
+            baseTableName: resume
+            baseColumnNames: category_id
+            referencedTableName: category
+            referencedColumnNames: id
+            constraintName: fk_resume_category
+            onDelete: RESTRICT
+
+  - changeSet:
+      id: 021_filter_indexes
+      author: codex
+      changes:
+        - createIndex:
+            tableName: users
+            indexName: ix_users_role_enabled
+            columns:
+              - column: { name: role_id }
+              - column: { name: enabled }
+        - createIndex:
+            tableName: vacancy
+            indexName: ix_vacancy_category_id
+            columns:
+              - column: { name: category_id }
+        - createIndex:
+            tableName: resume
+            indexName: ix_resume_category_active
+            columns:
+              - column: { name: category_id }
+              - column: { name: is_active }

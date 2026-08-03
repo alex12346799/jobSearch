@@ -199,7 +199,7 @@ class VacancyControllerTest {
 
     private VacancyResponse response() {
         return new VacancyResponse(
-                1L, "Java Developer", "Build backend services", 1L, "IT", 1000,
+                1L, "Java Developer", "Build backend services", 1L, "IT", new java.math.BigDecimal("1000"),
                 1, 3, true, 7L, "Employer", LocalDateTime.now(), LocalDateTime.now()
         );
     }

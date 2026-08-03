@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
 import java.util.Optional;
+import com.example.jobsearch.jobapplication.domain.JobApplicationStatus;
 
 public interface JobApplicationRepository extends JpaRepository<JobApplication, Long> {
     boolean existsByVacancyIdAndResumeId(Long vacancyId, Long resumeId);
@@ -25,4 +26,13 @@ public interface JobApplicationRepository extends JpaRepository<JobApplication, 
 
     @Query("select (count(a) > 0) from JobApplication a where a.resume.id = :resumeId")
     boolean hasApplicationsForResume(@Param("resumeId") Long resumeId);
+
+    @EntityGraph(attributePaths = {"resume", "resume.applicant", "vacancy", "vacancy.employer"})
+    @Query("""
+            select a from JobApplication a
+            where (:vacancyId is null or a.vacancy.id = :vacancyId)
+              and (:status is null or a.status = :status)
+            """)
+    Page<JobApplication> searchForAdmin(@Param("vacancyId") Long vacancyId,
+                                        @Param("status") JobApplicationStatus status, Pageable pageable);
 }

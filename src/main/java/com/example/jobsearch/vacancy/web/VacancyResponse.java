@@ -1,6 +1,7 @@
 package com.example.jobsearch.vacancy.web;
 
 import java.time.LocalDateTime;
+import java.math.BigDecimal;
 
 public record VacancyResponse(
         Long id,
@@ -8,7 +9,7 @@ public record VacancyResponse(
         String description,
         Long categoryId,
         String categoryName,
-        double salary,
+        BigDecimal salary,
         Integer expFrom,
         Integer expTo,
         boolean isActive,

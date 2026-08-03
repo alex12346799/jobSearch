@@ -13,8 +13,10 @@ import com.example.jobsearch.user.application.UserProfileException;
 import com.example.jobsearch.resume.application.*;
 import com.example.jobsearch.jobapplication.application.*;
 import com.example.jobsearch.storage.application.*;
+import com.example.jobsearch.admin.application.AdminConflictException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.OptimisticLockingFailureException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -154,6 +156,19 @@ public class RestExceptionHandler {
     @ExceptionHandler({DataIntegrityViolationException.class, AlreadyExistsException.class})
     public ResponseEntity<RestErrorResponse> handleConflict(Exception exception, HttpServletRequest request) {
         return response(HttpStatus.CONFLICT, "The request conflicts with existing data", request, Map.of());
+    }
+
+    @ExceptionHandler(OptimisticLockingFailureException.class)
+    public ResponseEntity<RestErrorResponse> handleOptimisticLock(
+            OptimisticLockingFailureException exception, HttpServletRequest request) {
+        return response(HttpStatus.CONFLICT,
+                "The resource was changed by another request; reload it and retry", request, Map.of());
+    }
+
+    @ExceptionHandler(AdminConflictException.class)
+    public ResponseEntity<RestErrorResponse> handleAdminConflict(
+            AdminConflictException exception, HttpServletRequest request) {
+        return response(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(SystemRoleMissingException.class)

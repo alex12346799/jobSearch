@@ -3,6 +3,7 @@ package com.example.jobsearch.resume.web;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.math.BigDecimal;
 
 public record ResumeResponse(
         Long id,
@@ -11,7 +12,7 @@ public record ResumeResponse(
         String name,
         Long categoryId,
         String categoryName,
-        double salary,
+        BigDecimal salary,
         boolean active,
         LocalDateTime createdDate,
         LocalDateTime updateDate,

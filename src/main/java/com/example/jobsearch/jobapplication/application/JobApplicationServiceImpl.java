@@ -85,6 +85,13 @@ public class JobApplicationServiceImpl implements JobApplicationService {
 
     @Override
     @Transactional(readOnly = true)
+    public PageResponse<JobApplicationResponse> findAllForAdmin(
+            Long vacancyId, JobApplicationStatus status, Pageable pageable) {
+        return map(repository.searchForAdmin(vacancyId, status, pageable));
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public JobApplicationResponse findById(long id, long currentUserId, String role) {
         currentUser(currentUserId);
         JobApplication application = detailed(id);

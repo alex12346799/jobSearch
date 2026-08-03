@@ -11,4 +11,5 @@ public interface JobApplicationService {
     JobApplicationResponse findById(long id, long currentUserId, String role);
     JobApplicationResponse updateStatus(long id, long currentUserId, String role, JobApplicationStatus status);
     void deleteOrWithdraw(long id, long currentUserId, String role);
+    PageResponse<JobApplicationResponse> findAllForAdmin(Long vacancyId, JobApplicationStatus status, Pageable pageable);
 }

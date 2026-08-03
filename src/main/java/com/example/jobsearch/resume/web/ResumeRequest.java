@@ -4,11 +4,12 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
 import java.util.List;
+import java.math.BigDecimal;
 
 public record ResumeRequest(
         @NotBlank @Size(max = 45) String name,
         @NotNull @Positive Long categoryId,
-        @NotNull @PositiveOrZero Double salary,
+        @NotNull @PositiveOrZero BigDecimal salary,
         @NotNull Boolean active,
         @Valid List<EducationInfoRequest> education,
         @Valid List<WorkExperienceInfoRequest> workExperience,

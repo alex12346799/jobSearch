@@ -177,13 +177,13 @@ class JobApplicationIntegrationTest {
 
     private Resume resume(User owner, boolean active, String name) {
         Resume value = new Resume(); value.setApplicant(owner); value.setCategory(category); value.setName(name);
-        value.setSalary(1000); value.setActive(active); value.setCreatedDate(LocalDateTime.now());
+        value.setSalary(new java.math.BigDecimal("1000")); value.setActive(active); value.setCreatedDate(LocalDateTime.now());
         value.setUpdateDate(LocalDateTime.now()); return resumeRepository.saveAndFlush(value);
     }
 
     private Vacancy vacancy(User owner, boolean active, String title) {
         Vacancy value = new Vacancy(); value.setEmployer(owner); value.setCategory(category); value.setTitle(title);
-        value.setDescription("Description"); value.setSalary(1000); value.setExpFrom(0); value.setExpTo(2);
+        value.setDescription("Description"); value.setSalary(new java.math.BigDecimal("1000")); value.setExpFrom(0); value.setExpTo(2);
         value.setActive(active); return vacancyRepository.saveAndFlush(value);
     }
 

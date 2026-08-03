@@ -27,6 +27,7 @@ public class SecurityConfig {
                 .httpBasic(basic -> basic.disable())
                 .logout(logout -> logout.disable())
                 .authorizeHttpRequests(authorize -> authorize
+                        .requestMatchers("/api/v1/admin/**").hasAuthority("ADMIN")
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
                         .requestMatchers(HttpMethod.POST,
