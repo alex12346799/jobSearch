@@ -76,9 +76,6 @@
           <a href="/auth/login" class="btn btn-outline-info me-2">
             <@spring.message "layout.login"/>
           </a>
-          <a href="/auth/register" class="btn btn-outline-info">
-            <@spring.message "layout.register"/>
-          </a>
         </#if>
       </div>
     </div>

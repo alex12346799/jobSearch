@@ -41,4 +41,17 @@ class EmployerRoleMigrationTest {
         assertThat(janeRoleId).isEqualTo(employerRoleId);
         assertThat(employerRoleId).isEqualTo(1L);
     }
+
+    @Test
+    void roleNameHasUniqueConstraint() {
+        Integer constraintCount = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*)
+                FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+                WHERE TABLE_NAME = 'ROLES'
+                  AND CONSTRAINT_NAME = 'UQ_ROLES_ROLE_NAME'
+                  AND CONSTRAINT_TYPE = 'UNIQUE'
+                """, Integer.class);
+
+        assertThat(constraintCount).isEqualTo(1);
+    }
 }

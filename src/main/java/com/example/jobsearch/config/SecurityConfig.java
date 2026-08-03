@@ -26,7 +26,10 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-
+                .csrf(csrf -> csrf.ignoringRequestMatchers(
+                        "/api/v1/auth/register/applicant",
+                        "/api/v1/auth/register/employer"
+                ))
                 .formLogin(login -> login
                         .loginPage("/auth/login")
                         .loginProcessingUrl("/auth/login")
@@ -43,6 +46,7 @@ public class SecurityConfig {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
                         .requestMatchers("/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/register/applicant", "/api/v1/auth/register/employer").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/vacancies/**")
                         .hasAnyAuthority("EMPLOYER", "APPLICANT", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/vacancies")

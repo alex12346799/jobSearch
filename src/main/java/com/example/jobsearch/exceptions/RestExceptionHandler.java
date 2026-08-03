@@ -45,6 +45,14 @@ public class RestExceptionHandler {
         return response(HttpStatus.CONFLICT, "The request conflicts with existing data", request, Map.of());
     }
 
+    @ExceptionHandler(SystemRoleMissingException.class)
+    public ResponseEntity<RestErrorResponse> handleSystemRoleMissing(
+            SystemRoleMissingException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.INTERNAL_SERVER_ERROR, exception.getMessage(), request, Map.of());
+    }
+
     @ExceptionHandler(CategoryConflictException.class)
     public ResponseEntity<RestErrorResponse> handleCategoryConflict(
             CategoryConflictException exception,

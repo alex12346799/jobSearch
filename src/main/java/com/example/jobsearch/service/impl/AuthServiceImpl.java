@@ -1,10 +1,12 @@
 package com.example.jobsearch.service.impl;
 
-import com.example.jobsearch.dto.user.UserRegisterRequest;
+import com.example.jobsearch.dto.user.RegistrationRequest;
+import com.example.jobsearch.dto.user.RegistrationResponse;
 import com.example.jobsearch.exceptions.AlreadyExistsException;
 import com.example.jobsearch.exceptions.NotFoundException;
-import com.example.jobsearch.mapper.UserMapper;
+import com.example.jobsearch.exceptions.SystemRoleMissingException;
 import com.example.jobsearch.model.Role;
+import com.example.jobsearch.model.RoleName;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.repository.RoleRepository;
 import com.example.jobsearch.repository.UserRepository;
@@ -13,15 +15,12 @@ import com.example.jobsearch.utils.Utility;
 import jakarta.mail.MessagingException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.context.HttpSessionSecurityContextRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.io.UnsupportedEncodingException;
+import java.util.Locale;
 import java.util.UUID;
 
 @Service
@@ -31,46 +30,45 @@ public class AuthServiceImpl implements RegistrationService {
     private final RoleRepository roleRepository;
     private final EmailService emailService;
     private final PasswordEncoder passwordEncoder;
-    private final UserMapper userMapper;
     @Override
-    public User registerApplicant(UserRegisterRequest dto, HttpServletRequest request) {
-        Role role = roleRepository.findByName("APPLICANT")
-                .orElseThrow(() -> new NotFoundException("Роль APPLICANT не найдена"));
-        return register(dto, role, request);
+    @Transactional
+    public RegistrationResponse registerApplicant(RegistrationRequest request) {
+        return register(request, RoleName.APPLICANT);
     }
 
     @Override
-    public User registerEmployer(UserRegisterRequest dto, HttpServletRequest request) {
-        Role role = roleRepository.findByName("EMPLOYER")
-                .orElseThrow(() -> new NotFoundException("Роль EMPLOYER не найдена"));
-        return register(dto, role, request);
+    @Transactional
+    public RegistrationResponse registerEmployer(RegistrationRequest request) {
+        return register(request, RoleName.EMPLOYER);
     }
 
-    public User register(UserRegisterRequest dto, Role role, HttpServletRequest request){
-        userRepository.findByEmail(dto.getEmail()).ifPresent(u -> {
-            throw new AlreadyExistsException("Пользователь с таким email уже существует");
-        });
-        User user = userMapper.fromRegisterDto(dto);
-        user.setPassword(passwordEncoder.encode(dto.getPassword()));
+    private RegistrationResponse register(RegistrationRequest request, RoleName roleName) {
+        String email = request.email().trim().toLowerCase(Locale.ROOT);
+        if (userRepository.existsByEmailIgnoreCase(email)) {
+            throw new AlreadyExistsException("A user with this email already exists");
+        }
+        Role role = roleRepository.findByName(roleName)
+                .orElseThrow(SystemRoleMissingException::new);
+        User user = new User();
+        user.setName(request.name().trim());
+        user.setSurname(request.surname().trim());
+        user.setEmail(email);
+        user.setCompanyName(trimToNull(request.companyName()));
+        user.setPassword(passwordEncoder.encode(request.password()));
         user.setRole(role);
         user.setEnabled(true);
-        userRepository.save(user);
-        UserDetails userDetails = org.springframework.security.core.userdetails.User
-                .withUsername(user.getEmail())
-                .password(user.getPassword())
-                .authorities(user.getRole().getName())
-                .build();
-
-        Authentication auth = new UsernamePasswordAuthenticationToken(
-                userDetails, userDetails.getPassword(), userDetails.getAuthorities()
+        User saved = userRepository.save(user);
+        return new RegistrationResponse(
+                saved.getId(), saved.getName(), saved.getSurname(), saved.getEmail(),
+                saved.getCompanyName(), saved.getRole().getName()
         );
-        SecurityContextHolder.getContext().setAuthentication(auth);
-        request.getSession(true).setAttribute(
-                HttpSessionSecurityContextRepository.SPRING_SECURITY_CONTEXT_KEY,
-                SecurityContextHolder.getContext()
-        );
+    }
 
-        return user;
+    private String trimToNull(String value) {
+        if (value == null || value.trim().isEmpty()) {
+            return null;
+        }
+        return value.trim();
     }
 
 
