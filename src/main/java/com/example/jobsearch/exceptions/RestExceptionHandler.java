@@ -4,6 +4,8 @@ import com.example.jobsearch.category.application.exception.CategoryConflictExce
 import com.example.jobsearch.category.application.exception.CategoryValidationException;
 import com.example.jobsearch.auth.application.AuthForbiddenException;
 import com.example.jobsearch.auth.application.AuthUnauthorizedException;
+import com.example.jobsearch.auth.application.PasswordResetTokenException;
+import com.example.jobsearch.auth.application.PasswordResetValidationException;
 import com.example.jobsearch.vacancy.application.exception.VacancyAccessDeniedException;
 import com.example.jobsearch.vacancy.application.exception.VacancyInUseException;
 import com.example.jobsearch.vacancy.application.exception.VacancyValidationException;
@@ -57,6 +59,11 @@ public class RestExceptionHandler {
             HttpServletRequest request
     ) {
         return response(HttpStatus.FORBIDDEN, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler({PasswordResetTokenException.class, PasswordResetValidationException.class})
+    public ResponseEntity<RestErrorResponse> handlePasswordReset(Exception exception, HttpServletRequest request) {
+        return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)

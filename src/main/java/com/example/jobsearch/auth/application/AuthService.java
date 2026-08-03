@@ -6,11 +6,10 @@ import com.example.jobsearch.auth.web.RefreshTokenRequest;
 import com.example.jobsearch.auth.web.RegistrationRequest;
 import com.example.jobsearch.auth.web.RegistrationResponse;
 import com.example.jobsearch.auth.web.TokenResponse;
-import jakarta.mail.MessagingException;
-import jakarta.servlet.http.HttpServletRequest;
+import com.example.jobsearch.auth.web.ForgotPasswordRequest;
+import com.example.jobsearch.auth.web.ForgotPasswordResponse;
+import com.example.jobsearch.auth.web.ResetPasswordRequest;
 import org.springframework.security.core.Authentication;
-
-import java.io.UnsupportedEncodingException;
 
 public interface AuthService {
     RegistrationResponse registerApplicant(RegistrationRequest request);
@@ -19,6 +18,6 @@ public interface AuthService {
     TokenResponse refresh(RefreshTokenRequest request);
     void logout(LogoutRequest request, Authentication authentication);
     void logoutAll(Authentication authentication);
-    void sendResetPasswordLink(HttpServletRequest request) throws MessagingException, UnsupportedEncodingException;
-    void updatePassword(String token, String newPassword);
+    ForgotPasswordResponse forgotPassword(ForgotPasswordRequest request);
+    void resetPassword(ResetPasswordRequest request);
 }

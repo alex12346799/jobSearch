@@ -1,5 +1,6 @@
 package com.example.jobsearch.auth.security;
 
+import com.example.jobsearch.auth.application.PasswordResetProperties;
 import com.nimbusds.jose.jwk.source.ImmutableSecret;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
@@ -19,7 +20,7 @@ import java.util.Base64;
 import java.security.SecureRandom;
 
 @Configuration
-@EnableConfigurationProperties(JwtProperties.class)
+@EnableConfigurationProperties({JwtProperties.class, PasswordResetProperties.class})
 public class JwtConfiguration {
     @Bean
     public Clock authClock() {

@@ -2,6 +2,7 @@ package com.example.jobsearch.auth.web;
 
 import com.example.jobsearch.auth.application.AuthService;
 import com.example.jobsearch.auth.application.AuthUnauthorizedException;
+import com.example.jobsearch.auth.application.PasswordResetValidationException;
 import com.example.jobsearch.auth.security.RestAccessDeniedHandler;
 import com.example.jobsearch.auth.security.RestAuthenticationEntryPoint;
 import com.example.jobsearch.config.SecurityConfig;
@@ -90,5 +91,44 @@ class AuthControllerTest {
         mockMvc.perform(post("/api/v1/auth/register/applicant")
                         .contentType("application/json").content(REGISTRATION))
                 .andExpect(status().isConflict());
+    }
+
+    @Test
+    void forgotPasswordAlwaysReturnsSameAcceptedResponse() throws Exception {
+        ForgotPasswordResponse response = new ForgotPasswordResponse(
+                "If the account is eligible, password reset instructions will be sent");
+        when(authService.forgotPassword(any())).thenReturn(response);
+
+        mockMvc.perform(post("/api/v1/auth/password/forgot").contentType("application/json")
+                        .content("{\"email\":\" User@Example.COM \"}"))
+                .andExpect(status().isAccepted())
+                .andExpect(jsonPath("$.message").value(response.message()));
+        mockMvc.perform(post("/api/v1/auth/password/forgot").contentType("application/json")
+                        .content("{\"email\":\"missing@example.com\"}"))
+                .andExpect(status().isAccepted())
+                .andExpect(jsonPath("$.message").value(response.message()));
+    }
+
+    @Test
+    void passwordResetValidationAndUnknownFieldsReturnBadRequest() throws Exception {
+        mockMvc.perform(post("/api/v1/auth/password/reset").contentType("application/json")
+                        .content("{\"token\":\"token\",\"newPassword\":\"short\",\"confirmPassword\":\"short\"}"))
+                .andExpect(status().isBadRequest());
+
+        mockMvc.perform(post("/api/v1/auth/password/reset").contentType("application/json")
+                        .content("{\"token\":\"token\",\"newPassword\":\"new-password\","
+                                + "\"confirmPassword\":\"new-password\",\"role\":\"ADMIN\"}"))
+                .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    void mismatchedPasswordConfirmationReturnsBadRequest() throws Exception {
+        org.mockito.Mockito.doThrow(new PasswordResetValidationException("Password confirmation does not match"))
+                .when(authService).resetPassword(any());
+        mockMvc.perform(post("/api/v1/auth/password/reset").contentType("application/json")
+                        .content("{\"token\":\"token\",\"newPassword\":\"new-password\","
+                                + "\"confirmPassword\":\"other-password\"}"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.message").value("Password confirmation does not match"));
     }
 }

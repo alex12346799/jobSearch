@@ -43,9 +43,6 @@ public class User implements Serializable {
     @Column(name = "company_name")
     private String companyName;
 
-    @Column(name = "reset_password_token")
-    private String resetPasswordToken;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "role_id", nullable = false)
     private Role role;

@@ -1,6 +1,8 @@
 package com.example.jobsearch.auth.application;
 
 import com.example.jobsearch.auth.domain.RefreshToken;
+import com.example.jobsearch.auth.domain.PasswordResetToken;
+import com.example.jobsearch.auth.persistence.PasswordResetTokenRepository;
 import com.example.jobsearch.auth.persistence.RefreshTokenRepository;
 import com.example.jobsearch.auth.security.JwtProperties;
 import com.example.jobsearch.auth.security.JwtTokenService;
@@ -8,12 +10,13 @@ import com.example.jobsearch.auth.web.LoginRequest;
 import com.example.jobsearch.auth.web.LogoutRequest;
 import com.example.jobsearch.auth.web.RefreshTokenRequest;
 import com.example.jobsearch.auth.web.TokenResponse;
+import com.example.jobsearch.auth.web.ForgotPasswordRequest;
+import com.example.jobsearch.auth.web.ResetPasswordRequest;
 import com.example.jobsearch.model.Role;
 import com.example.jobsearch.model.RoleName;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.repository.RoleRepository;
 import com.example.jobsearch.repository.UserRepository;
-import com.example.jobsearch.service.impl.EmailService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -30,6 +33,7 @@ import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
 import java.time.ZoneOffset;
+import java.util.Base64;
 import java.util.HexFormat;
 import java.util.Optional;
 
@@ -48,17 +52,20 @@ class AuthServiceImplTest {
     @Mock private UserRepository userRepository;
     @Mock private RoleRepository roleRepository;
     @Mock private RefreshTokenRepository refreshTokenRepository;
+    @Mock private PasswordResetTokenRepository passwordResetTokenRepository;
     @Mock private PasswordEncoder passwordEncoder;
     @Mock private JwtTokenService jwtTokenService;
     @Mock private SecureRandom secureRandom;
-    @Mock private EmailService emailService;
+    @Mock private PasswordResetMailService passwordResetMailService;
     private AuthServiceImpl authService;
 
     @BeforeEach
     void setUp() {
         authService = new AuthServiceImpl(userRepository, roleRepository, refreshTokenRepository,
+                passwordResetTokenRepository,
                 passwordEncoder, jwtTokenService, new JwtProperties("unused", Duration.ofMinutes(15), Duration.ofDays(30)),
-                Clock.fixed(NOW, ZoneOffset.UTC), secureRandom, emailService);
+                new PasswordResetProperties("http://localhost/reset", Duration.ofMinutes(30)),
+                Clock.fixed(NOW, ZoneOffset.UTC), secureRandom, passwordResetMailService);
         lenient().doAnswer(invocation -> {
             byte[] bytes = invocation.getArgument(0);
             for (int index = 0; index < bytes.length; index++) bytes[index] = (byte) (index + 1);
@@ -126,14 +133,27 @@ class AuthServiceImplTest {
     }
 
     @Test
-    void reusedOrExpiredRefreshTokenIsUnauthorized() {
+    void reusedRefreshTokenRevokesOtherSessionsButLogoutTokenDoesNot() {
         User user = user(1L, RoleName.APPLICANT, true);
         RefreshToken used = token(user, NOW.plusSeconds(60));
         used.setUsedAt(NOW.minusSeconds(1));
+        used.setReplacedByToken(token(user, NOW.plusSeconds(60)));
         when(refreshTokenRepository.findByTokenHash(hash("used"))).thenReturn(Optional.of(used));
         assertThatThrownBy(() -> authService.refresh(new RefreshTokenRequest("used")))
                 .isExactlyInstanceOf(AuthUnauthorizedException.class);
+        verify(refreshTokenRepository).revokeAllActiveByUserId(1L, NOW);
 
+        RefreshToken logoutToken = token(user, NOW.plusSeconds(60));
+        logoutToken.setRevokedAt(NOW.minusSeconds(1));
+        when(refreshTokenRepository.findByTokenHash(hash("logout"))).thenReturn(Optional.of(logoutToken));
+        assertThatThrownBy(() -> authService.refresh(new RefreshTokenRequest("logout")))
+                .isExactlyInstanceOf(AuthUnauthorizedException.class);
+        verify(refreshTokenRepository).revokeAllActiveByUserId(1L, NOW);
+    }
+
+    @Test
+    void expiredRefreshTokenIsUnauthorized() {
+        User user = user(1L, RoleName.APPLICANT, true);
         RefreshToken expired = token(user, NOW);
         when(refreshTokenRepository.findByTokenHash(hash("expired"))).thenReturn(Optional.of(expired));
         assertThatThrownBy(() -> authService.refresh(new RefreshTokenRequest("expired")))
@@ -156,15 +176,65 @@ class AuthServiceImplTest {
     }
 
     @Test
-    void passwordChangeRevokesAllRefreshTokens() {
+    void forgotStoresOnlyHashAndRevokesPreviousToken() throws Exception {
         User user = user(1L, RoleName.APPLICANT, true);
-        when(userRepository.findByResetPasswordToken("reset")).thenReturn(Optional.of(user));
+        when(userRepository.findByEmailIgnoreCase("user@example.com")).thenReturn(Optional.of(user));
+
+        authService.forgotPassword(new ForgotPasswordRequest(" User@Example.COM "));
+
+        ArgumentCaptor<PasswordResetToken> captor = ArgumentCaptor.forClass(PasswordResetToken.class);
+        verify(passwordResetTokenRepository).revokeAllActiveByUserId(1L, NOW);
+        verify(passwordResetTokenRepository).save(captor.capture());
+        assertThat(captor.getValue().getTokenHash()).hasSize(64);
+        String raw = Base64.getUrlEncoder().withoutPadding().encodeToString(expectedRandomBytes());
+        assertThat(captor.getValue().getTokenHash()).isEqualTo(hash(raw)).isNotEqualTo(raw);
+        verify(passwordResetMailService).send(any(), org.mockito.ArgumentMatchers.contains("?token=" + raw));
+    }
+
+    @Test
+    void missingAndDisabledForgotRequestsHaveSameResponse() {
+        when(userRepository.findByEmailIgnoreCase("missing@example.com")).thenReturn(Optional.empty());
+        User disabled = user(2L, RoleName.APPLICANT, false);
+        when(userRepository.findByEmailIgnoreCase("disabled@example.com")).thenReturn(Optional.of(disabled));
+
+        assertThat(authService.forgotPassword(new ForgotPasswordRequest("missing@example.com")))
+                .isEqualTo(authService.forgotPassword(new ForgotPasswordRequest("disabled@example.com")));
+        verify(passwordResetTokenRepository, never()).save(any());
+    }
+
+    @Test
+    void resetChangesPasswordUsesTokenOnceAndRevokesRefreshTokens() {
+        User user = user(1L, RoleName.APPLICANT, true);
+        PasswordResetToken reset = resetToken(user, NOW.plusSeconds(60));
+        when(passwordResetTokenRepository.findByTokenHash(hash("reset"))).thenReturn(Optional.of(reset));
         when(passwordEncoder.encode("new-password")).thenReturn("encoded-new");
 
-        authService.updatePassword("reset", "new-password");
+        authService.resetPassword(new ResetPasswordRequest("reset", "new-password", "new-password"));
 
         assertThat(user.getPassword()).isEqualTo("encoded-new");
+        assertThat(reset.getUsedAt()).isEqualTo(NOW);
         verify(refreshTokenRepository).revokeAllActiveByUserId(1L, NOW);
+    }
+
+    @Test
+    void mismatchedExpiredAndUsedResetTokensAreRejected() {
+        assertThatThrownBy(() -> authService.resetPassword(
+                new ResetPasswordRequest("reset", "new-password", "other-password")))
+                .isInstanceOf(PasswordResetValidationException.class);
+
+        User user = user(1L, RoleName.APPLICANT, true);
+        PasswordResetToken expired = resetToken(user, NOW);
+        when(passwordResetTokenRepository.findByTokenHash(hash("expired"))).thenReturn(Optional.of(expired));
+        assertThatThrownBy(() -> authService.resetPassword(
+                new ResetPasswordRequest("expired", "new-password", "new-password")))
+                .isInstanceOf(PasswordResetTokenException.class);
+
+        PasswordResetToken used = resetToken(user, NOW.plusSeconds(60));
+        used.setUsedAt(NOW.minusSeconds(1));
+        when(passwordResetTokenRepository.findByTokenHash(hash("used-reset"))).thenReturn(Optional.of(used));
+        assertThatThrownBy(() -> authService.resetPassword(
+                new ResetPasswordRequest("used-reset", "new-password", "new-password")))
+                .isInstanceOf(PasswordResetTokenException.class);
     }
 
     private void assertLogin(RoleName roleName) {
@@ -188,6 +258,12 @@ class AuthServiceImplTest {
         token.setExpiresAt(expiresAt); token.setTokenHash("hash"); return token;
     }
 
+    private PasswordResetToken resetToken(User user, Instant expiresAt) {
+        PasswordResetToken token = new PasswordResetToken();
+        token.setUser(user); token.setCreatedAt(NOW.minusSeconds(10)); token.setExpiresAt(expiresAt);
+        token.setTokenHash("hash"); return token;
+    }
+
     private String hash(String value) {
         try {
             return HexFormat.of().formatHex(MessageDigest.getInstance("SHA-256")
@@ -195,5 +271,11 @@ class AuthServiceImplTest {
         } catch (Exception exception) {
             throw new AssertionError(exception);
         }
+    }
+
+    private byte[] expectedRandomBytes() {
+        byte[] bytes = new byte[32];
+        for (int index = 0; index < bytes.length; index++) bytes[index] = (byte) (index + 1);
+        return bytes;
     }
 }

@@ -29,12 +29,13 @@ public class SecurityConfig {
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/auth/forgot-password", "/auth/reset-password").permitAll()
                         .requestMatchers(HttpMethod.POST,
                                 "/api/v1/auth/register/applicant",
                                 "/api/v1/auth/register/employer",
                                 "/api/v1/auth/login",
-                                "/api/v1/auth/refresh").permitAll()
+                                "/api/v1/auth/refresh",
+                                "/api/v1/auth/password/forgot",
+                                "/api/v1/auth/password/reset").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/vacancies/**")
                         .hasAnyAuthority("EMPLOYER", "APPLICANT", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/vacancies")

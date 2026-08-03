@@ -21,15 +21,15 @@ spring:
 
 #================= Mail config
   mail:
-    host: smtp.gmail.com
-    username: ${MAIL_USERNAME}
-    password: ${GOOGLE_APP_PASSWORD}
-    port: 587
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    username: ${MAIL_USERNAME:jobsearch@localhost}
+    password: ${MAIL_PASSWORD:}
     properties:
       mail:
         smtp:
-          auth: true
-          starttls.enable: true
+          auth: ${MAIL_SMTP_AUTH:false}
+          starttls.enable: ${MAIL_STARTTLS:false}
 #================= Mail config
   web:
     resources:
@@ -40,6 +40,9 @@ auth:
     secret: ${JWT_SECRET:}
     access-token-ttl: ${JWT_ACCESS_TOKEN_TTL:PT15M}
     refresh-token-ttl: ${JWT_REFRESH_TOKEN_TTL:P30D}
+  password-reset:
+    base-url: ${PASSWORD_RESET_BASE_URL:http://localhost:8089/password-reset}
+    token-ttl: ${PASSWORD_RESET_TOKEN_TTL:PT30M}
 
 
 

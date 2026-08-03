@@ -74,4 +74,26 @@ class EmployerRoleMigrationTest {
         assertThat(refreshUnique).isEqualTo(1);
         assertThat(nonNormalizedEmails).isZero();
     }
+
+    @Test
+    void securePasswordResetSchemaReplacesLegacyColumn() {
+        Integer table = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES
+                WHERE TABLE_NAME = 'PASSWORD_RESET_TOKENS'
+                """, Integer.class);
+        Integer uniqueHash = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+                WHERE TABLE_NAME = 'PASSWORD_RESET_TOKENS'
+                  AND CONSTRAINT_NAME = 'UQ_PASSWORD_RESET_TOKENS_TOKEN_HASH'
+                  AND CONSTRAINT_TYPE = 'UNIQUE'
+                """, Integer.class);
+        Integer legacyColumn = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*) FROM INFORMATION_SCHEMA.COLUMNS
+                WHERE TABLE_NAME = 'USERS' AND COLUMN_NAME = 'RESET_PASSWORD_TOKEN'
+                """, Integer.class);
+
+        assertThat(table).isEqualTo(1);
+        assertThat(uniqueHash).isEqualTo(1);
+        assertThat(legacyColumn).isZero();
+    }
 }
