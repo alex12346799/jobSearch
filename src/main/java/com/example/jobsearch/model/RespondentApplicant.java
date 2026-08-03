@@ -1,5 +1,6 @@
 package com.example.jobsearch.model;
 
+import com.example.jobsearch.vacancy.domain.Vacancy;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;
@@ -30,5 +31,4 @@ public class RespondentApplicant {
     @Column(name = "create_date")
     private LocalDateTime createDate;
 }
-
 

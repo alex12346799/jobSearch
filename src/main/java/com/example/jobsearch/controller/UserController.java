@@ -5,7 +5,7 @@ import com.example.jobsearch.dto.user.UserEditRequest;
 import com.example.jobsearch.service.FileService;
 import com.example.jobsearch.service.ResumeService;
 import com.example.jobsearch.service.UserService;
-import com.example.jobsearch.service.VacancyService;
+import com.example.jobsearch.vacancy.application.VacancyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;

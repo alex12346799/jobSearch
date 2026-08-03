@@ -2,6 +2,9 @@ package com.example.jobsearch.exceptions;
 
 import com.example.jobsearch.category.application.exception.CategoryConflictException;
 import com.example.jobsearch.category.application.exception.CategoryValidationException;
+import com.example.jobsearch.vacancy.application.exception.VacancyAccessDeniedException;
+import com.example.jobsearch.vacancy.application.exception.VacancyInUseException;
+import com.example.jobsearch.vacancy.application.exception.VacancyValidationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -53,6 +56,30 @@ public class RestExceptionHandler {
     @ExceptionHandler(CategoryValidationException.class)
     public ResponseEntity<RestErrorResponse> handleCategoryValidation(
             CategoryValidationException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(VacancyAccessDeniedException.class)
+    public ResponseEntity<RestErrorResponse> handleVacancyAccessDenied(
+            VacancyAccessDeniedException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.FORBIDDEN, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(VacancyInUseException.class)
+    public ResponseEntity<RestErrorResponse> handleVacancyInUse(
+            VacancyInUseException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(VacancyValidationException.class)
+    public ResponseEntity<RestErrorResponse> handleVacancyValidation(
+            VacancyValidationException exception,
             HttpServletRequest request
     ) {
         return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
