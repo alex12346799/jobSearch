@@ -1,6 +1,5 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.dao.UserDao;
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
