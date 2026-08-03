@@ -41,8 +41,8 @@ public class AuthServiceImpl implements RegistrationService {
 
     @Override
     public User registerEmployer(UserRegisterRequest dto, HttpServletRequest request) {
-        Role role = roleRepository.findByName("EMPLOYEE")
-                .orElseThrow(() -> new NotFoundException("Роль EMPLOYEE не найдена"));
+        Role role = roleRepository.findByName("EMPLOYER")
+                .orElseThrow(() -> new NotFoundException("Роль EMPLOYER не найдена"));
         return register(dto, role, request);
     }
 

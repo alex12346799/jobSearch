@@ -1,0 +1,51 @@
+databaseChangeLog:
+  - changeSet:
+      id: 014_normalize_employer_role
+      author: codex
+      comment: Normalize the historical EMPLOYEE employer role while preserving user links
+      changes:
+        - sql:
+            sql: |
+              UPDATE roles
+              SET role_name = 'EMPLOYER'
+              WHERE role_name = 'EMPLOYEE'
+                AND NOT EXISTS (
+                  SELECT 1 FROM roles existing_role
+                  WHERE existing_role.role_name = 'EMPLOYER'
+                );
+
+              UPDATE users
+              SET role_id = (
+                SELECT MIN(employer_role.id)
+                FROM roles employer_role
+                WHERE employer_role.role_name = 'EMPLOYER'
+              )
+              WHERE role_id IN (
+                SELECT employee_role.id
+                FROM roles employee_role
+                WHERE employee_role.role_name = 'EMPLOYEE'
+              );
+
+              DELETE FROM roles
+              WHERE role_name = 'EMPLOYEE';
+
+              INSERT INTO roles (role_name)
+              SELECT 'APPLICANT'
+              WHERE NOT EXISTS (
+                SELECT 1 FROM roles applicant_role
+                WHERE applicant_role.role_name = 'APPLICANT'
+              );
+
+              INSERT INTO roles (role_name)
+              SELECT 'EMPLOYER'
+              WHERE NOT EXISTS (
+                SELECT 1 FROM roles employer_role
+                WHERE employer_role.role_name = 'EMPLOYER'
+              );
+
+              INSERT INTO roles (role_name)
+              SELECT 'ADMIN'
+              WHERE NOT EXISTS (
+                SELECT 1 FROM roles admin_role
+                WHERE admin_role.role_name = 'ADMIN'
+              );

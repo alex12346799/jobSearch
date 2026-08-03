@@ -23,7 +23,7 @@ public class RedirectHelper {
     }
 
     public String getRedirectByRole(Collection<? extends GrantedAuthority> authorities) {
-        if (hasRole(authorities, "EMPLOYEE")) return "redirect:/resumes";
+        if (hasRole(authorities, "EMPLOYER")) return "redirect:/resumes";
         if (hasRole(authorities, "APPLICANT")) return "redirect:/vacancies";
         return "redirect:/login";
     }
@@ -33,4 +33,3 @@ public class RedirectHelper {
                 .anyMatch(a -> a.getAuthority().equalsIgnoreCase(role));
     }
 }
-

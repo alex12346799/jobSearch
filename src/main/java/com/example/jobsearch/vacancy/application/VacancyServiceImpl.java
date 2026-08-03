@@ -112,8 +112,7 @@ public class VacancyServiceImpl implements VacancyService {
 
     private void ensureCanCreate(Authentication authentication) {
         if (!hasAuthority(authentication, "ADMIN")
-                && !hasAuthority(authentication, "EMPLOYER")
-                && !hasAuthority(authentication, "EMPLOYEE")) {
+                && !hasAuthority(authentication, "EMPLOYER")) {
             throw new VacancyAccessDeniedException("Only an employer or administrator can create a vacancy");
         }
     }

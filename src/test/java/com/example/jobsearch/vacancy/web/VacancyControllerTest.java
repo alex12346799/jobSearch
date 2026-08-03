@@ -40,7 +40,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest(VacancyController.class)
 @Import({VacancyControllerTest.TestConfig.class, SecurityConfig.class})
-@WithMockUser(username = "owner@example.com", authorities = "EMPLOYEE")
+@WithMockUser(username = "owner@example.com", authorities = "EMPLOYER")
 class VacancyControllerTest {
     private static final String BASE_PATH = "/api/v1/vacancies";
     private static final String VALID_REQUEST = """
@@ -125,6 +125,15 @@ class VacancyControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(header().string("Location", "http://localhost/api/v1/vacancies/1"))
                 .andExpect(jsonPath("$.title").value("Java Developer"));
+    }
+
+    @Test
+    @WithMockUser(username = "admin@example.com", authorities = "ADMIN")
+    void createsValidVacancyAsAdministrator() throws Exception {
+        vacancyService.response = response();
+
+        mockMvc.perform(post(BASE_PATH).with(csrf()).contentType("application/json").content(VALID_REQUEST))
+                .andExpect(status().isCreated());
     }
 
     @Test

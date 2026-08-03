@@ -57,7 +57,7 @@ class VacancyServiceImplTest {
 
     @Test
     void rejectsCreationWhenCategoryIsMissing() {
-        Authentication authentication = authentication("owner@example.com", "EMPLOYEE");
+        Authentication authentication = authentication("owner@example.com", "EMPLOYER");
         when(userRepository.findByEmail("owner@example.com")).thenReturn(Optional.of(user(7L, "owner@example.com")));
         when(categoryRepository.findById(99L)).thenReturn(Optional.empty());
 
@@ -70,7 +70,7 @@ class VacancyServiceImplTest {
 
     @Test
     void createsVacancyForCurrentAuthenticatedEmployerAndTrimsStrings() {
-        Authentication authentication = authentication("owner@example.com", "EMPLOYEE");
+        Authentication authentication = authentication("owner@example.com", "EMPLOYER");
         User owner = user(7L, "owner@example.com");
         Category category = category(1L, "IT");
         when(userRepository.findByEmail("owner@example.com")).thenReturn(Optional.of(owner));
@@ -94,7 +94,7 @@ class VacancyServiceImplTest {
 
     @Test
     void allowsOwnerToUpdateVacancy() {
-        Authentication authentication = authentication("owner@example.com", "EMPLOYEE");
+        Authentication authentication = authentication("owner@example.com", "EMPLOYER");
         User owner = user(7L, "owner@example.com");
         Vacancy vacancy = vacancy(1L, owner, category(1L, "IT"));
         Category newCategory = category(2L, "Backend");
@@ -120,7 +120,7 @@ class VacancyServiceImplTest {
         assertThatThrownBy(() -> vacancyService.update(
                 1L,
                 request(1L),
-                authentication("other@example.com", "EMPLOYEE")
+                authentication("other@example.com", "EMPLOYER")
         ))
                 .isInstanceOf(VacancyAccessDeniedException.class)
                 .hasMessage("You are not allowed to modify this vacancy");
@@ -149,7 +149,7 @@ class VacancyServiceImplTest {
         when(vacancyRepository.findById(1L)).thenReturn(Optional.of(vacancy));
         when(userRepository.findByEmail("owner@example.com")).thenReturn(Optional.of(owner));
 
-        vacancyService.delete(1L, authentication("owner@example.com", "EMPLOYEE"));
+        vacancyService.delete(1L, authentication("owner@example.com", "EMPLOYER"));
 
         verify(vacancyRepository).delete(vacancy);
     }
@@ -162,7 +162,7 @@ class VacancyServiceImplTest {
         when(userRepository.findByEmail("owner@example.com")).thenReturn(Optional.of(owner));
         when(vacancyRepository.hasResponses(1L)).thenReturn(true);
 
-        assertThatThrownBy(() -> vacancyService.delete(1L, authentication("owner@example.com", "EMPLOYEE")))
+        assertThatThrownBy(() -> vacancyService.delete(1L, authentication("owner@example.com", "EMPLOYER")))
                 .isInstanceOf(VacancyInUseException.class);
 
         verify(vacancyRepository, never()).delete(vacancy);

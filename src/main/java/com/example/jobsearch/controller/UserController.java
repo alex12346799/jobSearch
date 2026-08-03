@@ -32,7 +32,7 @@ public class UserController {
         boolean isApplicant = authentication.getAuthorities().stream()
                 .anyMatch(a -> a.getAuthority().equals("APPLICANT"));
         boolean isEmployer = authentication.getAuthorities().stream()
-                .anyMatch(a -> a.getAuthority().equals("EMPLOYEE"));
+                .anyMatch(a -> a.getAuthority().equals("EMPLOYER"));
 
         model.addAttribute("isApplicant", isApplicant);
         model.addAttribute("isEmployer", isEmployer);

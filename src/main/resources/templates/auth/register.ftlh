@@ -82,7 +82,7 @@
                     <label for="role" class="form-label"><@spring.message"register.role"/></label>
                     <select class="form-select" id="role" name="roleId">
                         <option value="" disabled selected><@spring.message"register.select_a_role"/></option>
-                        <option value="1"><@spring.message"register.EMPLOYEE"/></option>
+                        <option value="1"><@spring.message"register.EMPLOYER"/></option>
                         <option value="2"><@spring.message"register.APPLICANT"/></option>
                     </select>
                 </div>
