@@ -1,5 +1,7 @@
 package com.example.jobsearch.service.impl;
 
+import com.example.jobsearch.category.domain.Category;
+import com.example.jobsearch.category.persistence.CategoryRepository;
 import com.example.jobsearch.dto.EducationInfoRequestDto;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;

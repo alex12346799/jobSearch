@@ -1,17 +1,15 @@
 package com.example.jobsearch.controller;
 
+import com.example.jobsearch.category.application.CategoryService;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
-import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.Resume;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.WorkExperienceInfo;
-import com.example.jobsearch.repository.CategoryRepository;
 import com.example.jobsearch.repository.ResumeRepository;
 import com.example.jobsearch.repository.UserRepository;
-import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.ResumeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

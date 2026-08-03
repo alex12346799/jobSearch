@@ -1,8 +1,8 @@
 package com.example.jobsearch.mapper;
 
+import com.example.jobsearch.category.domain.Category;
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
-import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
 

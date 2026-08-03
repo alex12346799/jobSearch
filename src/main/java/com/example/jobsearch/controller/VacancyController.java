@@ -1,14 +1,13 @@
 package com.example.jobsearch.controller;
 
+import com.example.jobsearch.category.application.CategoryService;
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
-import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.repository.VacancyRepository;
-import com.example.jobsearch.service.CategoryService;
 import com.example.jobsearch.service.VacancyService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

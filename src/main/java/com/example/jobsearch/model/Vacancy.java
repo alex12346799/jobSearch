@@ -1,5 +1,6 @@
 package com.example.jobsearch.model;
 
+import com.example.jobsearch.category.domain.Category;
 import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Data;
@@ -56,6 +57,5 @@ public class Vacancy {
 
 
 }
-
 
 

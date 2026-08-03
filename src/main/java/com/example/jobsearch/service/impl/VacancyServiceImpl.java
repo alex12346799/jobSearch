@@ -1,14 +1,14 @@
 package com.example.jobsearch.service.impl;
 
+import com.example.jobsearch.category.domain.Category;
+import com.example.jobsearch.category.persistence.CategoryRepository;
 
 import com.example.jobsearch.dto.VacancyRequestDto;
 import com.example.jobsearch.dto.VacancyResponseDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.mapper.VacancyMapper;
-import com.example.jobsearch.model.Category;
 import com.example.jobsearch.model.User;
 import com.example.jobsearch.model.Vacancy;
-import com.example.jobsearch.repository.CategoryRepository;
 import com.example.jobsearch.repository.UserRepository;
 import com.example.jobsearch.repository.VacancyRepository;
 import com.example.jobsearch.service.VacancyService;
@@ -134,7 +134,6 @@ public class VacancyServiceImpl implements VacancyService {
     }
 
 }
-
 
 
 
