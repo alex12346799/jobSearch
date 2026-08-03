@@ -11,6 +11,7 @@ import com.example.jobsearch.vacancy.application.exception.VacancyInUseException
 import com.example.jobsearch.vacancy.application.exception.VacancyValidationException;
 import com.example.jobsearch.user.application.UserProfileException;
 import com.example.jobsearch.resume.application.*;
+import com.example.jobsearch.jobapplication.application.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -96,6 +97,24 @@ public class RestExceptionHandler {
     public ResponseEntity<RestErrorResponse> handleResumeValidation(
             ResumeValidationException exception, HttpServletRequest request) {
         return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(JobApplicationNotFoundException.class)
+    public ResponseEntity<RestErrorResponse> handleJobApplicationNotFound(
+            JobApplicationNotFoundException exception, HttpServletRequest request) {
+        return response(HttpStatus.NOT_FOUND, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(JobApplicationAccessDeniedException.class)
+    public ResponseEntity<RestErrorResponse> handleJobApplicationAccessDenied(
+            JobApplicationAccessDeniedException exception, HttpServletRequest request) {
+        return response(HttpStatus.FORBIDDEN, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(JobApplicationConflictException.class)
+    public ResponseEntity<RestErrorResponse> handleJobApplicationConflict(
+            JobApplicationConflictException exception, HttpServletRequest request) {
+        return response(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)

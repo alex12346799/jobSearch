@@ -133,7 +133,7 @@ class ResumeIntegrationTest {
     void resumeWithApplicationCannotBeDeleted() throws Exception {
         long id = create(owner, "In use", category.getId());
         Long vacancyId = jdbcTemplate.queryForObject("select min(id) from vacancy", Long.class);
-        jdbcTemplate.update("insert into respondent_applicant(resume_id, vacancy_id, confirmation, create_date) values (?, ?, false, current_timestamp)", id, vacancyId);
+        jdbcTemplate.update("insert into respondent_applicant(resume_id, vacancy_id, status, create_date, update_date) values (?, ?, 'CREATED', current_timestamp, current_timestamp)", id, vacancyId);
 
         mockMvc.perform(delete("/api/v1/resumes/{id}", id).header("Authorization", bearer(owner)))
                 .andExpect(status().isConflict());

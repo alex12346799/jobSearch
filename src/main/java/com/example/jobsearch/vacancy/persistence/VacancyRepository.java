@@ -42,6 +42,6 @@ public interface VacancyRepository extends JpaRepository<Vacancy, Long> {
     @EntityGraph(attributePaths = {"category", "employer"})
     List<Vacancy> findByEmployerEmailOrderByIdDesc(String email);
 
-    @Query("SELECT (COUNT(r) > 0) FROM RespondentApplicant r WHERE r.vacancy.id = :vacancyId")
+    @Query("SELECT (COUNT(r) > 0) FROM JobApplication r WHERE r.vacancy.id = :vacancyId")
     boolean hasResponses(@Param("vacancyId") Long vacancyId);
 }

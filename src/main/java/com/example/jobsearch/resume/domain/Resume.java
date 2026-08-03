@@ -1,7 +1,6 @@
 package com.example.jobsearch.resume.domain;
 
 import com.example.jobsearch.category.domain.Category;
-import com.example.jobsearch.model.RespondentApplicant;
 import com.example.jobsearch.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -9,7 +8,6 @@ import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.LinkedHashSet;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -24,9 +22,6 @@ public class Resume {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "applicant_id", nullable = false)
     private User applicant;
-
-    @OneToMany(mappedBy = "resume")
-    private List<RespondentApplicant> respondentApplicant;
 
     @Column(length = 45)
     private String name;

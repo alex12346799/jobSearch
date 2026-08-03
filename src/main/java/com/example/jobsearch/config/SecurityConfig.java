@@ -36,6 +36,8 @@ public class SecurityConfig {
                                 "/api/v1/auth/refresh",
                                 "/api/v1/auth/password/forgot",
                                 "/api/v1/auth/password/reset").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v1/vacancies/*/applications")
+                        .hasAnyAuthority("EMPLOYER", "ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/v1/vacancies/**")
                         .hasAnyAuthority("EMPLOYER", "APPLICANT", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/vacancies")
@@ -48,6 +50,14 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.PUT, "/api/v1/resumes/**")
                         .hasAnyAuthority("APPLICANT", "ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/v1/resumes/**")
+                        .hasAnyAuthority("APPLICANT", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/v1/job-applications").hasAuthority("APPLICANT")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/job-applications/me").hasAuthority("APPLICANT")
+                        .requestMatchers(HttpMethod.GET, "/api/v1/job-applications/**")
+                        .hasAnyAuthority("APPLICANT", "EMPLOYER", "ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/v1/job-applications/**")
+                        .hasAnyAuthority("APPLICANT", "EMPLOYER", "ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/v1/job-applications/**")
                         .hasAnyAuthority("APPLICANT", "ADMIN")
                         .requestMatchers(HttpMethod.GET, "/vacancies").hasAnyAuthority("EMPLOYER", "APPLICANT")
                         .requestMatchers("/vacancies/create").hasAuthority("EMPLOYER")

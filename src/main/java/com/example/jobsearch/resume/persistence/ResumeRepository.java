@@ -36,6 +36,6 @@ public interface ResumeRepository extends JpaRepository<Resume, Long> {
     @Query("select distinct r from Resume r left join fetch r.socialLinks where r.applicant.id = :applicantId order by r.id desc")
     List<Resume> findByApplicantIdOrderByIdDesc(@Param("applicantId") Long applicantId);
 
-    @Query("select (count(a) > 0) from RespondentApplicant a where a.resume.id = :resumeId")
+    @Query("select (count(a) > 0) from JobApplication a where a.resume.id = :resumeId")
     boolean hasApplications(@Param("resumeId") Long resumeId);
 }

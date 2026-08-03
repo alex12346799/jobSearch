@@ -1,0 +1,71 @@
+databaseChangeLog:
+  - changeSet:
+      id: 019_job_application_integrity
+      author: codex
+      comment: Add typed job application workflow and enforce integrity
+      preConditions:
+        - onFail: HALT
+        - sqlCheck:
+            expectedResult: 0
+            sql: >-
+              SELECT COUNT(*) FROM (
+                SELECT vacancy_id, resume_id FROM respondent_applicant
+                GROUP BY vacancy_id, resume_id HAVING COUNT(*) > 1
+              ) duplicate_applications
+      changes:
+        - addColumn:
+            tableName: respondent_applicant
+            columns:
+              - column:
+                  name: status
+                  type: varchar(20)
+                  defaultValue: CREATED
+                  constraints:
+                    nullable: false
+              - column:
+                  name: update_date
+                  type: timestamp
+        - sql:
+            sql: >-
+              UPDATE respondent_applicant
+              SET status = CASE WHEN confirmation THEN 'ACCEPTED' ELSE 'CREATED' END,
+                  create_date = COALESCE(create_date, CURRENT_TIMESTAMP),
+                  update_date = COALESCE(create_date, CURRENT_TIMESTAMP)
+        - addNotNullConstraint:
+            tableName: respondent_applicant
+            columnName: create_date
+            columnDataType: timestamp
+        - addNotNullConstraint:
+            tableName: respondent_applicant
+            columnName: update_date
+            columnDataType: timestamp
+        - dropColumn:
+            tableName: respondent_applicant
+            columnName: confirmation
+        - addUniqueConstraint:
+            tableName: respondent_applicant
+            columnNames: vacancy_id, resume_id
+            constraintName: uq_job_application_vacancy_resume
+        - createIndex:
+            tableName: respondent_applicant
+            indexName: ix_job_application_vacancy
+            columns:
+              - column:
+                  name: vacancy_id
+        - createIndex:
+            tableName: respondent_applicant
+            indexName: ix_job_application_resume
+            columns:
+              - column:
+                  name: resume_id
+        - createIndex:
+            tableName: respondent_applicant
+            indexName: ix_job_application_status
+            columns:
+              - column:
+                  name: status
+        - sql:
+            sql: >-
+              ALTER TABLE respondent_applicant
+              ADD CONSTRAINT ck_job_application_status
+              CHECK (status IN ('CREATED', 'REVIEWED', 'ACCEPTED', 'REJECTED', 'WITHDRAWN'))
