@@ -1,0 +1,29 @@
+databaseChangeLog:
+  - changeSet:
+      id: 012_category_integrity
+      author: codex
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: resume
+            constraintName: fk_resume_category
+        - addForeignKeyConstraint:
+            baseTableName: resume
+            baseColumnNames: category_id
+            referencedTableName: category
+            referencedColumnNames: id
+            constraintName: fk_resume_category
+            onDelete: RESTRICT
+        - dropForeignKeyConstraint:
+            baseTableName: vacancy
+            constraintName: fk_vacancy_category
+        - addForeignKeyConstraint:
+            baseTableName: vacancy
+            baseColumnNames: category_id
+            referencedTableName: category
+            referencedColumnNames: id
+            constraintName: fk_vacancy_category
+            onDelete: RESTRICT
+        - addUniqueConstraint:
+            tableName: category
+            columnNames: name
+            constraintName: uk_category_name

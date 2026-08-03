@@ -1,6 +1,9 @@
 package com.example.jobsearch.category.web;
 
 import com.example.jobsearch.category.application.CategoryService;
+import com.example.jobsearch.category.application.exception.CategoryHierarchyConflictException;
+import com.example.jobsearch.category.application.exception.CategoryInUseException;
+import com.example.jobsearch.category.application.exception.CategoryNameConflictException;
 import com.example.jobsearch.config.SecurityConfig;
 import com.example.jobsearch.exceptions.ResourceNotFoundException;
 import com.example.jobsearch.security.CustomAuthenticationSuccessHandler;
@@ -140,6 +143,43 @@ class CategoryControllerTest {
         org.assertj.core.api.Assertions.assertThat(categoryService.deletedId).isEqualTo(2L);
     }
 
+    @Test
+    void returnsConflictForDuplicateName() throws Exception {
+        categoryService.failure = new CategoryNameConflictException("QA");
+
+        mockMvc.perform(post(BASE_PATH)
+                        .with(csrf())
+                        .contentType("application/json")
+                        .content("""
+                                {"name":"QA","parentId":null}
+                                """))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.message").value("Category name 'QA' is already in use"));
+    }
+
+    @Test
+    void returnsConflictForHierarchyCycle() throws Exception {
+        categoryService.failure = new CategoryHierarchyConflictException("Category hierarchy would contain a cycle");
+
+        mockMvc.perform(put(BASE_PATH + "/1")
+                        .with(csrf())
+                        .contentType("application/json")
+                        .content("""
+                                {"name":"IT","parentId":3}
+                                """))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.message").value("Category hierarchy would contain a cycle"));
+    }
+
+    @Test
+    void returnsConflictWhenDeletingCategoryInUse() throws Exception {
+        categoryService.failure = new CategoryInUseException(1L);
+
+        mockMvc.perform(delete(BASE_PATH + "/1").with(csrf()))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.message").value("Category with id 1 is in use and cannot be deleted"));
+    }
+
     @TestConfiguration
     static class TestConfig {
         @Bean
@@ -154,6 +194,7 @@ class CategoryControllerTest {
         private CategoryResponse updated;
         private Long notFoundId;
         private Long deletedId;
+        private RuntimeException failure;
 
         void reset() {
             categories = Collections.emptyList();
@@ -161,6 +202,7 @@ class CategoryControllerTest {
             updated = null;
             notFoundId = null;
             deletedId = null;
+            failure = null;
         }
 
         @Override
@@ -178,17 +220,26 @@ class CategoryControllerTest {
 
         @Override
         public CategoryResponse create(CategoryRequest request) {
+            throwFailureIfConfigured();
             return created;
         }
 
         @Override
         public CategoryResponse update(Long id, CategoryRequest request) {
+            throwFailureIfConfigured();
             return updated;
         }
 
         @Override
         public void delete(Long id) {
+            throwFailureIfConfigured();
             deletedId = id;
+        }
+
+        private void throwFailureIfConfigured() {
+            if (failure != null) {
+                throw failure;
+            }
         }
     }
 }

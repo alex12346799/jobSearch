@@ -1,5 +1,7 @@
 package com.example.jobsearch.exceptions;
 
+import com.example.jobsearch.category.application.exception.CategoryConflictException;
+import com.example.jobsearch.category.application.exception.CategoryValidationException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -38,6 +40,22 @@ public class RestExceptionHandler {
     @ExceptionHandler({DataIntegrityViolationException.class, AlreadyExistsException.class})
     public ResponseEntity<RestErrorResponse> handleConflict(Exception exception, HttpServletRequest request) {
         return response(HttpStatus.CONFLICT, "The request conflicts with existing data", request, Map.of());
+    }
+
+    @ExceptionHandler(CategoryConflictException.class)
+    public ResponseEntity<RestErrorResponse> handleCategoryConflict(
+            CategoryConflictException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(CategoryValidationException.class)
+    public ResponseEntity<RestErrorResponse> handleCategoryValidation(
+            CategoryValidationException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(Exception.class)
