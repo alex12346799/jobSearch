@@ -1,0 +1,16 @@
+databaseChangeLog:
+  - changeSet:
+      id: 018_resume_integrity
+      author: codex
+      comment: Prevent deleting job applications when a resume is deleted
+      changes:
+        - dropForeignKeyConstraint:
+            baseTableName: respondent_applicant
+            constraintName: fk_respondent_resume
+        - addForeignKeyConstraint:
+            baseTableName: respondent_applicant
+            baseColumnNames: resume_id
+            referencedTableName: resume
+            referencedColumnNames: id
+            constraintName: fk_respondent_resume
+            onDelete: NO ACTION

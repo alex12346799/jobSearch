@@ -3,7 +3,7 @@ package com.example.jobsearch.mapper;
 import com.example.jobsearch.dto.RespondentApplicantRequestDto;
 import com.example.jobsearch.dto.RespondentApplicantResponseDto;
 import com.example.jobsearch.model.RespondentApplicant;
-import com.example.jobsearch.model.Resume;
+import com.example.jobsearch.resume.domain.Resume;
 import com.example.jobsearch.vacancy.domain.Vacancy;
 
 public class RespondentApplicantMapper {

@@ -1,17 +1,16 @@
-package com.example.jobsearch.model;
-
+package com.example.jobsearch.resume.domain;
 
 import com.example.jobsearch.category.domain.Category;
+import com.example.jobsearch.model.RespondentApplicant;
 import com.example.jobsearch.user.domain.User;
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
-
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
+import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,22 +21,24 @@ public class Resume {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "applicant_id", nullable = false)
     private User applicant;
 
     @OneToMany(mappedBy = "resume")
     private List<RespondentApplicant> respondentApplicant;
+
+    @Column(length = 45)
     private String name;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     private double salary;
 
     @Column(name = "is_active")
-    private boolean isActive;
+    private boolean active;
 
     @Column(name = "created_date")
     private LocalDateTime createdDate;
@@ -45,29 +46,12 @@ public class Resume {
     @Column(name = "update_date")
     private LocalDateTime updateDate;
 
-    @OneToMany(mappedBy = "resume")
-    private List<EducationInfo> educationInfoList;
+    @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<EducationInfo> educationInfo = new LinkedHashSet<>();
 
-    @OneToMany(mappedBy = "resume")
-    private List<WorkExperienceInfo> workExperienceInfoList;
+    @OneToMany(mappedBy = "resume", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<WorkExperienceInfo> workExperienceInfo = new LinkedHashSet<>();
 
-    @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "resume", cascade = CascadeType.ALL, orphanRemoval = true)
     private SocialLinks socialLinks;
-
-
-
-    public String getFormattedCreatedDate() {
-        if (createdDate == null) return "";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy | HH:mm:ss");
-        return createdDate.format(formatter);
-    }
-
-    public String getFormattedUpdateDate() {
-        if (updateDate == null) return "";
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy | HH:mm:ss");
-        return updateDate.format(formatter);
-    }
-
-
-
 }

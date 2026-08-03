@@ -10,6 +10,7 @@ import com.example.jobsearch.vacancy.application.exception.VacancyAccessDeniedEx
 import com.example.jobsearch.vacancy.application.exception.VacancyInUseException;
 import com.example.jobsearch.vacancy.application.exception.VacancyValidationException;
 import com.example.jobsearch.user.application.UserProfileException;
+import com.example.jobsearch.resume.application.*;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -70,6 +71,30 @@ public class RestExceptionHandler {
     @ExceptionHandler(UserProfileException.class)
     public ResponseEntity<RestErrorResponse> handleUserProfile(
             UserProfileException exception, HttpServletRequest request) {
+        return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(ResumeNotFoundException.class)
+    public ResponseEntity<RestErrorResponse> handleResumeNotFound(
+            ResumeNotFoundException exception, HttpServletRequest request) {
+        return response(HttpStatus.NOT_FOUND, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(ResumeAccessDeniedException.class)
+    public ResponseEntity<RestErrorResponse> handleResumeAccessDenied(
+            ResumeAccessDeniedException exception, HttpServletRequest request) {
+        return response(HttpStatus.FORBIDDEN, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(ResumeInUseException.class)
+    public ResponseEntity<RestErrorResponse> handleResumeInUse(
+            ResumeInUseException exception, HttpServletRequest request) {
+        return response(HttpStatus.CONFLICT, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(ResumeValidationException.class)
+    public ResponseEntity<RestErrorResponse> handleResumeValidation(
+            ResumeValidationException exception, HttpServletRequest request) {
         return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
     }
 

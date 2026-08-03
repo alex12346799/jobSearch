@@ -42,9 +42,6 @@
 
         <#if isAuth>
           <li class="nav-item">
-            <a class="nav-link" href="/resumes"><@spring.message "layout.resumes"/></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="/vacancies"><@spring.message "layout.vacancies"/></a>
           </li>
         </#if>

@@ -139,7 +139,6 @@
 
         <div class="hero-actions">
             <a class="btn-hero primary" href="/vacancies"><@spring.message "home.hero.btnVacancies"/></a>
-            <a class="btn-hero" href="/resumes/create"><@spring.message "home.hero.btnCreateResume"/></a>
             <a class="btn-hero" href="/vacancies/create"><@spring.message "home.hero.btnPostVacancy"/></a>
         </div>
 
