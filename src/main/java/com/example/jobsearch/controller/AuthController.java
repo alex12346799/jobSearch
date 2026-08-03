@@ -1,22 +1,17 @@
 package com.example.jobsearch.controller;
 
-import com.example.jobsearch.service.RegistrationService;
+import com.example.jobsearch.auth.application.AuthService;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@Controller("passwordResetController")
 @RequiredArgsConstructor
 @RequestMapping("/auth")
 public class AuthController {
-    private final RegistrationService authService;
-    @GetMapping("/login")
-    public String loginPage(@RequestParam(value = "error", required = false) String error, Model model) {
-        model.addAttribute("error", error != null);
-        return "auth/login";
-    }
+    private final AuthService authService;
 
 
 
@@ -46,7 +41,7 @@ public class AuthController {
     @PostMapping("/reset-password")
     public String processResetPassword(HttpServletRequest request, Model model) {
         try {
-            authService.sendResetPasswordLink(request);
+            authService.updatePassword(request.getParameter("token"), request.getParameter("password"));
             model.addAttribute("message", "Пароль успешно обновлён.");
         } catch (Exception e) {
             model.addAttribute("error", e.getMessage());

@@ -61,22 +61,6 @@
           <img src="/images/en.png" alt="English" width="24" height="24">
         </a>
 
-
-        <#if isAuth>
-          <form action="/logout" method="post" class="m-0">
-            <#if _csrf??>
-              <input type="hidden" name="${(_csrf.parameterName)!'csrf-param-name'}"
-                     value="${(_csrf.token)!'csrf-token'}"/>
-            </#if>
-            <button type="submit" class="btn btn-outline-info">
-              <@spring.message "layout.logout"/>
-            </button>
-          </form>
-        <#else>
-          <a href="/auth/login" class="btn btn-outline-info me-2">
-            <@spring.message "layout.login"/>
-          </a>
-        </#if>
       </div>
     </div>
   </div>

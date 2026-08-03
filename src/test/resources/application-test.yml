@@ -7,3 +7,8 @@ spring:
   liquibase:
     enabled: true
     change-log: classpath:/db/changelog/master.yaml
+auth:
+  jwt:
+    secret: dGVzdC1vbmx5LWp3dC1zZWNyZXQtdGhhdC1pcy1hdC1sZWFzdC0zMi1ieXRlcw==
+    access-token-ttl: PT15M
+    refresh-token-ttl: P30D

@@ -1,52 +1,40 @@
-
 package com.example.jobsearch.config;
 
-import com.example.jobsearch.security.CustomAuthenticationSuccessHandler;
-import com.example.jobsearch.security.CustomUserDetailsService;
-import com.example.jobsearch.utils.RedirectHelper;
-import lombok.RequiredArgsConstructor;
+import com.example.jobsearch.auth.security.RestAccessDeniedHandler;
+import com.example.jobsearch.auth.security.RestAuthenticationEntryPoint;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
+import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
-@RequiredArgsConstructor
 public class SecurityConfig {
-
-    private final RedirectHelper redirectHelper;
-    private final CustomUserDetailsService customUserDetailsService;
-    private final PasswordEncoder passwordEncoder;
-    private final CustomAuthenticationSuccessHandler successHandler;
-
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain securityFilterChain(
+            HttpSecurity http,
+            RestAuthenticationEntryPoint authenticationEntryPoint,
+            RestAccessDeniedHandler accessDeniedHandler,
+            JwtAuthenticationConverter jwtAuthenticationConverter
+    ) throws Exception {
         http
-                .csrf(csrf -> csrf.ignoringRequestMatchers(
-                        "/api/v1/auth/register/applicant",
-                        "/api/v1/auth/register/employer"
-                ))
-                .formLogin(login -> login
-                        .loginPage("/auth/login")
-                        .loginProcessingUrl("/auth/login")
-                        .failureUrl("/auth/login?error=true")
-                        .successHandler(successHandler)
-                        .permitAll()
-                )
-                .logout(logout -> logout
-                        .logoutUrl("/logout")
-                        .logoutSuccessUrl("/")
-                        .permitAll()
-                )
+                .csrf(csrf -> csrf.disable())
+                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .formLogin(form -> form.disable())
+                .httpBasic(basic -> basic.disable())
+                .logout(logout -> logout.disable())
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/images/**", "/css/**", "/js/**").permitAll()
-                        .requestMatchers("/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/register/applicant", "/api/v1/auth/register/employer").permitAll()
+                        .requestMatchers("/auth/forgot-password", "/auth/reset-password").permitAll()
+                        .requestMatchers(HttpMethod.POST,
+                                "/api/v1/auth/register/applicant",
+                                "/api/v1/auth/register/employer",
+                                "/api/v1/auth/login",
+                                "/api/v1/auth/refresh").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v1/vacancies/**")
                         .hasAnyAuthority("EMPLOYER", "APPLICANT", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/v1/vacancies")
@@ -58,15 +46,25 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/resumes").hasAnyAuthority("EMPLOYER", "APPLICANT")
                         .requestMatchers("/resumes/create").hasAuthority("APPLICANT")
                         .anyRequest().authenticated()
-                );
-
+                )
+                .oauth2ResourceServer(resourceServer -> resourceServer
+                        .jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter))
+                        .authenticationEntryPoint(authenticationEntryPoint)
+                        .accessDeniedHandler(accessDeniedHandler))
+                .exceptionHandling(exceptions -> exceptions
+                        .authenticationEntryPoint(authenticationEntryPoint)
+                        .accessDeniedHandler(accessDeniedHandler));
         return http.build();
     }
 
     @Bean
-    public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-        AuthenticationManagerBuilder auth = http.getSharedObject(AuthenticationManagerBuilder.class);
-        auth.userDetailsService(customUserDetailsService).passwordEncoder(passwordEncoder);
-        return auth.build();
+    public JwtAuthenticationConverter jwtAuthenticationConverter() {
+        JwtGrantedAuthoritiesConverter authoritiesConverter = new JwtGrantedAuthoritiesConverter();
+        authoritiesConverter.setAuthoritiesClaimName("role");
+        authoritiesConverter.setAuthorityPrefix("");
+        JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
+        converter.setJwtGrantedAuthoritiesConverter(authoritiesConverter);
+        converter.setPrincipalClaimName("email");
+        return converter;
     }
 }

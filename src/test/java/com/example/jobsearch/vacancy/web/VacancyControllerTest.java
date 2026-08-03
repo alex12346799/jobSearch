@@ -2,9 +2,8 @@ package com.example.jobsearch.vacancy.web;
 
 import com.example.jobsearch.config.SecurityConfig;
 import com.example.jobsearch.exceptions.ResourceNotFoundException;
-import com.example.jobsearch.security.CustomAuthenticationSuccessHandler;
-import com.example.jobsearch.security.CustomUserDetailsService;
-import com.example.jobsearch.utils.RedirectHelper;
+import com.example.jobsearch.auth.security.RestAccessDeniedHandler;
+import com.example.jobsearch.auth.security.RestAuthenticationEntryPoint;
 import com.example.jobsearch.vacancy.application.VacancyService;
 import com.example.jobsearch.vacancy.application.exception.VacancyAccessDeniedException;
 import com.example.jobsearch.vacancy.application.exception.VacancyInUseException;
@@ -20,7 +19,7 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.jwt.JwtDecoder;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.bean.override.mockito.MockitoBean;
 import org.springframework.test.web.servlet.MockMvc;
@@ -39,7 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(VacancyController.class)
-@Import({VacancyControllerTest.TestConfig.class, SecurityConfig.class})
+@Import({VacancyControllerTest.TestConfig.class, SecurityConfig.class,
+        RestAuthenticationEntryPoint.class, RestAccessDeniedHandler.class})
 @WithMockUser(username = "owner@example.com", authorities = "EMPLOYER")
 class VacancyControllerTest {
     private static final String BASE_PATH = "/api/v1/vacancies";
@@ -62,16 +62,7 @@ class VacancyControllerTest {
     private StubVacancyService vacancyService;
 
     @MockitoBean
-    private RedirectHelper redirectHelper;
-
-    @MockitoBean
-    private CustomUserDetailsService customUserDetailsService;
-
-    @MockitoBean
-    private PasswordEncoder passwordEncoder;
-
-    @MockitoBean
-    private CustomAuthenticationSuccessHandler authenticationSuccessHandler;
+    private JwtDecoder jwtDecoder;
 
     @BeforeEach
     void resetService() {

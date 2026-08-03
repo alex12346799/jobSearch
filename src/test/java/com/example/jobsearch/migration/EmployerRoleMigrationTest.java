@@ -54,4 +54,24 @@ class EmployerRoleMigrationTest {
 
         assertThat(constraintCount).isEqualTo(1);
     }
+
+    @Test
+    void refreshTokenSchemaAndNormalizedEmailConstraintExist() {
+        Integer refreshTable = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'REFRESH_TOKENS'
+                """, Integer.class);
+        Integer refreshUnique = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*) FROM INFORMATION_SCHEMA.TABLE_CONSTRAINTS
+                WHERE TABLE_NAME = 'REFRESH_TOKENS'
+                  AND CONSTRAINT_NAME = 'UQ_REFRESH_TOKENS_TOKEN_HASH'
+                  AND CONSTRAINT_TYPE = 'UNIQUE'
+                """, Integer.class);
+        Integer nonNormalizedEmails = jdbcTemplate.queryForObject("""
+                SELECT COUNT(*) FROM users WHERE email <> LOWER(TRIM(email))
+                """, Integer.class);
+
+        assertThat(refreshTable).isEqualTo(1);
+        assertThat(refreshUnique).isEqualTo(1);
+        assertThat(nonNormalizedEmails).isZero();
+    }
 }

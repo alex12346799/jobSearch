@@ -2,6 +2,8 @@ package com.example.jobsearch.exceptions;
 
 import com.example.jobsearch.category.application.exception.CategoryConflictException;
 import com.example.jobsearch.category.application.exception.CategoryValidationException;
+import com.example.jobsearch.auth.application.AuthForbiddenException;
+import com.example.jobsearch.auth.application.AuthUnauthorizedException;
 import com.example.jobsearch.vacancy.application.exception.VacancyAccessDeniedException;
 import com.example.jobsearch.vacancy.application.exception.VacancyInUseException;
 import com.example.jobsearch.vacancy.application.exception.VacancyValidationException;
@@ -10,6 +12,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -30,6 +33,30 @@ public class RestExceptionHandler {
         exception.getBindingResult().getFieldErrors().forEach(error ->
                 validationErrors.putIfAbsent(error.getField(), error.getDefaultMessage()));
         return response(HttpStatus.BAD_REQUEST, "Request validation failed", request, validationErrors);
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<RestErrorResponse> handleUnreadableRequest(
+            HttpMessageNotReadableException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.BAD_REQUEST, "Malformed request or unknown field", request, Map.of());
+    }
+
+    @ExceptionHandler(AuthUnauthorizedException.class)
+    public ResponseEntity<RestErrorResponse> handleUnauthorized(
+            AuthUnauthorizedException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.UNAUTHORIZED, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(AuthForbiddenException.class)
+    public ResponseEntity<RestErrorResponse> handleAuthForbidden(
+            AuthForbiddenException exception,
+            HttpServletRequest request
+    ) {
+        return response(HttpStatus.FORBIDDEN, exception.getMessage(), request, Map.of());
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
