@@ -1,7 +1,7 @@
-package com.example.jobsearch.repository;
+package com.example.jobsearch.user.persistence;
 
-import com.example.jobsearch.model.Role;
-import com.example.jobsearch.model.RoleName;
+import com.example.jobsearch.user.domain.Role;
+import com.example.jobsearch.user.domain.RoleName;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.Optional;

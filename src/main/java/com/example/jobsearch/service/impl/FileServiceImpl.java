@@ -2,8 +2,8 @@
 package com.example.jobsearch.service.impl;
 
 import com.example.jobsearch.exceptions.NotFoundException;
-import com.example.jobsearch.model.User;
-import com.example.jobsearch.repository.UserRepository;
+import com.example.jobsearch.user.domain.User;
+import com.example.jobsearch.user.persistence.UserRepository;
 import com.example.jobsearch.service.FileService;
 import com.example.jobsearch.service.ImageService;
 import lombok.RequiredArgsConstructor;

@@ -1,7 +1,7 @@
 package com.example.jobsearch.vacancy.application;
 
 import com.example.jobsearch.category.domain.Category;
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import com.example.jobsearch.vacancy.domain.Vacancy;
 import com.example.jobsearch.vacancy.web.VacancyRequest;
 import com.example.jobsearch.vacancy.web.VacancyResponse;

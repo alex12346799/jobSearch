@@ -1,6 +1,6 @@
-package com.example.jobsearch.repository;
+package com.example.jobsearch.user.persistence;
 
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,19 +10,11 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
-
     @Query("SELECT u.name FROM User u WHERE u.id = :id")
     String findNameById(@Param("id") Long id);
 
     Optional<User> findByEmail(String email);
-
     Optional<User> findByEmailIgnoreCase(String email);
-
     boolean existsByEmail(String email);
-
     boolean existsByEmailIgnoreCase(String email);
-
-
-
-
 }

@@ -9,6 +9,7 @@ import com.example.jobsearch.auth.application.PasswordResetValidationException;
 import com.example.jobsearch.vacancy.application.exception.VacancyAccessDeniedException;
 import com.example.jobsearch.vacancy.application.exception.VacancyInUseException;
 import com.example.jobsearch.vacancy.application.exception.VacancyValidationException;
+import com.example.jobsearch.user.application.UserProfileException;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
@@ -63,6 +64,12 @@ public class RestExceptionHandler {
 
     @ExceptionHandler({PasswordResetTokenException.class, PasswordResetValidationException.class})
     public ResponseEntity<RestErrorResponse> handlePasswordReset(Exception exception, HttpServletRequest request) {
+        return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
+    }
+
+    @ExceptionHandler(UserProfileException.class)
+    public ResponseEntity<RestErrorResponse> handleUserProfile(
+            UserProfileException exception, HttpServletRequest request) {
         return response(HttpStatus.BAD_REQUEST, exception.getMessage(), request, Map.of());
     }
 

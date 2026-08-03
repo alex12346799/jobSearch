@@ -1,6 +1,6 @@
 package com.example.jobsearch.auth.security;
 
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.oauth2.jose.jws.MacAlgorithm;
 import org.springframework.security.oauth2.jwt.JwsHeader;

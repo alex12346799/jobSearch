@@ -6,10 +6,10 @@ import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.dto.WorkExperienceInfoRequestDto;
 import com.example.jobsearch.exceptions.NotFoundException;
 import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import com.example.jobsearch.model.WorkExperienceInfo;
 import com.example.jobsearch.repository.ResumeRepository;
-import com.example.jobsearch.repository.UserRepository;
+import com.example.jobsearch.user.persistence.UserRepository;
 import com.example.jobsearch.service.ResumeService;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
@@ -123,7 +123,7 @@ public class ResumeController {
         System.out.println("ОПЫТ РАБОТЫ (size) " + resumeRequestDto.getWorkExperienceInfoList().size());
         Resume createResume = resumeService.create(resumeRequestDto, authentication);
         model.addAttribute("resume", createResume);
-        return "redirect:/user/profile";
+        return "redirect:/resumes";
     }
 
 

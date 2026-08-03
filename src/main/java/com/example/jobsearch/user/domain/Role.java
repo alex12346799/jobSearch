@@ -1,4 +1,4 @@
-package com.example.jobsearch.model;
+package com.example.jobsearch.user.domain;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -12,9 +12,8 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     @Enumerated(EnumType.STRING)
     @Column(unique = true, nullable = false, name = "role_name")
     private RoleName name;
-
-
 }

@@ -1,7 +1,7 @@
 package com.example.jobsearch.repository;
 
 import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

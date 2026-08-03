@@ -15,6 +15,8 @@ import com.example.jobsearch.mapper.WorkExperienceInfoMapper;
 import com.example.jobsearch.model.*;
 import com.example.jobsearch.repository.*;
 import com.example.jobsearch.service.ResumeService;
+import com.example.jobsearch.user.domain.User;
+import com.example.jobsearch.user.persistence.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

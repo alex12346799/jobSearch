@@ -1,6 +1,6 @@
 package com.example.jobsearch.auth.domain;
 
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;

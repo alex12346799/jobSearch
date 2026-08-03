@@ -2,6 +2,7 @@ package com.example.jobsearch.model;
 
 
 import com.example.jobsearch.category.domain.Category;
+import com.example.jobsearch.user.domain.User;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.Getter;

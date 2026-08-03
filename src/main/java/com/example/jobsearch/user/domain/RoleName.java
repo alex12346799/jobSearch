@@ -1,4 +1,4 @@
-package com.example.jobsearch.model;
+package com.example.jobsearch.user.domain;
 
 public enum RoleName {
     APPLICANT,

@@ -1,9 +1,8 @@
+package com.example.jobsearch.user.domain;
 
-package com.example.jobsearch.model;
-
-import com.example.jobsearch.model.Role;
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.io.Serializable;
 
 @Entity
@@ -14,7 +13,6 @@ import java.io.Serializable;
 @Builder
 @Table(name = "users")
 public class User implements Serializable {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,21 +21,18 @@ public class User implements Serializable {
     private String name;
 
     private String surname;
-
     private Integer age;
 
     @Column(nullable = false, unique = true)
     private String email;
 
     private String password;
-
     private boolean enabled = true;
 
     @Column(name = "phone_number")
     private String phoneNumber;
 
     private String address;
-
     private String avatar;
 
     @Column(name = "company_name")

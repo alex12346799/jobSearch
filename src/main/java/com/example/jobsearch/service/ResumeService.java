@@ -3,7 +3,7 @@ package com.example.jobsearch.service;
 import com.example.jobsearch.dto.ResumeRequestDto;
 import com.example.jobsearch.dto.ResumeResponseDto;
 import com.example.jobsearch.model.Resume;
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.security.core.Authentication;

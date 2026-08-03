@@ -7,7 +7,7 @@ import com.example.jobsearch.auth.security.RestAccessDeniedHandler;
 import com.example.jobsearch.auth.security.RestAuthenticationEntryPoint;
 import com.example.jobsearch.config.SecurityConfig;
 import com.example.jobsearch.exceptions.AlreadyExistsException;
-import com.example.jobsearch.model.RoleName;
+import com.example.jobsearch.user.domain.RoleName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;

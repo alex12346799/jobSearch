@@ -1,7 +1,7 @@
 package com.example.jobsearch.vacancy.domain;
 
 import com.example.jobsearch.category.domain.Category;
-import com.example.jobsearch.model.User;
+import com.example.jobsearch.user.domain.User;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

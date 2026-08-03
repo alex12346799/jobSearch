@@ -3,6 +3,7 @@ package com.example.jobsearch.mapper;
 import com.example.jobsearch.category.domain.Category;
 import com.example.jobsearch.dto.*;
 import com.example.jobsearch.model.*;
+import com.example.jobsearch.user.domain.User;
 import org.springframework.context.i18n.LocaleContextHolder;
 
 import java.time.LocalDateTime;

@@ -47,9 +47,6 @@
           <li class="nav-item">
             <a class="nav-link" href="/vacancies"><@spring.message "layout.vacancies"/></a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/user/profile"><@spring.message "layout.Personal_account"/></a>
-          </li>
         </#if>
       </ul>
 
